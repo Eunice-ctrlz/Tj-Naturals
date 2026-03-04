@@ -1,0 +1,197 @@
+{% extends 'base.html' %}
+
+{% block title %}Shop - TJ Naturals{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <div class="row">
+        <!-- Sidebar - Fixed Categories -->
+        <div class="col-lg-3 d-none d-lg-block">
+            <div class="card shadow-sm sticky-top" style="top: 90px; z-index: 100;">
+                <div class="card-header bg-success text-white">
+                    <h5 class="mb-0"><i class="bi bi-list"></i> Categories</h5>
+                </div>
+                <div class="card-body p-0">
+                    <div class="list-group list-group-flush" id="category-tree">
+                        {% for category in root_categories %}
+                        <a href="{% url 'shop:product_list' %}?category={{ category.slug }}" 
+                           class="list-group-item list-group-item-action {% if current_category == category %}active{% endif %}">
+                            <i class="bi bi-folder"></i> {{ category.name }}
+                        </a>
+                        {% if category.children.exists %}
+                        <div class="ps-3">
+                            {% for child in category.children.all %}
+                            <a href="{% url 'shop:product_list' %}?category={{ child.slug }}" 
+                               class="list-group-item list-group-item-action {% if current_category == child %}active{% endif %}">
+                                <small><i class="bi bi-folder2"></i> {{ child.name }}</small>
+                            </a>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="col-lg-9">
+            <!-- Search and Filter Bar -->
+            <div class="card shadow-sm mb-4">
+                <div class="card-body">
+                    <div class="row g-3 align-items-center">
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="bi bi-search"></i></span>
+                                <input type="text" class="form-control" id="ai-search" 
+                                       placeholder="Search products..." 
+                                       value="{{ search_query }}" autocomplete="off">
+                                <div id="search-suggestions" class="list-group position-absolute w-100" style="z-index: 1000; top: 100%;"></div>
+                            
+                        <div class="col-md-6">
+                            <select class="form-select" id="sort-select">
+                                <option value="-created_at" {% if sort_by == '-created_at' %}selected{% endif %}>Newest First</option>
+                                <option value="price_low" {% if sort_by == 'price_low' %}selected{% endif %}>Price: Low to High</option>
+                                <option value="price_high" {% if sort_by == 'price_high' %}selected{% endif %}>Price: High to Low</option>
+                                <option value="name" {% if sort_by == 'name' %}selected{% endif %}>Name: A-Z</option>
+                                <option value="popular" {% if sort_by == 'popular' %}selected{% endif %}>Most Popular</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    {% if current_category %}
+                    <div class="mt-3">
+                        <span class="badge bg-success">{{ current_category.name }}</span>
+                        <a href="{% url 'shop:product_list' %}" class="btn btn-sm btn-outline-secondary ms-2">
+                            <i class="bi bi-x"></i> Clear Filter
+                        </a>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            
+            <!-- Results Count -->
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <p class="mb-0 text-muted">Showing {{ products|length }} products</p>
+                
+                <!-- Mobile Category Toggle -->
+                <button class="btn btn-outline-success d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileCategories">
+                    <i class="bi bi-list"></i> Categories
+                </button>
+            </div>
+            
+            <!-- Product Grid -->
+            <div id="product-grid">
+                {% include 'shop/includes/product_grid.html' %}
+            </div>
+            
+            <!-- Pagination -->
+            {% if is_paginated %}
+            <nav aria-label="Page navigation" class="mt-4">
+                <ul class="pagination justify-content-center">
+                    {% if products.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ products.previous_page_number }}{% if search_query %}&q={{ search_query }}{% endif %}{% if current_category %}&category={{ current_category.slug }}{% endif %}{% if sort_by %}&sort={{ sort_by }}{% endif %}">Previous</a>
+                    </li>
+                    {% endif %}
+                    
+                    {% for num in products.paginator.page_range %}
+                    {% if products.number == num %}
+                    <li class="page-item active"><span class="page-link">{{ num }}</span></li>
+                    {% else %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ num }}{% if search_query %}&q={{ search_query }}{% endif %}{% if current_category %}&category={{ current_category.slug }}{% endif %}{% if sort_by %}&sort={{ sort_by }}{% endif %}">{{ num }}</a>
+                    </li>
+                    {% endif %}
+                    {% endfor %}
+                    
+                    {% if products.has_next %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ products.next_page_number }}{% if search_query %}&q={{ search_query }}{% endif %}{% if current_category %}&category={{ current_category.slug }}{% endif %}{% if sort_by %}&sort={{ sort_by }}{% endif %}">Next</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </nav>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<!-- Mobile Categories Offcanvas -->
+<div class="offcanvas offcanvas-start" tabindex="-1" id="mobileCategories">
+    <div class="offcanvas-header bg-success text-white">
+        <h5 class="offcanvas-title">Categories</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body p-0">
+        <div class="list-group list-group-flush">
+            {% for category in root_categories %}
+            <a href="{% url 'shop:product_list' %}?category={{ category.slug }}" 
+               class="list-group-item list-group-item-action">
+                <i class="bi bi-folder"></i> {{ category.name }}
+            </a>
+            {% if category.children.exists %}
+            {% for child in category.children.all %}
+            <a href="{% url 'shop:product_list' %}?category={{ child.slug }}" 
+               class="list-group-item list-group-item-action ps-4">
+                <small><i class="bi bi-folder2"></i> {{ child.name }}</small>
+            </a>
+            {% endfor %}
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+// AI-Powered Real-time Search
+let searchTimeout;
+const searchInput = document.getElementById('ai-search');
+const suggestionsDiv = document.getElementById('search-suggestions');
+
+searchInput.addEventListener('input', function() {
+    clearTimeout(searchTimeout);
+    const query = this.value.trim();
+    
+    if (query.length < 2) {
+        suggestionsDiv.innerHTML = '';
+        return;
+    }
+    
+    searchTimeout = setTimeout(() => {
+        fetch(`/search/suggestions/?q=${encodeURIComponent(query)}`)
+            .then(response => response.json())
+            .then(data => {
+                if (data.suggestions.length > 0) {
+                    suggestionsDiv.innerHTML = data.suggestions.map(s => `
+                        <a href="/product/${s.slug}/" class="list-group-item list-group-item-action">
+                            <div class="d-flex justify-content-between">
+                                <span>${s.name}</span>
+                                <span class="text-success">KES ${s.price}</span>
+                            </div>
+                        </a>
+                    `).join('');
+                } else {
+                    suggestionsDiv.innerHTML = '<div class="list-group-item text-muted">No products found</div>';
+                }
+            });
+    }, 300);
+});
+
+// Close suggestions when clicking outside
+document.addEventListener('click', function(e) {
+    if (!searchInput.contains(e.target)) {
+        suggestionsDiv.innerHTML = '';
+    }
+});
+
+// Sort change handler
+document.getElementById('sort-select').addEventListener('change', function() {
+    const url = new URL(window.location);
+    url.searchParams.set('sort', this.value);
+    window.location = url;
+});
+</script>
+{% endblock %}

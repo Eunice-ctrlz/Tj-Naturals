@@ -1,0 +1,10 @@
+Django==4.2.7
+Pillow==10.1.0
+requests==2.31.0
+python-decouple==3.8
+django-crispy-forms==2.1
+crispy-bootstrap5==2023.10
+celery==5.3.4 
+redis==5.0.1
+django-cors-headers==4.3.1
+django-extensions==3.2.3

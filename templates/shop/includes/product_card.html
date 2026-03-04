@@ -1,0 +1,171 @@
+<div class="card h-100 product-card shadow-sm">
+    <div class="position-relative overflow-hidden">
+        {% with first_image=product.images.first %}
+        {% if first_image %}
+            <img src="{{ first_image.image.url }}" 
+                 class="card-img-top product-image" 
+                 style="height: 200px; object-fit: cover;"
+                 alt="{{ product.name }}"
+                 loading="lazy">
+        {% else %}
+            <div class="card-img-top bg-light d-flex align-items-center justify-content-center" 
+                 style="height: 200px; background: linear-gradient(135deg, #f0f7ee 0%, #e8f5e9 100%);">
+                <i class="bi bi-image text-success" style="font-size: 3rem; opacity: 0.5;"></i>
+            </div>
+        {% endif %}
+        {% endwith %}
+        
+        {% if product.discount_percentage > 0 %}
+        <span class="position-absolute top-0 start-0 badge bg-danger m-2">
+            -{{ product.discount_percentage }}%
+        </span>
+        {% endif %}
+        
+        {% if product.is_new_arrival %}
+        <span class="position-absolute top-0 end-0 badge bg-success m-2">New</span>
+        {% endif %}
+        
+        {% if product.is_low_stock %}
+        <span class="position-absolute bottom-0 start-0 badge bg-warning m-2">Low Stock</span>
+        {% endif %}
+        
+        
+<div class="product-actions position-absolute top-50 start-50 translate-middle d-flex gap-2">
+   
+    <button type="button" 
+            class="btn wishlist-btn rounded-circle shadow-sm {% if product.id in user_wishlist_ids %}wishlist-active{% endif %}" 
+            data-product-id="{{ product.id }}"
+            data-wishlist-url="{% url 'shop:toggle_wishlist' %}"
+            title="Add to Wishlist"> 
+        <i class="bi {% if product.id in user_wishlist_ids %}bi-heart-fill{% else %}bi-heart{% endif %}"></i>
+    </button>
+    
+    <button class="btn btn-success btn-sm rounded-circle shadow-sm add-to-cart" 
+            data-product-id="{{ product.id }}"
+            data-cart-url="{% url 'shop:add_to_cart' %}"
+            {% if not product.is_in_stock %}disabled{% endif %}>
+        <i class="bi bi-cart-plus"></i>
+    </button>
+</div>
+    </div>
+    
+    <div class="card-body d-flex flex-column">
+        <small class="text-muted text-uppercase" style="font-size: 0.75rem; letter-spacing: 0.5px;">
+            {{ product.category.name }}
+        </small>
+        <h5 class="card-title mt-1 mb-2" style="font-size: 1rem; font-weight: 600;">
+            <a href="{% url 'shop:product_detail' product.slug %}" class="text-decoration-none text-dark stretched-link">
+                {{ product.name }}
+            </a>
+        </h5>
+        
+        <!-- Rating Stars -->
+        <div class="mb-2">
+            {% for i in "12345" %}
+                {% if forloop.counter <= product.average_rating %}
+                    <i class="bi bi-star-fill text-warning" style="font-size: 0.8rem;"></i>
+                {% else %}
+                    <i class="bi bi-star text-muted" style="font-size: 0.8rem;"></i>
+                {% endif %}
+            {% endfor %}
+            <small class="text-muted">({{ product.review_count }})</small>
+        </div>
+        
+        <div class="mt-auto d-flex justify-content-between align-items-center">
+            <div>
+                {% if product.compare_at_price %}
+                    <small class="text-muted text-decoration-line-through d-block" style="font-size: 0.8rem;">
+                        KES {{ product.compare_at_price }}
+                    </small>
+                {% endif %}
+                <h5 class="text-success mb-0" style="font-size: 1.1rem; font-weight: 700;">
+                    KES {{ product.price }}
+                </h5>
+            </div>
+            {% if not product.is_in_stock %}
+                <span class="badge bg-secondary">Out of Stock</span>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<style>
+.product-card {
+    border: none;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    background: white;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1) !important;
+}
+
+.product-card .product-image {
+    transition: transform 0.5s ease;
+}
+
+.product-card:hover .product-image {
+    transform: scale(1.08);
+}
+
+.product-card .product-actions {
+    opacity: 0;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.product-card:hover .product-actions {
+    opacity: 1;
+}
+
+.product-actions .btn {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.product-actions .btn:hover {
+    transform: scale(1.1);
+}
+
+.product-actions .btn-success {
+    background-color: var(--tj-primary, #2D5A27);
+    border-color: var(--tj-primary, #2D5A27);
+}
+
+.product-actions .btn-success:hover {
+    background-color: var(--tj-primary-dark, #1E3D1A);
+    border-color: var(--tj-primary-dark, #1E3D1A);
+}
+
+/* Wishlist button specific styles */
+.wishlist-btn {
+    background: white;
+    border: 2px solid #e0e0e0;
+    color: #666;
+    transition: all 0.3s ease;
+}
+
+.wishlist-btn:hover {
+    border-color: #28a745;
+    color: #28a745;
+}
+
+.wishlist-active {
+    background-color: #28a745 !important;
+    border-color: #28a745 !important;
+    color: white !important;
+}
+
+.wishlist-active:hover {
+    background-color: #218838 !important;
+    border-color: #218838 !important;
+    color: white !important;
+}
+</style>

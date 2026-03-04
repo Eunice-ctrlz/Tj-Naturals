@@ -1,0 +1,184 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Edit Profile - TJ Naturals{% endblock %}
+
+{% block content %}
+<div class="container py-5" style="margin-top: 100px;">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <!-- Header -->
+            <div class="mb-4">
+                <h3 style="color: var(--tj-primary); font-weight: 700;">
+                    <i class="bi bi-pencil-square me-2"></i>Edit Profile
+                </h3>
+                <p class="text-muted">Update your personal information</p>
+            </div>
+
+            <!-- Edit Form Card -->
+            <div class="card border-0 shadow-sm rounded-4">
+                <div class="card-body p-4 p-md-5">
+        <form method="post" enctype="multipart/form-data" novalidate>
+    {% csrf_token %}
+    
+    <!-- Show non-field errors -->
+    {% if form.non_field_errors %}
+    <div class="alert alert-danger">
+        {% for error in form.non_field_errors %}
+            {{ error }}
+        {% endfor %}
+    </div>
+    {% endif %}
+    
+    <!-- Full Name -->
+    <div class="mb-4">
+        <label class="form-label fw-bold">
+            <i class="bi bi-person me-2 text-success"></i>Full Name
+        </label>
+        <input type="text" name="full_name" class="form-control {% if form.full_name.errors %}is-invalid{% endif %}" 
+               value="{{ form.full_name.value|default:'' }}" placeholder="Your full name">
+        {% if form.full_name.errors %}
+        <div class="invalid-feedback d-block">
+            {{ form.full_name.errors }}
+        </div>
+        {% endif %}
+    </div>
+
+    <!-- Email -->
+    <div class="mb-4">
+        <label class="form-label fw-bold">
+            <i class="bi bi-envelope me-2 text-success"></i>Email
+        </label>
+        <input type="email" name="email" class="form-control {% if form.email.errors %}is-invalid{% endif %}" 
+               value="{{ form.email.value|default:'' }}" placeholder="your@email.com">
+        {% if form.email.errors %}
+        <div class="invalid-feedback d-block">
+            {{ form.email.errors }}
+        </div>
+        {% endif %}
+    </div>
+
+    <!-- Phone Number -->
+    <div class="mb-4">
+        <label class="form-label fw-bold">
+            <i class="bi bi-telephone me-2 text-success"></i>Phone Number
+        </label>
+        <input type="text" name="phone_number" class="form-control {% if form.phone_number.errors %}is-invalid{% endif %}" 
+               value="{{ form.phone_number.value|default:'' }}" placeholder="254712345678">
+        {% if form.phone_number.errors %}
+        <div class="invalid-feedback d-block text-danger">
+            {{ form.phone_number.errors }}
+        </div>
+        {% endif %}
+        <div class="form-text">2541234567</div>
+    </div>
+
+    
+<div class="mb-4">
+    <label class="form-label fw-bold">
+        <i class="bi bi-at me-2 text-success"></i>Username
+    </label>
+    <input type="text" class="form-control" value="{{ user.username }}" disabled readonly 
+           style="background-color: #e9ecef; cursor: not-allowed;">
+    <input type="hidden" name="username" value="{{ user.username }}">
+    <div class="form-text">Username cannot be changed</div>
+</div>
+    <!-- Address -->
+    <div class="mb-4">
+        <label class="form-label fw-bold">
+            <i class="bi bi-geo-alt me-2 text-success"></i>Address
+        </label>
+        <textarea name="address" class="form-control {% if form.address.errors %}is-invalid{% endif %}" 
+                  rows="3" placeholder="Your delivery address">{{ form.address.value|default:'' }}</textarea>
+        {% if form.address.errors %}
+        <div class="invalid-feedback d-block">
+            {{ form.address.errors }}
+        </div>
+        {% endif %}
+    </div>
+
+    <!-- Profile Image -->
+    {% if form.profile_image %}
+    <div class="mb-4">
+        <label class="form-label fw-bold">
+            <i class="bi bi-camera me-2 text-success"></i>Profile Image
+        </label>
+        <input type="file" name="profile_image" class="form-control {% if form.profile_image.errors %}is-invalid{% endif %}">
+        {% if form.profile_image.errors %}
+        <div class="invalid-feedback d-block">
+            {{ form.profile_image.errors }}
+        </div>
+        {% endif %}
+    </div>
+    {% endif %}
+
+    <div class="d-flex gap-3 mt-5">
+        <button type="submit" class="btn btn-success btn-lg flex-grow-1">
+            <i class="bi bi-check-lg me-2"></i>Save Changes
+        </button>
+        <a href="{% url 'accounts:profile' %}" class="btn btn-outline-secondary btn-lg">Cancel</a>
+    </div>
+</form>     
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+/* Form styling to match TJ Naturals theme */
+.form-control, .form-select {
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 12px 16px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--tj-primary);
+    box-shadow: 0 0 0 0.2rem rgba(68, 147, 67, 0.25);
+}
+
+.form-control:hover, .form-select:hover {
+    border-color: var(--tj-primary-light);
+}
+
+/* Style file input */
+input[type="file"].form-control {
+    padding: 8px 12px;
+}
+
+/* Invalid state */
+.is-invalid {
+    border-color: #dc3545 !important;
+}
+
+/* Custom checkbox/radio if needed */
+.form-check-input:checked {
+    background-color: var(--tj-primary);
+    border-color: var(--tj-primary);
+}
+
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1) !important;
+}
+</style>
+
+<script>
+// Add Bootstrap form classes dynamically if not already present
+document.addEventListener('DOMContentLoaded', function() {
+    const inputs = document.querySelectorAll('input, select, textarea');
+    inputs.forEach(input => {
+        if (!input.classList.contains('form-control') && !input.classList.contains('form-check-input') && !input.classList.contains('btn')) {
+            input.classList.add('form-control');
+        }
+    });
+});
+</script>
+{% endblock %}

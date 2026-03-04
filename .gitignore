@@ -1,0 +1,20 @@
+# Environments
+.env
+.venv/
+env/
+venv/
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Database (Keep your local data local)
+db.sqlite3
+
+# Media & Static
+media/
+static/
+
+# IDEs
+.vscode/
+.idea/

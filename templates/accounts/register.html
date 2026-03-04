@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Register - TJ Naturals{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-xl-10"> 
+            <div class="card border-0 shadow-lg rounded-4">
+                <div class="card-body p-4 p-md-5">
+                    <div class="text-center mb-5">
+                        <h2 class="display-6 fw-bold text-success">Create Account</h2>
+                        <p class="text-muted">Join TJ Naturals for exclusive offers and easy checkout</p>
+                    </div>
+                    
+                    <form method="post" novalidate>
+                        {% csrf_token %}
+                        
+                        <div class="row g-4">
+                            <div class="col-md-4">
+                                {{ form.username|as_crispy_field }}
+                            </div>
+                            <div class="col-md-4">
+                                {{ form.email|as_crispy_field }}
+                            </div>
+                            <div class="col-md-4">
+                                {{ form.phone_number|as_crispy_field }}
+                            </div>
+
+                            <div class="col-md-4">
+                                {{ form.address|as_crispy_field }}
+                            </div>
+                            <div class="col-md-4">
+                                {{ form.password1|as_crispy_field }}
+                            </div>
+                            <div class="col-md-4">
+                                {{ form.password2|as_crispy_field }}
+                            </div>
+                        </div>
+
+                        <div class="row justify-content-center mt-5">
+                            <div class="col-md-6 d-grid">
+                                <button type="submit" class="btn btn-success btn-lg rounded-pill shadow-sm">
+                                    <i class="bi bi-person-plus-fill me-2"></i>Create Account
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    
+                    <div class="text-center mt-4">
+                        <p class="text-muted mb-0">Already have an account? 
+                            <a href="{% url 'accounts:login' %}" class="text-success fw-bold text-decoration-none ms-1">Login Here</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    
+    .form-text, .help-block {
+        display: none !important;
+    }
+
+    
+    .form-control {
+        padding: 0.6rem 0.85rem;
+        border-radius: 8px;
+        border: 1px solid #dee2e6;
+    }
+
+    /* Ensures labels don't wrap awkwardly */
+    label {
+        font-weight: 500;
+        margin-bottom: 0.4rem;
+        color: #495057;
+    }
+</style>
+{% endblock %}

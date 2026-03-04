@@ -1,0 +1,219 @@
+{% extends 'base.html' %}
+
+{% block title %}Checkout - TJ Naturals{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <h2 class="mb-4"><i class="bi bi-credit-card"></i> Checkout</h2>
+    
+    <div class="row">
+        <div class="col-lg-8">
+            <!-- Shipping Details -->
+            <div class="card shadow-sm mb-4">
+                <div class="card-header bg-success text-white">
+                    <h5 class="mb-0"><i class="bi bi-truck"></i> Shipping Details</h5>
+                </div>
+                <div class="card-body">
+                    <form id="checkout-form">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Full Name</label>
+                                <input type="text" class="form-control" id="full-name" value="{{ user.full_name }}" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Phone Number</label>
+                                <input type="tel" class="form-control" id="phone-number" value="{{ user.phone_number }}" required>
+                                <small class="text-muted">Format: 254712345678</small>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" value="{{ user.email }}" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Delivery Address</label>
+                            <textarea class="form-control" id="address" rows="3" required>{{ user.address }}</textarea>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Payment Method -->
+            <div class="card shadow-sm mb-4">
+                <div class="card-header bg-success text-white">
+                    <h5 class="mb-0"><i class="bi bi-wallet2"></i> Payment Method</h5>
+                </div>
+                <div class="card-body">
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="radio" name="payment" id="mpesa" checked>
+                        <label class="form-check-label" for="mpesa">
+                            <i class="bi bi-phone"></i> M-Pesa
+                        </label>
+                    </div>
+                    <p class="text-muted">You will receive an STK push on your phone to complete payment.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-4">
+            <!-- Order Summary -->
+            <div class="card shadow-sm sticky-top" style="top: 90px;">
+                <div class="card-header bg-success text-white">
+                    <h5 class="mb-0">Order Summary</h5>
+                </div>
+                <div class="card-body">
+                    {% for item in cart_items %}
+                    <div class="d-flex justify-content-between mb-2">
+                        <span>{{ item.product.name }} x {{ item.quantity }}</span>
+                        <span>KES {{ item.total_price }}</span>
+                    </div>
+                    {% endfor %}
+                    <hr>
+                    <div class="d-flex justify-content-between mb-2">
+                        <span>Subtotal</span>
+                        <strong>KES {{ cart.subtotal }}</strong>
+                    </div>
+                    <div class="d-flex justify-content-between mb-2">
+                        <span>Shipping</span>
+                        <span class="text-success">Free</span>
+                    </div>
+                    <hr>
+                    <div class="d-flex justify-content-between mb-3">
+                        <span class="h5">Total</span>
+                        <strong class="h5 text-success" id="order-total">KES {{ cart.total }}</strong>
+                    </div>
+                    
+                    <button type="button" class="btn btn-success btn-lg w-100" id="place-order-btn" onclick="placeOrder()">
+                        <i class="bi bi-shield-check"></i> Place Order & Pay
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Payment Processing Modal -->
+<div class="modal fade" id="paymentModal" tabindex="-1" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-success text-white">
+                <h5 class="modal-title">Processing Payment</h5>
+            </div>
+            <div class="modal-body text-center py-4">
+                <div class="spinner-border text-success mb-3" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+                <p id="payment-status">Initiating M-Pesa STK Push...</p>
+                <p class="text-muted">Please check your phone and enter your M-Pesa PIN</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Payment Success Modal -->
+<div class="modal fade" id="successModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body text-center py-4">
+                <i class="bi bi-check-circle-fill text-success" style="font-size: 4rem;"></i>
+                <h4 class="mt-3">Payment Successful!</h4>
+                <p>Your order has been placed successfully.</p>
+                <p class="text-muted">Order #: <span id="success-order-number"></span></p>
+                <a href="{% url 'shop:home' %}" class="btn btn-success">Continue Shopping</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+let checkoutRequestId = null;
+let orderId = null;
+
+function placeOrder() {
+    const form = document.getElementById('checkout-form');
+    if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+    }
+    
+    const btn = document.getElementById('place-order-btn');
+    btn.disabled = true;
+    btn.innerHTML = '<span class="spinner-border spinner-border-sm"></span> Processing...';
+    
+    const data = {
+        full_name: document.getElementById('full-name').value,
+        phone_number: document.getElementById('phone-number').value,
+        email: document.getElementById('email').value,
+        address: document.getElementById('address').value
+    };
+    
+    // Create order
+    fetch('/checkout/create-order/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': CSRF_TOKEN
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            orderId = data.order_id;
+            initiatePayment(data.order_id, data.phone, data.total);
+        } else {
+            alert(data.message || 'Error creating order');
+            btn.disabled = false;
+            btn.innerHTML = '<i class="bi bi-shield-check"></i> Place Order & Pay';
+        }
+    });
+}
+
+function initiatePayment(orderId, phone, amount) {
+    new bootstrap.Modal(document.getElementById('paymentModal')).show();
+    
+    fetch('/payments/initiate/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': CSRF_TOKEN
+        },
+        body: JSON.stringify({ order_id: orderId, phone_number: phone })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            checkoutRequestId = data.checkout_request_id;
+            document.getElementById('payment-status').textContent = 'STK Push sent! Waiting for payment...';
+            checkPaymentStatus();
+        } else {
+            document.getElementById('payment-status').textContent = 'Error: ' + (data.error || 'Payment initiation failed');
+            document.querySelector('.spinner-border').classList.remove('spinner-border');
+        }
+    });
+}
+
+function checkPaymentStatus() {
+    if (!checkoutRequestId) return;
+    
+    fetch(`/payments/check-status/?checkout_request_id=${checkoutRequestId}`)
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === 'success') {
+            bootstrap.Modal.getInstance(document.getElementById('paymentModal')).hide();
+            document.getElementById('success-order-number').textContent = data.order_number;
+            new bootstrap.Modal(document.getElementById('successModal')).show();
+        } else if (data.status === 'pending') {
+            setTimeout(checkPaymentStatus, 3000);
+        } else {
+            document.getElementById('payment-status').textContent = 'Payment failed. Please try again.';
+            document.querySelector('.spinner-border').classList.remove('spinner-border');
+            document.getElementById('place-order-btn').disabled = false;
+            document.getElementById('place-order-btn').innerHTML = '<i class="bi bi-shield-check"></i> Place Order & Pay';
+        }
+    });
+}
+</script>
+{% endblock %}

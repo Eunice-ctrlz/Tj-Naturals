@@ -1,0 +1,834 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}TJ Naturals - Premium Natural Skincare{% endblock %}
+
+{% block extra_css %}
+<style>
+    /* Override body padding for home page layout */
+    body {
+        padding-top: 80px !important;
+        background: var(--tj-off-white);
+    }
+
+    /* BROWSE CATEGORIES SECTION */
+    .browse-section {
+        background: var(--tj-off-white);
+        padding: 16px;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        overflow-x: auto;
+        scrollbar-width: none;
+        border-bottom: 1px solid var(--tj-border);
+    }
+
+    .browse-section::-webkit-scrollbar {
+        display: none;
+    }
+
+    .browse-btn {
+        background: var(--tj-primary);
+        color: white;
+        border: none;
+        padding: 14px 24px;
+        border-radius: 8px;
+        font-weight: 700;
+        font-size: 0.95rem;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        cursor: pointer;
+        white-space: nowrap;
+        flex-shrink: 0;
+        transition: all 0.3s ease;
+    }
+
+    .browse-btn:hover {
+        background: var(--tj-primary-dark);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(27, 77, 26, 0.3);
+    }
+
+    .browse-btn i {
+        font-size: 1.2rem;
+    }
+
+    /* CATEGORY TABS */
+    .category-tabs {
+        display: flex;
+        gap: 24px;
+        flex-shrink: 0;
+    }
+
+    .category-tab {
+        color: var(--tj-text-light);
+        text-decoration: none;
+        font-size: 0.95rem;
+        font-weight: 600;
+        white-space: nowrap;
+        padding-bottom: 4px;
+        border-bottom: 2px solid transparent;
+        transition: all 0.3s ease;
+    }
+
+    .category-tab:hover {
+        color: var(--tj-primary);
+    }
+
+    .category-tab.active {
+        color: var(--tj-primary);
+        border-bottom-color: var(--tj-primary);
+    }
+
+    /* HERO BANNER */
+    .hero-banner {
+        width: 100%;
+        height: 350px;
+        background: linear-gradient(135deg, var(--tj-primary), var(--tj-primary-dark));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        text-align: center;
+        padding: 24px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .hero-banner::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: url("https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=1200&q=80") center/cover;
+        opacity: 0.2;
+    }
+
+    .hero-content {
+        position: relative;
+        z-index: 1;
+    }
+
+    .hero-content h1 {
+        font-size: 2.2rem;
+        font-weight: 800;
+        margin-bottom: 12px;
+    }
+
+    .hero-content p {
+        font-size: 1.1rem;
+        opacity: 0.95;
+        max-width: 500px;
+        margin: 0 auto;
+    }
+
+    .hero-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: white;
+        color: var(--tj-primary);
+        padding: 14px 32px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 700;
+        margin-top: 20px;
+        transition: all 0.3s ease;
+    }
+
+    .hero-cta:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    /* SECTION BAR - Black like Kisasa */
+    .section-bar {
+        background: #000000;
+        color: white;
+        padding: 20px 16px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .section-bar h2 {
+        font-size: 1.4rem;
+        font-weight: 700;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .section-bar h2 i {
+        color: var(--tj-primary);
+    }
+
+    .view-all-link {
+        color: white;
+        text-decoration: none;
+        font-size: 0.9rem;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        transition: all 0.3s ease;
+    }
+
+    .view-all-link:hover {
+        color: var(--tj-primary);
+    }
+
+    /* PRODUCTS SECTION */
+    .products-section {
+        padding: 20px 16px;
+        background: var(--tj-off-white);
+    }
+
+    .products-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+
+    @media (min-width: 640px) {
+        .products-grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    @media (min-width: 1024px) {
+        .products-grid {
+            grid-template-columns: repeat(4, 1fr);
+        }
+    }
+
+    @media (min-width: 1280px) {
+        .products-grid {
+            grid-template-columns: repeat(5, 1fr);
+        }
+    }
+
+    /* PRODUCT CARD */
+    .product-card {
+        background: white;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        position: relative;
+        transition: all 0.3s ease;
+    }
+
+    .product-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+    }
+
+    .product-image-wrapper {
+        position: relative;
+        aspect-ratio: 1;
+        overflow: hidden;
+        background: white;
+    }
+
+    .product-image-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.4s ease;
+    }
+
+    .product-card:hover .product-image-wrapper img {
+        transform: scale(1.05);
+    }
+
+    /* BADGES */
+    .product-badges {
+        position: absolute;
+        top: 12px;
+        left: 12px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .badge-percent {
+        background: var(--tj-primary);
+        color: white;
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.8rem;
+        font-weight: 800;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+
+    .badge-soldout {
+        background: var(--tj-sale);
+        color: white;
+        padding: 8px 14px;
+        border-radius: 6px;
+        font-size: 0.75rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+
+    .badge-new {
+        background: var(--tj-primary);
+        color: white;
+        padding: 6px 12px;
+        border-radius: 6px;
+        font-size: 0.75rem;
+        font-weight: 800;
+        text-transform: uppercase;
+    }
+
+    /* WISHLIST BUTTON */
+    .wishlist-btn {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        width: 36px;
+        height: 36px;
+        background: rgba(255,255,255,0.95);
+        border: none;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        color: var(--tj-text-light);
+        font-size: 1.1rem;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        transition: all 0.3s ease;
+    }
+
+    .wishlist-btn:hover {
+        background: var(--tj-primary);
+        color: white;
+        transform: scale(1.1);
+    }
+
+    .wishlist-btn.active {
+        background: var(--tj-sale);
+        color: white;
+    }
+
+    /* PRODUCT INFO */
+    .product-info {
+        padding: 16px;
+    }
+
+    .product-name {
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: var(--tj-text);
+        line-height: 1.4;
+        margin-bottom: 10px;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        min-height: 2.6em;
+    }
+
+    .product-price {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .current-price {
+        font-size: 1.1rem;
+        font-weight: 800;
+        color: var(--tj-primary);
+    }
+
+    .original-price {
+        font-size: 0.9rem;
+        color: var(--tj-text-light);
+        text-decoration: line-through;
+        font-weight: 500;
+    }
+
+    /* SPECIAL OFFERS - Red prices */
+    .special-offers .current-price {
+        color: var(--tj-sale);
+    }
+
+    /* NEWSLETTER SECTION */
+    .newsletter-section {
+        background: var(--tj-primary-dark);
+        color: white;
+        padding: 60px 20px;
+        text-align: center;
+    }
+
+    .newsletter-content {
+        max-width: 500px;
+        margin: 0 auto;
+    }
+
+    .newsletter-title {
+        font-size: 1.8rem;
+        font-weight: 800;
+        margin-bottom: 12px;
+    }
+
+    .newsletter-text {
+        opacity: 0.9;
+        margin-bottom: 24px;
+        font-size: 1rem;
+    }
+
+    .newsletter-form {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    @media (min-width: 640px) {
+        .newsletter-form {
+            flex-direction: row;
+        }
+    }
+
+    .newsletter-input {
+        flex: 1;
+        padding: 16px 20px;
+        border: none;
+        border-radius: 8px;
+        font-size: 1rem;
+        outline: none;
+    }
+
+    .newsletter-btn {
+        background: var(--tj-primary);
+        color: white;
+        border: none;
+        padding: 16px 32px;
+        border-radius: 8px;
+        font-weight: 700;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .newsletter-btn:hover {
+        background: var(--tj-accent);
+        transform: translateY(-2px);
+    }
+
+    /* TRUST BADGES */
+    .trust-section {
+        background: white;
+        padding: 30px 16px;
+        border-top: 1px solid var(--tj-border);
+        border-bottom: 1px solid var(--tj-border);
+    }
+
+    .trust-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    @media (min-width: 640px) {
+        .trust-grid {
+            grid-template-columns: repeat(4, 1fr);
+        }
+    }
+
+    .trust-item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        color: var(--tj-text);
+        font-size: 0.9rem;
+        font-weight: 600;
+    }
+
+    .trust-item i {
+        color: var(--tj-primary);
+        font-size: 1.3rem;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+
+<!-- BROWSE CATEGORIES & TABS -->
+<div class="browse-section">
+    <button class="browse-btn" onclick="window.location.href='{% url 'shop:product_list' %}'">
+        <i class="bi bi-list"></i>
+        <span>BROWSE CATEGORIES</span>
+    </button>
+    
+</div>
+
+<!-- HERO BANNER -->
+<div class="hero-banner">
+    <div class="hero-content">
+        <h1>Nature's Best for Your Skin</h1>
+        <p>Premium organic skincare crafted with love from Kenyan farms. No chemicals, just pure nature.</p>
+        <a href="{% url 'shop:product_list' %}" class="hero-cta">
+            Shop Now <i class="bi bi-arrow-right"></i>
+        </a>
+    </div>
+</div>
+
+<!-- TRUST BADGES -->
+<div class="trust-section">
+    <div class="trust-grid">
+        <div class="trust-item">
+            <i class="bi bi-truck"></i>
+            <span>Free Delivery</span>
+        </div>
+        <div class="trust-item">
+            <i class="bi bi-shield-check"></i>
+            <span>Secure Payment</span>
+        </div>
+        <div class="trust-item">
+            <i class="bi bi-arrow-counterclockwise"></i>
+            <span>Easy Returns</span>
+        </div>
+        <div class="trust-item">
+            <i class="bi bi-award"></i>
+            <span>100% Natural</span>
+        </div>
+    </div>
+</div>
+
+<!-- BESTSELLERS SECTION -->
+<div class="section-bar">
+    <h2><i class="bi bi-fire"></i> Bestsellers</h2>
+    <a href="{% url 'shop:product_list' %}" class="view-all-link">
+        View All <i class="bi bi-arrow-right"></i>
+    </a>
+</div>
+
+<div class="products-section">
+    <div class="products-grid">
+        {% for product in bestsellers %}
+        <div class="product-card">
+            <div class="product-image-wrapper">
+                {% with image=product.images.first %}
+                <img src="{{ image.image.url }}" alt="{{ product.name }}" loading="lazy">
+                {% endwith %}
+                <button class="wishlist-btn {% if product in user.wishlist.all %}active{% endif %}" 
+                        onclick="toggleWishlist(this, {{ product.id }})"
+                        data-product-id="{{ product.id }}">
+                    <i class="bi bi-heart{% if product in user.wishlist.all %}-fill{% endif %}"></i>
+                </button>
+            </div>
+            <div class="product-info">
+                <h3 class="product-name">{{ product.name }}</h3>
+                <div class="product-price">
+                    <span class="current-price">KES {{ product.price }}</span>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="product-card">
+            <div class="product-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=400&q=80" alt="Shea Butter">
+                <button class="wishlist-btn"><i class="bi bi-heart"></i></button>
+            </div>
+            <div class="product-info">
+                <h3 class="product-name">Pure Shea Butter</h3>
+                <div class="product-price">
+                    <span class="current-price">KES 850</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="product-card">
+            <div class="product-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=400&q=80" alt="Face Oil">
+                <button class="wishlist-btn"><i class="bi bi-heart"></i></button>
+            </div>
+            <div class="product-info">
+                <h3 class="product-name">Rosehip Face Oil</h3>
+                <div class="product-price">
+                    <span class="current-price">KES 1,200</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="product-card">
+            <div class="product-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400&q=80" alt="Lip Balm">
+                <button class="wishlist-btn"><i class="bi bi-heart"></i></button>
+            </div>
+            <div class="product-info">
+                <h3 class="product-name">Beeswax Lip Balm</h3>
+                <div class="product-price">
+                    <span class="current-price">KES 350</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="product-card">
+            <div class="product-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=400&q=80" alt="Body Scrub">
+                <button class="wishlist-btn"><i class="bi bi-heart"></i></button>
+            </div>
+            <div class="product-info">
+                <h3 class="product-name">Coffee Body Scrub</h3>
+                <div class="product-price">
+                    <span class="current-price">KES 750</span>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- SPECIAL OFFERS SECTION -->
+<div class="section-bar">
+    <h2><i class="bi bi-lightning-fill"></i> Special Offers</h2>
+    <a href="{% url 'shop:product_list' %}" class="view-all-link">
+        View All <i class="bi bi-arrow-right"></i>
+    </a>
+</div>
+
+<div class="products-section special-offers">
+    <div class="products-grid">
+        {% for product in special_offers %}
+        <div class="product-card">
+            <div class="product-image-wrapper">
+                {% with image=product.images.first %}
+                <img src="{{ image.image.url }}" alt="{{ product.name }}" loading="lazy">
+                {% endwith %}
+                <div class="product-badges">
+                    <span class="badge-percent">-{{ product.discount_percentage }}%</span>
+                </div>
+                <button class="wishlist-btn {% if product in user.wishlist.all %}active{% endif %}" 
+                        onclick="toggleWishlist(this, {{ product.id }})"
+                        data-product-id="{{ product.id }}">
+                    <i class="bi bi-heart{% if product in user.wishlist.all %}-fill{% endif %}"></i>
+                </button>
+            </div>
+            <div class="product-info">
+                <h3 class="product-name">{{ product.name }}</h3>
+                <div class="product-price">
+                    <span class="current-price">KES {{ product.price }}</span>
+                    <span class="original-price">KES {{ product.compare_at_price }}</span>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="product-card">
+            <div class="product-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1570194065650-d99fb4b38b15?w=400&q=80" alt="Vitamin C Serum">
+                <div class="product-badges">
+                    <span class="badge-percent">-40%</span>
+                </div>
+                <button class="wishlist-btn"><i class="bi bi-heart"></i></button>
+            </div>
+            <div class="product-info">
+                <h3 class="product-name">Vitamin C Brightening Serum</h3>
+                <div class="product-price">
+                    <span class="current-price">KES 1,200</span>
+                    <span class="original-price">KES 2,000</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="product-card">
+            <div class="product-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?w=400&q=80" alt="Body Scrub">
+                <div class="product-badges">
+                    <span class="badge-percent">-50%</span>
+                </div>
+                <button class="wishlist-btn"><i class="bi bi-heart"></i></button>
+            </div>
+            <div class="product-info">
+                <h3 class="product-name">Coffee Body Scrub</h3>
+                <div class="product-price">
+                    <span class="current-price">KES 750</span>
+                    <span class="original-price">KES 1,500</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="product-card">
+            <div class="product-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?w=400&q=80" alt="Lip Balm">
+                <div class="product-badges">
+                    <span class="badge-percent">-30%</span>
+                </div>
+                <button class="wishlist-btn"><i class="bi bi-heart"></i></button>
+            </div>
+            <div class="product-info">
+                <h3 class="product-name">Honey Lip Balm Set</h3>
+                <div class="product-price">
+                    <span class="current-price">KES 350</span>
+                    <span class="original-price">KES 500</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="product-card">
+            <div class="product-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1612817288484-6f916006741a?w=400&q=80" alt="Face Mask">
+                <div class="product-badges">
+                    <span class="badge-percent">-45%</span>
+                </div>
+                <button class="wishlist-btn"><i class="bi bi-heart"></i></button>
+            </div>
+            <div class="product-info">
+                <h3 class="product-name">Bentonite Clay Mask</h3>
+                <div class="product-price">
+                    <span class="current-price">KES 550</span>
+                    <span class="original-price">KES 1,000</span>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- NEW ARRIVALS SECTION -->
+<div class="section-bar">
+    <h2><i class="bi bi-stars"></i> New Arrivals</h2>
+    <a href="{% url 'shop:product_list' %}" class="view-all-link">
+        View All <i class="bi bi-arrow-right"></i>
+    </a>
+</div>
+
+<div class="products-section">
+    <div class="products-grid">
+        {% for product in new_arrivals %}
+        <div class="product-card">
+            <div class="product-image-wrapper">
+                {% with image=product.images.first %}
+                <img src="{{ image.image.url }}" alt="{{ product.name }}" loading="lazy">
+                {% endwith %}
+                <div class="product-badges">
+                    <span class="badge-new">NEW</span>
+                </div>
+                <button class="wishlist-btn {% if product in user.wishlist.all %}active{% endif %}" 
+                        onclick="toggleWishlist(this, {{ product.id }})"
+                        data-product-id="{{ product.id }}">
+                    <i class="bi bi-heart{% if product in user.wishlist.all %}-fill{% endif %}"></i>
+                </button>
+            </div>
+            <div class="product-info">
+                <h3 class="product-name">{{ product.name }}</h3>
+                <div class="product-price">
+                    <span class="current-price">KES {{ product.price }}</span>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="product-card">
+            <div class="product-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=400&q=80" alt="Night Cream">
+                <div class="product-badges">
+                    <span class="badge-new">NEW</span>
+                </div>
+                <button class="wishlist-btn"><i class="bi bi-heart"></i></button>
+            </div>
+            <div class="product-info">
+                <h3 class="product-name">Retinol Night Cream</h3>
+                <div class="product-price">
+                    <span class="current-price">KES 1,500</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="product-card">
+            <div class="product-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1617897903246-719242758050?w=400&q=80" alt="Sunscreen">
+                <div class="product-badges">
+                    <span class="badge-new">NEW</span>
+                </div>
+                <button class="wishlist-btn"><i class="bi bi-heart"></i></button>
+            </div>
+            <div class="product-info">
+                <h3 class="product-name">SPF 50 Sunscreen</h3>
+                <div class="product-price">
+                    <span class="current-price">KES 950</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="product-card">
+            <div class="product-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1596755389378-c31d21fd1273?w=400&q=80" alt="Face Wash">
+                <div class="product-badges">
+                    <span class="badge-new">NEW</span>
+                </div>
+                <button class="wishlist-btn"><i class="bi bi-heart"></i></button>
+            </div>
+            <div class="product-info">
+                <h3 class="product-name">Tea Tree Face Wash</h3>
+                <div class="product-price">
+                    <span class="current-price">KES 650</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="product-card">
+            <div class="product-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1607006344380-b6775a0824a7?w=400&q=80" alt="Hair Oil">
+                <div class="product-badges">
+                    <span class="badge-new">NEW</span>
+                </div>
+                <button class="wishlist-btn"><i class="bi bi-heart"></i></button>
+            </div>
+            <div class="product-info">
+                <h3 class="product-name">Castor Hair Oil</h3>
+                <div class="product-price">
+                    <span class="current-price">KES 800</span>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- NEWSLETTER SECTION -->
+<div class="newsletter-section">
+    <div class="newsletter-content">
+        <h2 class="newsletter-title">Join the TJ Naturals Family</h2>
+        <p class="newsletter-text">Get 15% off your first order and exclusive access to new products!</p>
+        <form class="newsletter-form" onsubmit="handleSubscribe(event)">
+            <input type="email" class="newsletter-input" placeholder="Enter your email" required>
+            <button type="submit" class="newsletter-btn">Subscribe Now</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    function toggleWishlist(btn, productId) {
+        // Use the base.html wishlist logic
+        const event = new Event('click');
+        btn.dispatchEvent(event);
+    }
+
+    function handleSubscribe(e) {
+        e.preventDefault();
+        const btn = e.target.querySelector('button');
+        const originalText = btn.textContent;
+        btn.textContent = 'Subscribed!';
+        btn.style.background = '#28a745';
+        
+        setTimeout(() => {
+            btn.textContent = originalText;
+            btn.style.background = '';
+            e.target.reset();
+        }, 3000);
+    }
+</script>
+
+{% endblock %}
