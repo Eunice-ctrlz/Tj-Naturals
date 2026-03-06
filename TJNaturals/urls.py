@@ -17,11 +17,13 @@ Including another URLconf
 from django.conf import settings
 from django.contrib import admin
 from django.urls import include, path
+from django.views.generic import TemplateView
 import static
 from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('service-worker.js', TemplateView.as_view(template_name='service-worker.js', content_type='application/javascript')),
     path('', include('shop.urls')),
     path('accounts/', include('accounts.urls')),
     path('payments/', include('payments.urls')),

@@ -7,20 +7,24 @@
 <style>
     /* Override body padding for home page layout */
     body {
-        padding-top: 80px !important;
+        padding-top: 76px !important;
         background: var(--tj-off-white);
     }
 
     /* BROWSE CATEGORIES SECTION */
     .browse-section {
         background: var(--tj-off-white);
-        padding: 16px;
+        padding: 14px 20px;
+        margin-bottom: 0;
         display: flex;
         align-items: center;
         gap: 16px;
-        overflow-x: auto;
+        overflow: visible;
         scrollbar-width: none;
-        border-bottom: 1px solid var(--tj-border);
+        border-bottom: 1px solid #e9edf2;
+        position: relative;
+        z-index: 120;
+        isolation: isolate;
     }
 
     .browse-section::-webkit-scrollbar {
@@ -28,13 +32,14 @@
     }
 
     .browse-btn {
-        background: var(--tj-primary);
+        background: var(--tj-primary-dark);
         color: white;
         border: none;
-        padding: 14px 24px;
-        border-radius: 8px;
+        padding: 12px 20px;
+        border-radius: 6px;
         font-weight: 700;
-        font-size: 0.95rem;
+        font-size: 0.82rem;
+        letter-spacing: 0.04em;
         display: flex;
         align-items: center;
         gap: 10px;
@@ -44,10 +49,70 @@
         transition: all 0.3s ease;
     }
 
+    .browse-categories-wrap {
+        position: relative;
+        flex-shrink: 0;
+        z-index: 220;
+    }
+
+    .browse-menu-panel {
+        position: absolute;
+        top: calc(100% + 10px);
+        left: 0;
+        width: min(860px, 92vw);
+        background: #ffffff;
+        border: 1px solid var(--tj-border);
+        border-radius: 12px;
+        box-shadow: 0 20px 40px rgba(31, 79, 47, 0.16);
+        padding: 18px;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(6px);
+        transition: all 0.22s ease;
+        z-index: 300;
+    }
+
+    .browse-categories-wrap.open .browse-menu-panel,
+    .browse-categories-wrap:hover .browse-menu-panel,
+    .browse-categories-wrap:focus-within .browse-menu-panel {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    .browse-menu-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+    }
+
+    .browse-menu-col h4 {
+        margin: 0 0 10px;
+        font-size: 0.82rem;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        color: var(--tj-primary-dark);
+    }
+
+    .browse-menu-col a {
+        display: block;
+        text-decoration: none;
+        color: var(--tj-text-light);
+        padding: 7px 0;
+        font-size: 0.9rem;
+        font-weight: 500;
+        transition: color 0.2s ease;
+    }
+
+    .browse-menu-col a:hover {
+        color: var(--tj-primary-dark);
+    }
+
     .browse-btn:hover {
-        background: var(--tj-primary-dark);
+        background: var(--tj-primary);
         transform: translateY(-2px);
-        box-shadow: 0 4px 15px rgba(27, 77, 26, 0.3);
+        box-shadow: 0 6px 16px rgba(31, 79, 47, 0.2);
     }
 
     .browse-btn i {
@@ -57,68 +122,100 @@
     /* CATEGORY TABS */
     .category-tabs {
         display: flex;
-        gap: 24px;
-        flex-shrink: 0;
+        gap: 18px;
+        flex-shrink: 1;
+        overflow-x: auto;
+        max-width: 100%;
     }
 
     .category-tab {
         color: var(--tj-text-light);
         text-decoration: none;
-        font-size: 0.95rem;
+        font-size: 0.84rem;
         font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
         white-space: nowrap;
-        padding-bottom: 4px;
+        padding-bottom: 5px;
         border-bottom: 2px solid transparent;
         transition: all 0.3s ease;
     }
 
     .category-tab:hover {
-        color: var(--tj-primary);
+        color: var(--tj-primary-dark);
     }
 
     .category-tab.active {
-        color: var(--tj-primary);
-        border-bottom-color: var(--tj-primary);
+        color: var(--tj-primary-dark);
+        border-bottom-color: var(--tj-primary-dark);
     }
 
     /* HERO BANNER */
     .hero-banner {
         width: 100%;
-        height: 350px;
+        min-height: 430px;
+        margin-top: 0;
         background: linear-gradient(135deg, var(--tj-primary), var(--tj-primary-dark));
         display: flex;
         align-items: center;
         justify-content: center;
-        color: white;
+        color: #ffffff;
         text-align: center;
-        padding: 24px;
+        padding: 30px 20px;
         position: relative;
         overflow: hidden;
+        z-index: 0;
+    }
+
+    .hero-bg-stack {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+    }
+
+    .hero-bg-image {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0;
+        transition: opacity 1.1s ease;
+        transform: scale(1.02);
+    }
+
+    .hero-bg-image.active {
+        opacity: 1;
     }
 
     .hero-banner::before {
         content: '';
         position: absolute;
         inset: 0;
-        background: url("https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=1200&q=80") center/cover;
-        opacity: 0.2;
+        background: linear-gradient(120deg, rgba(31, 79, 47, 0.72), rgba(31, 79, 47, 0.38));
+        z-index: 1;
     }
 
     .hero-content {
         position: relative;
-        z-index: 1;
+        z-index: 2;
+        max-width: 760px;
+        padding: 0 16px;
     }
 
     .hero-content h1 {
-        font-size: 2.2rem;
+        font-size: clamp(2rem, 4.2vw, 3.2rem);
         font-weight: 800;
-        margin-bottom: 12px;
+        margin-bottom: 16px;
+        color: #ffffff;
+        line-height: 1.1;
+        text-shadow: 0 8px 18px rgba(0, 0, 0, 0.35);
     }
 
     .hero-content p {
-        font-size: 1.1rem;
-        opacity: 0.95;
-        max-width: 500px;
+        font-size: 1.05rem;
+        color: rgba(255, 255, 255, 0.92);
+        max-width: 620px;
         margin: 0 auto;
     }
 
@@ -126,24 +223,73 @@
         display: inline-flex;
         align-items: center;
         gap: 8px;
-        background: white;
-        color: var(--tj-primary);
-        padding: 14px 32px;
-        border-radius: 50px;
+        background: #ffffff;
+        color: var(--tj-primary-dark);
+        padding: 13px 28px;
+        border-radius: 999px;
         text-decoration: none;
         font-weight: 700;
-        margin-top: 20px;
+        margin-top: 22px;
         transition: all 0.3s ease;
     }
 
     .hero-cta:hover {
         transform: translateY(-3px);
-        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+        color: var(--tj-primary-dark);
     }
 
-    /* SECTION BAR - Black like Kisasa */
+    .shipping-banner {
+        background: linear-gradient(90deg, rgba(80, 120, 72, 0.16), rgba(186, 157, 117, 0.22));
+        border-top: 1px solid rgba(80, 120, 72, 0.2);
+        border-bottom: 1px solid rgba(80, 120, 72, 0.2);
+        padding: 12px 16px;
+    }
+
+    .shipping-banner-inner {
+        max-width: 1100px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        text-align: center;
+        color: var(--tj-primary-dark);
+        font-weight: 700;
+        font-size: 0.95rem;
+    }
+
+    .shipping-banner-inner i {
+        font-size: 1rem;
+    }
+
+    @media (max-width: 991px) {
+        body {
+            padding-top: 68px !important;
+        }
+
+        .hero-content {
+            text-align: center;
+            padding: 0;
+        }
+
+        .hero-content p {
+            margin: 0 auto;
+        }
+
+        .browse-menu-panel {
+            width: min(560px, 94vw);
+        }
+
+        .browse-menu-grid {
+            grid-template-columns: 1fr;
+            gap: 10px;
+        }
+    }
+
+    /* SECTION BAR */
     .section-bar {
-        background: #000000;
+        background: var(--tj-primary-dark);
         color: white;
         padding: 20px 16px;
         display: flex;
@@ -231,6 +377,12 @@
         background: white;
     }
 
+    .product-media-link {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+    }
+
     .product-image-wrapper img {
         width: 100%;
         height: 100%;
@@ -305,6 +457,7 @@
         font-size: 1.1rem;
         box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         transition: all 0.3s ease;
+        z-index: 4;
     }
 
     .wishlist-btn:hover {
@@ -316,6 +469,37 @@
     .wishlist-btn.active {
         background: var(--tj-sale);
         color: white;
+    }
+
+    .quick-cart-btn {
+        position: absolute;
+        top: 56px;
+        right: 12px;
+        width: 36px;
+        height: 36px;
+        background: rgba(255,255,255,0.95);
+        border: none;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        color: var(--tj-primary-dark);
+        font-size: 1rem;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        transition: all 0.3s ease;
+        z-index: 4;
+    }
+
+    .quick-cart-btn:hover:not(:disabled) {
+        background: var(--tj-primary-dark);
+        color: white;
+        transform: scale(1.08);
+    }
+
+    .quick-cart-btn:disabled {
+        opacity: 0.55;
+        cursor: not-allowed;
     }
 
     /* PRODUCT INFO */
@@ -334,6 +518,15 @@
         -webkit-box-orient: vertical;
         overflow: hidden;
         min-height: 2.6em;
+    }
+
+    .product-name-link {
+        color: inherit;
+        text-decoration: none;
+    }
+
+    .product-name-link:hover {
+        color: var(--tj-primary-dark);
     }
 
     .product-price {
@@ -386,42 +579,74 @@
         font-size: 1rem;
     }
 
-    .newsletter-form {
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-    }
-
-    @media (min-width: 640px) {
-        .newsletter-form {
-            flex-direction: row;
-        }
-    }
-
-    .newsletter-input {
-        flex: 1;
-        padding: 16px 20px;
-        border: none;
-        border-radius: 8px;
-        font-size: 1rem;
-        outline: none;
-    }
-
-    .newsletter-btn {
-        background: var(--tj-primary);
+    .newsletter-whatsapp-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        width: min(360px, 100%);
+        text-decoration: none;
         color: white;
-        border: none;
-        padding: 16px 32px;
-        border-radius: 8px;
+        background: #1f8f43;
+        border: 1px solid #1f8f43;
+        padding: 14px 18px;
+        border-radius: 999px;
         font-weight: 700;
-        font-size: 1rem;
-        cursor: pointer;
+        font-size: 0.95rem;
         transition: all 0.3s ease;
     }
 
-    .newsletter-btn:hover {
-        background: var(--tj-accent);
+    .newsletter-whatsapp-link:hover {
+        color: white;
+        background: #18783a;
+        border-color: #18783a;
         transform: translateY(-2px);
+    }
+
+    .post-newsletter-strip {
+        background: #f7fbf8;
+        border-top: 1px solid var(--tj-border);
+        border-bottom: 1px solid var(--tj-border);
+        padding: 26px 16px;
+    }
+
+    .post-newsletter-grid {
+        max-width: 1100px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .post-newsletter-item {
+        background: #ffffff;
+        border: 1px solid var(--tj-border);
+        border-radius: 12px;
+        padding: 14px 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        text-decoration: none;
+        color: var(--tj-primary-dark);
+        font-weight: 700;
+        font-size: 0.9rem;
+    }
+
+    .post-newsletter-item:hover {
+        color: var(--tj-primary-dark);
+        background: #eef6f0;
+    }
+
+    /* Remove default global footer spacing on home page. */
+    footer {
+        margin-top: 0 !important;
+    }
+
+    @media (max-width: 768px) {
+        .post-newsletter-grid {
+            grid-template-columns: 1fr;
+        }
     }
 
     /* TRUST BADGES */
@@ -467,21 +692,54 @@
 
 <!-- BROWSE CATEGORIES & TABS -->
 <div class="browse-section">
-    <button class="browse-btn" onclick="window.location.href='{% url 'shop:product_list' %}'">
-        <i class="bi bi-list"></i>
-        <span>BROWSE CATEGORIES</span>
-    </button>
-    
+    <div class="browse-categories-wrap" id="browse-categories-wrap">
+        <button class="browse-btn" type="button" id="browse-toggle" aria-expanded="false">
+            <i class="bi bi-list"></i>
+            <span>BROWSE CATEGORIES</span>
+        </button>
+
+        <div class="browse-menu-panel" id="browse-menu-panel">
+            <div class="browse-menu-grid">
+                <div class="browse-menu-col">
+                    <h4>Top Categories</h4>
+                    {% for category in header_categories %}
+                    <a href="{% url 'shop:product_list' %}?category={{ category.slug }}">{{ category.name }}</a>
+                    {% empty %}
+                    <a href="{% url 'shop:product_list' %}">Skincare</a>
+                    <a href="{% url 'shop:product_list' %}">Haircare</a>
+                    <a href="{% url 'shop:product_list' %}">Bath & Body</a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="category-tabs">
+        <a href="{% url 'shop:product_list' %}" class="category-tab active">Shop</a>
+        <a href="#" class="category-tab">About Us</a>
+    </div>
 </div>
 
 <!-- HERO BANNER -->
 <div class="hero-banner">
+    <div class="hero-bg-stack" id="hero-bg-stack">
+        <img class="hero-bg-image active" src="/media/profiles/hero%201.png" alt="Natural skin care">
+        <img class="hero-bg-image" src="/media/profiles/hero%202.png" alt="Natural skincare two">
+    </div>
+
     <div class="hero-content">
         <h1>Nature's Best for Your Skin</h1>
-        <p>Premium organic skincare crafted with love from Kenyan farms. No chemicals, just pure nature.</p>
+        <p>Premium organic skincare crafted with love from Kenyan farms.</p>
         <a href="{% url 'shop:product_list' %}" class="hero-cta">
             Shop Now <i class="bi bi-arrow-right"></i>
         </a>
+    </div>
+</div>
+
+<div class="shipping-banner" role="status" aria-label="Shipping offer">
+    <div class="shipping-banner-inner">
+        <i class="bi bi-truck"></i>
+        <span>Free delivery on orders above KSh 3,000</span>
     </div>
 </div>
 
@@ -490,7 +748,7 @@
     <div class="trust-grid">
         <div class="trust-item">
             <i class="bi bi-truck"></i>
-            <span>Free Delivery</span>
+            <span>Nationwide Delivery</span>
         </div>
         <div class="trust-item">
             <i class="bi bi-shield-check"></i>
@@ -520,17 +778,31 @@
         {% for product in bestsellers %}
         <div class="product-card">
             <div class="product-image-wrapper">
+                <a href="{% url 'shop:product_detail' product.slug %}" class="product-media-link" aria-label="View {{ product.name }}"></a>
                 {% with image=product.images.first %}
+                {% if image %}
                 <img src="{{ image.image.url }}" alt="{{ product.name }}" loading="lazy">
+                {% else %}
+                <div class="w-100 h-100 d-flex align-items-center justify-content-center" style="background: linear-gradient(135deg, #f2ecdd 0%, #e6efe2 100%);">
+                    <i class="bi bi-image" style="font-size: 2rem; color: #6f8a6f;"></i>
+                </div>
+                {% endif %}
                 {% endwith %}
                 <button class="wishlist-btn {% if product in user.wishlist.all %}active{% endif %}" 
                         onclick="toggleWishlist(this, {{ product.id }})"
                         data-product-id="{{ product.id }}">
                     <i class="bi bi-heart{% if product in user.wishlist.all %}-fill{% endif %}"></i>
                 </button>
+                <button class="quick-cart-btn add-to-cart"
+                        data-product-id="{{ product.id }}"
+                        data-cart-url="{% url 'shop:add_to_cart' %}"
+                        {% if not product.is_in_stock %}disabled{% endif %}
+                        title="Add to Cart">
+                    <i class="bi bi-cart-plus"></i>
+                </button>
             </div>
             <div class="product-info">
-                <h3 class="product-name">{{ product.name }}</h3>
+                <h3 class="product-name"><a href="{% url 'shop:product_detail' product.slug %}" class="product-name-link">{{ product.name }}</a></h3>
                 <div class="product-price">
                     <span class="current-price">KES {{ product.price }}</span>
                 </div>
@@ -605,8 +877,15 @@
         {% for product in special_offers %}
         <div class="product-card">
             <div class="product-image-wrapper">
+                <a href="{% url 'shop:product_detail' product.slug %}" class="product-media-link" aria-label="View {{ product.name }}"></a>
                 {% with image=product.images.first %}
+                {% if image %}
                 <img src="{{ image.image.url }}" alt="{{ product.name }}" loading="lazy">
+                {% else %}
+                <div class="w-100 h-100 d-flex align-items-center justify-content-center" style="background: linear-gradient(135deg, #f2ecdd 0%, #e6efe2 100%);">
+                    <i class="bi bi-image" style="font-size: 2rem; color: #6f8a6f;"></i>
+                </div>
+                {% endif %}
                 {% endwith %}
                 <div class="product-badges">
                     <span class="badge-percent">-{{ product.discount_percentage }}%</span>
@@ -616,9 +895,16 @@
                         data-product-id="{{ product.id }}">
                     <i class="bi bi-heart{% if product in user.wishlist.all %}-fill{% endif %}"></i>
                 </button>
+                <button class="quick-cart-btn add-to-cart"
+                        data-product-id="{{ product.id }}"
+                        data-cart-url="{% url 'shop:add_to_cart' %}"
+                        {% if not product.is_in_stock %}disabled{% endif %}
+                        title="Add to Cart">
+                    <i class="bi bi-cart-plus"></i>
+                </button>
             </div>
             <div class="product-info">
-                <h3 class="product-name">{{ product.name }}</h3>
+                <h3 class="product-name"><a href="{% url 'shop:product_detail' product.slug %}" class="product-name-link">{{ product.name }}</a></h3>
                 <div class="product-price">
                     <span class="current-price">KES {{ product.price }}</span>
                     <span class="original-price">KES {{ product.compare_at_price }}</span>
@@ -710,8 +996,15 @@
         {% for product in new_arrivals %}
         <div class="product-card">
             <div class="product-image-wrapper">
+                <a href="{% url 'shop:product_detail' product.slug %}" class="product-media-link" aria-label="View {{ product.name }}"></a>
                 {% with image=product.images.first %}
+                {% if image %}
                 <img src="{{ image.image.url }}" alt="{{ product.name }}" loading="lazy">
+                {% else %}
+                <div class="w-100 h-100 d-flex align-items-center justify-content-center" style="background: linear-gradient(135deg, #f2ecdd 0%, #e6efe2 100%);">
+                    <i class="bi bi-image" style="font-size: 2rem; color: #6f8a6f;"></i>
+                </div>
+                {% endif %}
                 {% endwith %}
                 <div class="product-badges">
                     <span class="badge-new">NEW</span>
@@ -721,9 +1014,16 @@
                         data-product-id="{{ product.id }}">
                     <i class="bi bi-heart{% if product in user.wishlist.all %}-fill{% endif %}"></i>
                 </button>
+                <button class="quick-cart-btn add-to-cart"
+                        data-product-id="{{ product.id }}"
+                        data-cart-url="{% url 'shop:add_to_cart' %}"
+                        {% if not product.is_in_stock %}disabled{% endif %}
+                        title="Add to Cart">
+                    <i class="bi bi-cart-plus"></i>
+                </button>
             </div>
             <div class="product-info">
-                <h3 class="product-name">{{ product.name }}</h3>
+                <h3 class="product-name"><a href="{% url 'shop:product_detail' product.slug %}" class="product-name-link">{{ product.name }}</a></h3>
                 <div class="product-price">
                     <span class="current-price">KES {{ product.price }}</span>
                 </div>
@@ -801,34 +1101,90 @@
 <div class="newsletter-section">
     <div class="newsletter-content">
         <h2 class="newsletter-title">Join the TJ Naturals Family</h2>
-        <p class="newsletter-text">Get 15% off your first order and exclusive access to new products!</p>
-        <form class="newsletter-form" onsubmit="handleSubscribe(event)">
-            <input type="email" class="newsletter-input" placeholder="Enter your email" required>
-            <button type="submit" class="newsletter-btn">Subscribe Now</button>
-        </form>
+        <a
+            class="newsletter-whatsapp-link"
+            href="https://web.whatsapp.com/send/?phone=254708877435&text&type=phone_number&app_absent=0"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            <i class="bi bi-whatsapp"></i> Join our WhatsApp channel
+        </a>
+    </div>
+</div>
+
+<div class="post-newsletter-strip">
+    <div class="post-newsletter-grid">
+        <a class="post-newsletter-item" href="{% url 'shop:product_list' %}">
+            <i class="bi bi-grid"></i> Browse All Products
+        </a>
+        <a class="post-newsletter-item" href="{% url 'shop:checkout' %}">
+            <i class="bi bi-truck"></i> Delivery & Checkout
+        </a>
+        <a class="post-newsletter-item" href="https://web.whatsapp.com/send/?phone=254708877435&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer">
+            <i class="bi bi-chat-dots"></i> Chat With Us
+        </a>
     </div>
 </div>
 
 <script>
+    (function() {
+        const browseWrap = document.getElementById('browse-categories-wrap');
+        const browseToggle = document.getElementById('browse-toggle');
+
+        if (!browseWrap || !browseToggle) return;
+
+        const mobileQuery = window.matchMedia('(max-width: 991px)');
+
+        browseWrap.addEventListener('mouseenter', function() {
+            if (!mobileQuery.matches) {
+                browseWrap.classList.add('open');
+                browseToggle.setAttribute('aria-expanded', 'true');
+            }
+        });
+
+        browseWrap.addEventListener('mouseleave', function() {
+            if (!mobileQuery.matches) {
+                browseWrap.classList.remove('open');
+                browseToggle.setAttribute('aria-expanded', 'false');
+            }
+        });
+
+        browseToggle.addEventListener('click', function() {
+            if (mobileQuery.matches) {
+                const isOpen = browseWrap.classList.toggle('open');
+                browseToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+            }
+        });
+
+        document.addEventListener('click', function(event) {
+            if (!browseWrap.contains(event.target)) {
+                browseWrap.classList.remove('open');
+                browseToggle.setAttribute('aria-expanded', 'false');
+            }
+        });
+    })();
+
+    (function() {
+        const heroStack = document.getElementById('hero-bg-stack');
+        if (!heroStack) return;
+
+        const images = Array.from(heroStack.querySelectorAll('.hero-bg-image'));
+        if (images.length < 2) return;
+
+        let currentIndex = 0;
+        setInterval(function() {
+            images[currentIndex].classList.remove('active');
+            currentIndex = (currentIndex + 1) % images.length;
+            images[currentIndex].classList.add('active');
+        }, 5200);
+    })();
+
     function toggleWishlist(btn, productId) {
         // Use the base.html wishlist logic
         const event = new Event('click');
         btn.dispatchEvent(event);
     }
 
-    function handleSubscribe(e) {
-        e.preventDefault();
-        const btn = e.target.querySelector('button');
-        const originalText = btn.textContent;
-        btn.textContent = 'Subscribed!';
-        btn.style.background = '#28a745';
-        
-        setTimeout(() => {
-            btn.textContent = originalText;
-            btn.style.background = '';
-            e.target.reset();
-        }, 3000);
-    }
 </script>
 
 {% endblock %}

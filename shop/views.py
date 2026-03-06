@@ -8,44 +8,134 @@ from django.db.models import Q, Avg
 from django.views.decorators.http import require_POST, require_GET
 from django.core.paginator import Paginator
 from django.template.loader import render_to_string
+from decimal import Decimal
+from types import SimpleNamespace
 
-from .models import Category, Product, Cart, CartItem, Wishlist, Review, Order, OrderItem
+from .models import Category, Product, Cart, CartItem, Wishlist, Review, Order, OrderItem, ShippingRate
 from .utils import get_or_create_cart
 
 import json
 
 
+SESSION_CART_KEY = 'guest_cart'
+SESSION_WISHLIST_KEY = 'guest_wishlist'
+
+
+def _get_guest_cart(request):
+    """Return normalized guest cart data from session."""
+    cart = request.session.get(SESSION_CART_KEY, {})
+    if not isinstance(cart, dict):
+        return {}
+
+    normalized = {}
+    for product_id, qty in cart.items():
+        try:
+            pid = int(product_id)
+            qty = int(qty)
+        except (TypeError, ValueError):
+            continue
+
+        if qty > 0:
+            normalized[str(pid)] = qty
+    return normalized
+
+
+def _save_guest_cart(request, cart):
+    request.session[SESSION_CART_KEY] = cart
+    request.session.modified = True
+
+
+def _get_guest_wishlist(request):
+    """Return normalized guest wishlist product IDs from session."""
+    wishlist = request.session.get(SESSION_WISHLIST_KEY, [])
+    if not isinstance(wishlist, list):
+        return []
+
+    normalized = []
+    for product_id in wishlist:
+        try:
+            normalized.append(int(product_id))
+        except (TypeError, ValueError):
+            continue
+    return normalized
+
+
+def _save_guest_wishlist(request, wishlist_ids):
+    request.session[SESSION_WISHLIST_KEY] = wishlist_ids
+    request.session.modified = True
+
+
+def _build_guest_cart_context(request):
+    """Build cart-like objects that cart template can render for guests."""
+    cart_data = _get_guest_cart(request)
+    if not cart_data:
+        empty_cart = SimpleNamespace(subtotal=Decimal('0.00'), total=Decimal('0.00'), total_items=0)
+        return empty_cart, []
+
+    product_ids = [int(pid) for pid in cart_data.keys()]
+    products = Product.objects.filter(id__in=product_ids, status='active').select_related('category').prefetch_related('images')
+    product_map = {product.id: product for product in products}
+
+    items = []
+    subtotal = Decimal('0.00')
+    total_items = 0
+    cleaned_cart = {}
+
+    for product_id_str, quantity in cart_data.items():
+        product_id = int(product_id_str)
+        product = product_map.get(product_id)
+        if not product:
+            continue
+
+        if quantity > product.stock_quantity:
+            quantity = product.stock_quantity
+        if quantity <= 0:
+            continue
+
+        cleaned_cart[str(product.id)] = quantity
+        item_total = product.price * quantity
+        subtotal += item_total
+        total_items += quantity
+        items.append(
+            SimpleNamespace(
+                id=product.id,
+                product=product,
+                quantity=quantity,
+                total_price=item_total,
+            )
+        )
+
+    if cleaned_cart != cart_data:
+        _save_guest_cart(request, cleaned_cart)
+
+    guest_cart = SimpleNamespace(subtotal=subtotal, total=subtotal, total_items=total_items)
+    return guest_cart, items
+
+
 def home_view(request):
+    active_products = Product.objects.filter(status='active').select_related('category').prefetch_related('images')
+
     # Hero products (featured/bestsellers)
-    hero_products = Product.objects.filter(
-        status='active',
-        is_bestseller=True
-    ).select_related('category').prefetch_related('images')[:4]
-    
+    hero_products = active_products.filter(is_bestseller=True)[:4]
+
     # Sales banner products (special offers)
-    sales_products = Product.objects.filter(
-        status='active',
+    sales_products = active_products.filter(
         is_special=True,
-        compare_at_price__isnull=False
-    ).select_related('category').prefetch_related('images')[:3]
-    
-    # Bestsellers
-    bestsellers = Product.objects.filter(
-        status='active')[:8]
-        #is_bestseller=True
-   # ).select_related('category').prefetch_related('images')[:8]
-    
-    # Special offers
-    special_offers = Product.objects.filter(
-        status='active')[:8]
-        #is_special=True
-    #).select_related('category').prefetch_related('images')[:8]
-    
-    # New arrivals
-    new_arrivals = Product.objects.filter(
-        status='active')[:8]
-        #is_new_arrival=True
-   # ).select_related('category').prefetch_related('images')[:8]
+        compare_at_price__isnull=False,
+    )[:3]
+
+    # Homepage sections controlled by admin flags.
+    bestsellers = active_products.filter(is_bestseller=True)[:8]
+    special_offers = active_products.filter(is_special=True)[:8]
+    new_arrivals = active_products.filter(is_new_arrival=True)[:8]
+
+    # Keep sections populated if flags are not set yet.
+    if not bestsellers:
+        bestsellers = active_products[:8]
+    if not special_offers:
+        special_offers = active_products[:8]
+    if not new_arrivals:
+        new_arrivals = active_products[:8]
     
     context = {
         'hero_products': hero_products,
@@ -70,12 +160,13 @@ def product_list_view(request):
     # Category filtering with hierarchy
     current_category = None
     if category_slug:
-        current_category = get_object_or_404(Category, slug=category_slug)
-        # Get all subcategories
-        category_ids = [current_category.id]
-        subcategories = current_category.children.all()
-        category_ids.extend([cat.id for cat in subcategories])
-        products = products.filter(category_id__in=category_ids)
+        # Gracefully ignore stale/invalid slugs instead of returning a 404 page.
+        current_category = Category.objects.filter(slug=category_slug, is_active=True).first()
+        if current_category:
+            category_ids = [current_category.id]
+            subcategories = current_category.children.filter(is_active=True)
+            category_ids.extend([cat.id for cat in subcategories])
+            products = products.filter(category_id__in=category_ids)
     
     # AI-like search (case-insensitive, partial match)
     if search_query:
@@ -150,6 +241,8 @@ def product_detail_view(request, slug):
             user=request.user,
             products=product
         ).exists()
+    else:
+        in_wishlist = product.id in _get_guest_wishlist(request)
     
     # Stock alert
     stock_alert = None
@@ -172,9 +265,6 @@ def product_detail_view(request, slug):
 @require_POST
 def add_to_cart_view(request):
     """Add product to cart via AJAX."""
-    if not request.user.is_authenticated:
-        return JsonResponse({'success': False, 'message': 'Please login to add items to cart'})
-    
     try:
         data = json.loads(request.body)
         product_id = data.get('product_id')
@@ -186,36 +276,64 @@ def add_to_cart_view(request):
     
     if product.stock_quantity < quantity:
         return JsonResponse({
+            'status': 'error',
             'success': False,
             'message': f'Only {product.stock_quantity} items available'
         })
-    
-    cart, _ = Cart.objects.get_or_create(user=request.user)
-    
-    cart_item, created = CartItem.objects.get_or_create(
-        cart=cart,
-        product=product,
-        defaults={'quantity': quantity}
-    )
-    
-    if not created:
-        cart_item.quantity += quantity
-        cart_item.save()
-    
+
+    if request.user.is_authenticated:
+        cart, _ = Cart.objects.get_or_create(user=request.user)
+
+        cart_item, created = CartItem.objects.get_or_create(
+            cart=cart,
+            product=product,
+            defaults={'quantity': quantity}
+        )
+
+        if not created:
+            new_quantity = cart_item.quantity + quantity
+            if new_quantity > product.stock_quantity:
+                return JsonResponse({
+                    'status': 'error',
+                    'success': False,
+                    'message': f'Only {product.stock_quantity} items available'
+                })
+            cart_item.quantity = new_quantity
+            cart_item.save()
+
+        cart_count = cart.total_items
+        cart_total = float(cart.total)
+    else:
+        guest_cart = _get_guest_cart(request)
+        current_quantity = guest_cart.get(str(product.id), 0)
+        new_quantity = current_quantity + quantity
+
+        if new_quantity > product.stock_quantity:
+            return JsonResponse({
+                'status': 'error',
+                'success': False,
+                'message': f'Only {product.stock_quantity} items available'
+            })
+
+        guest_cart[str(product.id)] = new_quantity
+        _save_guest_cart(request, guest_cart)
+
+        guest_cart_obj, _ = _build_guest_cart_context(request)
+        cart_count = guest_cart_obj.total_items
+        cart_total = float(guest_cart_obj.total)
+
     return JsonResponse({
+        'status': 'success',
         'success': True,
         'message': f'{product.name} added to cart',
-        'cart_count': cart.total_items,
-        'cart_total': float(cart.total)
+        'cart_count': cart_count,
+        'cart_total': cart_total
     })
 
 
 @require_POST
 def update_cart_view(request):
     """Update cart item quantity."""
-    if not request.user.is_authenticated:
-        return JsonResponse({'success': False, 'message': 'Please login'})
-    
     try:
         data = json.loads(request.body)
         item_id = data.get('item_id')
@@ -223,37 +341,70 @@ def update_cart_view(request):
     except (json.JSONDecodeError, ValueError):
         return JsonResponse({'success': False, 'message': 'Invalid data'})
     
-    cart_item = get_object_or_404(CartItem, id=item_id, cart__user=request.user)
-    
-    if quantity <= 0:
-        cart_item.delete()
-        message = 'Item removed from cart'
+    if request.user.is_authenticated:
+        cart_item = get_object_or_404(CartItem, id=item_id, cart__user=request.user)
+
+        if quantity <= 0:
+            cart_item.delete()
+            message = 'Item removed from cart'
+            item_total = 0
+        else:
+            if quantity > cart_item.product.stock_quantity:
+                return JsonResponse({
+                    'success': False,
+                    'message': f'Only {cart_item.product.stock_quantity} items available'
+                })
+            cart_item.quantity = quantity
+            cart_item.save()
+            message = 'Cart updated'
+            item_total = float(cart_item.total_price)
+
+        cart = cart_item.cart
+        cart_count = cart.total_items
+        cart_subtotal = float(cart.subtotal)
+        cart_total = float(cart.total)
     else:
-        if quantity > cart_item.product.stock_quantity:
-            return JsonResponse({
-                'success': False,
-                'message': f'Only {cart_item.product.stock_quantity} items available'
-            })
-        cart_item.quantity = quantity
-        cart_item.save()
-        message = 'Cart updated'
-    
-    cart = cart_item.cart
+        product = get_object_or_404(Product, id=item_id, status='active')
+        guest_cart = _get_guest_cart(request)
+        product_key = str(product.id)
+
+        if quantity <= 0:
+            guest_cart.pop(product_key, None)
+            message = 'Item removed from cart'
+            item_total = 0
+        else:
+            if quantity > product.stock_quantity:
+                return JsonResponse({
+                    'success': False,
+                    'message': f'Only {product.stock_quantity} items available'
+                })
+            guest_cart[product_key] = quantity
+            message = 'Cart updated'
+            item_total = float(product.price * quantity)
+
+        _save_guest_cart(request, guest_cart)
+        guest_cart_obj, _ = _build_guest_cart_context(request)
+        cart_count = guest_cart_obj.total_items
+        cart_subtotal = float(guest_cart_obj.subtotal)
+        cart_total = float(guest_cart_obj.total)
+
     return JsonResponse({
         'success': True,
         'message': message,
-        'cart_count': cart.total_items,
-        'cart_subtotal': float(cart.subtotal),
-        'cart_total': float(cart.total),
-        'item_total': float(cart_item.total_price) if quantity > 0 else 0
+        'cart_count': cart_count,
+        'cart_subtotal': cart_subtotal,
+        'cart_total': cart_total,
+        'item_total': item_total
     })
 
 
-@login_required
 def cart_view(request):
     """Shopping cart page."""
-    cart, _ = Cart.objects.get_or_create(user=request.user)
-    cart_items = cart.items.select_related('product').prefetch_related('product__images')
+    if request.user.is_authenticated:
+        cart, _ = Cart.objects.get_or_create(user=request.user)
+        cart_items = cart.items.select_related('product').prefetch_related('product__images')
+    else:
+        cart, cart_items = _build_guest_cart_context(request)
     
     context = {
         'cart': cart,
@@ -265,9 +416,6 @@ def cart_view(request):
 @require_POST
 def toggle_wishlist_view(request):
     """Toggle product in wishlist."""
-    if not request.user.is_authenticated:
-        return JsonResponse({'status': 'error', 'message': 'Please login'})
-    
     try:
         data = json.loads(request.body)
         product_id = data.get('product_id')
@@ -275,33 +423,56 @@ def toggle_wishlist_view(request):
         return JsonResponse({'status': 'error', 'message': 'Invalid data'})
     
     product = get_object_or_404(Product, id=product_id)
-    wishlist, _ = Wishlist.objects.get_or_create(user=request.user)
-    
-    if product in wishlist.products.all():
-        wishlist.products.remove(product)
-        in_wishlist = False
-        message = 'Removed from wishlist'
-        status='removed'
+
+    if request.user.is_authenticated:
+        wishlist, _ = Wishlist.objects.get_or_create(user=request.user)
+
+        if product in wishlist.products.all():
+            wishlist.products.remove(product)
+            in_wishlist = False
+            message = 'Removed from wishlist'
+            status = 'removed'
+        else:
+            wishlist.products.add(product)
+            in_wishlist = True
+            message = 'Added to wishlist'
+            status = 'added'
+
+        wishlist_count = wishlist.total_items
     else:
-        wishlist.products.add(product)
-        in_wishlist = True
-        message = 'Added to wishlist'
-        status='added'
-    
+        wishlist_ids = _get_guest_wishlist(request)
+        if product.id in wishlist_ids:
+            wishlist_ids = [pid for pid in wishlist_ids if pid != product.id]
+            in_wishlist = False
+            message = 'Removed from wishlist'
+            status = 'removed'
+        else:
+            wishlist_ids.append(product.id)
+            in_wishlist = True
+            message = 'Added to wishlist'
+            status = 'added'
+
+        _save_guest_wishlist(request, wishlist_ids)
+        wishlist_count = len(wishlist_ids)
+
     return JsonResponse({
         'status': status,
         'success': True,
         'message': message,
         'in_wishlist': in_wishlist,
-        'wishlist_count': wishlist.total_items
+        'wishlist_count': wishlist_count
     })
 
 
-@login_required
 def wishlist_view(request):
     """User wishlist page."""
-    wishlist, _ = Wishlist.objects.get_or_create(user=request.user)
-    products = wishlist.products.filter(status='active').prefetch_related('images')
+    if request.user.is_authenticated:
+        wishlist, _ = Wishlist.objects.get_or_create(user=request.user)
+        products = wishlist.products.filter(status='active').prefetch_related('images')
+    else:
+        wishlist_ids = _get_guest_wishlist(request)
+        products = Product.objects.filter(id__in=wishlist_ids, status='active').prefetch_related('images')
+        wishlist = SimpleNamespace(total_items=products.count())
     
     context = {
         'wishlist': wishlist,
@@ -321,10 +492,21 @@ def checkout_view(request):
     
     cart_items = cart.items.select_related('product').prefetch_related('product__images')
     
+    shipping_rates = list(ShippingRate.objects.filter(is_active=True).order_by('display_order', 'location_name'))
+    if not shipping_rates:
+        shipping_rates = [
+            SimpleNamespace(location_name='Thika', fee=Decimal('200.00')),
+            SimpleNamespace(location_name='Nairobi / Kiambu', fee=Decimal('300.00')),
+            SimpleNamespace(location_name='Major towns (Nakuru, Mombasa, Kisumu, Eldoret)', fee=Decimal('400.00')),
+            SimpleNamespace(location_name='Other locations', fee=Decimal('500.00')),
+        ]
+
     context = {
         'user': request.user,
         'cart': cart,
         'cart_items': cart_items,
+        'shipping_rates': shipping_rates,
+        'free_shipping_threshold': Decimal('3000.00'),
     }
     return render(request, 'shop/checkout.html', context)
 
@@ -332,17 +514,22 @@ def checkout_view(request):
 @require_POST
 @login_required
 def create_order_view(request):
-    """Create order and initiate M-Pesa payment."""
+    """Create order for manual paybill checkout."""
     cart = get_object_or_404(Cart, user=request.user)
     
     if not cart.items.exists():
         return JsonResponse({'success': False, 'message': 'Cart is empty'})
     
+    try:
+        payload = json.loads(request.body) if request.content_type == 'application/json' else request.POST
+    except json.JSONDecodeError:
+        payload = request.POST
+
     # Get shipping details (allow editing)
-    full_name = request.POST.get('full_name', request.user.full_name)
-    phone_number = request.POST.get('phone_number', request.user.phone_number)
-    email = request.POST.get('email', request.user.email)
-    address = request.POST.get('address', request.user.address)
+    full_name = payload.get('full_name', request.user.full_name)
+    phone_number = payload.get('phone_number', request.user.phone_number)
+    email = payload.get('email', request.user.email)
+    address = payload.get('address', request.user.address)
     
     # Validate stock
     for item in cart.items.all():
@@ -359,6 +546,8 @@ def create_order_view(request):
         phone_number=phone_number,
         email=email,
         address=address,
+        payment_method='manual_paybill',
+        payment_status='pending',
         subtotal=cart.subtotal,
         shipping_cost=0,  # Add shipping calculation
         total=cart.total,

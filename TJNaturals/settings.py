@@ -61,6 +61,10 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+# Allow same-origin framing in development (useful for browser app surfaces/dev tools),
+# while keeping strict deny in production below.
+X_FRAME_OPTIONS = 'SAMEORIGIN' if DEBUG else 'DENY'
+
 ROOT_URLCONF = 'TJNaturals.urls'
 
 TEMPLATES = [
@@ -130,7 +134,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
-STATICFILES_DIRS = [BASE_DIR / 'static']
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',
+    BASE_DIR / 'images',
+]
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 MEDIA_URL = '/media/'
@@ -173,7 +180,6 @@ if not DEBUG:
     CSRF_COOKIE_SECURE = True
     SECURE_BROWSER_XSS_FILTER = True
     SECURE_CONTENT_TYPE_NOSNIFF = True
-    X_FRAME_OPTIONS = 'DENY'
 
 # Logging
 LOGGING = {

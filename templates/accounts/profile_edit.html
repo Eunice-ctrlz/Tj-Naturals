@@ -4,7 +4,7 @@
 {% block title %}Edit Profile - TJ Naturals{% endblock %}
 
 {% block content %}
-<div class="container py-5" style="margin-top: 100px;">
+<div class="container py-4">
     <div class="row justify-content-center">
         <div class="col-lg-8">
             <!-- Header -->
@@ -79,7 +79,7 @@
         <i class="bi bi-at me-2 text-success"></i>Username
     </label>
     <input type="text" class="form-control" value="{{ user.username }}" disabled readonly 
-           style="background-color: #e9ecef; cursor: not-allowed;">
+            style="background-color: var(--tj-cream); cursor: not-allowed;">
     <input type="hidden" name="username" value="{{ user.username }}">
     <div class="form-text">Username cannot be changed</div>
 </div>
@@ -128,7 +128,7 @@
 <style>
 /* Form styling to match TJ Naturals theme */
 .form-control, .form-select {
-    border: 2px solid #e0e0e0;
+    border: 2px solid var(--tj-border);
     border-radius: 12px;
     padding: 12px 16px;
     font-size: 1rem;
@@ -151,7 +151,7 @@ input[type="file"].form-control {
 
 /* Invalid state */
 .is-invalid {
-    border-color: #dc3545 !important;
+    border-color: #98634a !important;
 }
 
 /* Custom checkbox/radio if needed */

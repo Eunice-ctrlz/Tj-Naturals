@@ -2,82 +2,316 @@
 
 {% block title %}Shop - TJ Naturals{% endblock %}
 
+{% block extra_css %}
+<style>
+    .shop-shell {
+        max-width: 1760px;
+        margin: 0 auto;
+    }
+
+    .shop-top-controls {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 14px;
+        flex-wrap: wrap;
+    }
+
+    .category-popout {
+        position: relative;
+        z-index: 250;
+    }
+
+    .category-popout-toggle {
+        background: var(--tj-primary-dark);
+        color: #fff;
+        border: none;
+        padding: 14px 16px;
+        border-radius: 12px;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        min-width: 230px;
+        justify-content: space-between;
+    }
+
+    .specific-groups {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+        padding: 10px;
+        border-bottom: 1px solid var(--tj-border);
+    }
+
+    .specific-chip {
+        text-decoration: none;
+        font-size: 0.78rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.03em;
+        color: var(--tj-primary-dark);
+        background: #f6f2e8;
+        border: 1px solid var(--tj-border);
+        border-radius: 999px;
+        padding: 6px 10px;
+        text-align: center;
+    }
+
+    .specific-chip:hover {
+        background: var(--tj-cream);
+        color: var(--tj-primary-dark);
+    }
+
+    .category-popout-panel {
+        position: absolute;
+        top: calc(100% + 8px);
+        left: 0;
+        width: min(330px, 86vw);
+        border: 1px solid var(--tj-border);
+        border-radius: 12px;
+        background: #fff;
+        box-shadow: 0 18px 30px rgba(31, 79, 47, 0.16);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(8px);
+        transition: all 0.2s ease;
+        z-index: 300;
+        padding-bottom: 8px;
+    }
+
+    .category-popout:hover .category-popout-panel,
+    .category-popout.open .category-popout-panel,
+    .category-popout:focus-within .category-popout-panel {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    .category-popout-list {
+        padding: 10px;
+    }
+
+    .category-item {
+        position: relative;
+        border: 1px solid transparent;
+        border-radius: 10px;
+        margin-bottom: 6px;
+        transition: background 0.2s ease;
+    }
+
+    .category-main {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+        padding: 8px 10px;
+        border-radius: 10px;
+    }
+
+    .category-link {
+        color: var(--tj-text);
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.92rem;
+    }
+
+    .category-link:hover {
+        color: var(--tj-primary-dark);
+    }
+
+    .category-link.active {
+        color: var(--tj-primary-dark);
+    }
+
+    .category-toggle {
+        border: none;
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        background: var(--tj-cream);
+        color: var(--tj-primary-dark);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .subcategory-list {
+        display: none;
+    }
+
+    .subcategory-flyout {
+        position: absolute;
+        top: -1px;
+        left: calc(100% + 10px);
+        width: min(330px, 52vw);
+        border: 1px solid var(--tj-border);
+        border-radius: 12px;
+        background: #fff;
+        box-shadow: 0 18px 30px rgba(31, 79, 47, 0.16);
+        padding: 10px 12px;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateX(8px);
+        transition: all 0.2s ease;
+        z-index: 200;
+    }
+
+    .subcategory-flyout .subcategory-list {
+        display: block;
+    }
+
+    .subcategory-title {
+        margin: 4px 0 8px;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--tj-primary-dark);
+        font-weight: 700;
+    }
+
+    .subcategory-link {
+        display: block;
+        color: var(--tj-text-light);
+        text-decoration: none;
+        font-size: 0.85rem;
+        padding: 5px 0;
+    }
+
+    .subcategory-link:hover,
+    .subcategory-link.active {
+        color: var(--tj-primary-dark);
+    }
+
+    .category-item:hover,
+    .category-item.open {
+        background: #faf7ef;
+        border-color: var(--tj-border);
+    }
+
+    .category-item:hover .subcategory-flyout,
+    .category-item.open .subcategory-flyout,
+    .category-item:focus-within .subcategory-flyout {
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(0);
+    }
+
+    .category-quick-link {
+        margin: 8px 10px 10px;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.86rem;
+        text-decoration: none;
+        color: var(--tj-primary-dark);
+        font-weight: 600;
+    }
+
+    @media (max-width: 991px) {
+        .category-popout {
+            display: none;
+        }
+
+        .subcategory-flyout {
+            position: static;
+            width: 100%;
+            opacity: 1;
+            visibility: visible;
+            transform: none;
+            box-shadow: none;
+            border: none;
+            border-top: 1px dashed var(--tj-border);
+            border-radius: 0;
+            padding: 8px 4px 2px;
+            display: none;
+            margin-top: 4px;
+        }
+
+        .category-item.open .subcategory-flyout {
+            display: block;
+        }
+
+        .category-item:hover .subcategory-flyout {
+            display: none;
+        }
+    }
+</style>
+{% endblock %}
+
 {% block content %}
-<div class="container py-4">
+<div class="container-fluid px-3 px-lg-4 py-4 shop-shell">
     <div class="row">
-        <!-- Sidebar - Fixed Categories -->
-        <div class="col-lg-3 d-none d-lg-block">
-            <div class="card shadow-sm sticky-top" style="top: 90px; z-index: 100;">
-                <div class="card-header bg-success text-white">
-                    <h5 class="mb-0"><i class="bi bi-list"></i> Categories</h5>
-                </div>
-                <div class="card-body p-0">
-                    <div class="list-group list-group-flush" id="category-tree">
-                        {% for category in root_categories %}
-                        <a href="{% url 'shop:product_list' %}?category={{ category.slug }}" 
-                           class="list-group-item list-group-item-action {% if current_category == category %}active{% endif %}">
-                            <i class="bi bi-folder"></i> {{ category.name }}
-                        </a>
-                        {% if category.children.exists %}
-                        <div class="ps-3">
-                            {% for child in category.children.all %}
-                            <a href="{% url 'shop:product_list' %}?category={{ child.slug }}" 
-                               class="list-group-item list-group-item-action {% if current_category == child %}active{% endif %}">
-                                <small><i class="bi bi-folder2"></i> {{ child.name }}</small>
-                            </a>
+        <div class="col-12">
+            <div class="shop-top-controls">
+                <div class="category-popout" id="desktop-category-popout">
+                    <button class="category-popout-toggle" type="button" id="desktop-category-toggle">
+                        <span><i class="bi bi-grid-3x3-gap"></i> Browse Categories</span>
+                        <i class="bi bi-chevron-down"></i>
+                    </button>
+
+                    <div class="category-popout-panel">
+                        <div class="specific-groups">
+                            <a class="specific-chip" href="{% url 'shop:product_list' %}?q=serum">Targeted Serums</a>
+                            <a class="specific-chip" href="{% url 'shop:product_list' %}?q=body%20butter">Body Butters</a>
+                            <a class="specific-chip" href="{% url 'shop:product_list' %}?q=sunscreen">Sun Protection</a>
+                        </div>
+                        <div class="category-popout-list">
+                            {% for category in root_categories|slice:":6" %}
+                            <div class="category-item {% if current_category == category %}open{% endif %}">
+                                <div class="category-main">
+                                    <a href="{% url 'shop:product_list' %}?category={{ category.slug }}" class="category-link {% if current_category == category %}active{% endif %}">
+                                        {{ category.name }}
+                                    </a>
+                                    {% if category.children.exists %}
+                                    <button class="category-toggle" type="button" data-category-toggle>
+                                        <i class="bi bi-plus"></i>
+                                    </button>
+                                    {% endif %}
+                                </div>
+
+                                {% if category.children.exists %}
+                                <div class="subcategory-flyout">
+                                    <div class="subcategory-title">{{ category.name }} Subcategories</div>
+                                    <div class="subcategory-list">
+                                        <a href="{% url 'shop:product_list' %}?category={{ category.slug }}" class="subcategory-link">All {{ category.name }}</a>
+                                        {% for child in category.children.all|slice:":6" %}
+                                        <a href="{% url 'shop:product_list' %}?category={{ child.slug }}" class="subcategory-link {% if current_category == child %}active{% endif %}">
+                                            {{ child.name }}
+                                        </a>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                                {% endif %}
+                            </div>
                             {% endfor %}
                         </div>
-                        {% endif %}
-                        {% endfor %}
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Main Content -->
-        <div class="col-lg-9">
-            <!-- Search and Filter Bar -->
-            <div class="card shadow-sm mb-4">
-                <div class="card-body">
-                    <div class="row g-3 align-items-center">
-                        <div class="col-md-6">
-                            <div class="input-group">
-                                <span class="input-group-text"><i class="bi bi-search"></i></span>
-                                <input type="text" class="form-control" id="ai-search" 
-                                       placeholder="Search products..." 
-                                       value="{{ search_query }}" autocomplete="off">
-                                <div id="search-suggestions" class="list-group position-absolute w-100" style="z-index: 1000; top: 100%;"></div>
-                            
-                        <div class="col-md-6">
-                            <select class="form-select" id="sort-select">
-                                <option value="-created_at" {% if sort_by == '-created_at' %}selected{% endif %}>Newest First</option>
-                                <option value="price_low" {% if sort_by == 'price_low' %}selected{% endif %}>Price: Low to High</option>
-                                <option value="price_high" {% if sort_by == 'price_high' %}selected{% endif %}>Price: High to Low</option>
-                                <option value="name" {% if sort_by == 'name' %}selected{% endif %}>Name: A-Z</option>
-                                <option value="popular" {% if sort_by == 'popular' %}selected{% endif %}>Most Popular</option>
-                            </select>
-                        </div>
-                    </div>
-                    
-                    {% if current_category %}
-                    <div class="mt-3">
-                        <span class="badge bg-success">{{ current_category.name }}</span>
-                        <a href="{% url 'shop:product_list' %}" class="btn btn-sm btn-outline-secondary ms-2">
-                            <i class="bi bi-x"></i> Clear Filter
+
+                        <a class="category-quick-link" href="{% url 'shop:product_list' %}">
+                            See all categories <i class="bi bi-arrow-right"></i>
                         </a>
                     </div>
-                    {% endif %}
                 </div>
+
+                <button class="btn btn-outline-success d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileCategories">
+                    <i class="bi bi-list"></i> Categories
+                </button>
             </div>
+
+            {% if current_category %}
+            <div class="mb-3">
+                <span class="badge bg-success">{{ current_category.name }}</span>
+                <a href="{% url 'shop:product_list' %}" class="btn btn-sm btn-outline-secondary ms-2">
+                    <i class="bi bi-x"></i> Clear Filter
+                </a>
+            </div>
+            {% endif %}
             
             <!-- Results Count -->
             <div class="d-flex justify-content-between align-items-center mb-3">
                 <p class="mb-0 text-muted">Showing {{ products|length }} products</p>
-                
-                <!-- Mobile Category Toggle -->
-                <button class="btn btn-outline-success d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileCategories">
-                    <i class="bi bi-list"></i> Categories
-                </button>
             </div>
             
             <!-- Product Grid -->
@@ -123,22 +357,44 @@
         <h5 class="offcanvas-title">Categories</h5>
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
     </div>
-    <div class="offcanvas-body p-0">
-        <div class="list-group list-group-flush">
-            {% for category in root_categories %}
-            <a href="{% url 'shop:product_list' %}?category={{ category.slug }}" 
-               class="list-group-item list-group-item-action">
-                <i class="bi bi-folder"></i> {{ category.name }}
-            </a>
-            {% if category.children.exists %}
-            {% for child in category.children.all %}
-            <a href="{% url 'shop:product_list' %}?category={{ child.slug }}" 
-               class="list-group-item list-group-item-action ps-4">
-                <small><i class="bi bi-folder2"></i> {{ child.name }}</small>
-            </a>
-            {% endfor %}
-            {% endif %}
-            {% endfor %}
+    <div class="offcanvas-body">
+        <div class="category-popout-panel" id="mobile-category-explorer" style="position: static; opacity: 1; visibility: visible; transform: none; width: 100%; box-shadow: none; border-radius: 0; border: none;">
+            <div class="specific-groups">
+                <a class="specific-chip" href="{% url 'shop:product_list' %}?q=serum">Targeted Serums</a>
+                <a class="specific-chip" href="{% url 'shop:product_list' %}?q=body%20butter">Body Butters</a>
+                <a class="specific-chip" href="{% url 'shop:product_list' %}?q=sunscreen">Sun Protection</a>
+            </div>
+
+            <div class="category-popout-list">
+                {% for category in root_categories|slice:":8" %}
+                <div class="category-item {% if current_category == category %}open{% endif %}">
+                    <div class="category-main">
+                        <a href="{% url 'shop:product_list' %}?category={{ category.slug }}" class="category-link {% if current_category == category %}active{% endif %}">
+                            {{ category.name }}
+                        </a>
+                        {% if category.children.exists %}
+                        <button class="category-toggle" type="button" data-category-toggle>
+                            <i class="bi bi-plus"></i>
+                        </button>
+                        {% endif %}
+                    </div>
+
+                    {% if category.children.exists %}
+                    <div class="subcategory-flyout">
+                        <div class="subcategory-title">{{ category.name }} Subcategories</div>
+                        <div class="subcategory-list">
+                            <a href="{% url 'shop:product_list' %}?category={{ category.slug }}" class="subcategory-link">All {{ category.name }}</a>
+                            {% for child in category.children.all|slice:":6" %}
+                            <a href="{% url 'shop:product_list' %}?category={{ child.slug }}" class="subcategory-link {% if current_category == child %}active{% endif %}">
+                                {{ child.name }}
+                            </a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
         </div>
     </div>
 </div>
@@ -146,52 +402,38 @@
 
 {% block extra_js %}
 <script>
-// AI-Powered Real-time Search
-let searchTimeout;
-const searchInput = document.getElementById('ai-search');
-const suggestionsDiv = document.getElementById('search-suggestions');
+// Category explorer interactions (hover + click)
+(function() {
+    const desktopPopout = document.getElementById('desktop-category-popout');
+    const desktopToggle = document.getElementById('desktop-category-toggle');
 
-searchInput.addEventListener('input', function() {
-    clearTimeout(searchTimeout);
-    const query = this.value.trim();
-    
-    if (query.length < 2) {
-        suggestionsDiv.innerHTML = '';
-        return;
+    if (desktopPopout && desktopToggle) {
+        desktopToggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            desktopPopout.classList.toggle('open');
+        });
+
+        document.addEventListener('click', function(e) {
+            if (!desktopPopout.contains(e.target)) {
+                desktopPopout.classList.remove('open');
+            }
+        });
     }
-    
-    searchTimeout = setTimeout(() => {
-        fetch(`/search/suggestions/?q=${encodeURIComponent(query)}`)
-            .then(response => response.json())
-            .then(data => {
-                if (data.suggestions.length > 0) {
-                    suggestionsDiv.innerHTML = data.suggestions.map(s => `
-                        <a href="/product/${s.slug}/" class="list-group-item list-group-item-action">
-                            <div class="d-flex justify-content-between">
-                                <span>${s.name}</span>
-                                <span class="text-success">KES ${s.price}</span>
-                            </div>
-                        </a>
-                    `).join('');
-                } else {
-                    suggestionsDiv.innerHTML = '<div class="list-group-item text-muted">No products found</div>';
-                }
-            });
-    }, 300);
-});
 
-// Close suggestions when clicking outside
-document.addEventListener('click', function(e) {
-    if (!searchInput.contains(e.target)) {
-        suggestionsDiv.innerHTML = '';
-    }
-});
-
-// Sort change handler
-document.getElementById('sort-select').addEventListener('change', function() {
-    const url = new URL(window.location);
-    url.searchParams.set('sort', this.value);
-    window.location = url;
-});
+    document.querySelectorAll('[data-category-toggle]').forEach(function(toggleBtn) {
+        toggleBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            const parent = toggleBtn.closest('.category-item');
+            if (parent) {
+                parent.parentElement.querySelectorAll('.category-item.open').forEach(function(openItem) {
+                    if (openItem !== parent) openItem.classList.remove('open');
+                });
+                parent.classList.toggle('open');
+            }
+        });
+    });
+})();
 </script>
 {% endblock %}

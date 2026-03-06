@@ -4,7 +4,7 @@
 {% block title %}My Profile - TJ Naturals{% endblock %}
 
 {% block content %}
-<div class="container py-5" style="margin-top: 100px;">
+<div class="container py-4">
     <!-- Profile Header -->
     <div class="row mb-5">
         <div class="col-lg-12">
@@ -46,24 +46,24 @@
         </div>
         
         <div class="col-md-4">
-            <div class="stat-card p-4 rounded-4 shadow-sm text-center h-100" style="background: white; border-left: 4px solid #dc3545;">
-                <div class="stat-icon mb-3" style="width: 60px; height: 60px; background: rgba(220, 53, 69, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto; color: #dc3545; font-size: 1.5rem;">
+            <div class="stat-card p-4 rounded-4 shadow-sm text-center h-100" style="background: white; border-left: 4px solid var(--tj-primary-light);">
+                <div class="stat-icon mb-3" style="width: 60px; height: 60px; background: rgba(47, 107, 63, 0.12); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto; color: var(--tj-primary-dark); font-size: 1.5rem;">
                     <i class="bi bi-heart"></i>
                 </div>
                 <h4 class="mb-1">{{ wishlist_items_count }}</h4>
                 <p class="text-muted mb-0">Wishlist Items</p>
-                <a href="{% url 'shop:wishlist' %}" class="btn btn-sm btn-outline-danger mt-3">View Wishlist</a>
+                <a href="{% url 'shop:wishlist' %}" class="btn btn-sm btn-outline-success mt-3">View Wishlist</a>
             </div>
         </div>
         
         <div class="col-md-4">
-            <div class="stat-card p-4 rounded-4 shadow-sm text-center h-100" style="background: white; border-left: 4px solid #0d6efd;">
-                <div class="stat-icon mb-3" style="width: 60px; height: 60px; background: rgba(13, 110, 253, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto; color: #0d6efd; font-size: 1.5rem;">
+            <div class="stat-card p-4 rounded-4 shadow-sm text-center h-100" style="background: white; border-left: 4px solid var(--tj-primary-light);">
+                <div class="stat-icon mb-3" style="width: 60px; height: 60px; background: rgba(47, 107, 63, 0.12); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto; color: var(--tj-primary-dark); font-size: 1.5rem;">
                     <i class="bi bi-box-seam"></i>
                 </div>
                 <h4 class="mb-1">{{ orders.count }}</h4>
                 <p class="text-muted mb-0">Total Orders</p>
-                <a href="#orders-section" class="btn btn-sm btn-outline-primary mt-3">View Orders</a>
+                <a href="#orders-section" class="btn btn-sm btn-outline-success mt-3">View Orders</a>
             </div>
         </div>
     </div>
@@ -130,16 +130,16 @@
         <div class="col-lg-4 mb-4">
             <div class="content-card p-4 rounded-4 shadow-sm h-100" style="background: white;">
                 <div class="d-flex justify-content-between align-items-center mb-4">
-                    <h5 class="mb-0" style="color: #dc3545; font-weight: 700;">
+                    <h5 class="mb-0" style="color: var(--tj-primary-dark); font-weight: 700;">
                         <i class="bi bi-heart me-2"></i>Wishlist
                     </h5>
-                    <a href="{% url 'shop:wishlist' %}" class="btn btn-sm btn-outline-danger">View All</a>
+                    <a href="{% url 'shop:wishlist' %}" class="btn btn-sm btn-outline-success">View All</a>
                 </div>
                 
                 {% if wishlist_items %}
                 <div class="wishlist-preview">
                     {% for product in wishlist_items %}
-                    <div class="wishlist-item d-flex align-items-center mb-3 p-2 rounded-3" style="background: #f8f9fa;">
+                    <div class="wishlist-item d-flex align-items-center mb-3 p-2 rounded-3" style="background: #f6f2e8;">
                         {% with image=product.images.first %}
                         {% if image %}
                         <img src="{{ image.image.url }}" alt="{{ product.name }}" class="rounded-2" style="width: 60px; height: 60px; object-fit: cover;">
@@ -163,7 +163,7 @@
                 <div class="text-center py-4">
                     <i class="bi bi-heart text-muted" style="font-size: 2rem;"></i>
                     <p class="mt-2 text-muted small">Your wishlist is empty</p>
-                    <a href="{% url 'shop:product_list' %}" class="btn btn-sm btn-outline-danger">Browse Products</a>
+                    <a href="{% url 'shop:product_list' %}" class="btn btn-sm btn-outline-success">Browse Products</a>
                 </div>
                 {% endif %}
             </div>
@@ -182,7 +182,7 @@
                 </div>
                 
                 {% if user.address %}
-                <div class="p-3 rounded-3" style="background: #f8f9fa;">
+                <div class="p-3 rounded-3" style="background: #f6f2e8;">
                     <p class="mb-1"><strong>{{ user.full_name }}</strong></p>
                     <p class="mb-1 text-muted">{{ user.phone_number }}</p>
                     <p class="mb-0 text-muted">{{ user.address }}</p>
@@ -216,7 +216,7 @@
     transition: background 0.3s ease;
 }
 .wishlist-item:hover {
-    background: #e9ecef !important;
+    background: #eee4cf !important;
 }
 </style>
 {% endblock %}

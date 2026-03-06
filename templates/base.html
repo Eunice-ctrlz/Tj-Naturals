@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="TJ Naturals - Premium Natural Skincare Products in Kenya">
     <meta name="theme-color" content="#1B4D1A">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="TJ Naturals">
     
     <title>{% block title %}TJ Naturals{% endblock %}</title>
     
@@ -20,6 +24,7 @@
     
     <!-- PWA Manifest -->
     <link rel="manifest" href="{% static 'manifest.json' %}">
+    <link rel="apple-touch-icon" href="{% static 'images/icon-192.png' %}">
     
     <!-- Global Variables -->
     <script>
@@ -30,19 +35,35 @@
     <style>
         /* TJ NATURALS - STRICT GREEN & WHITE THEME */
         :root {
-            --tj-primary: #449343c0;
-            --tj-primary-dark: #132813;
-            --tj-primary-light: #2D6A2B;
-            --tj-accent: #3D8B3A;
+            --tj-primary: #2F6B3F;
+            --tj-primary-dark: #1F4F2F;
+            --tj-primary-light: #5E8B63;
+            --tj-accent: #7DA77A;
             --tj-white: #FFFFFF;
-            --tj-off-white: #F8FAF8;
-            --tj-cream: #F0F4F0;
-            --tj-text: #0A1F0A;
-            --tj-text-light: #4A6B4A;
-            --tj-border: #C8D8C8;
-            --tj-glass: rgba(255, 255, 255, 0.95);
-            --tj-glass-border: rgba(255, 255, 255, 0.3);
+            --tj-off-white: #F8F4EB;
+            --tj-cream: #F2ECDD;
+            --tj-text: #1D3524;
+            --tj-text-light: #5F735E;
+            --tj-border: #D8CEBD;
+            --tj-glass: rgba(255, 255, 255, 0.7);
+            --tj-glass-strong: rgba(255, 255, 255, 0.84);
+            --tj-glass-border: rgba(255, 255, 255, 0.45);
             --tj-shadow: 0 8px 32px rgba(27, 77, 26, 0.1);
+
+            /* Bootstrap token remap for site-wide theming */
+            --bs-primary: var(--tj-primary);
+            --bs-secondary: #7a8575;
+            --bs-success: var(--tj-primary);
+            --bs-info: #6f8f74;
+            --bs-warning: #b18a52;
+            --bs-danger: #98634a;
+            --bs-light: var(--tj-cream);
+            --bs-dark: var(--tj-text);
+            --bs-body-bg: var(--tj-off-white);
+            --bs-body-color: var(--tj-text);
+            --bs-border-color: var(--tj-border);
+            --bs-link-color: var(--tj-primary-dark);
+            --bs-link-hover-color: var(--tj-primary);
         }
         
         * {
@@ -53,10 +74,118 @@
         
         body {
             font-family: 'Inter', sans-serif;
-            background: var(--tj-off-white);
+            background:
+                radial-gradient(circle at 12% 16%, rgba(125, 167, 122, 0.16), transparent 34%),
+                radial-gradient(circle at 88% 10%, rgba(242, 236, 221, 0.82), transparent 35%),
+                radial-gradient(circle at 50% 100%, rgba(94, 139, 99, 0.12), transparent 45%),
+                var(--tj-off-white);
+            background-attachment: fixed;
             color: var(--tj-text);
             line-height: 1.6;
-            padding-top: 80px;
+            padding-top: 84px;
+        }
+
+        a {
+            color: var(--tj-primary-dark);
+        }
+
+        a:hover {
+            color: var(--tj-primary);
+        }
+
+        .card,
+        .modal-content,
+        .offcanvas,
+        .dropdown-menu,
+        .alert,
+        .table-responsive {
+            border: 1px solid var(--tj-glass-border);
+            background: var(--tj-glass);
+            backdrop-filter: blur(16px) saturate(150%);
+            -webkit-backdrop-filter: blur(16px) saturate(150%);
+            box-shadow: 0 10px 28px rgba(31, 79, 47, 0.09);
+        }
+
+        .table {
+            --bs-table-bg: rgba(255, 255, 255, 0.56);
+            --bs-table-striped-bg: rgba(246, 242, 232, 0.82);
+            --bs-table-hover-bg: rgba(242, 236, 221, 0.9);
+            --bs-table-border-color: var(--tj-border);
+        }
+
+        .table-light {
+            --bs-table-bg: rgba(242, 236, 221, 0.92);
+            --bs-table-color: var(--tj-text);
+        }
+
+        .form-control,
+        .form-select {
+            border-color: var(--tj-border);
+            background-color: rgba(255, 255, 255, 0.72);
+            color: var(--tj-text);
+        }
+
+        .form-control:focus,
+        .form-select:focus {
+            border-color: var(--tj-primary-light);
+            box-shadow: 0 0 0 0.2rem rgba(47, 107, 63, 0.2);
+        }
+
+        .btn-primary,
+        .btn-success {
+            background-color: var(--tj-primary);
+            border-color: var(--tj-primary);
+        }
+
+        .btn-primary:hover,
+        .btn-success:hover {
+            background-color: var(--tj-primary-dark);
+            border-color: var(--tj-primary-dark);
+        }
+
+        .btn-outline-primary,
+        .btn-outline-success,
+        .btn-outline-danger,
+        .btn-outline-secondary {
+            color: var(--tj-primary-dark);
+            border-color: var(--tj-primary-light);
+        }
+
+        .btn-outline-primary:hover,
+        .btn-outline-success:hover,
+        .btn-outline-danger:hover,
+        .btn-outline-secondary:hover {
+            background-color: var(--tj-primary);
+            border-color: var(--tj-primary);
+            color: #fff;
+        }
+
+        .badge.bg-primary,
+        .badge.bg-success,
+        .text-bg-primary,
+        .text-bg-success {
+            background-color: var(--tj-primary) !important;
+        }
+
+        .badge.bg-danger,
+        .text-bg-danger {
+            background-color: #98634a !important;
+        }
+
+        .alert-warning {
+            color: #6f5227;
+            background-color: #f4e8d1;
+            border-color: #e7d3ad;
+        }
+
+        .pagination {
+            --bs-pagination-color: var(--tj-primary-dark);
+            --bs-pagination-border-color: var(--tj-border);
+            --bs-pagination-hover-color: #fff;
+            --bs-pagination-hover-bg: var(--tj-primary);
+            --bs-pagination-hover-border-color: var(--tj-primary);
+            --bs-pagination-active-bg: var(--tj-primary);
+            --bs-pagination-active-border-color: var(--tj-primary);
         }
         
         /* NAVBAR - Clean & Simple with Glass Effect */
@@ -74,113 +203,242 @@
         .navbar.scrolled {
             box-shadow: 0 4px 30px rgba(27, 77, 26, 0.15);
         }
+
+        .navbar {
+            background: var(--tj-glass-strong) !important;
+            backdrop-filter: blur(18px) saturate(160%) !important;
+            -webkit-backdrop-filter: blur(18px) saturate(160%) !important;
+            border-bottom: 1px solid var(--tj-glass-border);
+            height: auto;
+            padding: 0 !important;
+            box-shadow: 0 10px 24px rgba(31, 79, 47, 0.08);
+        }
+
+        .navbar-main-row {
+            min-height: 76px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+
+        .navbar-nav {
+            gap: 8px;
+        }
+
+        .nav-link {
+            color: var(--tj-text) !important;
+            font-weight: 600;
+            padding: 10px 16px !important;
+            border-radius: 10px;
+            transition: all 0.2s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            font-size: 0.84rem;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            background: var(--tj-cream);
+            color: var(--tj-primary-dark) !important;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
         
-        /* --- IMPROVED MOBILE LOGO FIX --- */
-.navbar-brand {
-    display: flex !important;
-    align-items: center !important;
-    height: 70px !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    flex-shrink: 0 !important; /* Prevent logo from shrinking */
-    max-width: 150px !important; /* Limit logo width on mobile */
-    overflow: hidden !important;
-}
-
-.brand-logo-img {
-    height: 45px !important;
-    width: auto !important;
-    max-width: 100% !important;
-    object-fit: contain !important;
-    display: block !important;
-}
-
-/* Ensure navbar container doesn't wrap */
-.navbar > .container {
-    display: flex !important;
-    flex-wrap: nowrap !important;
-    align-items: center !important;
-    justify-content: space-between !important;
-}
-
-/* Mobile toggle button sizing */
-.navbar-toggler {
-    flex-shrink: 0 !important;
-    margin-left: 10px !important;
-    padding: 8px !important;
-}
-
-/* Mobile menu improvements */
-@media (max-width: 991px) {
-    .navbar {
-        height: 70px !important;
-        padding: 0.5rem 0 !important;
-    }
-    
-    .navbar-brand {
-        height: 50px !important;
-        max-width: 120px !important; /* Smaller logo on mobile */
-    }
-    
-    .brand-logo-img {
-        height: 40px !important;
-    }
-    
-    .navbar-collapse {
-        background: var(--tj-glass) !important;
-        backdrop-filter: blur(20px) !important;
-        padding: 20px !important;
-        border-radius: 20px !important;
-        margin-top: 10px !important;
-        box-shadow: var(--tj-shadow) !important;
-        max-height: calc(100vh - 100px) !important;
-        overflow-y: auto !important;
-        position: absolute !important;
-        top: 70px !important;
-        left: 10px !important;
-        right: 10px !important;
-        width: auto !important;
-    }
-    
-    .nav-actions {
-        margin-top: 20px !important;
-        padding-top: 20px !important;
-        border-top: 1px solid var(--tj-border) !important;
-        justify-content: center !important;
-        flex-wrap: wrap !important;
-        gap: 15px !important;
-    }
-    
-    .navbar-nav {
-        gap: 5px !important;
-    }
-    
-    .nav-link {
-        padding: 12px 20px !important;
-        text-align: center !important;
-    }
-}
-
-/* Extra small screens */
-@media (max-width: 375px) {
-    .navbar-brand {
-        max-width: 100px !important;
-    }
-    
-    .brand-logo-img {
-        height: 35px !important;
-    }
-    
-    .nav-btn {
-        width: 40px !important;
-        height: 40px !important;
-    }
-}
-        .nav-btn:hover {
+        .nav-search {
+            width: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: width 0.3s ease, opacity 0.2s ease;
+        }
+        
+        .nav-search.open {
+            width: min(300px, 62vw);
+            opacity: 1;
+        }
+        
+        .nav-search-form {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: white;
+            border: 1px solid var(--tj-border);
+            border-radius: 24px;
+            padding: 6px 8px 6px 14px;
+        }
+        
+        .nav-search-input {
+            border: none;
+            outline: none;
+            width: 100%;
+            min-width: 0;
+            font-size: 0.9rem;
+            color: var(--tj-text);
+            background: transparent;
+        }
+        
+        .nav-search-submit {
+            width: 34px;
+            height: 34px;
+            border: none;
+            border-radius: 50%;
             background: var(--tj-primary);
             color: white;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(27, 77, 26, 0.3);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-btn {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            border: 1px solid var(--tj-border);
+            background: #ffffff;
+            color: var(--tj-primary-dark);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            position: relative;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            height: 76px;
+            padding: 0;
+            margin: 0;
+            flex-shrink: 0;
+        }
+
+        .brand-logo-img {
+            height: 48px;
+            width: auto;
+            max-width: 180px;
+            object-fit: contain;
+            display: block;
+        }
+
+        .navbar-toggler {
+            border: 1px solid var(--tj-border) !important;
+            border-radius: 10px;
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 991px) {
+            .navbar-main-row {
+                min-height: 68px;
+                position: relative;
+            }
+
+            .navbar-brand {
+                height: 60px;
+            }
+
+            .brand-logo-img {
+                height: 40px;
+                max-width: 130px;
+            }
+
+            .offcanvas.offcanvas-end#navbarNav {
+                width: min(86vw, 360px);
+                background: var(--tj-off-white);
+                border-left: 1px solid var(--tj-border);
+            }
+
+            .offcanvas-header {
+                border-bottom: 1px solid var(--tj-border);
+            }
+
+            .offcanvas-body {
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+                padding: 16px;
+            }
+
+            .offcanvas-body .navbar-nav {
+                gap: 4px;
+                width: 100%;
+            }
+
+            .nav-link {
+                padding: 12px 10px !important;
+                text-align: left;
+            }
+
+            .offcanvas-body .nav-actions {
+                width: 100%;
+                margin-top: 12px;
+                padding-top: 12px;
+                border-top: 1px solid var(--tj-border);
+                justify-content: flex-start;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+
+            .offcanvas-body .nav-search,
+            .offcanvas-body .nav-search.open {
+                width: 100%;
+                opacity: 1;
+                order: -1;
+                flex-basis: 100%;
+            }
+
+            .nav-btn {
+                width: 42px;
+                height: 42px;
+            }
+        }
+
+        @media (max-width: 375px) {
+            .brand-logo-img {
+                height: 36px;
+                max-width: 112px;
+            }
+
+            .nav-btn {
+                width: 40px;
+                height: 40px;
+            }
+        }
+        .nav-btn:hover {
+            background: var(--tj-primary-dark);
+            color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(31, 79, 47, 0.24);
+        }
+
+        @media (min-width: 992px) {
+            .navbar .offcanvas-lg {
+                position: static;
+                transform: none;
+                visibility: visible !important;
+                background: transparent;
+                border: 0;
+                width: auto;
+                flex-grow: 1;
+            }
+
+            .navbar .offcanvas-lg .offcanvas-body {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                flex-grow: 1;
+                padding: 0;
+                overflow: visible;
+            }
+
+            .navbar .offcanvas-lg .navbar-nav {
+                margin: 0 auto;
+            }
         }
         
         .cart-badge {
@@ -200,6 +458,56 @@
             border: 2px solid white;
             box-shadow: 0 2px 8px rgba(27, 77, 26, 0.3);
             animation: pulse 2s infinite;
+        }
+
+        .mobile-bottom-nav {
+            display: none;
+        }
+
+        .mobile-nav-item {
+            flex: 1;
+            min-width: 0;
+            text-decoration: none;
+            color: var(--tj-text-light);
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            position: relative;
+            padding: 6px 2px;
+            transition: color 0.2s ease;
+        }
+
+        .mobile-nav-item i {
+            font-size: 1.15rem;
+            line-height: 1;
+        }
+
+        .mobile-nav-item.active {
+            color: var(--tj-primary-dark);
+        }
+
+        .mobile-nav-badge {
+            position: absolute;
+            top: 2px;
+            right: 24%;
+            min-width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: var(--tj-primary);
+            color: #fff;
+            border: 2px solid #fff;
+            font-size: 0.62rem;
+            font-weight: 800;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 4px;
+            line-height: 1;
         }
         
         /* The heart button base state */
@@ -412,6 +720,43 @@
             color: white;
             font-size: 1.2rem;
         }
+
+        .footer-payment-box {
+            margin-top: 14px;
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.28);
+            border-radius: 14px;
+            padding: 14px 16px;
+        }
+
+        .footer-payment-box h6 {
+            margin: 0 0 10px;
+            font-weight: 700;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-payment-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: rgba(255, 255, 255, 0.92);
+            margin-bottom: 6px;
+            gap: 8px;
+        }
+
+        .footer-payment-row strong {
+            color: #fff;
+            letter-spacing: 0.02em;
+        }
+
+        .footer-payment-note {
+            margin: 8px 0 0;
+            color: rgba(255, 255, 255, 0.78);
+            font-size: 0.86rem;
+        }
         
         .social-links {
             display: flex;
@@ -482,7 +827,8 @@
             position: absolute;
             bottom: 75px;
             right: 0;
-            width: 380px;
+            width: min(380px, calc(100vw - 40px));
+            max-height: min(78vh, 640px);
             background: var(--tj-glass);
             backdrop-filter: blur(20px);
             border-radius: 24px;
@@ -490,6 +836,8 @@
             overflow: hidden;
             border: 1px solid var(--tj-glass-border);
             animation: slideUp 0.3s ease;
+            display: flex;
+            flex-direction: column;
         }
         
         @keyframes slideUp {
@@ -516,6 +864,7 @@
         
         .chatbot-body {
             height: 350px;
+            flex: 1 1 auto;
             overflow-y: auto;
             background: var(--tj-off-white);
             padding: 20px;
@@ -563,6 +912,28 @@
             border-radius: 16px 16px 4px 16px;
             margin-left: auto;
         }
+
+        .chatbot-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .chatbot-option-btn {
+            border: 1px solid var(--tj-border);
+            background: #fff;
+            color: var(--tj-primary-dark);
+            border-radius: 999px;
+            padding: 6px 12px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .chatbot-option-btn:hover {
+            background: var(--tj-cream);
+        }
         
         .chatbot-footer {
             background: white;
@@ -576,6 +947,29 @@
             background: var(--tj-cream);
             padding: 6px;
             border-radius: 50px;
+        }
+
+        .chatbot-whatsapp-link {
+            margin-top: 10px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            text-decoration: none;
+            color: #fff;
+            background: #1f8f43;
+            border: 1px solid #1f8f43;
+            border-radius: 999px;
+            padding: 8px 12px;
+            font-size: 0.88rem;
+            font-weight: 700;
+        }
+
+        .chatbot-whatsapp-link:hover {
+            color: #fff;
+            background: #18783a;
+            border-color: #18783a;
         }
         
         .chat-input {
@@ -608,42 +1002,75 @@
         
         /* Mobile Responsive */
         @media (max-width: 991px) {
-            .navbar-collapse {
-                background: var(--tj-glass);
-                backdrop-filter: blur(20px);
-                padding: 20px;
-                border-radius: 20px;
-                margin-top: 15px;
-                box-shadow: var(--tj-shadow);
-                max-height: calc(100vh - 100px);
-                overflow-y: auto;
+            #chatbot-widget {
+                right: 16px;
+                bottom: 18px;
             }
-            
-            .nav-actions {
-                margin-top: 20px;
-                padding-top: 20px;
-                border-top: 1px solid var(--tj-border);
-                justify-content: center;
-            }
-            
+
             #chatbot-panel {
-                width: calc(100vw - 40px);
-                right: -10px;
+                width: min(420px, calc(100vw - 32px));
+                right: 0;
+                bottom: 72px;
+                border-radius: 18px;
             }
         }
         
         @media (max-width: 768px) {
             body {
-                padding-top: 70px;
+                padding-top: 74px;
+                padding-bottom: 86px;
+            }
+
+            .mobile-bottom-nav {
+                position: fixed;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                z-index: 1060;
+                height: 74px;
+                background: rgba(248, 244, 235, 0.98);
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+                border-top: 1px solid var(--tj-border);
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+                padding: 6px 10px calc(6px + env(safe-area-inset-bottom));
+                box-shadow: 0 -8px 20px rgba(31, 79, 47, 0.08);
+            }
+
+            #chatbot-widget {
+                bottom: calc(74px + env(safe-area-inset-bottom) + 12px);
+                right: 16px;
+            }
+
+            #chatbot-panel {
+                position: fixed;
+                left: 12px;
+                right: 12px;
+                bottom: calc(74px + env(safe-area-inset-bottom) + 12px);
+                width: auto;
+                max-height: min(62vh, 520px);
+                border-radius: 16px;
+                z-index: 1070;
+            }
+
+            .chatbot-header {
+                padding: 14px 16px;
+            }
+
+            .chatbot-body {
+                padding: 14px;
+            }
+
+            .chatbot-footer {
+                padding: 10px 12px;
+            }
+
+            .chat-input {
+                padding: 9px 12px;
             }
             
-            .navbar {
-                height: 70px;
-            }
-            
-            .navbar-brand {
-                font-size: 1.5rem;
-            }
             footer {
                 padding: 60px 0 20px;
             }
@@ -653,64 +1080,34 @@
             }
         }
 
-        /* --- UNIVERSAL LOGO FIX --- */
-        .navbar-brand {
-            display: flex !important;
-            align-items: center !important;
-            height: 80px !important;
-            max-height: 80px !important;
-            padding: 0 !important;
-            margin: 0 !important;
-            flex: 0 0 auto !important;
-        }
-
-        .brand-logo-img {
-            height: 50px !important;
-            width: auto !important;
-            max-width: 180px !important;
-            object-fit: contain !important;
-            display: block !important;
-        }
-
-        /* Force the navbar container to behave */
-        .navbar > .container {
-            display: flex !important;
-            flex-wrap: nowrap !important;
-            align-items: center !important;
-        }
-
-        /* Mobile Tweak */
-        @media (max-width: 991px) {
-            .navbar, .navbar-brand {
-                height: 70px !important;
-            }
-            .brand-logo-img {
-                height: 40px !important;
-            }
-        }
-        
         {% block extra_css %}{% endblock %}
     </style>
 </head>
 <body>
     <!-- Navigation - Clean & Simple -->
 <nav class="navbar navbar-expand-lg fixed-top">
-    <div class="container">
+    <div class="container navbar-main-row">
         <!-- Logo -->
         <a class="navbar-brand" href="{% url 'shop:home' %}">
-            <img src="{% static 'images/tjlogo(3).png' %}" 
-                 alt="TJ Naturals Logo" 
+            <img src="{% static 'images/tjlogo(3).png' %}"
+                 alt="TJ Naturals Logo"
                  class="brand-logo-img">
         </a>
-        
+
         <!-- Mobile Toggle -->
-        <button class="navbar-toggler border-0 p-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+        <button class="navbar-toggler border-0 p-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"
                 style="background: transparent; box-shadow: none;">
-            <i class="bi bi-list fs-2" style="color: var(--tj-primary);"></i>
+            <i class="bi bi-list fs-2" style="color: var(--tj-primary-dark);"></i>
         </button>
-        
-        <!-- Collapsible Content -->
-        <div class="collapse navbar-collapse" id="navbarNav">
+
+        <!-- Offcanvas / Desktop Content -->
+        <div class="offcanvas offcanvas-end offcanvas-lg" tabindex="-1" id="navbarNav" aria-labelledby="navbarNavLabel">
+            <div class="offcanvas-header d-lg-none">
+                <h5 class="offcanvas-title" id="navbarNavLabel">Menu</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
             <ul class="navbar-nav mx-auto">
                 <li class="nav-item">
                     <a class="nav-link {% if request.resolver_match.url_name == 'home' %}active{% endif %}" 
@@ -723,27 +1120,38 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'shop:product_list' %}">Categories</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">About Us</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Contact</a>
-                </li>
             </ul>
-            
+
             <div class="nav-actions">
-                <!-- Wishlist -->
-                <a class="nav-btn" href="{% url 'shop:wishlist' %}" title="Wishlist">
-                    <i class="bi bi-heart fs-5"></i>
-                    {% if wishlist_count > 0 %}
-                    <span class="cart-badge" id="wishlist-count">{{ wishlist_count }}</span>
-                    {% else %}
-                    <span class="cart-badge" id="wishlist-count" style="display: none;">0</span>
-                    {% endif %}
-                </a>
+                <button class="nav-btn" type="button" id="nav-search-toggle" title="Search products" aria-label="Open search">
+                    <i class="bi bi-search fs-5"></i>
+                </button>
                 
-                <!-- Cart -->
-                <a class="nav-btn" href="{% url 'shop:cart' %}" title="Cart">
+                <div class="nav-search" id="nav-search-container">
+                    <form class="nav-search-form" action="{% url 'shop:product_list' %}" method="get" role="search">
+                        <input
+                            type="search"
+                            name="q"
+                            class="nav-search-input"
+                            id="nav-search-input"
+                            placeholder="Search products..."
+                            autocomplete="off"
+                        >
+                        <button class="nav-search-submit" type="submit" aria-label="Submit search">
+                            <i class="bi bi-arrow-right"></i>
+                        </button>
+                    </form>
+                </div>
+
+                <a
+                    class="nav-btn"
+                    href="{% if user.is_authenticated %}{% url 'accounts:profile' %}{% else %}{% url 'accounts:login' %}{% endif %}"
+                    title="{% if user.is_authenticated %}My profile{% else %}Login{% endif %}"
+                >
+                    <i class="bi bi-person fs-5"></i>
+                </a>
+
+                <a class="nav-btn" id="nav-cart-link" href="{% url 'shop:cart' %}" title="Cart">
                     <i class="bi bi-bag fs-5"></i>
                     {% if cart_count > 0 %}
                     <span class="cart-badge" id="cart-count">{{ cart_count }}</span>
@@ -751,31 +1159,16 @@
                     <span class="cart-badge" id="cart-count" style="display: none;">0</span>
                     {% endif %}
                 </a>
-                
-                {% if user.is_authenticated %}
-                <div class="user-menu dropdown">
-                    <div class="user-avatar" data-bs-toggle="dropdown">
-                        {{ user.username|first|upper }}
-                    </div>
-                    <ul class="dropdown-menu dropdown-menu-end">
-                        <li><a class="dropdown-item" href="{% url 'accounts:profile' %}">
-                            <i class="bi bi-person"></i>My Profile
-                        </a></li>
-                        <li><a class="dropdown-item" href="{% url 'shop:cart' %}">
-                            <i class="bi bi-bag"></i>My Cart
-                        </a></li>
-                        <li><a class="dropdown-item" href="{% url 'shop:wishlist' %}">
-                            <i class="bi bi-heart"></i>Wishlist
-                        </a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="{% url 'accounts:logout' %}" style="color: #C62828;">
-                            <i class="bi bi-box-arrow-right"></i>Logout
-                        </a></li>
-                    </ul>
-                </div>
-                {% else %}
-                <a class="btn-login" href="{% url 'accounts:login' %}">Login</a>
-                {% endif %}
+
+                <a class="nav-btn" id="nav-wishlist-link" href="{% url 'shop:wishlist' %}" title="Wishlist">
+                    <i class="bi bi-heart fs-5"></i>
+                    {% if wishlist_count > 0 %}
+                    <span class="cart-badge" id="wishlist-count">{{ wishlist_count }}</span>
+                    {% else %}
+                    <span class="cart-badge" id="wishlist-count" style="display: none;">0</span>
+                    {% endif %}
+                </a>
+            </div>
             </div>
         </div>
     </div>
@@ -795,6 +1188,36 @@
         
         {% block content %}{% endblock %}
     </main>
+
+    <nav class="mobile-bottom-nav d-md-none" aria-label="Mobile quick navigation">
+        <a href="{% url 'shop:home' %}" class="mobile-nav-item {% if request.resolver_match.url_name == 'home' %}active{% endif %}">
+            <i class="bi bi-house"></i>
+            <span>Home</span>
+        </a>
+        <a href="{% url 'shop:product_list' %}" class="mobile-nav-item {% if request.resolver_match.url_name == 'product_list' %}active{% endif %}">
+            <i class="bi bi-grid"></i>
+            <span>Shop</span>
+        </a>
+        <a href="{% url 'shop:cart' %}" class="mobile-nav-item {% if request.resolver_match.url_name == 'cart' %}active{% endif %}">
+            <i class="bi bi-bag"></i>
+            <span>Cart</span>
+            {% if cart_count > 0 %}
+            <span class="mobile-nav-badge">{{ cart_count }}</span>
+            {% endif %}
+        </a>
+        <a href="{% url 'shop:wishlist' %}" class="mobile-nav-item {% if request.resolver_match.url_name == 'wishlist' %}active{% endif %}">
+            <i class="bi bi-heart"></i>
+            <span>Saved</span>
+            {% if wishlist_count > 0 %}
+            <span class="mobile-nav-badge">{{ wishlist_count }}</span>
+            {% endif %}
+        </a>
+        <a href="{% if user.is_authenticated %}{% url 'accounts:profile' %}{% else %}{% url 'accounts:login' %}{% endif %}"
+           class="mobile-nav-item {% if request.resolver_match.url_name == 'profile' %}active{% endif %}">
+            <i class="bi bi-person"></i>
+            <span>Account</span>
+        </a>
+    </nav>
     
     <!-- Chatbot Widget -->
     <div id="chatbot-widget">
@@ -804,7 +1227,7 @@
         
         <div id="chatbot-panel" class="d-none">
             <div class="chatbot-header">
-                <h6><i class="bi bi-robot"></i> TJ Assistant</h6>
+                <h6><i class="bi bi-robot"></i> TJ</h6>
                 <button type="button" class="btn-close btn-close-white" id="chatbot-close"></button>
             </div>
             <div class="chatbot-body" id="chatbot-messages">
@@ -813,7 +1236,12 @@
                         <i class="bi bi-robot"></i>
                     </div>
                     <div class="chat-bubble">
-                        Hello! Welcome to TJ Naturals. How can I help you today? 🌿
+                        Hello! I am TJ. Choose an option below so I can help you.
+                        <div class="chatbot-options">
+                            <button type="button" class="chatbot-option-btn" data-chatbot-option="location">Location</button>
+                            <button type="button" class="chatbot-option-btn" data-chatbot-option="delivery">Delivery</button>
+                            <button type="button" class="chatbot-option-btn" data-chatbot-option="payment">Payment</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -824,6 +1252,14 @@
                         <i class="bi bi-send-fill"></i>
                     </button>
                 </div>
+                <a
+                    class="chatbot-whatsapp-link"
+                    href="https://web.whatsapp.com/send/?phone=254708877435&text&type=phone_number&app_absent=0"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <i class="bi bi-whatsapp"></i> Join our WhatsApp channel
+                </a>
             </div>
         </div>
     </div>
@@ -848,10 +1284,18 @@
                          We believe in the power of nature for healthy, glowing skin.
                     </p>
                     <div class="social-links">
-                        <a href="#"><i class="bi bi-instagram"></i></a>
-                        <a href="#"><i class="bi bi-facebook"></i></a>
-                        <a href="#"><i class="bi bi-twitter-x"></i></a>
-                        <a href="#"><i class="bi bi-whatsapp"></i></a>
+                        <a href="https://www.facebook.com/share/1GUzvKQZgd/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                            <i class="bi bi-facebook"></i>
+                        </a>
+                        <a href="https://www.instagram.com/tj_naturals" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                            <i class="bi bi-instagram"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@tjnaturals" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+                            <i class="bi bi-tiktok"></i>
+                        </a>
+                        <a href="https://www.threads.com/@tj_naturals" target="_blank" rel="noopener noreferrer" aria-label="Threads">
+                            <i class="bi bi-threads"></i>
+                        </a>
                     </div>
                 </div>
                 
@@ -863,16 +1307,6 @@
                         <li><a href="#">Categories</a></li>
                         <li><a href="#">About Us</a></li>
                         <li><a href="#">Contact</a></li>
-                    </ul>
-                </div>
-                
-                <div class="col-lg-2 col-md-4 col-6">
-                    <h5 class="footer-heading">Support</h5>
-                    <ul class="footer-links">
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Shipping</a></li>
-                        <li><a href="#">Returns</a></li>
-                        <li><a href="#">Track Order</a></li>
                     </ul>
                 </div>
                 
@@ -890,17 +1324,27 @@
                         <p>
                             <i class="bi bi-geo-alt"></i>
                             Alisa Plaza, 2nd Floor, Room 28
-                            THIKA ,Kenya
+                            <br>
+                            THIKA TOWN , Kenya
                         </p>
-                        <i class="bi bi-payment"></i>
-                        Paybill: 247247
-                        Account:0708877435
+                        <div class="footer-payment-box" id="footer-payment-box">
+                            <h6><i class="bi bi-credit-card-2-front"></i>Payment Details</h6>
+                            <div class="footer-payment-row">
+                                <span>Paybill</span>
+                                <strong>247247</strong>
+                            </div>
+                            <div class="footer-payment-row">
+                                <span>Account Number</span>
+                                <strong>0708877435</strong>
+                            </div>
+                            <p class="footer-payment-note">After payment, share your confirmation message with our support team.</p>
+                        </div>
                     </div>
                 </div>
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; {% now "Y" %} TJ Naturals. All rights reserved. Made with <i class="bi bi-heart-fill text-danger"></i> in Kenya</p>
+                <p>&copy; {% now "Y" %} TJ Naturals. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -910,6 +1354,13 @@
 
 <!-- Scripts -->
 <script>
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('/service-worker.js')
+                .catch((error) => console.error('Service worker registration failed:', error));
+        });
+    }
+
     
     window.addEventListener('scroll', function() {
         const navbar = document.querySelector('.navbar');
@@ -929,6 +1380,12 @@
         const chatbotSend = document.getElementById('chatbot-send');
         const chatbotMessages = document.getElementById('chatbot-messages');
         const chatbotWidget = document.getElementById('chatbot-widget');
+
+        const chatbotReplies = {
+            location: 'Visit us at Alisa Plaza, 2nd Floor, Room 28, THIKA. You can also call us at 0708 877 435.',
+            delivery: 'We offer delivery across Kenya! Free delivery on orders over KSh 3,000. Standard delivery within Thika is KSh 200, and nationwide delivery ranges from KSh 300-500 depending on location.',
+            payment: "We accept M-Pesa payments. Use Paybill 247247, Account Number 0708877435. Once you complete the order, you'll receive payment instructions."
+        };
         
         if (!chatbotToggle) return;
         
@@ -960,18 +1417,59 @@
             chatbotMessages.appendChild(messageDiv);
             chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
         }
+
+        function addQuickOptions() {
+            const optionWrap = document.createElement('div');
+            optionWrap.className = 'chat-message';
+            optionWrap.innerHTML = `
+                <div class="chat-avatar"><i class="bi bi-robot"></i></div>
+                <div class="chat-bubble">
+                    Pick one option:
+                    <div class="chatbot-options">
+                        <button type="button" class="chatbot-option-btn" data-chatbot-option="location">Location</button>
+                        <button type="button" class="chatbot-option-btn" data-chatbot-option="delivery">Delivery</button>
+                        <button type="button" class="chatbot-option-btn" data-chatbot-option="payment">Payment</button>
+                    </div>
+                </div>
+            `;
+            chatbotMessages.appendChild(optionWrap);
+            chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+        }
         
         function handleSend() {
             const text = chatbotInput.value.trim();
             if (text) {
                 addMessage(text, true);
                 chatbotInput.value = '';
-                
+
+                const normalized = text.toLowerCase();
+                const matchedTopic = Object.keys(chatbotReplies).find((topic) => normalized.includes(topic));
+
                 setTimeout(() => {
-                    addMessage("Thanks for your message! Our team will respond shortly. 🌿");
-                }, 1000);
+                    if (matchedTopic) {
+                        addMessage(chatbotReplies[matchedTopic]);
+                    } else {
+                        addMessage('Please choose one option so I can answer accurately.');
+                        addQuickOptions();
+                    }
+                }, 600);
             }
         }
+
+        chatbotMessages.addEventListener('click', (event) => {
+            const optionBtn = event.target.closest('[data-chatbot-option]');
+            if (!optionBtn) return;
+
+            const topic = optionBtn.getAttribute('data-chatbot-option');
+            const label = optionBtn.textContent.trim();
+            addMessage(label, true);
+
+            if (chatbotReplies[topic]) {
+                setTimeout(() => {
+                    addMessage(chatbotReplies[topic]);
+                }, 300);
+            }
+        });
         
         chatbotSend.addEventListener('click', handleSend);
         chatbotInput.addEventListener('keypress', (e) => {
@@ -983,6 +1481,64 @@
             if (!chatbotWidget.contains(e.target) && !chatbotPanel.classList.contains('d-none')) {
                 chatbotPanel.classList.add('d-none');
             }
+        });
+    })();
+    
+    (function() {
+        const searchToggle = document.getElementById('nav-search-toggle');
+        const searchContainer = document.getElementById('nav-search-container');
+        const searchInput = document.getElementById('nav-search-input');
+
+        if (!searchToggle || !searchContainer || !searchInput) return;
+
+        searchToggle.addEventListener('click', () => {
+            const isOpen = searchContainer.classList.toggle('open');
+            if (isOpen) {
+                searchInput.focus();
+            } else {
+                searchInput.value = '';
+            }
+        });
+
+        document.addEventListener('click', (event) => {
+            const clickedInsideSearch = searchContainer.contains(event.target);
+            const clickedToggle = searchToggle.contains(event.target);
+
+            if (!clickedInsideSearch && !clickedToggle) {
+                searchContainer.classList.remove('open');
+            }
+        });
+    })();
+
+    (function() {
+        const navDrawer = document.getElementById('navbarNav');
+        if (!navDrawer || typeof bootstrap === 'undefined') return;
+
+        const closeTriggers = navDrawer.querySelectorAll('.nav-link, .nav-actions a');
+
+        closeTriggers.forEach((trigger) => {
+            trigger.addEventListener('click', () => {
+                if (window.innerWidth <= 991 && navDrawer.classList.contains('show')) {
+                    bootstrap.Offcanvas.getOrCreateInstance(navDrawer).hide();
+                }
+            });
+        });
+    })();
+
+    (function() {
+        const cartLink = document.getElementById('nav-cart-link');
+        const wishlistLink = document.getElementById('nav-wishlist-link');
+
+        [cartLink, wishlistLink].forEach((link) => {
+            if (!link) return;
+
+            link.addEventListener('click', (event) => {
+                event.preventDefault();
+                const targetUrl = link.getAttribute('href');
+                if (targetUrl) {
+                    window.location.href = targetUrl;
+                }
+            });
         });
     })();
 
@@ -1023,20 +1579,7 @@
     `;
     document.head.appendChild(toastStyle);
    
-document.addEventListener('click', function(e) {
-    const navbar = document.querySelector('.navbar');
-    const navbarCollapse = document.getElementById('navbarNav');
-    
-    // If click is outside navbar and menu is open, close it
-    if (navbar && navbarCollapse && !navbar.contains(e.target)) {
-        const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
-        if (bsCollapse && navbarCollapse.classList.contains('show')) {
-            bsCollapse.hide();
-        }
-    }
-});
 
-    
     document.addEventListener('click', function(e) {
         // Handle Add to Cart buttons
         const cartBtn = e.target.closest('.add-to-cart');
@@ -1046,6 +1589,9 @@ document.addEventListener('click', function(e) {
             
             const productId = cartBtn.getAttribute('data-product-id');
             const url = cartBtn.getAttribute('data-cart-url') || '{% url "shop:add_to_cart" %}';
+            const quantityInputId = cartBtn.getAttribute('data-quantity-input');
+            const quantityInput = quantityInputId ? document.getElementById(quantityInputId) : null;
+            const quantity = quantityInput ? parseInt(quantityInput.value || '1', 10) : 1;
             
             if (!productId) {
                 console.error('No product ID found on cart button');
@@ -1064,14 +1610,17 @@ document.addEventListener('click', function(e) {
                     'Content-Type': 'application/json',
                     'X-Requested-With': 'XMLHttpRequest'
                 },
-                body: JSON.stringify({ 'product_id': parseInt(productId) }) 
+                body: JSON.stringify({
+                    'product_id': parseInt(productId),
+                    'quantity': Number.isNaN(quantity) || quantity < 1 ? 1 : quantity
+                })
             })
             .then(response => {
                 if (!response.ok) throw new Error('Network response was not ok');
                 return response.json();
             })
             .then(data => {
-                if (data.status === 'success') {
+                if (data.status === 'success' || data.success) {
                     // Update cart badge
                     const badge = document.getElementById('cart-count');
                     if (badge && data.cart_count !== undefined) {
@@ -1097,12 +1646,6 @@ if (wishlistBtn) {
     e.preventDefault();
     e.stopPropagation();
     
-    // Check authentication
-    if (!USER_AUTHENTICATED) {
-        window.location.href = "{% url 'accounts:login' %}?next={{ request.path }}";
-        return;
-    }
-    
     const productId = wishlistBtn.getAttribute('data-product-id');
     const url = wishlistBtn.getAttribute('data-wishlist-url') || '{% url "shop:toggle_wishlist" %}';
     const icon = wishlistBtn.querySelector('i');
@@ -1127,10 +1670,6 @@ if (wishlistBtn) {
     })
     .then(response => {
         if (!response.ok) {
-            if (response.status === 403) {
-                window.location.href = "{% url 'accounts:login' %}";
-                throw new Error('Authentication required');
-            }
             throw new Error('Server error: ' + response.status);
         }
         return response.json();
@@ -1164,9 +1703,7 @@ if (wishlistBtn) {
     })
     .catch(error => {
         console.error('Wishlist Error:', error);
-        if (error.message !== 'Authentication required') {
-            showToast('Failed to update wishlist. Please try again.', 'error');
-        }
+        showToast('Failed to update wishlist. Please try again.', 'error');
     })
     .finally(() => {
         wishlistBtn.disabled = false;

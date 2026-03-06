@@ -3,8 +3,7 @@
 {% block title %}Shopping Cart - TJ Naturals{% endblock %}
 
 {% block content %}
-<div class="container py-5">
-    <h2 class="mb-4"><i class="bi bi-cart3"></i> Shopping Cart</h2>
+<div class="container py-4">
     
     {% if cart_items %}
     <div class="row">
@@ -68,10 +67,11 @@
                         <strong id="cart-subtotal">KES {{ cart.subtotal }}</strong>
                     </div>
                     <div class="d-flex justify-content-between mb-2">
-                        <span>Shipping</span>
-                        <span class="text-success">Free</span>
+                        <span>Shipping</span> 
+                        <br>
+                        <span class="text-muted">Free above KSh 3,000 (else by location)</span>
                     </div>
-                    <hr>
+                    <br>
                     <div class="d-flex justify-content-between mb-3">
                         <span class="h5">Total</span>
                         <strong class="h5 text-success" id="cart-total">KES {{ cart.total }}</strong>
@@ -85,7 +85,7 @@
         </div>
     </div>
     {% else %}
-    <div class="text-center py-5">
+    <div class="text-center py-4">
         <i class="bi bi-cart-x" style="font-size: 5rem; color: #ccc;"></i>
         <h3 class="mt-3">Your cart is empty</h3>
         <p class="text-muted">Looks like you haven't added any products yet.</p>

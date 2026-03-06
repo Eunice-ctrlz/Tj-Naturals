@@ -93,13 +93,24 @@
                             <button class="btn btn-outline-secondary" type="button" onclick="adjustQuantity(1)">+</button>
                         </div>
                         
-                        <button class="btn btn-success btn-lg flex-grow-1" onclick="addToCart({{ product.id }})" 
-                                {% if not product.is_in_stock %}disabled{% endif %}>
+                        <button
+                            class="btn btn-success btn-lg flex-grow-1 add-to-cart"
+                            id="detail-add-to-cart"
+                            data-product-id="{{ product.id }}"
+                            data-cart-url="{% url 'shop:add_to_cart' %}"
+                            data-quantity-input="quantity"
+                            {% if not product.is_in_stock %}disabled{% endif %}
+                        >
                             <i class="bi bi-cart-plus"></i> 
                             {% if product.is_in_stock %}Add to Cart{% else %}Out of Stock{% endif %}
                         </button>
                         
-                        <button class="btn btn-outline-danger btn-lg" onclick="toggleWishlist({{ product.id }})" id="wishlist-btn">
+                        <button
+                            class="btn btn-outline-danger btn-lg wishlist-btn {% if in_wishlist %}wishlist-active{% endif %}"
+                            id="detail-wishlist-btn"
+                            data-product-id="{{ product.id }}"
+                            data-wishlist-url="{% url 'shop:toggle_wishlist' %}"
+                        >
                             <i class="bi bi-heart{% if in_wishlist %}-fill{% endif %}"></i>
                         </button>
                     </div>

@@ -31,9 +31,9 @@ def check_images():
 
     # 3. Report
     if not missing_files:
-        print("✅ Success! Every image listed in products.csv exists in the /images/ folder.")
+        print("Success! Every image listed in products.csv exists in the /images/ folder.")
     else:
-        print(f"❌ Found {len(missing_files)} broken links:")
+        print(f"Found {len(missing_files)} broken links:")
         for missing in missing_files[:10]:
             print(f"  - {missing}")
         if len(missing_files) > 10:

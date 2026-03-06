@@ -25,15 +25,42 @@ def cart_and_wishlist_counts(request):
             )
         except Wishlist.DoesNotExist:
             pass
+    else:
+        guest_cart = request.session.get('guest_cart', {})
+        if isinstance(guest_cart, dict):
+            try:
+                context['cart_count'] = sum(max(int(qty), 0) for qty in guest_cart.values())
+            except (TypeError, ValueError):
+                context['cart_count'] = 0
+
+        guest_wishlist = request.session.get('guest_wishlist', [])
+        if isinstance(guest_wishlist, list):
+            cleaned_ids = []
+            for product_id in guest_wishlist:
+                try:
+                    cleaned_ids.append(int(product_id))
+                except (TypeError, ValueError):
+                    continue
+
+            context['wishlist_count'] = len(cleaned_ids)
+            context['user_wishlist_ids'] = cleaned_ids
     
     return context
 
 
 def categories_context(request):
     """Add categories to template context."""
+    categories = list(
+        Category.objects.filter(parent=None, is_active=True)
+        .prefetch_related('children')
+    )
+
+    # Keep browse categories compact, but always include Hair Accessories.
+    featured = categories[:6]
+    hair_accessories = next((c for c in categories if c.slug == 'hair-accessories'), None)
+    if hair_accessories and hair_accessories not in featured:
+        featured = featured[:-1] + [hair_accessories]
+
     return {
-        'header_categories': Category.objects.filter(
-            parent=None,
-            is_active=True
-        ).prefetch_related('children')[:6]
+        'header_categories': featured
     }

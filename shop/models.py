@@ -41,6 +41,20 @@ class Category(models.Model):
         return self.name
 
 
+class ShippingRate(models.Model):
+    location_name = models.CharField(max_length=120, unique=True)
+    fee = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+    is_active = models.BooleanField(default=True)
+    display_order = models.PositiveIntegerField(default=0)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['display_order', 'location_name']
+
+    def __str__(self):
+        return f"{self.location_name} - KSh {self.fee}"
+
+
 class Product(models.Model):
     STATUS_CHOICES = [
         ('active', 'Active'),

@@ -3,9 +3,27 @@ import re
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import get_user_model
-from .models import User
 
 User = get_user_model()
+
+
+def _normalize_ke_phone(phone):
+    """Normalize Kenyan phone numbers to 254XXXXXXXXX format."""
+    if phone is None:
+        return ''
+
+    phone = re.sub(r'\D', '', str(phone).strip())
+    if not phone:
+        return ''
+
+    if phone.startswith('0'):
+        phone = '254' + phone[1:]
+    elif (phone.startswith('7') or phone.startswith('1')) and len(phone) == 9:
+        phone = '254' + phone
+    elif phone.startswith('254'):
+        pass
+
+    return phone
 
 
 class UserRegistrationForm(UserCreationForm):
@@ -39,41 +57,26 @@ class UserRegistrationForm(UserCreationForm):
     class Meta:
         model = User
         fields = ['phone_number', 'email', 'username', 'address', 'password1', 'password2']
-    
-    import re
-from django import forms
 
-def clean_phone_number(self):
-    
-    phone = self.cleaned_data.get('phone_number', '').strip()
-    
-   
-    phone = re.sub(r'\D', '', phone)
-    
-    
-    if phone.startswith('0'):
-        phone = '254' + phone[1:]
-    
-    
-    elif (phone.startswith('7') or phone.startswith('1')) and len(phone) == 9:
-        phone = '254' + phone
-
-    
-    if len(phone) != 12:
-        raise forms.ValidationError("Please enter a valid Kenyan phone number (e.g., 0712345678 or 0112345678).")
-        
-    return phone
-    
-def __init__(self, *args, **kwargs):
+    def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['password1'].widget.attrs.update({'class': 'form-control'})
         self.fields['password2'].widget.attrs.update({'class': 'form-control'})
 
+    def clean_phone_number(self):
+        phone = _normalize_ke_phone(self.cleaned_data.get('phone_number', ''))
+        if len(phone) != 12:
+            raise forms.ValidationError(
+                'Please enter a valid Kenyan phone number (e.g., 0712345678 or 0112345678).'
+            )
+        return phone
+
 
 class UserLoginForm(AuthenticationForm):
-    username = forms.EmailField(
-        widget=forms.EmailInput(attrs={
-            'placeholder': 'your@email.com',
+    username = forms.CharField(
+        label='Username',
+        widget=forms.TextInput(attrs={
+            'placeholder': 'your username',
             'class': 'form-control'
         })
     )
@@ -103,16 +106,38 @@ class UserProfileUpdateForm(forms.ModelForm):
         for field in self.fields.values():
             field.widget.attrs.update({'class': 'form-control'})
 
-            
+        # Allow partial updates: keep current values when optional fields are left blank.
+        self.fields['full_name'].required = False
+        self.fields['phone_number'].required = False
+
+    def clean_full_name(self):
+        full_name = (self.cleaned_data.get('full_name') or '').strip()
+        if full_name:
+            return full_name
+
+        if self.instance and self.instance.pk:
+            return self.instance.full_name
+
+        return full_name
+
     def clean_phone_number(self):
-        phone = self.cleaned_data.get('phone_number')
-        phone = phone.replace(' ', '').replace('-', '')
-        
-        if phone.startswith('0'):
-            phone = '254' + phone[1:]
-        elif phone.startswith('+'):
-            phone = phone[1:]
-        elif not phone.startswith('254'):
-            phone = '254' + phone
-            
+        raw_phone = self.cleaned_data.get('phone_number')
+
+        # If left blank during edit, keep the existing number.
+        if not raw_phone:
+            return self.instance.phone_number if self.instance and self.instance.pk else ''
+
+        phone = _normalize_ke_phone(raw_phone)
+        if len(phone) != 12:
+            raise forms.ValidationError(
+                'Please enter a valid Kenyan phone number (e.g., 0712345678 or 0112345678).'
+            )
+
+        # Enforce uniqueness but allow the current user's existing number.
+        qs = User.objects.filter(phone_number=phone)
+        if self.instance and self.instance.pk:
+            qs = qs.exclude(pk=self.instance.pk)
+        if qs.exists():
+            raise forms.ValidationError('This phone number is already in use.')
+
         return phone

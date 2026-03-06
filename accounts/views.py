@@ -36,9 +36,9 @@ def login_view(request):
     if request.method == 'POST':
         form = UserLoginForm(request, data=request.POST)
         if form.is_valid():
-            email = form.cleaned_data.get('username')
+            username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password')
-            user = authenticate(request, username=email, password=password)
+            user = authenticate(request, username=username, password=password)
             if user is not None:
                 login(request, user)
                 messages.success(request, f'Welcome back, {user.full_name}!')
@@ -49,7 +49,7 @@ def login_view(request):
                     return redirect(next_url)
                 return redirect('shop:home')
         else:
-            messages.error(request, 'Invalid email or password.')
+            messages.error(request, 'Invalid username or password.')
     else:
         form = UserLoginForm()
     

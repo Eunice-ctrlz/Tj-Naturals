@@ -1,10 +1,7 @@
 from django.contrib import admin
-
-# Register your models here.
-from django.contrib import admin
 from .models import (
     Category, Product, ProductImage, Review,
-    Cart, CartItem, Wishlist, Order, OrderItem
+    Cart, CartItem, Wishlist, Order, OrderItem, ShippingRate
 )
 
 
@@ -26,7 +23,7 @@ class CategoryAdmin(admin.ModelAdmin):
 class ProductAdmin(admin.ModelAdmin):
     list_display = [
         'name', 'category', 'price', 'stock_quantity',
-        'is_in_stock', 'is_bestseller', 'is_special', 'status'
+        'is_in_stock', 'is_bestseller', 'is_special', 'is_new_arrival', 'status'
     ]
     list_filter = [
         'status', 'is_bestseller', 'is_special', 'is_new_arrival',
@@ -35,7 +32,11 @@ class ProductAdmin(admin.ModelAdmin):
     search_fields = ['name', 'sku', 'description']
     prepopulated_fields = {'slug': ('name',)}
     inlines = [ProductImageInline]
-    list_editable = ['price', 'stock_quantity', 'status']
+    list_editable = [
+        'price', 'stock_quantity',
+        'is_bestseller', 'is_special', 'is_new_arrival',
+        'status'
+    ]
     date_hierarchy = 'created_at'
     
     fieldsets = (
@@ -110,9 +111,21 @@ class OrderAdmin(admin.ModelAdmin):
     )
 
 
+class ShippingRateAdmin(admin.ModelAdmin):
+    list_display = ['location_name', 'fee', 'is_active', 'display_order']
+    list_filter = ['is_active']
+    search_fields = ['location_name']
+    list_editable = ['fee', 'is_active', 'display_order']
+
+
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Product, ProductAdmin)
 admin.site.register(Review, ReviewAdmin)
 admin.site.register(Cart, CartAdmin)
 admin.site.register(Wishlist)
 admin.site.register(Order, OrderAdmin)
+admin.site.register(ShippingRate, ShippingRateAdmin)
+
+admin.site.site_header = 'TJ Naturals Admin'
+admin.site.site_title = 'TJ Naturals Admin Portal'
+admin.site.index_title = 'Store Management Dashboard'
