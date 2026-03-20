@@ -484,13 +484,22 @@ def wishlist_view(request):
 @login_required
 def checkout_view(request):
     """Checkout page with auto-filled user data."""
-    cart = get_object_or_404(Cart, user=request.user)
+    # Ensure we get the fresh cart and items, creating if needed
+    cart, _ = Cart.objects.get_or_create(user=request.user)
     
     if not cart.items.exists():
         messages.warning(request, 'Your cart is empty')
         return redirect('shop:cart')
     
+    # 1) Prefetch items to avoid N+1 in template
+    # 2) Calculate subtotal manually to ensure it matches exactly what users see (and avoid property caching weirdness)
     cart_items = cart.items.select_related('product').prefetch_related('product__images')
+    
+    # Force evaluation of subtotal from the fetched items (source of truth)
+    calculated_subtotal = sum(item.total_price for item in cart_items)
+    
+    # Override cart.subtotal for display consistency if needed, 
+    # but passing it explicitly is safer.
     
     shipping_rates = list(ShippingRate.objects.filter(is_active=True).order_by('display_order', 'location_name'))
     if not shipping_rates:
@@ -505,6 +514,7 @@ def checkout_view(request):
         'user': request.user,
         'cart': cart,
         'cart_items': cart_items,
+        'calculated_subtotal': calculated_subtotal,
         'shipping_rates': shipping_rates,
         'free_shipping_threshold': Decimal('3000.00'),
     }

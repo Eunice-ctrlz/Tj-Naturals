@@ -26,7 +26,7 @@
                         <label for="shipping-location" class="form-label fw-semibold">Select delivery location</label>
                         <select id="shipping-location" class="form-select mb-3">
                             {% for rate in shipping_rates %}
-                            <option value="{{ rate.fee|floatformat:0 }}">{{ rate.location_name }} - KSh {{ rate.fee|floatformat:0 }}</option>
+                            <option value="{{ rate.fee|stringformat:'f' }}">{{ rate.location_name }} - KSh {{ rate.fee|floatformat:0 }}</option>
                             {% empty %}
                             <option value="0">Default Location - KSh 0</option>
                             {% endfor %}
@@ -34,16 +34,16 @@
 
                         <div class="d-flex justify-content-between mb-1">
                             <span>Cart Subtotal</span>
-                            <strong id="checkout-subtotal">KSh {{ cart.subtotal }}</strong>
+                            <strong id="checkout-subtotal">KSh {{ calculated_subtotal }}</strong>
                         </div>
                         <div class="d-flex justify-content-between mb-1">
                             <span>Shipping Fee</span>
-                            <strong id="checkout-shipping">KSh {% if shipping_rates %}{{ shipping_rates.0.fee|floatformat:0 }}{% else %}0{% endif %}</strong>
+                            <strong id="checkout-shipping">KSh {% if shipping_rates %}{{ shipping_rates.0.fee|floatformat:0 }}{% else %}200{% endif %}</strong>
                         </div>
                         <hr>
                         <div class="d-flex justify-content-between">
                             <span class="fw-semibold">Estimated Total</span>
-                            <strong id="checkout-estimated-total" class="text-success">KSh {{ cart.subtotal }}</strong>
+                            <strong id="checkout-estimated-total" class="text-success">KSh {{ calculated_subtotal }}</strong>
                         </div>
                     </div>
 
@@ -68,22 +68,27 @@
     const locationSelect = document.getElementById('shipping-location');
     const shippingValue = document.getElementById('checkout-shipping');
     const totalValue = document.getElementById('checkout-estimated-total');
-    const subtotalRaw = parseFloat('{{ cart.subtotal|default:0 }}');
-    if (!locationSelect || !shippingValue || !totalValue || Number.isNaN(subtotalRaw)) return;
+    // Ensure subtotal is a valid number
+    const subtotalText = '{{ calculated_subtotal|stringformat:"f" }}'; 
+    const subtotalRaw = parseFloat(subtotalText) || 0;
+    
+    if (!locationSelect || !shippingValue || !totalValue) return;
 
     function formatKes(value) {
-        return 'KSh ' + value.toLocaleString();
+        return 'KSh ' + value.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
     }
 
     function recalculate() {
-        const selectedShipping = parseInt(locationSelect.value, 10) || 0;
-        const shipping = selectedShipping;
-        const total = subtotalRaw + shipping;
-        shippingValue.textContent = formatKes(shipping);
+        const selectedOption = locationSelect.options[locationSelect.selectedIndex];
+        const selectedShipping = parseFloat(selectedOption.value) || 0;
+        const total = subtotalRaw + selectedShipping;
+        
+        shippingValue.textContent = formatKes(selectedShipping);
         totalValue.textContent = formatKes(total);
     }
 
     locationSelect.addEventListener('change', recalculate);
+    // Initial calculation
     recalculate();
 })();
 </script>

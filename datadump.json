@@ -1,0 +1,2931 @@
+[
+{
+    "model": "sessions.session",
+    "pk": "2vjp5tqk39l38ygjpcxap2oey7xo2ylo",
+    "fields": {
+        "session_data": ".eJxVjDsOwjAQBe_iGlnrrEMwJX3OEHk_JgFkS3FSIe6OLKWA9s3Me5sp7ts87VXXaRFzNc6cfjeK_NTcgDxivhfLJW_rQrYp9qDVjkX0dTvcv4M51rnVXtHBMHSDUo8IQuSEz0kEvfYhcEpEkjqv4ALrBRAwATIypeBDZz5f-w04iA:1vvCMm:GBqGLE0UChrOj2MXHEIqOoGwkkzNOFteyd76KCGK91A",
+        "expire_date": "2026-02-26T10:43:40.310Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "4owjxziuqqdaa2q8tiajmdajj0wps9hn",
+    "fields": {
+        "session_data": ".eJxVjMsOwiAQRf-FtSHAUGBcuvcbCMNDqgaS0q6M_65NutDtPefcF_NhW6vfRl78nNiZATv9bhTiI7cdpHtot85jb-syE98VftDBrz3l5-Vw_w5qGPVbB5AOI0YoSoCzNgpji5CEWhurEE2mSRSpHBQpDIGdHAmZjENNIaFi7w-zljaT:1vvUwE:aoDE5BleQLEiV0zw1YikMEPP5HjE61PunMnWbvcn9eo",
+        "expire_date": "2026-02-27T06:33:30.122Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "mat8h7n8a4tt75w4nwzz0t5ldfw3u025",
+    "fields": {
+        "session_data": ".eJxVjEEOwiAQRe_C2hCgiINL9z0DGZhBqgaS0q6Md7dNutDtf-_9twi4LiWsnecwkbgKJ06_W8T05LoDemC9N5laXeYpyl2RB-1ybMSv2-H-HRTsZau1sVa5YUgGLVBEQzozGuejzhs4e1I5gnKeKHvgpADs4J31HB2kixGfL9XnN4U:1vydCG:zuUnR6vkTWJHrNg5XRvUKy4ODD6w-lt6BG7Yfis92KU",
+        "expire_date": "2026-03-07T21:59:00.709Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "sdxq715tt73nn70udodfdtxw4odzitmb",
+    "fields": {
+        "session_data": "eyJndWVzdF9jYXJ0Ijp7Ijc1Ijo5fSwiX3Bhc3N3b3JkX3Jlc2V0X3Rva2VuIjoiZDVxb2xpLTk0MWZhMmEyNWExZDk5ZTBmZmI4YWRjMjEwOTUxN2I1In0:1w3WND:97c37X2PgnJ271IxSHIXhbls8C8pys3Zi5-Wjv3umAA",
+        "expire_date": "2026-03-21T09:42:31.013Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "ss9bgkbagpc8mviwp9lijp6ulxhez17g",
+    "fields": {
+        "session_data": ".eJxVjEEOwiAQRe_C2pApHSi4dO8ZCMOAVA0kpV0Z765NutDtf-_9l_BhW4vfelr8zOIsUJx-NwrxkeoO-B7qrcnY6rrMJHdFHrTLa-P0vBzu30EJvXxrCIasQdKDhREda6VQIzicmIBSAmNoiiZnBMjOMrLlDAONI5GOSYn3B8JsN5o:1vxt60:WIjh2lcyhStEGqgSsW96Mxwmlh4VdL9GRDn6i9_LTJg",
+        "expire_date": "2026-03-05T20:45:28.953Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "y1cde95wnv98etonluy6qemcbjoiivpv",
+    "fields": {
+        "session_data": ".eJxVjEEOgyAQRe_CujGjDoguu-8JmoYwDAit0UQwXTS9e2vixu1_7_2PGDefi3mnHKeUixjuj4swdivRbNmvJrEYBIrTRta9_LwDftp5XCq3zGVNVO1KddBc3Rb20_VwTwfR5vivwSrSCknWGlrsWTYNSoQeOyYg70Ep6pwKAQFCrxlZc4Ca2pZIOt-I7w8DEj76:1w2a08:mns3fSXGi0woDmbxS3w01XailGxrkvpNKaalJ6Ejozk",
+        "expire_date": "2026-03-18T19:22:48.835Z"
+    }
+},
+{
+    "model": "accounts.user",
+    "fields": {
+        "password": "pbkdf2_sha256$600000$eusO8uOIMRMqCDiOJzSrX5$ZKwDtFkIAHXREnhvUMSSVvElweaDdcIPhDgFhOKw9Cc=",
+        "last_login": "2026-02-25T16:23:59.858Z",
+        "is_superuser": true,
+        "first_name": "",
+        "last_name": "",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2026-02-25T16:23:26.967Z",
+        "phone_number": null,
+        "full_name": "",
+        "address": "",
+        "email": "",
+        "username": "nimo",
+        "profile_image": "",
+        "created_at": "2026-02-25T16:23:27.975Z",
+        "updated_at": "2026-02-25T16:23:27.975Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "accounts.user",
+    "fields": {
+        "password": "pbkdf2_sha256$600000$hLwv3qsAhvqZ1YUpZJKiPf$8ClT4cNH6076rUieD2x6Rg+jymbGAdo5VhAFFMeag28=",
+        "last_login": "2026-03-17T19:00:09.423Z",
+        "is_superuser": false,
+        "first_name": "",
+        "last_name": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-03-03T17:46:53.861Z",
+        "phone_number": "254768472915",
+        "full_name": "Eunice Wairimu",
+        "address": "56673",
+        "email": "emuturi339@gmail.com",
+        "username": "07647687897",
+        "profile_image": "profiles/tj_logo_3.png",
+        "created_at": "2026-03-03T17:46:54.693Z",
+        "updated_at": "2026-03-04T15:34:18.775Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "accounts.user",
+    "fields": {
+        "password": "pbkdf2_sha256$600000$0vpCk5JEG6BKcfCmcHUmQ9$gBFHnAEuLXie7sq3XT3H7vl57V86mYozOpWWTiD7iBk=",
+        "last_login": "2026-03-06T19:28:04.186Z",
+        "is_superuser": false,
+        "first_name": "",
+        "last_name": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-03-06T19:28:03.301Z",
+        "phone_number": "254769609550",
+        "full_name": "Eunice Wairimu",
+        "address": "Ruiru",
+        "email": "muturieunice18@gmail.com",
+        "username": "Nimoh",
+        "profile_image": "",
+        "created_at": "2026-03-06T19:28:04.143Z",
+        "updated_at": "2026-03-06T19:42:57.928Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "accounts.user",
+    "fields": {
+        "password": "pbkdf2_sha256$600000$iFgXQSH3C855oLz16lOmGl$4OPrLm8AXzBTGizF9HbO6xqzC98gwEv7s1MT6EVK978=",
+        "last_login": "2026-03-06T21:08:43.728Z",
+        "is_superuser": true,
+        "first_name": "",
+        "last_name": "",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2026-03-06T21:08:00.803Z",
+        "phone_number": null,
+        "full_name": "",
+        "address": "",
+        "email": null,
+        "username": "Admin",
+        "profile_image": "",
+        "created_at": "2026-03-06T21:08:01.462Z",
+        "updated_at": "2026-03-06T21:08:01.462Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "accounts.user",
+    "fields": {
+        "password": "",
+        "last_login": null,
+        "is_superuser": false,
+        "first_name": "",
+        "last_name": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-03-17T18:38:18.401Z",
+        "phone_number": null,
+        "full_name": "",
+        "address": "",
+        "email": "test@example.com",
+        "username": "test_user",
+        "profile_image": "",
+        "created_at": "2026-03-17T18:38:18.402Z",
+        "updated_at": "2026-03-17T18:38:18.402Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "payments.mpesatransaction",
+    "pk": 1,
+    "fields": {
+        "order": 1,
+        "merchant_request_id": "a82a-432d-b2a3-e053b46f0fdb4852",
+        "checkout_request_id": "ws_CO_03032026204852699712345678",
+        "result_code": null,
+        "result_desc": null,
+        "amount": "550.00",
+        "phone_number": "254712345678",
+        "mpesa_receipt_number": null,
+        "transaction_date": null,
+        "status": "pending",
+        "created_at": "2026-03-03T17:48:56.479Z",
+        "updated_at": "2026-03-03T17:48:56.480Z"
+    }
+},
+{
+    "model": "payments.mpesatransaction",
+    "pk": 2,
+    "fields": {
+        "order": 2,
+        "merchant_request_id": "a82a-432d-b2a3-e053b46f0fdb4867",
+        "checkout_request_id": "ws_CO_03032026205031314712345678",
+        "result_code": null,
+        "result_desc": null,
+        "amount": "550.00",
+        "phone_number": "254712345678",
+        "mpesa_receipt_number": null,
+        "transaction_date": null,
+        "status": "pending",
+        "created_at": "2026-03-03T17:50:31.765Z",
+        "updated_at": "2026-03-03T17:50:31.765Z"
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 1,
+    "fields": {
+        "name": "Bonnets",
+        "slug": "bonnets",
+        "parent": null,
+        "description": "Satin bonnets for comfy sleep and Hair protection",
+        "image": "",
+        "is_active": false,
+        "created_at": "2026-02-25T17:10:04.289Z"
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 2,
+    "fields": {
+        "name": "Satin bonnets",
+        "slug": "satin-bonnets",
+        "parent": 1,
+        "description": "For hair protection",
+        "image": "",
+        "is_active": false,
+        "created_at": "2026-02-25T17:10:28.662Z"
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 3,
+    "fields": {
+        "name": "soap",
+        "slug": "soap",
+        "parent": null,
+        "description": "",
+        "image": "",
+        "is_active": true,
+        "created_at": "2026-02-25T17:11:09.396Z"
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 4,
+    "fields": {
+        "name": "Soaps",
+        "slug": "soaps",
+        "parent": 3,
+        "description": "Cleansing soaps",
+        "image": "",
+        "is_active": true,
+        "created_at": "2026-02-25T17:11:22.333Z"
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 5,
+    "fields": {
+        "name": "Oils",
+        "slug": "oils",
+        "parent": null,
+        "description": "",
+        "image": "",
+        "is_active": true,
+        "created_at": "2026-02-25T17:11:46.311Z"
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 6,
+    "fields": {
+        "name": "Body Butter",
+        "slug": "body-butter",
+        "parent": null,
+        "description": "",
+        "image": "",
+        "is_active": true,
+        "created_at": "2026-02-25T17:58:34.557Z"
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 7,
+    "fields": {
+        "name": "Facial Oils",
+        "slug": "facial-oils",
+        "parent": null,
+        "description": "",
+        "image": "",
+        "is_active": true,
+        "created_at": "2026-02-25T17:58:34.586Z"
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 8,
+    "fields": {
+        "name": "Serums",
+        "slug": "serums",
+        "parent": null,
+        "description": "",
+        "image": "",
+        "is_active": true,
+        "created_at": "2026-02-25T17:58:34.615Z"
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 9,
+    "fields": {
+        "name": "Raw Ingredients",
+        "slug": "raw-ingredients",
+        "parent": null,
+        "description": "",
+        "image": "",
+        "is_active": true,
+        "created_at": "2026-02-25T17:58:34.669Z"
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 10,
+    "fields": {
+        "name": "Face Masks",
+        "slug": "face-masks",
+        "parent": null,
+        "description": "",
+        "image": "",
+        "is_active": true,
+        "created_at": "2026-02-25T17:58:34.701Z"
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 11,
+    "fields": {
+        "name": "Moisturizers",
+        "slug": "moisturizers",
+        "parent": null,
+        "description": "",
+        "image": "",
+        "is_active": true,
+        "created_at": "2026-02-25T17:58:34.736Z"
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 12,
+    "fields": {
+        "name": "Wellness",
+        "slug": "wellness",
+        "parent": null,
+        "description": "",
+        "image": "",
+        "is_active": true,
+        "created_at": "2026-02-25T17:58:34.804Z"
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 13,
+    "fields": {
+        "name": "Men's Care",
+        "slug": "mens-care",
+        "parent": null,
+        "description": "",
+        "image": "",
+        "is_active": true,
+        "created_at": "2026-02-25T17:58:34.841Z"
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 14,
+    "fields": {
+        "name": "Toners",
+        "slug": "toners",
+        "parent": null,
+        "description": "",
+        "image": "",
+        "is_active": true,
+        "created_at": "2026-02-25T17:58:34.872Z"
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 15,
+    "fields": {
+        "name": "Foot Care",
+        "slug": "foot-care",
+        "parent": null,
+        "description": "",
+        "image": "",
+        "is_active": true,
+        "created_at": "2026-02-25T17:58:34.954Z"
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 16,
+    "fields": {
+        "name": "Hand Care",
+        "slug": "hand-care",
+        "parent": null,
+        "description": "",
+        "image": "",
+        "is_active": true,
+        "created_at": "2026-02-25T17:58:35.120Z"
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 17,
+    "fields": {
+        "name": "Cleansers",
+        "slug": "cleansers",
+        "parent": null,
+        "description": "",
+        "image": "",
+        "is_active": true,
+        "created_at": "2026-02-25T17:58:35.157Z"
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 18,
+    "fields": {
+        "name": "Sun Care",
+        "slug": "sun-care",
+        "parent": null,
+        "description": "",
+        "image": "",
+        "is_active": true,
+        "created_at": "2026-02-25T17:58:35.283Z"
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 19,
+    "fields": {
+        "name": "Lip Care",
+        "slug": "lip-care",
+        "parent": null,
+        "description": "",
+        "image": "",
+        "is_active": true,
+        "created_at": "2026-02-25T17:58:35.345Z"
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 20,
+    "fields": {
+        "name": "Hair Accessories",
+        "slug": "hair-accessories",
+        "parent": null,
+        "description": "",
+        "image": "",
+        "is_active": true,
+        "created_at": "2026-02-25T17:58:35.398Z"
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 21,
+    "fields": {
+        "name": "Supplements",
+        "slug": "supplements",
+        "parent": null,
+        "description": "",
+        "image": "",
+        "is_active": true,
+        "created_at": "2026-02-25T17:58:35.425Z"
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 22,
+    "fields": {
+        "name": "Body Scrubs",
+        "slug": "body-scrubs",
+        "parent": null,
+        "description": "",
+        "image": "",
+        "is_active": true,
+        "created_at": "2026-02-25T17:58:35.551Z"
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 23,
+    "fields": {
+        "name": "Bath Accessories",
+        "slug": "bath-accessories",
+        "parent": null,
+        "description": "",
+        "image": "",
+        "is_active": true,
+        "created_at": "2026-02-25T17:58:35.888Z"
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 24,
+    "fields": {
+        "name": "Test Category",
+        "slug": "test-category",
+        "parent": null,
+        "description": "",
+        "image": "",
+        "is_active": true,
+        "created_at": "2026-03-17T18:38:18.415Z"
+    }
+},
+{
+    "model": "shop.product",
+    "pk": 39,
+    "fields": {
+        "category": 6,
+        "name": "Whipped Butter",
+        "slug": "whipped-butter",
+        "description": "Luxurious whipped shea butter for deep skin hydration and nourishment",
+        "price": "1200.00",
+        "compare_at_price": "1500.00",
+        "stock_quantity": 50,
+        "low_stock_threshold": 5,
+        "sku": "TJ-WB-001",
+        "status": "active",
+        "is_bestseller": false,
+        "is_special": false,
+        "is_new_arrival": false,
+        "weight": "0.25",
+        "created_at": "2026-03-03T17:29:32.755Z",
+        "updated_at": "2026-03-06T21:00:22.245Z"
+    }
+},
+{
+    "model": "shop.product",
+    "pk": 40,
+    "fields": {
+        "category": 7,
+        "name": "Vitamin E Oil",
+        "slug": "vitamin-e-oil",
+        "description": "Pure vitamin E oil for skin repair and anti-aging benefits",
+        "price": "850.00",
+        "compare_at_price": "1000.00",
+        "stock_quantity": 30,
+        "low_stock_threshold": 5,
+        "sku": "TJ-VE-002",
+        "status": "active",
+        "is_bestseller": false,
+        "is_special": false,
+        "is_new_arrival": false,
+        "weight": "0.15",
+        "created_at": "2026-03-03T17:29:32.818Z",
+        "updated_at": "2026-03-06T21:00:22.307Z"
+    }
+},
+{
+    "model": "shop.product",
+    "pk": 41,
+    "fields": {
+        "category": 8,
+        "name": "Vitamin C Serum",
+        "slug": "vitamin-c-serum",
+        "description": "Brightening vitamin C serum for glowing skin",
+        "price": "1500.00",
+        "compare_at_price": "1800.00",
+        "stock_quantity": 25,
+        "low_stock_threshold": 5,
+        "sku": "TJ-VC-003",
+        "status": "active",
+        "is_bestseller": false,
+        "is_special": false,
+        "is_new_arrival": true,
+        "weight": "0.10",
+        "created_at": "2026-03-03T17:29:32.866Z",
+        "updated_at": "2026-03-06T21:00:22.367Z"
+    }
+},
+{
+    "model": "shop.product",
+    "pk": 42,
+    "fields": {
+        "category": 9,
+        "name": "Vegetable Glycerine",
+        "slug": "vegetable-glycerine",
+        "description": "Natural vegetable glycerine for skin moisturizing",
+        "price": "600.00",
+        "compare_at_price": "750.00",
+        "stock_quantity": 100,
+        "low_stock_threshold": 5,
+        "sku": "TJ-VG-004",
+        "status": "active",
+        "is_bestseller": true,
+        "is_special": false,
+        "is_new_arrival": false,
+        "weight": "0.50",
+        "created_at": "2026-03-03T17:29:32.913Z",
+        "updated_at": "2026-03-06T21:35:45.987Z"
+    }
+},
+{
+    "model": "shop.product",
+    "pk": 43,
+    "fields": {
+        "category": 10,
+        "name": "Turmeric Face Mask",
+        "slug": "turmeric-face-mask",
+        "description": "Brightening turmeric face mask for even skin tone",
+        "price": "800.00",
+        "compare_at_price": "950.00",
+        "stock_quantity": 40,
+        "low_stock_threshold": 5,
+        "sku": "TJ-TFM-005",
+        "status": "active",
+        "is_bestseller": true,
+        "is_special": false,
+        "is_new_arrival": false,
+        "weight": "0.20",
+        "created_at": "2026-03-03T17:29:32.956Z",
+        "updated_at": "2026-03-06T21:35:45.986Z"
+    }
+},
+{
+    "model": "shop.product",
+    "pk": 44,
+    "fields": {
+        "category": 6,
+        "name": "TJ Whipped Butter",
+        "slug": "tj-whipped-butter",
+        "description": "Signature whipped butter with essential oils",
+        "price": "1400.00",
+        "compare_at_price": "1650.00",
+        "stock_quantity": 35,
+        "low_stock_threshold": 5,
+        "sku": "TJ-TJW-006",
+        "status": "active",
+        "is_bestseller": true,
+        "is_special": false,
+        "is_new_arrival": false,
+        "weight": "0.25",
+        "created_at": "2026-03-03T17:29:33.005Z",
+        "updated_at": "2026-03-06T21:00:22.534Z"
+    }
+},
+{
+    "model": "shop.product",
+    "pk": 45,
+    "fields": {
+        "category": 11,
+        "name": "Snail Repairing Cream",
+        "slug": "snail-repairing-cream",
+        "description": "Advanced snail mucin cream for skin repair",
+        "price": "1800.00",
+        "compare_at_price": "2200.00",
+        "stock_quantity": 20,
+        "low_stock_threshold": 5,
+        "sku": "TJ-SRC-007",
+        "status": "active",
+        "is_bestseller": false,
+        "is_special": true,
+        "is_new_arrival": false,
+        "weight": "0.15",
+        "created_at": "2026-03-03T17:29:33.050Z",
+        "updated_at": "2026-03-06T21:00:22.579Z"
+    }
+},
+{
+    "model": "shop.product",
+    "pk": 46,
+    "fields": {
+        "category": 12,
+        "name": "Slim Green Tea",
+        "slug": "slim-green-tea",
+        "description": "Detox green tea for weight management",
+        "price": "650.00",
+        "compare_at_price": "800.00",
+        "stock_quantity": 60,
+        "low_stock_threshold": 5,
+        "sku": "TJ-SGT-008",
+        "status": "active",
+        "is_bestseller": false,
+        "is_special": false,
+        "is_new_arrival": true,
+        "weight": "0.30",
+        "created_at": "2026-03-03T17:29:33.098Z",
+        "updated_at": "2026-03-06T21:35:45.985Z"
+    }
+},
+{
+    "model": "shop.product",
+    "pk": 47,
+    "fields": {
+        "category": 9,
+        "name": "Shea Butter",
+        "slug": "shea-butter",
+        "description": "Pure unrefined shea butter from West Africa",
+        "price": "900.00",
+        "compare_at_price": "1100.00",
+        "stock_quantity": 80,
+        "low_stock_threshold": 5,
+        "sku": "TJ-SB-009",
+        "status": "active",
+        "is_bestseller": true,
+        "is_special": false,
+        "is_new_arrival": true,
+        "weight": "0.50",
+        "created_at": "2026-03-03T17:29:33.160Z",
+        "updated_at": "2026-03-06T21:35:45.984Z"
+    }
+},
+{
+    "model": "shop.product",
+    "pk": 48,
+    "fields": {
+        "category": 13,
+        "name": "Shaving Cream",
+        "slug": "shaving-cream",
+        "description": "Smooth shaving cream for sensitive skin",
+        "price": "750.00",
+        "compare_at_price": "900.00",
+        "stock_quantity": 45,
+        "low_stock_threshold": 5,
+        "sku": "TJ-SC-010",
+        "status": "active",
+        "is_bestseller": true,
+        "is_special": false,
+        "is_new_arrival": false,
+        "weight": "0.20",
+        "created_at": "2026-03-03T17:29:33.210Z",
+        "updated_at": "2026-03-06T21:35:45.984Z"
+    }
+},
+{
+    "model": "shop.product",
+    "pk": 49,
+    "fields": {
+        "category": 14,
+        "name": "Rose Water",
+        "slug": "rose-water",
+        "description": "Natural rose water toner for refreshing skin",
+        "price": "700.00",
+        "compare_at_price": "850.00",
+        "stock_quantity": 55,
+        "low_stock_threshold": 5,
+        "sku": "TJ-RW-011",
+        "status": "active",
+        "is_bestseller": true,
+        "is_special": false,
+        "is_new_arrival": false,
+        "weight": "0.25",
+        "created_at": "2026-03-03T17:29:33.257Z",
+        "updated_at": "2026-03-06T21:35:45.983Z"
+    }
+},
+{
+    "model": "shop.product",
+    "pk": 50,
+    "fields": {
+        "category": 7,
+        "name": "Rose Hip Oil",
+        "slug": "rose-hip-oil",
+        "description": "Regenerating rose hip seed oil for scars",
+        "price": "1200.00",
+        "compare_at_price": "1450.00",
+        "stock_quantity": 30,
+        "low_stock_threshold": 5,
+        "sku": "TJ-RHO-012",
+        "status": "active",
+        "is_bestseller": true,
+        "is_special": false,
+        "is_new_arrival": false,
+        "weight": "0.15",
+        "created_at": "2026-03-03T17:29:33.305Z",
+        "updated_at": "2026-03-06T21:35:45.981Z"
+    }
+},
+{
+    "model": "shop.product",
+    "pk": 51,
+    "fields": {
+        "category": 15,
+        "name": "Rose & Hyaluronic Acid Foot Mask",
+        "slug": "rose-hyaluronic-acid-foot-mask",
+        "description": "Hydrating foot mask with rose and HA",
+        "price": "950.00",
+        "compare_at_price": "1150.00",
+        "stock_quantity": 25,
+        "low_stock_threshold": 5,
+        "sku": "TJ-RHF-013",
+        "status": "active",
+        "is_bestseller": false,
+        "is_special": false,
+        "is_new_arrival": true,
+        "weight": "0.30",
+        "created_at": "2026-03-03T17:29:33.479Z",
+        "updated_at": "2026-03-06T21:35:45.979Z"
+    }
+},
+{
+    "model": "shop.product",
+    "pk": 52,
+    "fields": {
+        "category": 11,
+        "name": "Rice Repairing Cream",
+        "slug": "rice-repairing-cream",
+        "description": "Rice-based cream for skin barrier repair",
+        "price": "1100.00",
+        "compare_at_price": "1350.00",
+        "stock_quantity": 35,
+        "low_stock_threshold": 5,
+        "sku": "TJ-RRC-014",
+        "status": "active",
+        "is_bestseller": false,
+        "is_special": false,
+        "is_new_arrival": true,
+        "weight": "0.15",
+        "created_at": "2026-03-03T17:29:33.564Z",
+        "updated_at": "2026-03-06T21:35:45.978Z"
+    }
+},
+{
+    "model": "shop.product",
+    "pk": 53,
+    "fields": {
+        "category": 4,
+        "name": "Rice Milk Soap",
+        "slug": "rice-milk-soap",
+        "description": "Gentle rice milk soap for sensitive skin",
+        "price": "450.00",
+        "compare_at_price": "550.00",
+        "stock_quantity": 75,
+        "low_stock_threshold": 5,
+        "sku": "TJ-RMS-015",
+        "status": "active",
+        "is_bestseller": false,
+        "is_special": false,
+        "is_new_arrival": true,
+        "weight": "0.10",
+        "created_at": "2026-03-03T17:29:33.617Z",
+        "updated_at": "2026-03-06T21:35:45.976Z"
+    }
+},
+{
+    "model": "shop.product",
+    "pk": 54,
+    "fields": {
+        "category": 16,
+        "name": "Retinol Hand Cream",
+        "slug": "retinol-hand-cream",
+        "description": "Anti-aging retinol cream for hands",
+        "price": "850.00",
+        "compare_at_price": "1000.00",
+        "stock_quantity": 40,
+        "low_stock_threshold": 5,
+        "sku": "TJ-RHC-016",
+        "status": "active",
+        "is_bestseller": true,
+        "is_special": true,
+        "is_new_arrival": false,
+        "weight": "0.12",
+        "created_at": "2026-03-03T17:29:33.667Z",
+        "updated_at": "2026-03-06T21:35:45.975Z"
+    }
+},
+{
+    "model": "shop.product",
+    "pk": 55,
+    "fields": {
+        "category": 17,
+        "name": "Qasil Powder",
+        "slug": "qasil-powder",
+        "description": "Somali qasil powder for natural cleansing",
+        "price": "550.00",
+        "compare_at_price": "650.00",
+        "stock_quantity": 60,
+        "low_stock_threshold": 5,
+        "sku": "TJ-QP-017",
+        "status": "active",
+        "is_bestseller": false,
+        "is_special": false,
+        "is_new_arrival": true,
+        "weight": "0.20",
+        "created_at": "2026-03-03T17:29:33.719Z",
+        "updated_at": "2026-03-06T21:35:45.974Z"
+    }
+},
+{
+    "model": "shop.product",
+    "pk": 56,
+    "fields": {
+        "category": 8,
+        "name": "Niacinamide Serum",
+        "slug": "niacinamide-serum",
+        "description": "Pore-minimizing niacinamide serum",
+        "price": "1300.00",
+        "compare_at_price": "1600.00",
+        "stock_quantity": 30,
+        "low_stock_threshold": 5,
+        "sku": "TJ-NS-018",
+        "status": "active",
+        "is_bestseller": true,
+        "is_special": false,
+        "is_new_arrival": true,
+        "weight": "0.10",
+        "created_at": "2026-03-03T17:29:33.777Z",
+        "updated_at": "2026-03-06T21:00:23.391Z"
+    }
+},
+{
+    "model": "shop.product",
+    "pk": 57,
+    "fields": {
+        "category": 18,
+        "name": "Malibu Sunscreen",
+        "slug": "malibu-sunscreen",
+        "description": "SPF 50 sunscreen for daily protection",
+        "price": "1100.00",
+        "compare_at_price": "1300.00",
+        "stock_quantity": 50,
+        "low_stock_threshold": 5,
+        "sku": "TJ-MS-019",
+        "status": "active",
+        "is_bestseller": false,
+        "is_special": false,
+        "is_new_arrival": false,
+        "weight": "0.15",
+        "created_at": "2026-03-03T17:29:33.807Z",
+        "updated_at": "2026-03-06T21:00:23.559Z"
+    }
+},
+{
+    "model": "shop.product",
+    "pk": 58,
+    "fields": {
+        "category": 17,
+        "name": "Liwa Powder",
+        "slug": "liwa-powder",
+        "description": "Traditional liwa powder for skin brightening",
+        "price": "500.00",
+        "compare_at_price": "600.00",
+        "stock_quantity": 55,
+        "low_stock_threshold": 5,
+        "sku": "TJ-LP-020",
+        "status": "active",
+        "is_bestseller": false,
+        "is_special": false,
+        "is_new_arrival": true,
+        "weight": "0.25",
+        "created_at": "2026-03-03T17:29:33.867Z",
+        "updated_at": "2026-03-06T21:35:45.973Z"
+    }
+},
+{
+    "model": "shop.product",
+    "pk": 59,
+    "fields": {
+        "category": 19,
+        "name": "Lip Oil",
+        "slug": "lip-oil",
+        "description": "Nourishing lip oil with natural extracts",
+        "price": "400.00",
+        "compare_at_price": "500.00",
+        "stock_quantity": 100,
+        "low_stock_threshold": 5,
+        "sku": "TJ-LO-021",
+        "status": "active",
+        "is_bestseller": false,
+        "is_special": false,
+        "is_new_arrival": true,
+        "weight": "0.05",
+        "created_at": "2026-03-03T17:29:33.975Z",
+        "updated_at": "2026-03-06T21:35:45.972Z"
+    }
+},
+{
+    "model": "shop.product",
+    "pk": 60,
+    "fields": {
+        "category": 20,
+        "name": "Leopard Bonnet",
+        "slug": "leopard-bonnet",
+        "description": "Satin bonnet for hair protection",
+        "price": "600.00",
+        "compare_at_price": "750.00",
+        "stock_quantity": 40,
+        "low_stock_threshold": 5,
+        "sku": "TJ-LB-022",
+        "status": "active",
+        "is_bestseller": false,
+        "is_special": false,
+        "is_new_arrival": true,
+        "weight": "0.08",
+        "created_at": "2026-03-03T17:29:34.026Z",
+        "updated_at": "2026-03-06T21:35:45.971Z"
+    }
+},
+{
+    "model": "shop.product",
+    "pk": 61,
+    "fields": {
+        "category": 21,
+        "name": "Hydrolyzed Collagen",
+        "slug": "hydrolyzed-collagen",
+        "description": "Collagen powder for skin elasticity",
+        "price": "1400.00",
+        "compare_at_price": "1700.00",
+        "stock_quantity": 25,
+        "low_stock_threshold": 5,
+        "sku": "TJ-HC-023",
+        "status": "active",
+        "is_bestseller": false,
+        "is_special": true,
+        "is_new_arrival": false,
+        "weight": "0.30",
+        "created_at": "2026-03-03T17:29:34.089Z",
+        "updated_at": "2026-03-06T21:00:23.920Z"
+    }
+},
+{
+    "model": "shop.product",
+    "pk": 62,
+    "fields": {
+        "category": 18,
+        "name": "Dr Rashel Sunscreen",
+        "slug": "dr-rashel-sunscreen",
+        "description": "Premium sunscreen with skincare benefits",
+        "price": "1300.00",
+        "compare_at_price": "1550.00",
+        "stock_quantity": 35,
+        "low_stock_threshold": 5,
+        "sku": "TJ-DRS-024",
+        "status": "active",
+        "is_bestseller": false,
+        "is_special": false,
+        "is_new_arrival": true,
+        "weight": "0.15",
+        "created_at": "2026-03-03T17:29:34.102Z",
+        "updated_at": "2026-03-06T21:35:45.970Z"
+    }
+},
+{
+    "model": "shop.product",
+    "pk": 63,
+    "fields": {
+        "category": 10,
+        "name": "Collagen Peptide Face Mask",
+        "slug": "collagen-peptide-face-mask",
+        "description": "Anti-aging collagen face mask",
+        "price": "900.00",
+        "compare_at_price": "1100.00",
+        "stock_quantity": 40,
+        "low_stock_threshold": 5,
+        "sku": "TJ-CPFM-025",
+        "status": "active",
+        "is_bestseller": false,
+        "is_special": false,
+        "is_new_arrival": true,
+        "weight": "0.20",
+        "created_at": "2026-03-03T17:29:34.389Z",
+        "updated_at": "2026-03-06T21:35:45.969Z"
+    }
+},
+{
+    "model": "shop.product",
+    "pk": 64,
+    "fields": {
+        "category": 22,
+        "name": "Coffee Sea Salt Scrub",
+        "slug": "coffee-sea-salt-scrub",
+        "description": "Energizing coffee body scrub",
+        "price": "850.00",
+        "compare_at_price": "1000.00",
+        "stock_quantity": 45,
+        "low_stock_threshold": 5,
+        "sku": "TJ-CSS-026",
+        "status": "active",
+        "is_bestseller": false,
+        "is_special": false,
+        "is_new_arrival": true,
+        "weight": "0.30",
+        "created_at": "2026-03-03T17:29:34.523Z",
+        "updated_at": "2026-03-06T21:35:45.967Z"
+    }
+},
+{
+    "model": "shop.product",
+    "pk": 65,
+    "fields": {
+        "category": 20,
+        "name": "Bonnet",
+        "slug": "bonnet",
+        "description": "Silk bonnet for natural hair",
+        "price": "550.00",
+        "compare_at_price": "650.00",
+        "stock_quantity": 50,
+        "low_stock_threshold": 5,
+        "sku": "TJ-BN-027",
+        "status": "active",
+        "is_bestseller": false,
+        "is_special": true,
+        "is_new_arrival": false,
+        "weight": "0.08",
+        "created_at": "2026-03-03T17:29:34.620Z",
+        "updated_at": "2026-03-06T21:35:45.966Z"
+    }
+},
+{
+    "model": "shop.product",
+    "pk": 66,
+    "fields": {
+        "category": 20,
+        "name": "Bonnet 2",
+        "slug": "bonnet-2",
+        "description": "Double-layer satin bonnet",
+        "price": "650.00",
+        "compare_at_price": "800.00",
+        "stock_quantity": 40,
+        "low_stock_threshold": 5,
+        "sku": "TJ-BN2-028",
+        "status": "active",
+        "is_bestseller": false,
+        "is_special": true,
+        "is_new_arrival": false,
+        "weight": "0.10",
+        "created_at": "2026-03-03T17:29:34.713Z",
+        "updated_at": "2026-03-06T21:35:45.965Z"
+    }
+},
+{
+    "model": "shop.product",
+    "pk": 67,
+    "fields": {
+        "category": 20,
+        "name": "Blue Bonnet",
+        "slug": "blue-bonnet",
+        "description": "Blue satin hair bonnet",
+        "price": "600.00",
+        "compare_at_price": "750.00",
+        "stock_quantity": 35,
+        "low_stock_threshold": 5,
+        "sku": "TJ-BB-029",
+        "status": "active",
+        "is_bestseller": false,
+        "is_special": true,
+        "is_new_arrival": false,
+        "weight": "0.08",
+        "created_at": "2026-03-03T17:29:34.729Z",
+        "updated_at": "2026-03-06T21:35:45.962Z"
+    }
+},
+{
+    "model": "shop.product",
+    "pk": 68,
+    "fields": {
+        "category": 4,
+        "name": "Black Soap",
+        "slug": "black-soap",
+        "description": "Traditional African black soap",
+        "price": "500.00",
+        "compare_at_price": "600.00",
+        "stock_quantity": 80,
+        "low_stock_threshold": 5,
+        "sku": "TJ-BS-030",
+        "status": "active",
+        "is_bestseller": false,
+        "is_special": true,
+        "is_new_arrival": false,
+        "weight": "0.12",
+        "created_at": "2026-03-03T17:29:34.751Z",
+        "updated_at": "2026-03-06T21:35:45.961Z"
+    }
+},
+{
+    "model": "shop.product",
+    "pk": 69,
+    "fields": {
+        "category": 10,
+        "name": "Bentonite Clay",
+        "slug": "bentonite-clay",
+        "description": "Detoxifying bentonite clay mask",
+        "price": "700.00",
+        "compare_at_price": "850.00",
+        "stock_quantity": 60,
+        "low_stock_threshold": 5,
+        "sku": "TJ-BC-031",
+        "status": "active",
+        "is_bestseller": false,
+        "is_special": true,
+        "is_new_arrival": false,
+        "weight": "0.25",
+        "created_at": "2026-03-03T17:29:34.770Z",
+        "updated_at": "2026-03-06T21:35:45.960Z"
+    }
+},
+{
+    "model": "shop.product",
+    "pk": 70,
+    "fields": {
+        "category": 23,
+        "name": "Bathing Glove",
+        "slug": "bathing-glove",
+        "description": "Exfoliating bathing glove",
+        "price": "350.00",
+        "compare_at_price": "450.00",
+        "stock_quantity": 100,
+        "low_stock_threshold": 5,
+        "sku": "TJ-BG-032",
+        "status": "active",
+        "is_bestseller": true,
+        "is_special": false,
+        "is_new_arrival": false,
+        "weight": "0.05",
+        "created_at": "2026-03-03T17:29:34.789Z",
+        "updated_at": "2026-03-06T21:35:45.959Z"
+    }
+},
+{
+    "model": "shop.product",
+    "pk": 71,
+    "fields": {
+        "category": 23,
+        "name": "Bathing Glove 2",
+        "slug": "bathing-glove-2",
+        "description": "Premium exfoliating glove",
+        "price": "400.00",
+        "compare_at_price": "500.00",
+        "stock_quantity": 90,
+        "low_stock_threshold": 5,
+        "sku": "TJ-BG2-033",
+        "status": "active",
+        "is_bestseller": true,
+        "is_special": false,
+        "is_new_arrival": false,
+        "weight": "0.06",
+        "created_at": "2026-03-03T17:29:34.805Z",
+        "updated_at": "2026-03-06T21:35:45.958Z"
+    }
+},
+{
+    "model": "shop.product",
+    "pk": 72,
+    "fields": {
+        "category": 15,
+        "name": "Banana Foot Mask",
+        "slug": "banana-foot-mask",
+        "description": "Moisturizing banana foot treatment",
+        "price": "750.00",
+        "compare_at_price": "900.00",
+        "stock_quantity": 30,
+        "low_stock_threshold": 5,
+        "sku": "TJ-BFM-034",
+        "status": "active",
+        "is_bestseller": true,
+        "is_special": false,
+        "is_new_arrival": false,
+        "weight": "0.25",
+        "created_at": "2026-03-03T17:29:34.827Z",
+        "updated_at": "2026-03-06T21:35:45.957Z"
+    }
+},
+{
+    "model": "shop.product",
+    "pk": 73,
+    "fields": {
+        "category": 4,
+        "name": "Ayurvedic Soap",
+        "slug": "ayurvedic-soap",
+        "description": "Herbal ayurvedic soap for all skin types",
+        "price": "550.00",
+        "compare_at_price": "650.00",
+        "stock_quantity": 70,
+        "low_stock_threshold": 5,
+        "sku": "TJ-AS-035",
+        "status": "active",
+        "is_bestseller": true,
+        "is_special": false,
+        "is_new_arrival": false,
+        "weight": "0.12",
+        "created_at": "2026-03-03T17:29:34.844Z",
+        "updated_at": "2026-03-06T21:35:45.956Z"
+    }
+},
+{
+    "model": "shop.product",
+    "pk": 74,
+    "fields": {
+        "category": 4,
+        "name": "Asantee Soap",
+        "slug": "asantee-soap",
+        "description": "Thai Asantee papaya soap",
+        "price": "600.00",
+        "compare_at_price": "750.00",
+        "stock_quantity": 65,
+        "low_stock_threshold": 5,
+        "sku": "TJ-ATS-036",
+        "status": "active",
+        "is_bestseller": true,
+        "is_special": false,
+        "is_new_arrival": false,
+        "weight": "0.12",
+        "created_at": "2026-03-03T17:29:34.867Z",
+        "updated_at": "2026-03-06T21:35:45.955Z"
+    }
+},
+{
+    "model": "shop.product",
+    "pk": 75,
+    "fields": {
+        "category": 9,
+        "name": "Aloe Vera Gel",
+        "slug": "aloe-vera-gel",
+        "description": "Pure aloe vera gel for soothing skin",
+        "price": "500.00",
+        "compare_at_price": "600.00",
+        "stock_quantity": 90,
+        "low_stock_threshold": 5,
+        "sku": "TJ-AVG-037",
+        "status": "active",
+        "is_bestseller": true,
+        "is_special": false,
+        "is_new_arrival": false,
+        "weight": "0.30",
+        "created_at": "2026-03-03T17:29:34.890Z",
+        "updated_at": "2026-03-06T21:35:45.949Z"
+    }
+},
+{
+    "model": "shop.product",
+    "pk": 76,
+    "fields": {
+        "category": 24,
+        "name": "Test Product",
+        "slug": "test-product",
+        "description": "Test Description",
+        "price": "2500.00",
+        "compare_at_price": null,
+        "stock_quantity": 0,
+        "low_stock_threshold": 5,
+        "sku": "TEST001",
+        "status": "active",
+        "is_bestseller": false,
+        "is_special": false,
+        "is_new_arrival": false,
+        "weight": null,
+        "created_at": "2026-03-17T18:38:18.427Z",
+        "updated_at": "2026-03-17T18:38:18.435Z"
+    }
+},
+{
+    "model": "shop.productimage",
+    "pk": 25,
+    "fields": {
+        "product": 39,
+        "image": "products/products/whipped-butter-1_NaqsAbf.jpeg",
+        "alt_text": "Whipped Butter",
+        "is_primary": true,
+        "order": 0
+    }
+},
+{
+    "model": "shop.productimage",
+    "pk": 26,
+    "fields": {
+        "product": 40,
+        "image": "products/products/vitamin-e-oil-2_5nfL32L.jpeg",
+        "alt_text": "Vitamin E Oil",
+        "is_primary": true,
+        "order": 0
+    }
+},
+{
+    "model": "shop.productimage",
+    "pk": 27,
+    "fields": {
+        "product": 41,
+        "image": "products/products/vitamin-c-serum-3_JF1qPJq.jpeg",
+        "alt_text": "Vitamin C Serum",
+        "is_primary": true,
+        "order": 0
+    }
+},
+{
+    "model": "shop.productimage",
+    "pk": 28,
+    "fields": {
+        "product": 42,
+        "image": "products/products/vegetable-glycerine-4_o1QTnQb.jpeg",
+        "alt_text": "Vegetable Glycerine",
+        "is_primary": true,
+        "order": 0
+    }
+},
+{
+    "model": "shop.productimage",
+    "pk": 29,
+    "fields": {
+        "product": 43,
+        "image": "products/products/turmeric-face-mask-5_jAz7ZIF.jpeg",
+        "alt_text": "Turmeric Face Mask",
+        "is_primary": true,
+        "order": 0
+    }
+},
+{
+    "model": "shop.productimage",
+    "pk": 30,
+    "fields": {
+        "product": 44,
+        "image": "products/products/tj-whipped-butter-6_bx4RWYn.jpeg",
+        "alt_text": "TJ Whipped Butter",
+        "is_primary": true,
+        "order": 0
+    }
+},
+{
+    "model": "shop.productimage",
+    "pk": 31,
+    "fields": {
+        "product": 45,
+        "image": "products/products/snail-repairing-cream-7_ODJPHbL.jpeg",
+        "alt_text": "Snail Repairing Cream",
+        "is_primary": true,
+        "order": 0
+    }
+},
+{
+    "model": "shop.productimage",
+    "pk": 32,
+    "fields": {
+        "product": 46,
+        "image": "products/products/slim-green-tea-8_mWHv6Ip.jpeg",
+        "alt_text": "Slim Green Tea",
+        "is_primary": true,
+        "order": 0
+    }
+},
+{
+    "model": "shop.productimage",
+    "pk": 33,
+    "fields": {
+        "product": 47,
+        "image": "products/products/shea-butter-9_RY8lBFS.jpeg",
+        "alt_text": "Shea Butter",
+        "is_primary": true,
+        "order": 0
+    }
+},
+{
+    "model": "shop.productimage",
+    "pk": 34,
+    "fields": {
+        "product": 48,
+        "image": "products/products/shaving-cream-10_eeu5JtJ.jpeg",
+        "alt_text": "Shaving Cream",
+        "is_primary": true,
+        "order": 0
+    }
+},
+{
+    "model": "shop.productimage",
+    "pk": 35,
+    "fields": {
+        "product": 49,
+        "image": "products/products/rose-water-11_jZ6aLWQ.jpeg",
+        "alt_text": "Rose Water",
+        "is_primary": true,
+        "order": 0
+    }
+},
+{
+    "model": "shop.productimage",
+    "pk": 36,
+    "fields": {
+        "product": 50,
+        "image": "products/products/rose-hip-oil-12_lSUnb2u.jpeg",
+        "alt_text": "Rose Hip Oil",
+        "is_primary": true,
+        "order": 0
+    }
+},
+{
+    "model": "shop.productimage",
+    "pk": 37,
+    "fields": {
+        "product": 51,
+        "image": "products/products/rose-hyaluronic-acid-foot-mask-13_KsBrFR9.jpeg",
+        "alt_text": "Rose & Hyaluronic Acid Foot Mask",
+        "is_primary": true,
+        "order": 0
+    }
+},
+{
+    "model": "shop.productimage",
+    "pk": 38,
+    "fields": {
+        "product": 52,
+        "image": "products/products/rice-repairing-cream-14_eK2l1Jh.jpeg",
+        "alt_text": "Rice Repairing Cream",
+        "is_primary": true,
+        "order": 0
+    }
+},
+{
+    "model": "shop.productimage",
+    "pk": 39,
+    "fields": {
+        "product": 53,
+        "image": "products/products/rice-milk-soap-15_WYtBosv.jpeg",
+        "alt_text": "Rice Milk Soap",
+        "is_primary": true,
+        "order": 0
+    }
+},
+{
+    "model": "shop.productimage",
+    "pk": 40,
+    "fields": {
+        "product": 54,
+        "image": "products/products/retinol-hand-cream-16_mLWwPqv.jpeg",
+        "alt_text": "Retinol Hand Cream",
+        "is_primary": true,
+        "order": 0
+    }
+},
+{
+    "model": "shop.productimage",
+    "pk": 41,
+    "fields": {
+        "product": 55,
+        "image": "products/products/qasil-powder-17_zbMctaC.jpeg",
+        "alt_text": "Qasil Powder",
+        "is_primary": true,
+        "order": 0
+    }
+},
+{
+    "model": "shop.productimage",
+    "pk": 42,
+    "fields": {
+        "product": 57,
+        "image": "products/products/malibu-sunscreen-19_ijSGu0Y.jpeg",
+        "alt_text": "Malibu Sunscreen",
+        "is_primary": true,
+        "order": 0
+    }
+},
+{
+    "model": "shop.productimage",
+    "pk": 43,
+    "fields": {
+        "product": 58,
+        "image": "products/products/liwa-powder-20_zecv8ap.jpeg",
+        "alt_text": "Liwa Powder",
+        "is_primary": true,
+        "order": 0
+    }
+},
+{
+    "model": "shop.productimage",
+    "pk": 44,
+    "fields": {
+        "product": 59,
+        "image": "products/products/lip-oil-21_OVAD6Bd.jpeg",
+        "alt_text": "Lip Oil",
+        "is_primary": true,
+        "order": 0
+    }
+},
+{
+    "model": "shop.productimage",
+    "pk": 45,
+    "fields": {
+        "product": 60,
+        "image": "products/products/leopard-bonnet-22_4mSqWws.jpeg",
+        "alt_text": "Leopard Bonnet",
+        "is_primary": true,
+        "order": 0
+    }
+},
+{
+    "model": "shop.productimage",
+    "pk": 46,
+    "fields": {
+        "product": 63,
+        "image": "products/products/collagen-peptide-face-mask-25_KnPZ0n1.jpeg",
+        "alt_text": "Collagen Peptide Face Mask",
+        "is_primary": true,
+        "order": 0
+    }
+},
+{
+    "model": "shop.productimage",
+    "pk": 47,
+    "fields": {
+        "product": 64,
+        "image": "products/products/coffee-sea-salt-scrub-26_JuQMruw.jpeg",
+        "alt_text": "Coffee Sea Salt Scrub",
+        "is_primary": true,
+        "order": 0
+    }
+},
+{
+    "model": "shop.productimage",
+    "pk": 48,
+    "fields": {
+        "product": 65,
+        "image": "products/products/bonnet-27_3HqiOY9.jpeg",
+        "alt_text": "Bonnet",
+        "is_primary": true,
+        "order": 0
+    }
+},
+{
+    "model": "shop.productimage",
+    "pk": 49,
+    "fields": {
+        "product": 39,
+        "image": "products/products/whipped-butter-1_66YWvXN.jpeg",
+        "alt_text": "Whipped Butter",
+        "is_primary": true,
+        "order": 0
+    }
+},
+{
+    "model": "shop.productimage",
+    "pk": 50,
+    "fields": {
+        "product": 40,
+        "image": "products/products/vitamin-e-oil-2_sYKXdEJ.jpeg",
+        "alt_text": "Vitamin E Oil",
+        "is_primary": true,
+        "order": 0
+    }
+},
+{
+    "model": "shop.productimage",
+    "pk": 51,
+    "fields": {
+        "product": 41,
+        "image": "products/products/vitamin-c-serum-3_a8olHf9.jpeg",
+        "alt_text": "Vitamin C Serum",
+        "is_primary": true,
+        "order": 0
+    }
+},
+{
+    "model": "shop.productimage",
+    "pk": 52,
+    "fields": {
+        "product": 42,
+        "image": "products/products/vegetable-glycerine-4_OAfASpi.jpeg",
+        "alt_text": "Vegetable Glycerine",
+        "is_primary": true,
+        "order": 0
+    }
+},
+{
+    "model": "shop.productimage",
+    "pk": 53,
+    "fields": {
+        "product": 43,
+        "image": "products/products/turmeric-face-mask-5_zDWHDnq.jpeg",
+        "alt_text": "Turmeric Face Mask",
+        "is_primary": true,
+        "order": 0
+    }
+},
+{
+    "model": "shop.productimage",
+    "pk": 54,
+    "fields": {
+        "product": 44,
+        "image": "products/products/tj-whipped-butter-6_5VPWTDD.jpeg",
+        "alt_text": "TJ Whipped Butter",
+        "is_primary": true,
+        "order": 0
+    }
+},
+{
+    "model": "shop.productimage",
+    "pk": 55,
+    "fields": {
+        "product": 45,
+        "image": "products/products/snail-repairing-cream-7_YEDlkcw.jpeg",
+        "alt_text": "Snail Repairing Cream",
+        "is_primary": true,
+        "order": 0
+    }
+},
+{
+    "model": "shop.productimage",
+    "pk": 56,
+    "fields": {
+        "product": 46,
+        "image": "products/products/slim-green-tea-8_MS5IRqD.jpeg",
+        "alt_text": "Slim Green Tea",
+        "is_primary": true,
+        "order": 0
+    }
+},
+{
+    "model": "shop.productimage",
+    "pk": 57,
+    "fields": {
+        "product": 47,
+        "image": "products/products/shea-butter-9_rBcYkY6.jpeg",
+        "alt_text": "Shea Butter",
+        "is_primary": true,
+        "order": 0
+    }
+},
+{
+    "model": "shop.productimage",
+    "pk": 58,
+    "fields": {
+        "product": 48,
+        "image": "products/products/shaving-cream-10_vk2sILB.jpeg",
+        "alt_text": "Shaving Cream",
+        "is_primary": true,
+        "order": 0
+    }
+},
+{
+    "model": "shop.productimage",
+    "pk": 59,
+    "fields": {
+        "product": 49,
+        "image": "products/products/rose-water-11_9tg21BI.jpeg",
+        "alt_text": "Rose Water",
+        "is_primary": true,
+        "order": 0
+    }
+},
+{
+    "model": "shop.productimage",
+    "pk": 60,
+    "fields": {
+        "product": 50,
+        "image": "products/products/rose-hip-oil-12_WKIQsT4.jpeg",
+        "alt_text": "Rose Hip Oil",
+        "is_primary": true,
+        "order": 0
+    }
+},
+{
+    "model": "shop.productimage",
+    "pk": 61,
+    "fields": {
+        "product": 51,
+        "image": "products/products/rose-hyaluronic-acid-foot-mask-13_nyLH138.jpeg",
+        "alt_text": "Rose & Hyaluronic Acid Foot Mask",
+        "is_primary": true,
+        "order": 0
+    }
+},
+{
+    "model": "shop.productimage",
+    "pk": 62,
+    "fields": {
+        "product": 52,
+        "image": "products/products/rice-repairing-cream-14_5JACtHl.jpeg",
+        "alt_text": "Rice Repairing Cream",
+        "is_primary": true,
+        "order": 0
+    }
+},
+{
+    "model": "shop.productimage",
+    "pk": 63,
+    "fields": {
+        "product": 53,
+        "image": "products/products/rice-milk-soap-15_DuCbcNR.jpeg",
+        "alt_text": "Rice Milk Soap",
+        "is_primary": true,
+        "order": 0
+    }
+},
+{
+    "model": "shop.productimage",
+    "pk": 64,
+    "fields": {
+        "product": 54,
+        "image": "products/products/retinol-hand-cream-16_Pa3AyCs.jpeg",
+        "alt_text": "Retinol Hand Cream",
+        "is_primary": true,
+        "order": 0
+    }
+},
+{
+    "model": "shop.productimage",
+    "pk": 65,
+    "fields": {
+        "product": 55,
+        "image": "products/products/qasil-powder-17_DHARyWQ.jpeg",
+        "alt_text": "Qasil Powder",
+        "is_primary": true,
+        "order": 0
+    }
+},
+{
+    "model": "shop.productimage",
+    "pk": 66,
+    "fields": {
+        "product": 57,
+        "image": "products/products/malibu-sunscreen-19_gG2IQ4w.jpeg",
+        "alt_text": "Malibu Sunscreen",
+        "is_primary": true,
+        "order": 0
+    }
+},
+{
+    "model": "shop.productimage",
+    "pk": 67,
+    "fields": {
+        "product": 58,
+        "image": "products/products/liwa-powder-20_aRUmNUp.jpeg",
+        "alt_text": "Liwa Powder",
+        "is_primary": true,
+        "order": 0
+    }
+},
+{
+    "model": "shop.productimage",
+    "pk": 68,
+    "fields": {
+        "product": 59,
+        "image": "products/products/lip-oil-21_kEk2F8j.jpeg",
+        "alt_text": "Lip Oil",
+        "is_primary": true,
+        "order": 0
+    }
+},
+{
+    "model": "shop.productimage",
+    "pk": 69,
+    "fields": {
+        "product": 60,
+        "image": "products/products/leopard-bonnet-22_zpGtzrf.jpeg",
+        "alt_text": "Leopard Bonnet",
+        "is_primary": true,
+        "order": 0
+    }
+},
+{
+    "model": "shop.productimage",
+    "pk": 70,
+    "fields": {
+        "product": 63,
+        "image": "products/products/collagen-peptide-face-mask-25_B11QgIN.jpeg",
+        "alt_text": "Collagen Peptide Face Mask",
+        "is_primary": true,
+        "order": 0
+    }
+},
+{
+    "model": "shop.productimage",
+    "pk": 71,
+    "fields": {
+        "product": 64,
+        "image": "products/products/coffee-sea-salt-scrub-26_CRmMpVh.jpeg",
+        "alt_text": "Coffee Sea Salt Scrub",
+        "is_primary": true,
+        "order": 0
+    }
+},
+{
+    "model": "shop.productimage",
+    "pk": 72,
+    "fields": {
+        "product": 65,
+        "image": "products/products/bonnet-27_8Pl8mO9.jpeg",
+        "alt_text": "Bonnet",
+        "is_primary": true,
+        "order": 0
+    }
+},
+{
+    "model": "shop.productimage",
+    "pk": 73,
+    "fields": {
+        "product": 56,
+        "image": "products/products/niacinamide_serum.jpeg",
+        "alt_text": "Niacinamide Serum",
+        "is_primary": true,
+        "order": 0
+    }
+},
+{
+    "model": "shop.productimage",
+    "pk": 74,
+    "fields": {
+        "product": 61,
+        "image": "products/products/Hydrolyzed_Collagen.jpeg",
+        "alt_text": "Hydrolyzed Collagen",
+        "is_primary": true,
+        "order": 0
+    }
+},
+{
+    "model": "shop.productimage",
+    "pk": 75,
+    "fields": {
+        "product": 62,
+        "image": "products/products/Dr_Rashel_Sunscreen.jpeg",
+        "alt_text": "Dr Rashel Sunscreen",
+        "is_primary": true,
+        "order": 0
+    }
+},
+{
+    "model": "shop.productimage",
+    "pk": 76,
+    "fields": {
+        "product": 66,
+        "image": "products/products/bonnet_2.jpeg",
+        "alt_text": "Bonnet 2",
+        "is_primary": true,
+        "order": 0
+    }
+},
+{
+    "model": "shop.productimage",
+    "pk": 77,
+    "fields": {
+        "product": 67,
+        "image": "products/products/blue_bonet.jpeg",
+        "alt_text": "Blue Bonnet",
+        "is_primary": true,
+        "order": 0
+    }
+},
+{
+    "model": "shop.productimage",
+    "pk": 78,
+    "fields": {
+        "product": 68,
+        "image": "products/products/black_soap.jpeg",
+        "alt_text": "Black Soap",
+        "is_primary": true,
+        "order": 0
+    }
+},
+{
+    "model": "shop.productimage",
+    "pk": 79,
+    "fields": {
+        "product": 69,
+        "image": "products/products/Bentonite_clay.jpeg",
+        "alt_text": "Bentonite Clay",
+        "is_primary": true,
+        "order": 0
+    }
+},
+{
+    "model": "shop.productimage",
+    "pk": 80,
+    "fields": {
+        "product": 70,
+        "image": "products/products/Bathing_glove.jpeg",
+        "alt_text": "Bathing Glove",
+        "is_primary": true,
+        "order": 0
+    }
+},
+{
+    "model": "shop.productimage",
+    "pk": 81,
+    "fields": {
+        "product": 71,
+        "image": "products/products/bathing_glove_2.jpeg",
+        "alt_text": "Bathing Glove 2",
+        "is_primary": true,
+        "order": 0
+    }
+},
+{
+    "model": "shop.productimage",
+    "pk": 82,
+    "fields": {
+        "product": 72,
+        "image": "products/products/banana_foot_mask.jpeg",
+        "alt_text": "Banana Foot Mask",
+        "is_primary": true,
+        "order": 0
+    }
+},
+{
+    "model": "shop.productimage",
+    "pk": 83,
+    "fields": {
+        "product": 73,
+        "image": "products/products/Ayurvedic_soap.jpeg",
+        "alt_text": "Ayurvedic Soap",
+        "is_primary": true,
+        "order": 0
+    }
+},
+{
+    "model": "shop.productimage",
+    "pk": 84,
+    "fields": {
+        "product": 74,
+        "image": "products/products/Asantee_soap.jpeg",
+        "alt_text": "Asantee Soap",
+        "is_primary": true,
+        "order": 0
+    }
+},
+{
+    "model": "shop.productimage",
+    "pk": 85,
+    "fields": {
+        "product": 75,
+        "image": "products/products/Aloe_vera_gel.jpeg",
+        "alt_text": "Aloe Vera Gel",
+        "is_primary": true,
+        "order": 0
+    }
+},
+{
+    "model": "shop.review",
+    "pk": 1,
+    "fields": {
+        "product": 56,
+        "user": [
+            "Admin"
+        ],
+        "rating": 5,
+        "title": "Very good",
+        "comment": "It cleared my face",
+        "is_approved": false,
+        "created_at": "2026-03-06T21:45:15.974Z"
+    }
+},
+{
+    "model": "shop.cart",
+    "pk": 3,
+    "fields": {
+        "user": [
+            "nimo"
+        ],
+        "created_at": "2026-02-25T16:23:27.987Z",
+        "updated_at": "2026-02-25T16:23:27.987Z"
+    }
+},
+{
+    "model": "shop.cart",
+    "pk": 4,
+    "fields": {
+        "user": [
+            "07647687897"
+        ],
+        "created_at": "2026-03-03T17:46:54.702Z",
+        "updated_at": "2026-03-03T17:46:54.702Z"
+    }
+},
+{
+    "model": "shop.cart",
+    "pk": 5,
+    "fields": {
+        "user": [
+            "Nimoh"
+        ],
+        "created_at": "2026-03-06T19:28:04.152Z",
+        "updated_at": "2026-03-06T19:28:04.152Z"
+    }
+},
+{
+    "model": "shop.cart",
+    "pk": 6,
+    "fields": {
+        "user": [
+            "Admin"
+        ],
+        "created_at": "2026-03-06T21:08:01.470Z",
+        "updated_at": "2026-03-06T21:08:01.470Z"
+    }
+},
+{
+    "model": "shop.cart",
+    "pk": 7,
+    "fields": {
+        "user": [
+            "test_user"
+        ],
+        "created_at": "2026-03-17T18:38:18.404Z",
+        "updated_at": "2026-03-17T18:38:18.404Z"
+    }
+},
+{
+    "model": "shop.cartitem",
+    "pk": 10,
+    "fields": {
+        "cart": 4,
+        "product": 75,
+        "quantity": 1,
+        "added_at": "2026-03-04T08:15:59.564Z"
+    }
+},
+{
+    "model": "shop.cartitem",
+    "pk": 11,
+    "fields": {
+        "cart": 4,
+        "product": 71,
+        "quantity": 1,
+        "added_at": "2026-03-04T08:49:05.617Z"
+    }
+},
+{
+    "model": "shop.cartitem",
+    "pk": 12,
+    "fields": {
+        "cart": 4,
+        "product": 73,
+        "quantity": 7,
+        "added_at": "2026-03-04T08:51:34.687Z"
+    }
+},
+{
+    "model": "shop.cartitem",
+    "pk": 13,
+    "fields": {
+        "cart": 5,
+        "product": 75,
+        "quantity": 5,
+        "added_at": "2026-03-06T19:28:19.208Z"
+    }
+},
+{
+    "model": "shop.cartitem",
+    "pk": 14,
+    "fields": {
+        "cart": 7,
+        "product": 76,
+        "quantity": 1,
+        "added_at": "2026-03-17T18:38:18.448Z"
+    }
+},
+{
+    "model": "shop.wishlist",
+    "pk": 3,
+    "fields": {
+        "user": [
+            "nimo"
+        ],
+        "created_at": "2026-02-25T16:23:27.994Z",
+        "products": []
+    }
+},
+{
+    "model": "shop.wishlist",
+    "pk": 4,
+    "fields": {
+        "user": [
+            "07647687897"
+        ],
+        "created_at": "2026-03-03T17:46:54.710Z",
+        "products": [
+            74,
+            73,
+            65
+        ]
+    }
+},
+{
+    "model": "shop.wishlist",
+    "pk": 5,
+    "fields": {
+        "user": [
+            "Nimoh"
+        ],
+        "created_at": "2026-03-06T19:28:04.161Z",
+        "products": []
+    }
+},
+{
+    "model": "shop.wishlist",
+    "pk": 6,
+    "fields": {
+        "user": [
+            "Admin"
+        ],
+        "created_at": "2026-03-06T21:08:01.480Z",
+        "products": []
+    }
+},
+{
+    "model": "shop.wishlist",
+    "pk": 7,
+    "fields": {
+        "user": [
+            "test_user"
+        ],
+        "created_at": "2026-03-17T18:38:18.405Z",
+        "products": []
+    }
+},
+{
+    "model": "shop.order",
+    "pk": 1,
+    "fields": {
+        "user": [
+            "07647687897"
+        ],
+        "order_number": "TJ71731D30",
+        "status": "pending",
+        "full_name": "",
+        "phone_number": "0712345678",
+        "email": "emuturi339@gmail.com",
+        "address": "56673",
+        "payment_method": "mpesa",
+        "payment_status": "pending",
+        "transaction_id": null,
+        "subtotal": "550.00",
+        "shipping_cost": "0.00",
+        "total": "550.00",
+        "created_at": "2026-03-03T17:48:45.706Z",
+        "updated_at": "2026-03-03T17:48:45.706Z"
+    }
+},
+{
+    "model": "shop.order",
+    "pk": 2,
+    "fields": {
+        "user": [
+            "07647687897"
+        ],
+        "order_number": "TJB85383C2",
+        "status": "pending",
+        "full_name": "",
+        "phone_number": "0712345678",
+        "email": "emuturi339@gmail.com",
+        "address": "56673",
+        "payment_method": "mpesa",
+        "payment_status": "pending",
+        "transaction_id": null,
+        "subtotal": "550.00",
+        "shipping_cost": "0.00",
+        "total": "550.00",
+        "created_at": "2026-03-03T17:50:26.246Z",
+        "updated_at": "2026-03-03T17:50:26.246Z"
+    }
+},
+{
+    "model": "shop.order",
+    "pk": 3,
+    "fields": {
+        "user": [
+            "07647687897"
+        ],
+        "order_number": "TJ9FE544F9",
+        "status": "pending",
+        "full_name": "",
+        "phone_number": "0712345678",
+        "email": "emuturi339@gmail.com",
+        "address": "56673",
+        "payment_method": "mpesa",
+        "payment_status": "pending",
+        "transaction_id": null,
+        "subtotal": "1000.00",
+        "shipping_cost": "0.00",
+        "total": "1000.00",
+        "created_at": "2026-03-03T17:52:29.129Z",
+        "updated_at": "2026-03-03T17:52:29.129Z"
+    }
+},
+{
+    "model": "shop.orderitem",
+    "pk": 1,
+    "fields": {
+        "order": 1,
+        "product": 65,
+        "product_name": "Bonnet",
+        "product_price": "550.00",
+        "quantity": 1
+    }
+},
+{
+    "model": "shop.orderitem",
+    "pk": 2,
+    "fields": {
+        "order": 2,
+        "product": 73,
+        "product_name": "Ayurvedic Soap",
+        "product_price": "550.00",
+        "quantity": 1
+    }
+},
+{
+    "model": "shop.orderitem",
+    "pk": 3,
+    "fields": {
+        "order": 3,
+        "product": 75,
+        "product_name": "Aloe Vera Gel",
+        "product_price": "500.00",
+        "quantity": 2
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 1,
+    "fields": {
+        "action_time": "2026-02-25T17:10:04.294Z",
+        "user": [
+            "nimo"
+        ],
+        "content_type": [
+            "shop",
+            "category"
+        ],
+        "object_id": "1",
+        "object_repr": "Bonnets",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 2,
+    "fields": {
+        "action_time": "2026-02-25T17:10:28.665Z",
+        "user": [
+            "nimo"
+        ],
+        "content_type": [
+            "shop",
+            "category"
+        ],
+        "object_id": "2",
+        "object_repr": "Satin bonnets",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 3,
+    "fields": {
+        "action_time": "2026-02-25T17:11:09.399Z",
+        "user": [
+            "nimo"
+        ],
+        "content_type": [
+            "shop",
+            "category"
+        ],
+        "object_id": "3",
+        "object_repr": "soap",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 4,
+    "fields": {
+        "action_time": "2026-02-25T17:11:22.335Z",
+        "user": [
+            "nimo"
+        ],
+        "content_type": [
+            "shop",
+            "category"
+        ],
+        "object_id": "4",
+        "object_repr": "Soaps",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 5,
+    "fields": {
+        "action_time": "2026-02-25T17:11:46.313Z",
+        "user": [
+            "nimo"
+        ],
+        "content_type": [
+            "shop",
+            "category"
+        ],
+        "object_id": "5",
+        "object_repr": "Oils",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 6,
+    "fields": {
+        "action_time": "2026-02-25T17:15:48.783Z",
+        "user": [
+            "nimo"
+        ],
+        "content_type": [
+            "shop",
+            "product"
+        ],
+        "object_id": "1",
+        "object_repr": "Blue bonet",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 7,
+    "fields": {
+        "action_time": "2026-03-06T21:35:45.953Z",
+        "user": [
+            "Admin"
+        ],
+        "content_type": [
+            "shop",
+            "product"
+        ],
+        "object_id": "75",
+        "object_repr": "Aloe Vera Gel",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Is bestseller\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 8,
+    "fields": {
+        "action_time": "2026-03-06T21:35:45.956Z",
+        "user": [
+            "Admin"
+        ],
+        "content_type": [
+            "shop",
+            "product"
+        ],
+        "object_id": "74",
+        "object_repr": "Asantee Soap",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Is bestseller\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 9,
+    "fields": {
+        "action_time": "2026-03-06T21:35:45.957Z",
+        "user": [
+            "Admin"
+        ],
+        "content_type": [
+            "shop",
+            "product"
+        ],
+        "object_id": "73",
+        "object_repr": "Ayurvedic Soap",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Is bestseller\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 10,
+    "fields": {
+        "action_time": "2026-03-06T21:35:45.958Z",
+        "user": [
+            "Admin"
+        ],
+        "content_type": [
+            "shop",
+            "product"
+        ],
+        "object_id": "72",
+        "object_repr": "Banana Foot Mask",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Is bestseller\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 11,
+    "fields": {
+        "action_time": "2026-03-06T21:35:45.959Z",
+        "user": [
+            "Admin"
+        ],
+        "content_type": [
+            "shop",
+            "product"
+        ],
+        "object_id": "71",
+        "object_repr": "Bathing Glove 2",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Is bestseller\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 12,
+    "fields": {
+        "action_time": "2026-03-06T21:35:45.959Z",
+        "user": [
+            "Admin"
+        ],
+        "content_type": [
+            "shop",
+            "product"
+        ],
+        "object_id": "70",
+        "object_repr": "Bathing Glove",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Is bestseller\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 13,
+    "fields": {
+        "action_time": "2026-03-06T21:35:45.961Z",
+        "user": [
+            "Admin"
+        ],
+        "content_type": [
+            "shop",
+            "product"
+        ],
+        "object_id": "69",
+        "object_repr": "Bentonite Clay",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Is special\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 14,
+    "fields": {
+        "action_time": "2026-03-06T21:35:45.962Z",
+        "user": [
+            "Admin"
+        ],
+        "content_type": [
+            "shop",
+            "product"
+        ],
+        "object_id": "68",
+        "object_repr": "Black Soap",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Is special\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 15,
+    "fields": {
+        "action_time": "2026-03-06T21:35:45.963Z",
+        "user": [
+            "Admin"
+        ],
+        "content_type": [
+            "shop",
+            "product"
+        ],
+        "object_id": "67",
+        "object_repr": "Blue Bonnet",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Is special\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 16,
+    "fields": {
+        "action_time": "2026-03-06T21:35:45.966Z",
+        "user": [
+            "Admin"
+        ],
+        "content_type": [
+            "shop",
+            "product"
+        ],
+        "object_id": "66",
+        "object_repr": "Bonnet 2",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Is special\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 17,
+    "fields": {
+        "action_time": "2026-03-06T21:35:45.967Z",
+        "user": [
+            "Admin"
+        ],
+        "content_type": [
+            "shop",
+            "product"
+        ],
+        "object_id": "65",
+        "object_repr": "Bonnet",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Is special\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 18,
+    "fields": {
+        "action_time": "2026-03-06T21:35:45.969Z",
+        "user": [
+            "Admin"
+        ],
+        "content_type": [
+            "shop",
+            "product"
+        ],
+        "object_id": "64",
+        "object_repr": "Coffee Sea Salt Scrub",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Is new arrival\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 19,
+    "fields": {
+        "action_time": "2026-03-06T21:35:45.970Z",
+        "user": [
+            "Admin"
+        ],
+        "content_type": [
+            "shop",
+            "product"
+        ],
+        "object_id": "63",
+        "object_repr": "Collagen Peptide Face Mask",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Is new arrival\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 20,
+    "fields": {
+        "action_time": "2026-03-06T21:35:45.971Z",
+        "user": [
+            "Admin"
+        ],
+        "content_type": [
+            "shop",
+            "product"
+        ],
+        "object_id": "62",
+        "object_repr": "Dr Rashel Sunscreen",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Is new arrival\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 21,
+    "fields": {
+        "action_time": "2026-03-06T21:35:45.972Z",
+        "user": [
+            "Admin"
+        ],
+        "content_type": [
+            "shop",
+            "product"
+        ],
+        "object_id": "60",
+        "object_repr": "Leopard Bonnet",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Is new arrival\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 22,
+    "fields": {
+        "action_time": "2026-03-06T21:35:45.973Z",
+        "user": [
+            "Admin"
+        ],
+        "content_type": [
+            "shop",
+            "product"
+        ],
+        "object_id": "59",
+        "object_repr": "Lip Oil",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Is new arrival\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 23,
+    "fields": {
+        "action_time": "2026-03-06T21:35:45.974Z",
+        "user": [
+            "Admin"
+        ],
+        "content_type": [
+            "shop",
+            "product"
+        ],
+        "object_id": "58",
+        "object_repr": "Liwa Powder",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Is new arrival\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 24,
+    "fields": {
+        "action_time": "2026-03-06T21:35:45.974Z",
+        "user": [
+            "Admin"
+        ],
+        "content_type": [
+            "shop",
+            "product"
+        ],
+        "object_id": "55",
+        "object_repr": "Qasil Powder",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Is new arrival\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 25,
+    "fields": {
+        "action_time": "2026-03-06T21:35:45.975Z",
+        "user": [
+            "Admin"
+        ],
+        "content_type": [
+            "shop",
+            "product"
+        ],
+        "object_id": "54",
+        "object_repr": "Retinol Hand Cream",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Is bestseller\", \"Is special\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 26,
+    "fields": {
+        "action_time": "2026-03-06T21:35:45.977Z",
+        "user": [
+            "Admin"
+        ],
+        "content_type": [
+            "shop",
+            "product"
+        ],
+        "object_id": "53",
+        "object_repr": "Rice Milk Soap",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Is new arrival\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 27,
+    "fields": {
+        "action_time": "2026-03-06T21:35:45.978Z",
+        "user": [
+            "Admin"
+        ],
+        "content_type": [
+            "shop",
+            "product"
+        ],
+        "object_id": "52",
+        "object_repr": "Rice Repairing Cream",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Is new arrival\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 28,
+    "fields": {
+        "action_time": "2026-03-06T21:35:45.980Z",
+        "user": [
+            "Admin"
+        ],
+        "content_type": [
+            "shop",
+            "product"
+        ],
+        "object_id": "51",
+        "object_repr": "Rose & Hyaluronic Acid Foot Mask",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Is new arrival\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 29,
+    "fields": {
+        "action_time": "2026-03-06T21:35:45.982Z",
+        "user": [
+            "Admin"
+        ],
+        "content_type": [
+            "shop",
+            "product"
+        ],
+        "object_id": "50",
+        "object_repr": "Rose Hip Oil",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Is bestseller\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 30,
+    "fields": {
+        "action_time": "2026-03-06T21:35:45.983Z",
+        "user": [
+            "Admin"
+        ],
+        "content_type": [
+            "shop",
+            "product"
+        ],
+        "object_id": "49",
+        "object_repr": "Rose Water",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Is bestseller\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 31,
+    "fields": {
+        "action_time": "2026-03-06T21:35:45.984Z",
+        "user": [
+            "Admin"
+        ],
+        "content_type": [
+            "shop",
+            "product"
+        ],
+        "object_id": "48",
+        "object_repr": "Shaving Cream",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Is bestseller\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 32,
+    "fields": {
+        "action_time": "2026-03-06T21:35:45.985Z",
+        "user": [
+            "Admin"
+        ],
+        "content_type": [
+            "shop",
+            "product"
+        ],
+        "object_id": "47",
+        "object_repr": "Shea Butter",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Is bestseller\", \"Is new arrival\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 33,
+    "fields": {
+        "action_time": "2026-03-06T21:35:45.986Z",
+        "user": [
+            "Admin"
+        ],
+        "content_type": [
+            "shop",
+            "product"
+        ],
+        "object_id": "46",
+        "object_repr": "Slim Green Tea",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Is new arrival\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 34,
+    "fields": {
+        "action_time": "2026-03-06T21:35:45.987Z",
+        "user": [
+            "Admin"
+        ],
+        "content_type": [
+            "shop",
+            "product"
+        ],
+        "object_id": "43",
+        "object_repr": "Turmeric Face Mask",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Is bestseller\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 35,
+    "fields": {
+        "action_time": "2026-03-06T21:35:45.988Z",
+        "user": [
+            "Admin"
+        ],
+        "content_type": [
+            "shop",
+            "product"
+        ],
+        "object_id": "42",
+        "object_repr": "Vegetable Glycerine",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Is bestseller\"]}}]"
+    }
+}
+]

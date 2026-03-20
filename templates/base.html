@@ -1094,8 +1094,8 @@
                  class="brand-logo-img">
         </a>
 
-        <!-- Mobile Toggle -->
-        <button class="navbar-toggler border-0 p-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarNav"
+        <!-- Mobile Toggle (Hidden as per request) -->
+        <button class="navbar-toggler border-0 p-2 d-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"
                 style="background: transparent; box-shadow: none;">
             <i class="bi bi-list fs-2" style="color: var(--tj-primary-dark);"></i>
@@ -1201,16 +1201,12 @@
         <a href="{% url 'shop:cart' %}" class="mobile-nav-item {% if request.resolver_match.url_name == 'cart' %}active{% endif %}">
             <i class="bi bi-bag"></i>
             <span>Cart</span>
-            {% if cart_count > 0 %}
-            <span class="mobile-nav-badge">{{ cart_count }}</span>
-            {% endif %}
+            <span class="mobile-nav-badge" id="mobile-cart-count" style="{% if cart_count == 0 %}display: none;{% endif %}">{{ cart_count }}</span>
         </a>
         <a href="{% url 'shop:wishlist' %}" class="mobile-nav-item {% if request.resolver_match.url_name == 'wishlist' %}active{% endif %}">
             <i class="bi bi-heart"></i>
             <span>Saved</span>
-            {% if wishlist_count > 0 %}
-            <span class="mobile-nav-badge">{{ wishlist_count }}</span>
-            {% endif %}
+            <span class="mobile-nav-badge" id="mobile-wishlist-count" style="{% if wishlist_count == 0 %}display: none;{% endif %}">{{ wishlist_count }}</span>
         </a>
         <a href="{% if user.is_authenticated %}{% url 'accounts:profile' %}{% else %}{% url 'accounts:login' %}{% endif %}"
            class="mobile-nav-item {% if request.resolver_match.url_name == 'profile' %}active{% endif %}">
@@ -1621,11 +1617,21 @@
             })
             .then(data => {
                 if (data.status === 'success' || data.success) {
-                    // Update cart badge
-                    const badge = document.getElementById('cart-count');
-                    if (badge && data.cart_count !== undefined) {
-                        badge.innerText = data.cart_count;
-                        badge.style.display = data.cart_count > 0 ? 'flex' : 'none';
+                    // Update cart badges
+                    const count = data.cart_count;
+                    if (count !== undefined) {
+                        // Desktop
+                        const badge = document.getElementById('cart-count');
+                        if (badge) {
+                            badge.innerText = count;
+                            badge.style.display = count > 0 ? 'flex' : 'none';
+                        }
+                        // Mobile
+                        const mobileBadge = document.getElementById('mobile-cart-count');
+                        if (mobileBadge) {
+                            mobileBadge.innerText = count;
+                            mobileBadge.style.display = count > 0 ? 'inline-flex' : 'none';
+                        }
                     }
                     showToast('Added to cart! 🌿');
                 } else {
@@ -1694,11 +1700,21 @@ if (wishlistBtn) {
             showToast('Error: ' + data.message, 'error');
         }
         
-        // Update wishlist count badge
-        const badge = document.getElementById('wishlist-count');
-        if (badge && data.wishlist_count !== undefined) {
-            badge.innerText = data.wishlist_count;
-            badge.style.display = data.wishlist_count > 0 ? 'flex' : 'none';
+        // Update wishlist count badges
+        const count = data.wishlist_count;
+        if (count !== undefined) {
+            // Desktop
+            const badge = document.getElementById('wishlist-count');
+            if (badge) {
+                badge.innerText = count;
+                badge.style.display = count > 0 ? 'flex' : 'none';
+            }
+            // Mobile
+            const mobileBadge = document.getElementById('mobile-wishlist-count');
+            if (mobileBadge) {
+                mobileBadge.innerText = count;
+                mobileBadge.style.display = count > 0 ? 'inline-flex' : 'none';
+            }
         }
     })
     .catch(error => {

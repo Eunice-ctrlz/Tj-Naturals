@@ -30,7 +30,7 @@ class UserRegistrationForm(UserCreationForm):
     phone_number = forms.CharField(
         max_length=13,
         widget=forms.TextInput(attrs={
-            'placeholder': '254712345678',
+            'placeholder': '25412345678',
             'class': 'form-control'
         })
     )
@@ -49,7 +49,7 @@ class UserRegistrationForm(UserCreationForm):
     )
     username = forms.CharField(
         widget=forms.TextInput(attrs={
-            'placeholder': 'johndoe',
+            'placeholder': 'your username',
             'class': 'form-control'
         })
     )
@@ -74,10 +74,11 @@ class UserRegistrationForm(UserCreationForm):
 
 class UserLoginForm(AuthenticationForm):
     username = forms.CharField(
-        label='Username',
+        label='Username or Phone Number',
         widget=forms.TextInput(attrs={
-            'placeholder': 'your username',
-            'class': 'form-control'
+            'placeholder': 'username or phone no.',
+            'class': 'form-control',
+            'autofocus': True
         })
     )
     password = forms.CharField(

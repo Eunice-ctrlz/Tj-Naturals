@@ -1,11 +1,11 @@
 import csv
 import os
 
-# --- SETTINGS FOR TJNATURALS ---
+
 csv_filename = 'products.csv'  
 column_name = 'image_name'     
-image_folder = './images/'     # Relative to your TJNATURALS folder
-# ------------------------------
+image_folder = './images/'    
+
 
 def check_images():
     # 1. Check if CSV exists

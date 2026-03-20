@@ -20,6 +20,12 @@ def register_view(request):
             user = form.save()
             login(request, user)
             messages.success(request, f'Welcome to TJ Naturals, {user.full_name}!')
+            
+            # Redirect to next page if specified
+            next_url = request.GET.get('next') or request.POST.get('next')
+            if next_url:
+                return redirect(next_url)
+                
             return redirect('shop:home')
         else:
             messages.error(request, 'Please correct the errors below.')

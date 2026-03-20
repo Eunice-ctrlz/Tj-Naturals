@@ -6444,3 +6444,910 @@ Watching for file changes with StatReloader
 "GET /media/products/products/whipped-butter-1_NaqsAbf.jpeg HTTP/1.1" 200 2078075
 "GET /media/products/products/tj-whipped-butter-6_bx4RWYn.jpeg HTTP/1.1" 200 1965502
 "GET /products/?category=bath-accessories HTTP/1.1" 200 81257
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 111569
+"GET /static/images/tjlogo(3).png HTTP/1.1" 304 0
+"GET /media/profiles/hero%201.png HTTP/1.1" 200 69798
+"GET /media/profiles/hero%202.png HTTP/1.1" 200 111334
+"GET /static/manifest.json HTTP/1.1" 304 0
+"GET /media/products/products/Aloe_vera_gel.jpeg HTTP/1.1" 200 2065824
+"GET /media/products/products/Asantee_soap.jpeg HTTP/1.1" 200 2805878
+"GET /media/products/products/Ayurvedic_soap.jpeg HTTP/1.1" 200 1511213
+"GET /media/products/products/bathing_glove_2.jpeg HTTP/1.1" 304 0
+"GET /media/products/products/niacinamide_serum.jpeg HTTP/1.1" 200 649315
+"GET /media/products/products/Bathing_glove.jpeg HTTP/1.1" 304 0
+"GET /media/products/products/banana_foot_mask.jpeg HTTP/1.1" 200 2391441
+"GET /media/products/products/retinol-hand-cream-16_mLWwPqv.jpeg HTTP/1.1" 200 1154641
+"GET /media/products/products/Bentonite_clay.jpeg HTTP/1.1" 200 2324503
+"GET /media/products/products/black_soap.jpeg HTTP/1.1" 200 2269625
+"GET /media/products/products/blue_bonet.jpeg HTTP/1.1" 200 2288582
+"GET /media/products/products/bonnet_2.jpeg HTTP/1.1" 200 2552765
+"GET /media/products/products/bonnet-27_3HqiOY9.jpeg HTTP/1.1" 200 2900413
+"GET /static/images/icon-192.png HTTP/1.1" 304 0
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET /static/js/main.js HTTP/1.1" 304 0
+"GET /static/css/style.css HTTP/1.1" 304 0
+"GET / HTTP/1.1" 200 111569
+"GET /static/images/icon-512.png HTTP/1.1" 304 0
+"GET /static/offline.html HTTP/1.1" 304 0
+"GET / HTTP/1.1" 200 111569
+"GET /media/profiles/hero%201.png HTTP/1.1" 200 69798
+"GET /media/profiles/hero%202.png HTTP/1.1" 200 111334
+"GET /static/images/tjlogo(3).png HTTP/1.1" 200 343057
+"GET /media/products/products/banana_foot_mask.jpeg HTTP/1.1" 200 2391441
+"GET /media/products/products/Asantee_soap.jpeg HTTP/1.1" 200 2805878
+"GET /media/products/products/Bathing_glove.jpeg HTTP/1.1" 200 3334504
+"GET /media/products/products/bathing_glove_2.jpeg HTTP/1.1" 200 3123307
+"GET /media/products/products/Ayurvedic_soap.jpeg HTTP/1.1" 200 1511213
+"GET /media/products/products/Aloe_vera_gel.jpeg HTTP/1.1" 200 2065824
+"GET /media/products/products/niacinamide_serum.jpeg HTTP/1.1" 200 649315
+"GET /media/products/products/retinol-hand-cream-16_mLWwPqv.jpeg HTTP/1.1" 200 1154641
+"GET /media/products/products/black_soap.jpeg HTTP/1.1" 200 2269625
+"GET /media/products/products/Bentonite_clay.jpeg HTTP/1.1" 200 2324503
+"GET /media/products/products/blue_bonet.jpeg HTTP/1.1" 200 2288582
+"GET /media/products/products/bonnet_2.jpeg HTTP/1.1" 200 2552765
+"GET /media/products/products/Hydrolyzed_Collagen.jpeg HTTP/1.1" 200 2213008
+"GET /media/products/products/bonnet-27_3HqiOY9.jpeg HTTP/1.1" 200 2900413
+"GET /media/products/products/snail-repairing-cream-7_ODJPHbL.jpeg HTTP/1.1" 200 2226958
+"GET /media/products/products/collagen-peptide-face-mask-25_KnPZ0n1.jpeg HTTP/1.1" 200 2054550
+"GET /media/products/products/coffee-sea-salt-scrub-26_JuQMruw.jpeg HTTP/1.1" 200 2266621
+"GET /media/products/products/Dr_Rashel_Sunscreen.jpeg HTTP/1.1" 200 2173525
+"GET /media/products/products/leopard-bonnet-22_4mSqWws.jpeg HTTP/1.1" 200 3052581
+"GET /media/products/products/lip-oil-21_OVAD6Bd.jpeg HTTP/1.1" 200 1342091
+"GET /media/products/products/liwa-powder-20_zecv8ap.jpeg HTTP/1.1" 200 2212964
+"GET /media/products/products/qasil-powder-17_zbMctaC.jpeg HTTP/1.1" 200 3275509
+"GET /products/ HTTP/1.1" 200 128230
+"GET /cart/ HTTP/1.1" 200 58005
+"GET /wishlist/ HTTP/1.1" 200 56452
+"GET /accounts/login/ HTTP/1.1" 200 57848
+"GET / HTTP/1.1" 200 111569
+"GET / HTTP/1.1" 200 111569
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET / HTTP/1.1" 200 111569
+"GET /accounts/login/ HTTP/1.1" 200 57848
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET /cart/ HTTP/1.1" 200 58005
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET /wishlist/ HTTP/1.1" 200 56452
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET / HTTP/1.1" 200 111569
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET /products/?category=body-butter HTTP/1.1" 200 81270
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET /products/?category=bath-accessories HTTP/1.1" 200 81249
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET /products/?category=cleansers HTTP/1.1" 200 81416
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET /products/ HTTP/1.1" 200 128230
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET /products/?q=sunscreen HTTP/1.1" 200 81053
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET / HTTP/1.1" 200 111569
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET /products/ HTTP/1.1" 200 128230
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET /products/ HTTP/1.1" 200 128230
+"GET /service-worker.js HTTP/1.1" 200 3498
+"POST /wishlist/toggle/ HTTP/1.1" 200 110
+"GET /wishlist/ HTTP/1.1" 200 57829
+"GET /service-worker.js HTTP/1.1" 200 3498
+"POST /cart/add/ HTTP/1.1" 200 119
+"POST /wishlist/toggle/ HTTP/1.1" 200 117
+"GET /cart/ HTTP/1.1" 200 61311
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET /checkout/ HTTP/1.1" 302 0
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET /cart/ HTTP/1.1" 200 61311
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET /wishlist/ HTTP/1.1" 200 56494
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET /cart/ HTTP/1.1" 200 61311
+"GET /checkout/ HTTP/1.1" 302 0
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET /cart/ HTTP/1.1" 200 61311
+"GET /service-worker.js HTTP/1.1" 200 3498
+"POST /cart/update/ HTTP/1.1" 200 130
+"POST /cart/update/ HTTP/1.1" 200 130
+"GET /cart/ HTTP/1.1" 200 61314
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET /cart/ HTTP/1.1" 200 61314
+"GET /checkout/ HTTP/1.1" 302 0
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET /cart/ HTTP/1.1" 200 61314
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET /cart/ HTTP/1.1" 200 61314
+"GET /service-worker.js HTTP/1.1" 200 3498
+"POST /cart/update/ HTTP/1.1" 200 130
+"POST /cart/update/ HTTP/1.1" 200 130
+"POST /cart/update/ HTTP/1.1" 200 130
+"POST /cart/update/ HTTP/1.1" 200 130
+"POST /cart/update/ HTTP/1.1" 200 130
+"POST /cart/update/ HTTP/1.1" 200 130
+"GET /checkout/ HTTP/1.1" 302 0
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET / HTTP/1.1" 200 111611
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET / HTTP/1.1" 200 111611
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET /cart/ HTTP/1.1" 200 61314
+"GET /checkout/ HTTP/1.1" 302 0
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET /cart/ HTTP/1.1" 200 61314
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET /checkout/ HTTP/1.1" 302 0
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET /cart/ HTTP/1.1" 200 61787
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET /cart/ HTTP/1.1" 200 61787
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET /cart/ HTTP/1.1" 200 62770
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET /checkout/ HTTP/1.1" 302 0
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET / HTTP/1.1" 200 112516
+"GET /service-worker.js HTTP/1.1" 200 3498
+C:\Users\USER\Desktop\TJNATURALS\shop\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\TJNATURALS\shop\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /accounts/login/ HTTP/1.1" 200 58795
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET /accounts/register/ HTTP/1.1" 200 63900
+"GET /service-worker.js HTTP/1.1" 200 3498
+C:\Users\USER\Desktop\TJNATURALS\accounts\forms.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /accounts/register/ HTTP/1.1" 200 63895
+"GET /service-worker.js HTTP/1.1" 200 3498
+C:\Users\USER\Desktop\TJNATURALS\accounts\forms.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\TJNATURALS\accounts\forms.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\TJNATURALS\TJNaturals\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\TJNATURALS\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\TJNATURALS\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\TJNATURALS\shop\utils.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\TJNATURALS\accounts\signals.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\TJNATURALS\accounts\signals.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /accounts/register/ HTTP/1.1" 200 63905
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET /cart/ HTTP/1.1" 200 62770
+"GET /checkout/ HTTP/1.1" 302 0
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET /checkout/ HTTP/1.1" 302 0
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET /cart/ HTTP/1.1" 200 62770
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET /products/ HTTP/1.1" 200 128888
+"GET /cart/ HTTP/1.1" 200 62770
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET /checkout/ HTTP/1.1" 302 0
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET /service-worker.js HTTP/1.1" 200 3498
+C:\Users\USER\Desktop\TJNATURALS\shop\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\TJNATURALS\shop\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /checkout/ HTTP/1.1" 302 0
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET /checkout/ HTTP/1.1" 302 0
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET /cart/ HTTP/1.1" 200 63039
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET /accounts/login/?next=/checkout/ HTTP/1.1" 200 59034
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET /cart/ HTTP/1.1" 200 63039
+"GET /accounts/login/?next=/checkout/ HTTP/1.1" 200 59034
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET /accounts/register/?next=/checkout/ HTTP/1.1" 200 63905
+"GET /service-worker.js HTTP/1.1" 200 3498
+"POST /accounts/register/?next=/checkout/ HTTP/1.1" 200 64748
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET /accounts/login/ HTTP/1.1" 200 58817
+"GET /service-worker.js HTTP/1.1" 200 3498
+"POST /accounts/login/ HTTP/1.1" 302 0
+"GET / HTTP/1.1" 200 112828
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET /cart/ HTTP/1.1" 200 66558
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET /checkout/ HTTP/1.1" 200 61176
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET /wishlist/ HTTP/1.1" 200 61898
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET /cart/ HTTP/1.1" 200 66558
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET /cart/ HTTP/1.1" 200 66558
+"GET / HTTP/1.1" 200 112487
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET /service-worker.js HTTP/1.1" 200 3498
+C:\Users\USER\Desktop\TJNATURALS\TJNaturals\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\TJNATURALS\accounts\forms.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\TJNATURALS\TJNaturals\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\TJNATURALS\accounts\forms.py changed, reloading.
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 112487
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET /accounts/profile/ HTTP/1.1" 200 69674
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET /cart/ HTTP/1.1" 200 66558
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET /cart/ HTTP/1.1" 200 66558
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET /wishlist/ HTTP/1.1" 200 61898
+"GET /accounts/profile/ HTTP/1.1" 200 69674
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET /accounts/profile/edit/ HTTP/1.1" 200 61528
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET /cart/ HTTP/1.1" 200 66558
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET /wishlist/ HTTP/1.1" 200 61898
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET /accounts/profile/ HTTP/1.1" 200 69674
+"GET /service-worker.js HTTP/1.1" 200 3498
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 112553
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET /products/?q= HTTP/1.1" 200 128925
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET / HTTP/1.1" 200 112553
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET / HTTP/1.1" 200 113366
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET / HTTP/1.1" 200 113366
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET / HTTP/1.1" 200 113388
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET / HTTP/1.1" 200 112389
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET / HTTP/1.1" 200 113088
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET / HTTP/1.1" 200 112396
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET / HTTP/1.1" 200 112396
+"GET /media/profiles/hero%201.png HTTP/1.1" 200 69798
+"GET /static/images/tjlogo(3).png HTTP/1.1" 200 343057
+"GET /media/profiles/hero%202.png HTTP/1.1" 200 111334
+"GET /media/products/products/Aloe_vera_gel.jpeg HTTP/1.1" 200 2065824
+"GET /media/products/products/Asantee_soap.jpeg HTTP/1.1" 200 2805878
+"GET /media/products/products/niacinamide_serum.jpeg HTTP/1.1" 200 649315
+"GET /media/products/products/retinol-hand-cream-16_mLWwPqv.jpeg HTTP/1.1" 200 1154641
+"GET /media/products/products/Ayurvedic_soap.jpeg HTTP/1.1" 200 1511213
+"GET /media/products/products/banana_foot_mask.jpeg HTTP/1.1" 200 2391441
+"GET /media/products/products/bathing_glove_2.jpeg HTTP/1.1" 200 3123307
+"GET /media/products/products/Bathing_glove.jpeg HTTP/1.1" 200 3334504
+"GET /media/products/products/Bentonite_clay.jpeg HTTP/1.1" 200 2324503
+"GET /media/products/products/black_soap.jpeg HTTP/1.1" 200 2269625
+"GET /media/products/products/bonnet_2.jpeg HTTP/1.1" 200 2552765
+"GET /media/products/products/blue_bonet.jpeg HTTP/1.1" 200 2288582
+"GET /media/products/products/Hydrolyzed_Collagen.jpeg HTTP/1.1" 200 2213008
+"GET /media/products/products/bonnet-27_3HqiOY9.jpeg HTTP/1.1" 200 2900413
+"GET /media/products/products/collagen-peptide-face-mask-25_KnPZ0n1.jpeg HTTP/1.1" 200 2054550
+"GET /media/products/products/snail-repairing-cream-7_ODJPHbL.jpeg HTTP/1.1" 200 2226958
+"GET /media/products/products/coffee-sea-salt-scrub-26_JuQMruw.jpeg HTTP/1.1" 200 2266621
+"GET /media/products/products/lip-oil-21_OVAD6Bd.jpeg HTTP/1.1" 200 1342091
+"GET /media/products/products/liwa-powder-20_zecv8ap.jpeg HTTP/1.1" 200 2212964
+"GET /media/products/products/Dr_Rashel_Sunscreen.jpeg HTTP/1.1" 200 2173525
+"GET /media/products/products/leopard-bonnet-22_4mSqWws.jpeg HTTP/1.1" 200 3052581
+"GET /media/products/products/qasil-powder-17_zbMctaC.jpeg HTTP/1.1" 200 3275509
+"GET / HTTP/1.1" 200 113022
+"GET / HTTP/1.1" 200 113022
+"GET /media/profiles/hero%201.png HTTP/1.1" 200 69798
+"GET /static/images/tjlogo(3).png HTTP/1.1" 200 343057
+"GET /media/profiles/hero%202.png HTTP/1.1" 200 111334
+"GET /media/products/products/Ayurvedic_soap.jpeg HTTP/1.1" 200 1511213
+"GET /media/products/products/banana_foot_mask.jpeg HTTP/1.1" 200 2391441
+"GET /media/products/products/Asantee_soap.jpeg HTTP/1.1" 200 2805878
+"GET /media/products/products/bathing_glove_2.jpeg HTTP/1.1" 200 3123307
+"GET /media/products/products/Aloe_vera_gel.jpeg HTTP/1.1" 200 2065824
+"GET /media/products/products/Bathing_glove.jpeg HTTP/1.1" 200 3334504
+"GET /media/products/products/niacinamide_serum.jpeg HTTP/1.1" 200 649315
+"GET /media/products/products/retinol-hand-cream-16_mLWwPqv.jpeg HTTP/1.1" 200 1154641
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET /media/products/products/Bentonite_clay.jpeg HTTP/1.1" 200 2324503
+"GET /media/products/products/black_soap.jpeg HTTP/1.1" 200 2269625
+"GET /media/products/products/blue_bonet.jpeg HTTP/1.1" 200 2288582
+"GET /media/products/products/bonnet_2.jpeg HTTP/1.1" 200 2552765
+"GET /media/products/products/Hydrolyzed_Collagen.jpeg HTTP/1.1" 200 2213008
+"GET /media/products/products/bonnet-27_3HqiOY9.jpeg HTTP/1.1" 200 2900413
+"GET /media/products/products/snail-repairing-cream-7_ODJPHbL.jpeg HTTP/1.1" 200 2226958
+"GET /media/products/products/collagen-peptide-face-mask-25_KnPZ0n1.jpeg HTTP/1.1" 200 2054550
+"GET /media/products/products/coffee-sea-salt-scrub-26_JuQMruw.jpeg HTTP/1.1" 200 2266621
+"GET /media/products/products/lip-oil-21_OVAD6Bd.jpeg HTTP/1.1" 200 1342091
+"GET /media/products/products/liwa-powder-20_zecv8ap.jpeg HTTP/1.1" 200 2212964
+"GET /media/products/products/Dr_Rashel_Sunscreen.jpeg HTTP/1.1" 200 2173525
+"GET /media/products/products/qasil-powder-17_zbMctaC.jpeg HTTP/1.1" 200 3275509
+"GET /media/products/products/leopard-bonnet-22_4mSqWws.jpeg HTTP/1.1" 200 3052581
+"GET /products/ HTTP/1.1" 200 128956
+Internal Server Error: /
+Traceback (most recent call last):
+  File "c:\Users\USER\Desktop\TJNATURALS\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\USER\Desktop\TJNATURALS\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Desktop\TJNATURALS\shop\views.py", line 147, in home_view
+    return render(request, 'shop/home.html', context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\USER\Desktop\TJNATURALS\.venv\Lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\USER\Desktop\TJNATURALS\.venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\USER\Desktop\TJNATURALS\.venv\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\USER\Desktop\TJNATURALS\.venv\Lib\site-packages\django\template\base.py", line 175, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\USER\Desktop\TJNATURALS\.venv\Lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\USER\Desktop\TJNATURALS\.venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\USER\Desktop\TJNATURALS\.venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\USER\Desktop\TJNATURALS\.venv\Lib\site-packages\django\template\loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\USER\Desktop\TJNATURALS\.venv\Lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\USER\Desktop\TJNATURALS\.venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\USER\Desktop\TJNATURALS\.venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\USER\Desktop\TJNATURALS\.venv\Lib\site-packages\django\template\loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\USER\Desktop\TJNATURALS\.venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\USER\Desktop\TJNATURALS\.venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\USER\Desktop\TJNATURALS\.venv\Lib\site-packages\django\template\defaulttags.py", line 471, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\USER\Desktop\TJNATURALS\.venv\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\USER\Desktop\TJNATURALS\.venv\Lib\site-packages\django\urls\resolvers.py", line 828, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'cart_detail' not found. 'cart_detail' is not a valid view function or pattern name.
+"GET / HTTP/1.1" 500 188923
+Internal Server Error: /
+Traceback (most recent call last):
+  File "c:\Users\USER\Desktop\TJNATURALS\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\USER\Desktop\TJNATURALS\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Desktop\TJNATURALS\shop\views.py", line 147, in home_view
+    return render(request, 'shop/home.html', context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\USER\Desktop\TJNATURALS\.venv\Lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\USER\Desktop\TJNATURALS\.venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\USER\Desktop\TJNATURALS\.venv\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\USER\Desktop\TJNATURALS\.venv\Lib\site-packages\django\template\base.py", line 175, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\USER\Desktop\TJNATURALS\.venv\Lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\USER\Desktop\TJNATURALS\.venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\USER\Desktop\TJNATURALS\.venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\USER\Desktop\TJNATURALS\.venv\Lib\site-packages\django\template\loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\USER\Desktop\TJNATURALS\.venv\Lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\USER\Desktop\TJNATURALS\.venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\USER\Desktop\TJNATURALS\.venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\USER\Desktop\TJNATURALS\.venv\Lib\site-packages\django\template\loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\USER\Desktop\TJNATURALS\.venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\USER\Desktop\TJNATURALS\.venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\USER\Desktop\TJNATURALS\.venv\Lib\site-packages\django\template\defaulttags.py", line 471, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\USER\Desktop\TJNATURALS\.venv\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\USER\Desktop\TJNATURALS\.venv\Lib\site-packages\django\urls\resolvers.py", line 828, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'cart_detail' not found. 'cart_detail' is not a valid view function or pattern name.
+"GET / HTTP/1.1" 500 188926
+Internal Server Error: /
+Traceback (most recent call last):
+  File "c:\Users\USER\Desktop\TJNATURALS\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\USER\Desktop\TJNATURALS\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Desktop\TJNATURALS\shop\views.py", line 147, in home_view
+    return render(request, 'shop/home.html', context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\USER\Desktop\TJNATURALS\.venv\Lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\USER\Desktop\TJNATURALS\.venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\USER\Desktop\TJNATURALS\.venv\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\USER\Desktop\TJNATURALS\.venv\Lib\site-packages\django\template\base.py", line 175, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\USER\Desktop\TJNATURALS\.venv\Lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\USER\Desktop\TJNATURALS\.venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\USER\Desktop\TJNATURALS\.venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\USER\Desktop\TJNATURALS\.venv\Lib\site-packages\django\template\loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\USER\Desktop\TJNATURALS\.venv\Lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\USER\Desktop\TJNATURALS\.venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\USER\Desktop\TJNATURALS\.venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\USER\Desktop\TJNATURALS\.venv\Lib\site-packages\django\template\loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\USER\Desktop\TJNATURALS\.venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\USER\Desktop\TJNATURALS\.venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\USER\Desktop\TJNATURALS\.venv\Lib\site-packages\django\template\defaulttags.py", line 471, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\USER\Desktop\TJNATURALS\.venv\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\USER\Desktop\TJNATURALS\.venv\Lib\site-packages\django\urls\resolvers.py", line 828, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'cart_detail' not found. 'cart_detail' is not a valid view function or pattern name.
+"GET / HTTP/1.1" 500 188783
+"GET / HTTP/1.1" 200 114768
+"GET /media/profiles/hero%201.png HTTP/1.1" 200 69798
+"GET /static/images/tjlogo(3).png HTTP/1.1" 200 343057
+"GET /media/profiles/hero%202.png HTTP/1.1" 200 111334
+"GET /static/manifest.json HTTP/1.1" 200 1121
+"GET /media/products/products/Ayurvedic_soap.jpeg HTTP/1.1" 200 1511213
+"GET /media/products/products/Aloe_vera_gel.jpeg HTTP/1.1" 200 2065824
+"GET /media/products/products/Asantee_soap.jpeg HTTP/1.1" 200 2805878
+"GET /media/products/products/banana_foot_mask.jpeg HTTP/1.1" 200 2391441
+"GET /media/products/products/bathing_glove_2.jpeg HTTP/1.1" 200 3123307
+"GET /media/products/products/Bathing_glove.jpeg HTTP/1.1" 200 3334504
+"GET /media/products/products/niacinamide_serum.jpeg HTTP/1.1" 200 649315
+"GET /media/products/products/retinol-hand-cream-16_mLWwPqv.jpeg HTTP/1.1" 200 1154641
+"GET /media/products/products/Bentonite_clay.jpeg HTTP/1.1" 200 2324503
+"GET /media/products/products/blue_bonet.jpeg HTTP/1.1" 200 2288582
+"GET /media/products/products/black_soap.jpeg HTTP/1.1" 200 2269625
+"GET /media/products/products/bonnet_2.jpeg HTTP/1.1" 200 2552765
+"GET /media/products/products/bonnet-27_3HqiOY9.jpeg HTTP/1.1" 200 2900413
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET /static/js/main.js HTTP/1.1" 304 0
+"GET /static/css/style.css HTTP/1.1" 304 0
+"GET /static/images/icon-192.png HTTP/1.1" 304 0
+"GET /static/images/icon-512.png HTTP/1.1" 304 0
+"GET /static/offline.html HTTP/1.1" 304 0
+"GET / HTTP/1.1" 200 114768
+"GET / HTTP/1.1" 200 114768
+"GET /media/products/products/Hydrolyzed_Collagen.jpeg HTTP/1.1" 200 2213008
+"GET /media/products/products/lip-oil-21_OVAD6Bd.jpeg HTTP/1.1" 200 1342091
+"GET /media/products/products/collagen-peptide-face-mask-25_KnPZ0n1.jpeg HTTP/1.1" 200 2054550
+"GET /media/products/products/leopard-bonnet-22_4mSqWws.jpeg HTTP/1.1" 200 3052581
+"GET /media/products/products/liwa-powder-20_zecv8ap.jpeg HTTP/1.1" 200 2212964
+"GET /media/products/products/Dr_Rashel_Sunscreen.jpeg HTTP/1.1" 200 2173525
+"GET /media/products/products/snail-repairing-cream-7_ODJPHbL.jpeg HTTP/1.1" 200 2226958
+"GET /media/products/products/coffee-sea-salt-scrub-26_JuQMruw.jpeg HTTP/1.1" 200 2266621
+"GET /media/products/products/qasil-powder-17_zbMctaC.jpeg HTTP/1.1" 200 3275509
+"GET /cart/ HTTP/1.1" 200 59571
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET / HTTP/1.1" 200 114768
+"GET /wishlist/ HTTP/1.1" 200 57467
+"GET / HTTP/1.1" 200 114768
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET / HTTP/1.1" 200 115581
+"GET / HTTP/1.1" 200 115581
+"GET /static/images/tjlogo(3).png HTTP/1.1" 200 343057
+"GET /media/profiles/hero%201.png HTTP/1.1" 200 69798
+"GET /media/profiles/hero%202.png HTTP/1.1" 200 111334
+"GET /media/products/products/Aloe_vera_gel.jpeg HTTP/1.1" 200 2065824
+"GET /media/products/products/Asantee_soap.jpeg HTTP/1.1" 200 2805878
+"GET /media/products/products/niacinamide_serum.jpeg HTTP/1.1" 200 649315
+"GET /media/products/products/retinol-hand-cream-16_mLWwPqv.jpeg HTTP/1.1" 200 1154641
+"GET /media/products/products/Bathing_glove.jpeg HTTP/1.1" 200 3334504
+"GET /media/products/products/bathing_glove_2.jpeg HTTP/1.1" 200 3123307
+"GET /media/products/products/Ayurvedic_soap.jpeg HTTP/1.1" 200 1511213
+"GET /media/products/products/banana_foot_mask.jpeg HTTP/1.1" 200 2391441
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET /media/products/products/black_soap.jpeg HTTP/1.1" 200 2269625
+"GET /media/products/products/Bentonite_clay.jpeg HTTP/1.1" 200 2324503
+"GET /media/products/products/bonnet_2.jpeg HTTP/1.1" 200 2552765
+"GET /media/products/products/blue_bonet.jpeg HTTP/1.1" 200 2288582
+"GET /media/products/products/Hydrolyzed_Collagen.jpeg HTTP/1.1" 200 2213008
+"GET /media/products/products/bonnet-27_3HqiOY9.jpeg HTTP/1.1" 200 2900413
+"GET /media/products/products/snail-repairing-cream-7_ODJPHbL.jpeg HTTP/1.1" 200 2226958
+"GET /media/products/products/collagen-peptide-face-mask-25_KnPZ0n1.jpeg HTTP/1.1" 200 2054550
+"GET /media/products/products/coffee-sea-salt-scrub-26_JuQMruw.jpeg HTTP/1.1" 200 2266621
+"GET /media/products/products/Dr_Rashel_Sunscreen.jpeg HTTP/1.1" 200 2173525
+"GET /media/products/products/leopard-bonnet-22_4mSqWws.jpeg HTTP/1.1" 200 3052581
+"GET /products/ HTTP/1.1" 200 128956
+"GET / HTTP/1.1" 200 115581
+"GET /cart/ HTTP/1.1" 200 59571
+"GET / HTTP/1.1" 200 115581
+"GET /media/products/products/lip-oil-21_OVAD6Bd.jpeg HTTP/1.1" 200 1342091
+"GET /media/products/products/liwa-powder-20_zecv8ap.jpeg HTTP/1.1" 200 2212964
+"GET / HTTP/1.1" 200 120051
+"GET / HTTP/1.1" 200 120051
+"GET /media/profiles/hero%201.png HTTP/1.1" 200 69798
+"GET /static/images/tjlogo(3).png HTTP/1.1" 200 343057
+"GET /media/profiles/hero%202.png HTTP/1.1" 200 111334
+"GET /media/products/products/Aloe_vera_gel.jpeg HTTP/1.1" 200 2065824
+"GET /media/products/products/Asantee_soap.jpeg HTTP/1.1" 200 2805878
+"GET /media/products/products/Ayurvedic_soap.jpeg HTTP/1.1" 200 1511213
+"GET /media/products/products/niacinamide_serum.jpeg HTTP/1.1" 200 649315
+"GET /media/products/products/banana_foot_mask.jpeg HTTP/1.1" 200 2391441
+"GET /media/products/products/retinol-hand-cream-16_mLWwPqv.jpeg HTTP/1.1" 200 1154641
+"GET /media/products/products/bathing_glove_2.jpeg HTTP/1.1" 200 3123307
+"GET /media/products/products/Bathing_glove.jpeg HTTP/1.1" 200 3334504
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET /media/products/products/Bentonite_clay.jpeg HTTP/1.1" 200 2324503
+"GET /media/products/products/black_soap.jpeg HTTP/1.1" 200 2269625
+"GET /cart/ HTTP/1.1" 200 59571
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET / HTTP/1.1" 200 120051
+"GET /products/ HTTP/1.1" 200 128956
+"GET /media/products/products/blue_bonet.jpeg HTTP/1.1" 200 2288582
+"GET /media/products/products/bonnet_2.jpeg HTTP/1.1" 200 2552765
+"GET /media/products/products/bonnet-27_3HqiOY9.jpeg HTTP/1.1" 200 2900413
+"GET / HTTP/1.1" 200 120051
+"GET /products/ HTTP/1.1" 200 128956
+"GET / HTTP/1.1" 200 120051
+"GET /products/?q= HTTP/1.1" 200 128956
+"GET / HTTP/1.1" 200 120051
+"GET /products/?q=face HTTP/1.1" 200 86713
+"GET /media/products/products/collagen-peptide-face-mask-25_KnPZ0n1.jpeg HTTP/1.1" 200 2054550
+"GET /media/products/products/turmeric-face-mask-5_jAz7ZIF.jpeg HTTP/1.1" 200 2417790
+"GET / HTTP/1.1" 200 120051
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET / HTTP/1.1" 200 121198
+"GET / HTTP/1.1" 200 121198
+"GET /media/profiles/hero%201.png HTTP/1.1" 200 69798
+"GET /static/images/tjlogo(3).png HTTP/1.1" 200 343057
+"GET /media/profiles/hero%202.png HTTP/1.1" 200 111334
+"GET /media/products/products/Ayurvedic_soap.jpeg HTTP/1.1" 200 1511213
+"GET /media/products/products/banana_foot_mask.jpeg HTTP/1.1" 200 2391441
+"GET /media/products/products/Asantee_soap.jpeg HTTP/1.1" 200 2805878
+"GET /media/products/products/bathing_glove_2.jpeg HTTP/1.1" 200 3123307
+"GET /media/products/products/Bathing_glove.jpeg HTTP/1.1" 200 3334504
+"GET /media/products/products/Aloe_vera_gel.jpeg HTTP/1.1" 200 2065824
+"GET /media/products/products/niacinamide_serum.jpeg HTTP/1.1" 200 649315
+"GET /media/products/products/retinol-hand-cream-16_mLWwPqv.jpeg HTTP/1.1" 200 1154641
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET /media/products/products/Hydrolyzed_Collagen.jpeg HTTP/1.1" 200 2213008
+"GET /media/products/products/black_soap.jpeg HTTP/1.1" 200 2269625
+"GET /media/products/products/blue_bonet.jpeg HTTP/1.1" 200 2288582
+"GET /media/products/products/Bentonite_clay.jpeg HTTP/1.1" 200 2324503
+"GET /media/products/products/bonnet_2.jpeg HTTP/1.1" 200 2552765
+"GET /media/products/products/bonnet-27_3HqiOY9.jpeg HTTP/1.1" 200 2900413
+"GET /media/products/products/collagen-peptide-face-mask-25_KnPZ0n1.jpeg HTTP/1.1" 200 2054550
+"GET /media/products/products/snail-repairing-cream-7_ODJPHbL.jpeg HTTP/1.1" 200 2226958
+"GET /media/products/products/coffee-sea-salt-scrub-26_JuQMruw.jpeg HTTP/1.1" 200 2266621
+"GET /media/products/products/Dr_Rashel_Sunscreen.jpeg HTTP/1.1" 200 2173525
+"GET /media/products/products/leopard-bonnet-22_4mSqWws.jpeg HTTP/1.1" 200 3052581
+"GET /media/products/products/lip-oil-21_OVAD6Bd.jpeg HTTP/1.1" 200 1342091
+"GET /media/products/products/liwa-powder-20_zecv8ap.jpeg HTTP/1.1" 200 2212964
+"GET /media/products/products/qasil-powder-17_zbMctaC.jpeg HTTP/1.1" 200 3275509
+"GET /checkout/ HTTP/1.1" 302 0
+"GET /cart/ HTTP/1.1" 200 59571
+"GET /wishlist/ HTTP/1.1" 200 57467
+"GET / HTTP/1.1" 200 121198
+"GET /media/profiles/hero%202.png HTTP/1.1" 200 111334
+"GET /media/profiles/hero%201.png HTTP/1.1" 200 69798
+"GET /static/images/tjlogo(3).png HTTP/1.1" 200 343057
+"GET /media/products/products/Ayurvedic_soap.jpeg HTTP/1.1" 200 1511213
+"GET /media/products/products/Aloe_vera_gel.jpeg HTTP/1.1" 200 2065824
+"GET /media/products/products/banana_foot_mask.jpeg HTTP/1.1" 200 2391441
+"GET /media/products/products/bathing_glove_2.jpeg HTTP/1.1" 200 3123307
+"GET /media/products/products/Bathing_glove.jpeg HTTP/1.1" 200 3334504
+"GET /media/products/products/Asantee_soap.jpeg HTTP/1.1" 200 2805878
+"GET /media/products/products/niacinamide_serum.jpeg HTTP/1.1" 200 649315
+"GET /media/products/products/retinol-hand-cream-16_mLWwPqv.jpeg HTTP/1.1" 200 1154641
+"GET /media/products/products/Bentonite_clay.jpeg HTTP/1.1" 200 2324503
+"GET /media/products/products/black_soap.jpeg HTTP/1.1" 200 2269625
+"GET /media/products/products/blue_bonet.jpeg HTTP/1.1" 200 2288582
+"GET /media/products/products/bonnet_2.jpeg HTTP/1.1" 200 2552765
+"GET /cart/ HTTP/1.1" 200 59571
+"GET /products/ HTTP/1.1" 200 128956
+"GET /service-worker.js HTTP/1.1" 200 3498
+"POST /cart/add/ HTTP/1.1" 200 118
+"GET /media/products/products/bonnet-27_3HqiOY9.jpeg HTTP/1.1" 200 2900413
+"GET /cart/ HTTP/1.1" 200 63074
+"GET / HTTP/1.1" 200 121161
+"GET /media/products/products/Hydrolyzed_Collagen.jpeg HTTP/1.1" 200 2213008
+"GET /media/products/products/snail-repairing-cream-7_ODJPHbL.jpeg HTTP/1.1" 200 2226958
+"GET /media/products/products/coffee-sea-salt-scrub-26_JuQMruw.jpeg HTTP/1.1" 200 2266621
+"GET /media/products/products/collagen-peptide-face-mask-25_KnPZ0n1.jpeg HTTP/1.1" 200 2054550
+"GET /media/products/products/Dr_Rashel_Sunscreen.jpeg HTTP/1.1" 200 2173525
+"GET /media/products/products/leopard-bonnet-22_4mSqWws.jpeg HTTP/1.1" 200 3052581
+"GET /media/products/products/lip-oil-21_OVAD6Bd.jpeg HTTP/1.1" 200 1342091
+"GET /media/products/products/liwa-powder-20_zecv8ap.jpeg HTTP/1.1" 200 2212964
+"GET /media/products/products/qasil-powder-17_zbMctaC.jpeg HTTP/1.1" 200 3275509
+"GET /cart/ HTTP/1.1" 200 63074
+"GET /accounts/login/?next=/checkout/ HTTP/1.1" 200 59099
+"GET /accounts/register/?next=/checkout/ HTTP/1.1" 200 63936
+C:\Users\USER\Desktop\TJNATURALS\TJNaturals\settings.py changed, reloading.
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 121161
+"GET /products/ HTTP/1.1" 200 128919
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET /products/?q= HTTP/1.1" 200 128919
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET /cart/ HTTP/1.1" 200 63074
+"GET /service-worker.js HTTP/1.1" 200 3498
+"POST /cart/update/ HTTP/1.1" 200 130
+"POST /cart/update/ HTTP/1.1" 200 130
+"POST /cart/update/ HTTP/1.1" 200 130
+"POST /cart/update/ HTTP/1.1" 200 130
+"POST /cart/update/ HTTP/1.1" 200 130
+"POST /cart/update/ HTTP/1.1" 200 130
+"POST /cart/update/ HTTP/1.1" 200 130
+"POST /cart/update/ HTTP/1.1" 200 130
+"GET /wishlist/ HTTP/1.1" 200 57430
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET /products/ HTTP/1.1" 200 128919
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET /wishlist/ HTTP/1.1" 200 57430
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET /accounts/login/ HTTP/1.1" 200 59088
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET /accounts/password-reset/ HTTP/1.1" 200 58491
+"GET /service-worker.js HTTP/1.1" 200 3498
+"POST /accounts/password-reset/ HTTP/1.1" 302 0
+"GET /accounts/password-reset/done/ HTTP/1.1" 200 58055
+"GET /service-worker.js HTTP/1.1" 200 3498
+C:\Users\USER\Desktop\TJNATURALS\TJNaturals\settings.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /accounts/register/?next=/checkout/ HTTP/1.1" 200 63936
+"GET /accounts/register/?next=/checkout/ HTTP/1.1" 200 63936
+"GET /static/images/tjlogo(3).png HTTP/1.1" 200 343057
+"GET /accounts/login/ HTTP/1.1" 200 59088
+"GET /accounts/password-reset/ HTTP/1.1" 200 58491
+Internal Server Error: /accounts/password-reset/
+Traceback (most recent call last):
+  File "c:\Users\USER\Desktop\TJNATURALS\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\USER\Desktop\TJNATURALS\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\USER\Desktop\TJNATURALS\.venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\USER\Desktop\TJNATURALS\.venv\Lib\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\USER\Desktop\TJNATURALS\.venv\Lib\site-packages\django\utils\decorators.py", line 134, in _wrapper_view
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\USER\Desktop\TJNATURALS\.venv\Lib\site-packages\django\contrib\auth\views.py", line 242, in dispatch
+    return super().dispatch(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\USER\Desktop\TJNATURALS\.venv\Lib\site-packages\django\views\generic\base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\USER\Desktop\TJNATURALS\.venv\Lib\site-packages\django\views\generic\edit.py", line 153, in post
+    return self.form_valid(form)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\USER\Desktop\TJNATURALS\.venv\Lib\site-packages\django\contrib\auth\views.py", line 255, in form_valid
+    form.save(**opts)
+  File "c:\Users\USER\Desktop\TJNATURALS\.venv\Lib\site-packages\django\contrib\auth\forms.py", line 376, in save
+    self.send_mail(
+  File "c:\Users\USER\Desktop\TJNATURALS\.venv\Lib\site-packages\django\contrib\auth\forms.py", line 317, in send_mail
+    email_message.send()
+  File "c:\Users\USER\Desktop\TJNATURALS\.venv\Lib\site-packages\django\core\mail\message.py", line 298, in send
+    return self.get_connection(fail_silently).send_messages([self])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\USER\Desktop\TJNATURALS\.venv\Lib\site-packages\django\core\mail\backends\smtp.py", line 127, in send_messages
+    new_conn_created = self.open()
+                       ^^^^^^^^^^^
+  File "c:\Users\USER\Desktop\TJNATURALS\.venv\Lib\site-packages\django\core\mail\backends\smtp.py", line 94, in open
+    self.connection.login(self.username, self.password)
+  File "C:\Users\USER\AppData\Local\Programs\Python\Python312\Lib\smtplib.py", line 750, in login
+    raise last_exception
+  File "C:\Users\USER\AppData\Local\Programs\Python\Python312\Lib\smtplib.py", line 739, in login
+    (code, resp) = self.auth(
+                   ^^^^^^^^^^
+  File "C:\Users\USER\AppData\Local\Programs\Python\Python312\Lib\smtplib.py", line 662, in auth
+    raise SMTPAuthenticationError(code, resp)
+smtplib.SMTPAuthenticationError: (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials 5b1f17b1804b1-486fe7d6c54sm122225855e9.4 - gsmtp')
+"POST /accounts/password-reset/ HTTP/1.1" 500 147444
+"GET /accounts/password-reset/ HTTP/1.1" 200 58491
+"GET /static/images/tjlogo(3).png HTTP/1.1" 200 343057
+"GET /static/manifest.json HTTP/1.1" 200 1121
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET / HTTP/1.1" 200 121161
+"GET /accounts/password-reset/ HTTP/1.1" 200 58491
+Internal Server Error: /accounts/password-reset/
+Traceback (most recent call last):
+  File "c:\Users\USER\Desktop\TJNATURALS\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\USER\Desktop\TJNATURALS\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\USER\Desktop\TJNATURALS\.venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\USER\Desktop\TJNATURALS\.venv\Lib\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\USER\Desktop\TJNATURALS\.venv\Lib\site-packages\django\utils\decorators.py", line 134, in _wrapper_view
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\USER\Desktop\TJNATURALS\.venv\Lib\site-packages\django\contrib\auth\views.py", line 242, in dispatch
+    return super().dispatch(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\USER\Desktop\TJNATURALS\.venv\Lib\site-packages\django\views\generic\base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\USER\Desktop\TJNATURALS\.venv\Lib\site-packages\django\views\generic\edit.py", line 153, in post
+    return self.form_valid(form)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\USER\Desktop\TJNATURALS\.venv\Lib\site-packages\django\contrib\auth\views.py", line 255, in form_valid
+    form.save(**opts)
+  File "c:\Users\USER\Desktop\TJNATURALS\.venv\Lib\site-packages\django\contrib\auth\forms.py", line 376, in save
+    self.send_mail(
+  File "c:\Users\USER\Desktop\TJNATURALS\.venv\Lib\site-packages\django\contrib\auth\forms.py", line 317, in send_mail
+    email_message.send()
+  File "c:\Users\USER\Desktop\TJNATURALS\.venv\Lib\site-packages\django\core\mail\message.py", line 298, in send
+    return self.get_connection(fail_silently).send_messages([self])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\USER\Desktop\TJNATURALS\.venv\Lib\site-packages\django\core\mail\backends\smtp.py", line 127, in send_messages
+    new_conn_created = self.open()
+                       ^^^^^^^^^^^
+  File "c:\Users\USER\Desktop\TJNATURALS\.venv\Lib\site-packages\django\core\mail\backends\smtp.py", line 94, in open
+    self.connection.login(self.username, self.password)
+  File "C:\Users\USER\AppData\Local\Programs\Python\Python312\Lib\smtplib.py", line 750, in login
+    raise last_exception
+  File "C:\Users\USER\AppData\Local\Programs\Python\Python312\Lib\smtplib.py", line 739, in login
+    (code, resp) = self.auth(
+                   ^^^^^^^^^^
+  File "C:\Users\USER\AppData\Local\Programs\Python\Python312\Lib\smtplib.py", line 662, in auth
+    raise SMTPAuthenticationError(code, resp)
+smtplib.SMTPAuthenticationError: (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials ffacd0b85a97d-43b64711f58sm5406411f8f.29 - gsmtp')
+"POST /accounts/password-reset/ HTTP/1.1" 500 147444
+Watching for file changes with StatReloader
+"GET /accounts/password-reset/ HTTP/1.1" 200 58491
+"GET /static/images/tjlogo(3).png HTTP/1.1" 200 343057
+"GET /static/manifest.json HTTP/1.1" 200 1121
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET / HTTP/1.1" 200 121161
+"GET /accounts/password-reset/ HTTP/1.1" 200 58491
+- Broken pipe from ('127.0.0.1', 59770)
+- Broken pipe from ('127.0.0.1', 59777)
+- Broken pipe from ('127.0.0.1', 59779)
+- Broken pipe from ('127.0.0.1', 59781)
+- Broken pipe from ('127.0.0.1', 59783)
+- Broken pipe from ('127.0.0.1', 59785)
+- Broken pipe from ('127.0.0.1', 59787)
+- Broken pipe from ('127.0.0.1', 59789)
+- Broken pipe from ('127.0.0.1', 59791)
+- Broken pipe from ('127.0.0.1', 59793)
+"POST /accounts/password-reset/ HTTP/1.1" 302 0
+"GET /accounts/password-reset/done/ HTTP/1.1" 200 58055
+"GET /accounts/password-reset-confirm/NA/d5qo9o-0ceb740cc47faa864210ef5029ba4636/ HTTP/1.1" 302 0
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET / HTTP/1.1" 200 121161
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET /accounts/login/ HTTP/1.1" 200 59088
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET /accounts/password-reset/ HTTP/1.1" 200 58491
+"GET /service-worker.js HTTP/1.1" 200 3498
+"POST /accounts/password-reset/ HTTP/1.1" 302 0
+"GET /accounts/password-reset/done/ HTTP/1.1" 200 58055
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET /accounts/password-reset-confirm/NA/d5qobk-cc190c1fd3a50ba6571a8953efe61fe8/ HTTP/1.1" 302 0
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET / HTTP/1.1" 200 121161
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET /accounts/password-reset-confirm/NA/d5qobk-cc190c1fd3a50ba6571a8953efe61fe8/ HTTP/1.1" 302 0
+"GET /service-worker.js HTTP/1.1" 200 3498
+Not Found: /.well-known/appspecific/com.chrome.devtools.json
+"GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 5289
+C:\Users\USER\Desktop\TJNATURALS\TJNaturals\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Desktop\TJNATURALS\TJNaturals\settings.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /accounts/password-reset-confirm/NA/d5qobk-cc190c1fd3a50ba6571a8953efe61fe8/ HTTP/1.1" 302 0
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET / HTTP/1.1" 200 121161
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET /cart/ HTTP/1.1" 200 63077
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET /accounts/login/ HTTP/1.1" 200 59088
+"GET /service-worker.js HTTP/1.1" 200 3498
+"POST /accounts/login/ HTTP/1.1" 200 59646
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET /accounts/password-reset/ HTTP/1.1" 200 58491
+"GET /service-worker.js HTTP/1.1" 200 3498
+"POST /accounts/password-reset/ HTTP/1.1" 302 0
+"GET /accounts/password-reset/done/ HTTP/1.1" 200 58055
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET /accounts/password-reset-confirm/NA/d5qogv-2255acc857768c4f0d6dcf3c4bbc7ec7/ HTTP/1.1" 302 0
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET / HTTP/1.1" 200 121161
+"GET /service-worker.js HTTP/1.1" 200 3498
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 121161
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET /cart/ HTTP/1.1" 200 63077
+"GET /accounts/login/?next=/checkout/ HTTP/1.1" 200 59305
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET /accounts/password-reset/ HTTP/1.1" 200 58491
+"GET /service-worker.js HTTP/1.1" 200 3498
+"POST /accounts/password-reset/ HTTP/1.1" 302 0
+"GET /accounts/password-reset/done/ HTTP/1.1" 200 58055
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET /accounts/password-reset-confirm/NA/d5qoli-941fa2a25a1d99e0ffb8adc2109517b5/ HTTP/1.1" 302 0
+"GET /service-worker.js HTTP/1.1" 200 3498
+"GET / HTTP/1.1" 200 121161
+"GET /service-worker.js HTTP/1.1" 200 3498

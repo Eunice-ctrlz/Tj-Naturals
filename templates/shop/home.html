@@ -287,6 +287,147 @@
         }
     }
 
+    @media (max-width: 768px) {
+        .browse-section {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+            padding: 12px 16px;
+        }
+
+        .browse-categories-wrap {
+            width: 100%;
+        }
+
+        .browse-btn {
+            width: 100%;
+            justify-content: space-between;
+        }
+        
+        .browse-menu-panel {
+            width: 100%;
+            left: 0;
+        }
+
+        .category-tabs {
+            width: 100%;
+            padding-top: 4px;
+            border-top: 1px solid #f0f0f0;
+            margin-top: 4px;
+        }
+    }
+
+    .browse-icons {
+        display: none;
+    }
+
+    @media (max-width: 991px) {
+        .browse-categories-wrap {
+            display: none;
+        }
+
+        .browse-section {
+            gap: 12px;
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .browse-icons-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .browse-icon-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: white;
+            border: 1px solid var(--tj-border);
+            color: var(--tj-primary-dark);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            position: relative;
+        }
+
+        .browse-icon-btn:hover {
+            background: var(--tj-primary-light);
+            color: white;
+        }
+        
+        /* Mobile browse btn */
+        .mobile-browse-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--tj-primary-dark);
+            color: white;
+            padding: 10px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .mobile-browse-btn:hover {
+             background: var(--tj-primary);
+             color: white;
+        }
+
+        .mobile-browse-panel {
+            position: absolute;
+            top: 100%;
+            left: 16px;
+            right: 16px;
+            background: white;
+            border: 1px solid var(--tj-border);
+            border-radius: 0 0 12px 12px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            z-index: 1000;
+            display: none;
+            padding: 16px;
+            margin-top: 10px;
+        }
+
+        .mobile-browse-panel.open {
+            display: block;
+            animation: slideDown 0.3s ease;
+        }
+
+        .mobile-search-panel {
+            position: absolute;
+            top: 100%;
+            left: 16px;
+            right: 16px;
+            background: white;
+            border: 1px solid var(--tj-border);
+            border-radius: 0 0 12px 12px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            z-index: 1000;
+            display: none;
+            padding: 16px;
+            margin-top: 10px;
+        }
+
+        .mobile-search-panel.open {
+            display: block;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    }
+
     /* SECTION BAR */
     .section-bar {
         background: var(--tj-primary-dark);
@@ -714,9 +855,48 @@
         </div>
     </div>
 
-    <div class="category-tabs">
-        <a href="{% url 'shop:product_list' %}" class="category-tab active">Shop</a>
-        <a href="#" class="category-tab">About Us</a>
+    <!-- Mobile Icons (Search, Cart, Wishlist) & Browse Button -->
+    <div class="browse-icons d-lg-none w-100 d-flex align-items-center justify-content-between position-relative" style="display: none;">
+        <button class="mobile-browse-btn" onclick="toggleMobileBrowse(this)">
+            <i class="bi bi-list"></i> Browse Categories
+        </button>
+
+        <div class="browse-icons-group">
+            <a href="#" class="browse-icon-btn" onclick="toggleMobileSearch(); return false;">
+                <i class="bi bi-search"></i>
+            </a>
+            <a href="{% url 'shop:cart' %}" class="browse-icon-btn position-relative">
+                <i class="bi bi-cart"></i>
+                {% if request.session.cart|length > 0 %}
+                <span class="badge bg-danger rounded-pill position-absolute" style="top: -5px; right: -5px; padding: 0.35em 0.5em; font-size: 0.6rem;">{{ request.session.cart|length }}</span>
+                {% endif %}
+            </a>
+            <a href="{% url 'shop:wishlist' %}" class="browse-icon-btn">
+                <i class="bi bi-heart"></i>
+            </a>
+        </div>
+        
+        <!-- Mobile Browse Panel -->
+        <div class="mobile-browse-panel" id="mobile-browse-panel">
+            <div class="d-flex flex-column gap-2">
+                {% for category in header_categories %}
+                <a href="{{ category.get_absolute_url }}" class="text-decoration-none text-dark p-2 border-bottom">
+                    {{ category.name }}
+                </a>
+                {% endfor %}
+                <a href="{% url 'shop:product_list' %}" class="text-decoration-none text-dark p-2 fw-bold text-uppercase">
+                    View All Products
+                </a>
+            </div>
+        </div>
+
+        <!-- Mobile Search Panel -->
+        <div class="mobile-search-panel" id="mobile-search-panel">
+            <form action="{% url 'shop:product_list' %}" method="get" class="d-flex w-100 align-items-center">
+                <input type="search" name="q" class="form-control me-2" placeholder="Search products..." id="mobile-search-input">
+                <button type="submit" class="btn btn-primary" style="background-color: var(--tj-primary); border: none;"><i class="bi bi-search"></i></button>
+            </form>
+        </div>
     </div>
 </div>
 
@@ -1097,6 +1277,7 @@
     </div>
 </div>
 
+
 <!-- NEWSLETTER SECTION -->
 <div class="newsletter-section">
     <div class="newsletter-content">
@@ -1184,6 +1365,68 @@
         const event = new Event('click');
         btn.dispatchEvent(event);
     }
+
+    // Toggle Mobile Browse Panel
+    window.toggleMobileBrowse = function(btn) {
+        const panel = document.getElementById('mobile-browse-panel');
+        const searchPanel = document.getElementById('mobile-search-panel');
+        
+        if (panel) {
+            panel.classList.toggle('open');
+            // Close search if open
+            if (searchPanel && searchPanel.classList.contains('open')) {
+                searchPanel.classList.remove('open');
+            }
+        }
+    };
+
+    // Toggle Mobile Search
+    window.toggleMobileSearch = function() {
+        const searchPanel = document.getElementById('mobile-search-panel');
+        const searchInput = document.getElementById('mobile-search-input');
+        const browsePanel = document.getElementById('mobile-browse-panel');
+
+        if (searchPanel) {
+            const isOpen = searchPanel.classList.contains('open');
+            
+            if (isOpen) {
+               searchPanel.classList.remove('open');
+            } else {
+               searchPanel.classList.add('open');
+               if (searchInput) {
+                   setTimeout(() => searchInput.focus(), 50);
+               }
+               // Close mobile browse panel if open
+               if (browsePanel && browsePanel.classList.contains('open')) {
+                   browsePanel.classList.remove('open');
+               }
+            }
+        }
+    };
+
+    // Close mobile panels when clicking outside
+    document.addEventListener('click', function(event) {
+        const mobileSearchPanel = document.getElementById('mobile-search-panel');
+        const mobileBrowsePanel = document.getElementById('mobile-browse-panel');
+        
+        // Check if click is outside search panel and not on the search toggle button
+        if (mobileSearchPanel && mobileSearchPanel.classList.contains('open')) {
+            const isSearchButton = event.target.closest('a[onclick*="toggleMobileSearch"]');
+            
+            if (!mobileSearchPanel.contains(event.target) && !isSearchButton) {
+                mobileSearchPanel.classList.remove('open');
+            }
+        }
+
+        // Check if click is outside browse panel and not on the browse button
+        if (mobileBrowsePanel && mobileBrowsePanel.classList.contains('open')) {
+             const isBrowseButton = event.target.closest('.mobile-browse-btn');
+             
+             if (!mobileBrowsePanel.contains(event.target) && !isBrowseButton) {
+                 mobileBrowsePanel.classList.remove('open');
+             }
+        }
+    });
 
 </script>
 
