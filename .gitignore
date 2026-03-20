@@ -19,3 +19,4 @@ staticfiles/
 # IDEs
 .vscode/
 .idea/
+test_smtp.py
