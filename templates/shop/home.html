@@ -11,145 +11,6 @@
         background: var(--tj-off-white);
     }
 
-    /* BROWSE CATEGORIES SECTION */
-    .browse-section {
-        background: var(--tj-off-white);
-        padding: 14px 20px;
-        margin-bottom: 0;
-        display: flex;
-        align-items: center;
-        gap: 16px;
-        overflow: visible;
-        scrollbar-width: none;
-        border-bottom: 1px solid #e9edf2;
-        position: relative;
-        z-index: 120;
-        isolation: isolate;
-    }
-
-    .browse-section::-webkit-scrollbar {
-        display: none;
-    }
-
-    .browse-btn {
-        background: var(--tj-primary-dark);
-        color: white;
-        border: none;
-        padding: 12px 20px;
-        border-radius: 6px;
-        font-weight: 700;
-        font-size: 0.82rem;
-        letter-spacing: 0.04em;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        cursor: pointer;
-        white-space: nowrap;
-        flex-shrink: 0;
-        transition: all 0.3s ease;
-    }
-
-    .browse-categories-wrap {
-        position: relative;
-        flex-shrink: 0;
-        z-index: 220;
-    }
-
-    .browse-menu-panel {
-        position: absolute;
-        top: calc(100% + 10px);
-        left: 0;
-        width: min(860px, 92vw);
-        background: #ffffff;
-        border: 1px solid var(--tj-border);
-        border-radius: 12px;
-        box-shadow: 0 20px 40px rgba(31, 79, 47, 0.16);
-        padding: 18px;
-        opacity: 0;
-        visibility: hidden;
-        transform: translateY(6px);
-        transition: all 0.22s ease;
-        z-index: 300;
-    }
-
-    .browse-categories-wrap.open .browse-menu-panel,
-    .browse-categories-wrap:hover .browse-menu-panel,
-    .browse-categories-wrap:focus-within .browse-menu-panel {
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(0);
-    }
-
-    .browse-menu-grid {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 16px;
-    }
-
-    .browse-menu-col h4 {
-        margin: 0 0 10px;
-        font-size: 0.82rem;
-        font-weight: 700;
-        letter-spacing: 0.05em;
-        text-transform: uppercase;
-        color: var(--tj-primary-dark);
-    }
-
-    .browse-menu-col a {
-        display: block;
-        text-decoration: none;
-        color: var(--tj-text-light);
-        padding: 7px 0;
-        font-size: 0.9rem;
-        font-weight: 500;
-        transition: color 0.2s ease;
-    }
-
-    .browse-menu-col a:hover {
-        color: var(--tj-primary-dark);
-    }
-
-    .browse-btn:hover {
-        background: var(--tj-primary);
-        transform: translateY(-2px);
-        box-shadow: 0 6px 16px rgba(31, 79, 47, 0.2);
-    }
-
-    .browse-btn i {
-        font-size: 1.2rem;
-    }
-
-    /* CATEGORY TABS */
-    .category-tabs {
-        display: flex;
-        gap: 18px;
-        flex-shrink: 1;
-        overflow-x: auto;
-        max-width: 100%;
-    }
-
-    .category-tab {
-        color: var(--tj-text-light);
-        text-decoration: none;
-        font-size: 0.84rem;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 0.04em;
-        white-space: nowrap;
-        padding-bottom: 5px;
-        border-bottom: 2px solid transparent;
-        transition: all 0.3s ease;
-    }
-
-    .category-tab:hover {
-        color: var(--tj-primary-dark);
-    }
-
-    .category-tab.active {
-        color: var(--tj-primary-dark);
-        border-bottom-color: var(--tj-primary-dark);
-    }
-
     /* HERO BANNER */
     .hero-banner {
         width: 100%;
@@ -277,131 +138,6 @@
             margin: 0 auto;
         }
 
-        .browse-menu-panel {
-            width: min(560px, 94vw);
-        }
-
-        .browse-menu-grid {
-            grid-template-columns: 1fr;
-            gap: 10px;
-        }
-    }
-
-    @media (max-width: 768px) {
-        .browse-section {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 12px;
-            padding: 12px 16px;
-        }
-
-        .browse-categories-wrap {
-            width: 100%;
-        }
-
-        .browse-btn {
-            width: 100%;
-            justify-content: space-between;
-        }
-        
-        .browse-menu-panel {
-            width: 100%;
-            left: 0;
-        }
-
-        .category-tabs {
-            width: 100%;
-            padding-top: 4px;
-            border-top: 1px solid #f0f0f0;
-            margin-top: 4px;
-        }
-    }
-
-    .browse-icons {
-        display: none;
-    }
-
-    @media (max-width: 991px) {
-        .browse-categories-wrap {
-            display: none;
-        }
-
-        .browse-section {
-            gap: 12px;
-            padding: 12px 16px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .browse-icons-group {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .browse-icon-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: white;
-            border: 1px solid var(--tj-border);
-            color: var(--tj-primary-dark);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-            position: relative;
-        }
-
-        .browse-icon-btn:hover {
-            background: var(--tj-primary-light);
-            color: white;
-        }
-        
-        /* Mobile browse btn */
-        .mobile-browse-btn {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            background: var(--tj-primary-dark);
-            color: white;
-            padding: 10px 16px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 0.9rem;
-            border: none;
-            cursor: pointer;
-        }
-        
-        .mobile-browse-btn:hover {
-             background: var(--tj-primary);
-             color: white;
-        }
-
-        .mobile-browse-panel {
-            position: absolute;
-            top: 100%;
-            left: 16px;
-            right: 16px;
-            background: white;
-            border: 1px solid var(--tj-border);
-            border-radius: 0 0 12px 12px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            z-index: 1000;
-            display: none;
-            padding: 16px;
-            margin-top: 10px;
-        }
-
-        .mobile-browse-panel.open {
-            display: block;
-            animation: slideDown 0.3s ease;
-        }
-
         .mobile-search-panel {
             position: absolute;
             top: 100%;
@@ -419,12 +155,6 @@
 
         .mobile-search-panel.open {
             display: block;
-            animation: slideDown 0.3s ease;
-        }
-
-        @keyframes slideDown {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
         }
     }
 
@@ -649,9 +379,9 @@
     }
 
     .product-name {
-        font-size: 0.95rem;
+        font-size: 14px;
         font-weight: 600;
-        color: var(--tj-text);
+        color: #333;
         line-height: 1.4;
         margin-bottom: 10px;
         display: -webkit-box;
@@ -675,6 +405,9 @@
         align-items: center;
         gap: 10px;
         flex-wrap: wrap;
+        font-size: 14px;
+        font-weight: 500;
+        color: #8bc34a;
     }
 
     .current-price {
@@ -831,123 +564,37 @@
 
 {% block content %}
 
-<!-- BROWSE CATEGORIES & TABS -->
-<div class="browse-section">
-    <div class="browse-categories-wrap" id="browse-categories-wrap">
-        <button class="browse-btn" type="button" id="browse-toggle" aria-expanded="false">
-            <i class="bi bi-list"></i>
-            <span>BROWSE CATEGORIES</span>
-        </button>
 
-        <div class="browse-menu-panel" id="browse-menu-panel">
-            <div class="browse-menu-grid">
-                <div class="browse-menu-col">
-                    <h4>Top Categories</h4>
-                    {% for category in header_categories %}
-                    <a href="{% url 'shop:product_list' %}?category={{ category.slug }}">{{ category.name }}</a>
-                    {% empty %}
-                    <a href="{% url 'shop:product_list' %}">Skincare</a>
-                    <a href="{% url 'shop:product_list' %}">Haircare</a>
-                    <a href="{% url 'shop:product_list' %}">Bath & Body</a>
-                    {% endfor %}
-                </div>
-            </div>
+       
+
+    <!-- HERO BANNER -->
+    <section class="hero-banner">
+        <div class="hero-bg-stack" id="hero-bg-stack">
+            {% if site_settings and site_settings.background %}
+            <img src="{{ site_settings.background.url }}" alt="TJ Naturals background" class="hero-bg-image active">
+            {% else %}
+            <div class="hero-bg-image active" style="background: linear-gradient(135deg, rgba(47,107,63,0.9), rgba(31,79,47,0.88));"></div>
+            {% endif %}
         </div>
-    </div>
-
-    <!-- Mobile Icons (Search, Cart, Wishlist) & Browse Button -->
-    <div class="browse-icons d-lg-none w-100 d-flex align-items-center justify-content-between position-relative" style="display: none;">
-        <button class="mobile-browse-btn" onclick="toggleMobileBrowse(this)">
-            <i class="bi bi-list"></i> Browse Categories
-        </button>
-
-        <div class="browse-icons-group">
-            <a href="#" class="browse-icon-btn" onclick="toggleMobileSearch(); return false;">
-                <i class="bi bi-search"></i>
-            </a>
-            <a href="{% url 'shop:cart' %}" class="browse-icon-btn position-relative">
-                <i class="bi bi-cart"></i>
-                {% if request.session.cart|length > 0 %}
-                <span class="badge bg-danger rounded-pill position-absolute" style="top: -5px; right: -5px; padding: 0.35em 0.5em; font-size: 0.6rem;">{{ request.session.cart|length }}</span>
-                {% endif %}
-            </a>
-            <a href="{% url 'shop:wishlist' %}" class="browse-icon-btn">
-                <i class="bi bi-heart"></i>
-            </a>
+        <div class="hero-content">
+            <h1>Nature's Best for Your Skin</h1>
+            <p>Premium organic skincare crafted with love from Kenyan farms.</p>
+            <a href="{% url 'shop:product_list' %}" class="hero-cta">Shop Now <i class="bi bi-arrow-right"></i></a>
         </div>
-        
-        <!-- Mobile Browse Panel -->
-        <div class="mobile-browse-panel" id="mobile-browse-panel">
-            <div class="d-flex flex-column gap-2">
-                {% for category in header_categories %}
-                <a href="{{ category.get_absolute_url }}" class="text-decoration-none text-dark p-2 border-bottom">
-                    {{ category.name }}
-                </a>
-                {% endfor %}
-                <a href="{% url 'shop:product_list' %}" class="text-decoration-none text-dark p-2 fw-bold text-uppercase">
-                    View All Products
-                </a>
-            </div>
-        </div>
+    </section>
 
-        <!-- Mobile Search Panel -->
-        <div class="mobile-search-panel" id="mobile-search-panel">
-            <form action="{% url 'shop:product_list' %}" method="get" class="d-flex w-100 align-items-center">
-                <input type="search" name="q" class="form-control me-2" placeholder="Search products..." id="mobile-search-input">
-                <button type="submit" class="btn btn-primary" style="background-color: var(--tj-primary); border: none;"><i class="bi bi-search"></i></button>
-            </form>
-        </div>
-    </div>
-</div>
-
-<!-- HERO BANNER -->
-<div class="hero-banner">
-    <div class="hero-bg-stack" id="hero-bg-stack">
-        <img class="hero-bg-image active" src="/media/profiles/hero%201.png" alt="Natural skin care">
-        <img class="hero-bg-image" src="/media/profiles/hero%202.png" alt="Natural skincare two">
-    </div>
-
-    <div class="hero-content">
-        <h1>Nature's Best for Your Skin</h1>
-        <p>Premium organic skincare crafted with love from Kenyan farms.</p>
-        <a href="{% url 'shop:product_list' %}" class="hero-cta">
-            Shop Now <i class="bi bi-arrow-right"></i>
-        </a>
-    </div>
-</div>
-
-<div class="shipping-banner" role="status" aria-label="Shipping offer">
-    <div class="shipping-banner-inner">
-        <i class="bi bi-truck"></i>
-        <span>Free delivery on orders above KSh 3,000</span>
-    </div>
-</div>
-
-<!-- TRUST BADGES -->
-<div class="trust-section">
-    <div class="trust-grid">
-        <div class="trust-item">
+    <div class="shipping-banner">
+        <div class="shipping-banner-inner">
             <i class="bi bi-truck"></i>
-            <span>Nationwide Delivery</span>
-        </div>
-        <div class="trust-item">
-            <i class="bi bi-shield-check"></i>
-            <span>Secure Payment</span>
-        </div>
-        <div class="trust-item">
-            <i class="bi bi-arrow-counterclockwise"></i>
-            <span>Easy Returns</span>
-        </div>
-        <div class="trust-item">
-            <i class="bi bi-award"></i>
-            <span>100% Natural</span>
+            <span>Free delivery on orders above KSh 3,000</span>
         </div>
     </div>
+
 </div>
 
 <!-- BESTSELLERS SECTION -->
 <div class="section-bar">
-    <h2><i class="bi bi-fire"></i> Bestsellers</h2>
+    <h2></i> You may Like.. </h2>
     <a href="{% url 'shop:product_list' %}" class="view-all-link">
         View All <i class="bi bi-arrow-right"></i>
     </a>
@@ -1046,7 +693,7 @@
 
 <!-- SPECIAL OFFERS SECTION -->
 <div class="section-bar">
-    <h2><i class="bi bi-lightning-fill"></i> Special Offers</h2>
+    </i> Special Offers</h2>
     <a href="{% url 'shop:product_list' %}" class="view-all-link">
         View All <i class="bi bi-arrow-right"></i>
     </a>
@@ -1165,7 +812,7 @@
 
 <!-- NEW ARRIVALS SECTION -->
 <div class="section-bar">
-    <h2><i class="bi bi-stars"></i> New Arrivals</h2>
+    </i> New Arrivals</h2>
     <a href="{% url 'shop:product_list' %}" class="view-all-link">
         View All <i class="bi bi-arrow-right"></i>
     </a>
@@ -1366,25 +1013,10 @@
         btn.dispatchEvent(event);
     }
 
-    // Toggle Mobile Browse Panel
-    window.toggleMobileBrowse = function(btn) {
-        const panel = document.getElementById('mobile-browse-panel');
-        const searchPanel = document.getElementById('mobile-search-panel');
-        
-        if (panel) {
-            panel.classList.toggle('open');
-            // Close search if open
-            if (searchPanel && searchPanel.classList.contains('open')) {
-                searchPanel.classList.remove('open');
-            }
-        }
-    };
-
     // Toggle Mobile Search
     window.toggleMobileSearch = function() {
         const searchPanel = document.getElementById('mobile-search-panel');
         const searchInput = document.getElementById('mobile-search-input');
-        const browsePanel = document.getElementById('mobile-browse-panel');
 
         if (searchPanel) {
             const isOpen = searchPanel.classList.contains('open');
@@ -1396,10 +1028,6 @@
                if (searchInput) {
                    setTimeout(() => searchInput.focus(), 50);
                }
-               // Close mobile browse panel if open
-               if (browsePanel && browsePanel.classList.contains('open')) {
-                   browsePanel.classList.remove('open');
-               }
             }
         }
     };
@@ -1407,7 +1035,6 @@
     // Close mobile panels when clicking outside
     document.addEventListener('click', function(event) {
         const mobileSearchPanel = document.getElementById('mobile-search-panel');
-        const mobileBrowsePanel = document.getElementById('mobile-browse-panel');
         
         // Check if click is outside search panel and not on the search toggle button
         if (mobileSearchPanel && mobileSearchPanel.classList.contains('open')) {
@@ -1416,15 +1043,6 @@
             if (!mobileSearchPanel.contains(event.target) && !isSearchButton) {
                 mobileSearchPanel.classList.remove('open');
             }
-        }
-
-        // Check if click is outside browse panel and not on the browse button
-        if (mobileBrowsePanel && mobileBrowsePanel.classList.contains('open')) {
-             const isBrowseButton = event.target.closest('.mobile-browse-btn');
-             
-             if (!mobileBrowsePanel.contains(event.target) && !isBrowseButton) {
-                 mobileBrowsePanel.classList.remove('open');
-             }
         }
     });
 

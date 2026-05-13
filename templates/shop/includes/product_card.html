@@ -1,5 +1,5 @@
 <div class="card h-100 product-card shadow-sm">
-    <div class="position-relative overflow-hidden">
+    <div class="position-relative overflow-hidden product-image-wrapper">
         {% with first_image=product.images.first %}
         {% if first_image %}
             <img src="{{ first_image.image.url }}" 
@@ -29,24 +29,25 @@
         <span class="position-absolute bottom-0 start-0 badge bg-warning m-2">Low Stock</span>
         {% endif %}
         
-        
-<div class="product-actions position-absolute top-50 start-50 translate-middle d-flex gap-2">
-   
-    <button type="button" 
-            class="btn wishlist-btn rounded-circle shadow-sm {% if product.id in user_wishlist_ids %}wishlist-active{% endif %}" 
-            data-product-id="{{ product.id }}"
-            data-wishlist-url="{% url 'shop:toggle_wishlist' %}"
-            title="Add to Wishlist"> 
-        <i class="bi {% if product.id in user_wishlist_ids %}bi-heart-fill{% else %}bi-heart{% endif %}"></i>
-    </button>
-    
-    <button class="btn btn-success btn-sm rounded-circle shadow-sm add-to-cart" 
-            data-product-id="{{ product.id }}"
-            data-cart-url="{% url 'shop:add_to_cart' %}"
-            {% if not product.is_in_stock %}disabled{% endif %}>
-        <i class="bi bi-cart-plus"></i>
-    </button>
-</div>
+        <!-- Product Action Buttons -->
+        <div class="product-actions position-absolute top-50 start-50 translate-middle d-flex gap-2" style="z-index: 20; pointer-events: auto;">
+            <button type="button" 
+                    class="btn wishlist-btn rounded-circle shadow-sm {% if product.id in user_wishlist_ids %}wishlist-active{% endif %}" 
+                    data-product-id="{{ product.id }}"
+                    data-wishlist-url="{% url 'shop:toggle_wishlist' %}"
+                    title="Add to Wishlist"
+                    style="pointer-events: auto;"> 
+                <i class="bi {% if product.id in user_wishlist_ids %}bi-heart-fill{% else %}bi-heart{% endif %}"></i>
+            </button>
+            
+            <button class="btn btn-success btn-sm rounded-circle shadow-sm add-to-cart" 
+                    data-product-id="{{ product.id }}"
+                    data-cart-url="{% url 'shop:add_to_cart' %}"
+                    style="pointer-events: auto;"
+                    {% if not product.is_in_stock %}disabled{% endif %}>
+                <i class="bi bi-cart-plus"></i>
+            </button>
+        </div>
     </div>
     
     <div class="card-body d-flex flex-column">
@@ -114,11 +115,13 @@
 .product-card .product-actions {
     opacity: 0;
     transition: all 0.3s ease;
-    z-index: 10;
+    z-index: 20;
+    pointer-events: none;
 }
 
 .product-card:hover .product-actions {
     opacity: 1;
+    pointer-events: auto;
 }
 
 .product-actions .btn {
@@ -128,6 +131,8 @@
     align-items: center;
     justify-content: center;
     transition: all 0.3s ease;
+    pointer-events: auto;
+    cursor: pointer;
 }
 
 .product-actions .btn:hover {

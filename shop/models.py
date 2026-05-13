@@ -329,3 +329,33 @@ class OrderItem(models.Model):
     @property
     def total(self):
         return self.product_price * self.quantity
+
+
+class SiteSettings(models.Model):
+    """Store site-wide configuration like logo and background"""
+    logo = models.ImageField(
+        upload_to='site_settings/',
+        blank=True,
+        null=True,
+        help_text='Logo image (recommended: 200x50px)'
+    )
+    background = models.ImageField(
+        upload_to='site_settings/',
+        blank=True,
+        null=True,
+        help_text='Background image'
+    )
+    site_name = models.CharField(max_length=200, default='TJ Naturals')
+    tagline = models.CharField(max_length=500, blank=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    
+    class Meta:
+        verbose_name_plural = "Site Settings"
+    
+    def __str__(self):
+        return "Site Settings"
+    
+    @classmethod
+    def get_settings(cls):
+        """Get or create the single instance"""
+        return cls.objects.get_or_create(pk=1)[0]

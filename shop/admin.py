@@ -1,7 +1,7 @@
 from django.contrib import admin
 from .models import (
     Category, Product, ProductImage, Review,
-    Cart, CartItem, Wishlist, Order, OrderItem, ShippingRate
+    Cart, CartItem, Wishlist, Order, OrderItem, ShippingRate, SiteSettings
 )
 
 
@@ -118,6 +118,37 @@ class ShippingRateAdmin(admin.ModelAdmin):
     list_editable = ['fee', 'is_active', 'display_order']
 
 
+class SiteSettingsAdmin(admin.ModelAdmin):
+    fieldsets = (
+        ('Branding', {
+            'fields': ('site_name', 'tagline', 'logo')
+        }),
+        ('Design', {
+            'fields': ('background',)
+        }),
+    )
+    readonly_fields = ['updated_at']
+    
+    def has_add_permission(self, request):
+        """Only allow editing the single instance, not creating new ones"""
+        return False
+    
+    def has_delete_permission(self, request, obj=None):
+        """Prevent deletion of the single instance"""
+        return False
+    
+    def changelist_view(self, request, extra_context=None):
+        """Redirect directly to the single instance edit page"""
+        from django.shortcuts import redirect
+        from shop.models import SiteSettings
+        
+        obj = SiteSettings.objects.first()
+        if obj:
+            return redirect(f'/admin/shop/sitesettings/{obj.id}/change/')
+        
+        return super().changelist_view(request, extra_context)
+
+
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Product, ProductAdmin)
 admin.site.register(Review, ReviewAdmin)
@@ -125,6 +156,7 @@ admin.site.register(Cart, CartAdmin)
 admin.site.register(Wishlist)
 admin.site.register(Order, OrderAdmin)
 admin.site.register(ShippingRate, ShippingRateAdmin)
+admin.site.register(SiteSettings, SiteSettingsAdmin)
 
 admin.site.site_header = 'TJ Naturals Admin'
 admin.site.site_title = 'TJ Naturals Admin Portal'

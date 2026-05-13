@@ -1,8 +1,7 @@
-const STATIC_CACHE = 'tj-naturals-static-v3';
-const DYNAMIC_CACHE = 'tj-naturals-dynamic-v3';
+const STATIC_CACHE = 'tj-naturals-static-v4';
+const DYNAMIC_CACHE = 'tj-naturals-dynamic-v4';
 
 const STATIC_ASSETS = [
-    '/',
     '/static/css/style.css',
     '/static/js/main.js',
     '/static/images/tjlogo(3).png',
@@ -47,6 +46,11 @@ self.addEventListener('fetch', (event) => {
     }
 
     if (request.method !== 'GET') {
+        return;
+    }
+
+    if (request.mode === 'navigate') {
+        event.respondWith(networkFirst(request));
         return;
     }
 

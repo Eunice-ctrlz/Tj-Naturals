@@ -1,4 +1,4 @@
-from .models import Cart, Wishlist, Category
+from .models import Cart, Wishlist, Category, SiteSettings
 
 def cart_and_wishlist_counts(request):
     """Add cart and wishlist counts to all templates."""
@@ -48,6 +48,16 @@ def cart_and_wishlist_counts(request):
     return context
 
 
+def site_settings(request):
+    """Add site settings (logo, background, etc.) to all templates."""
+    try:
+        settings = SiteSettings.get_settings()
+    except Exception:
+        settings = None
+    
+    return {
+        'site_settings': settings
+    }
 def categories_context(request):
     """Add categories to template context."""
     categories = list(

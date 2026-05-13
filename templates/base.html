@@ -5,33 +5,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="TJ Naturals - Premium Natural Skincare Products in Kenya">
-    <meta name="theme-color" content="#1B4D1A">
+    <meta name="theme-color" content="#2F6B3F">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="TJ Naturals">
-    
+
     <title>{% block title %}TJ Naturals{% endblock %}</title>
-    
+
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
-    
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
+
     <!-- PWA Manifest -->
     <link rel="manifest" href="{% static 'manifest.json' %}">
     <link rel="apple-touch-icon" href="{% static 'images/icon-192.png' %}">
-    
+
     <!-- Global Variables -->
     <script>
-        const CSRF_TOKEN = '{{ csrf_token }}';
+        // Get CSRF token from cookie or meta tag
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+        const CSRF_TOKEN = getCookie('csrftoken') || '{{ csrf_token }}';
         const USER_AUTHENTICATED = {{ user.is_authenticated|yesno:"true,false" }};
     </script>
-    
+
     <style>
         /* TJ NATURALS - STRICT GREEN & WHITE THEME */
         :root {
@@ -65,13 +80,13 @@
             --bs-link-color: var(--tj-primary-dark);
             --bs-link-hover-color: var(--tj-primary);
         }
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: 'Inter', sans-serif;
             background:
@@ -187,54 +202,153 @@
             --bs-pagination-active-bg: var(--tj-primary);
             --bs-pagination-active-border-color: var(--tj-primary);
         }
-        
-        /* NAVBAR - Clean & Simple with Glass Effect */
-        .navbar {
-            background: var(--tj-glass) !important;
-            backdrop-filter: blur(20px) saturate(180%);
-            -webkit-backdrop-filter: blur(20px) saturate(180%);
-            border-bottom: 1px solid var(--tj-glass-border);
-            padding: 0;
-            height: 80px;
-            box-shadow: var(--tj-shadow);
-            transition: all 0.3s ease;
-        }
-        
-        .navbar.scrolled {
-            box-shadow: 0 4px 30px rgba(27, 77, 26, 0.15);
-        }
 
+        /* Navbar - aligned with site theme */
         .navbar {
             background: var(--tj-glass-strong) !important;
             backdrop-filter: blur(18px) saturate(160%) !important;
             -webkit-backdrop-filter: blur(18px) saturate(160%) !important;
-            border-bottom: 1px solid var(--tj-glass-border);
+            padding: 0;
             height: auto;
-            padding: 0 !important;
             box-shadow: 0 10px 24px rgba(31, 79, 47, 0.08);
+            border-bottom: 1px solid var(--tj-glass-border);
+            color: var(--tj-text);
         }
 
         .navbar-main-row {
-            min-height: 76px;
+            min-height: 70px;
             display: flex;
             align-items: center;
             justify-content: space-between;
             gap: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
         }
 
-        .navbar-nav {
-            gap: 8px;
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            height: auto;
+            padding: 0;
+            margin: 0;
+            flex-shrink: 0;
+        }
+
+        .brand-logo-img {
+            height: 42px;
+            width: auto;
+            max-width: 160px;
+            object-fit: contain;
+            display: block;
+        }
+
+        /* Search Bar - Pill Style */
+        .nav-search-wrapper {
+            flex: 1;
+            max-width: 760px;
+            margin: 0 28px;
+        }
+
+        .nav-search-form {
+            display: flex;
+            align-items: center;
+            background: rgba(242, 236, 221, 0.9);
+            border-radius: 999px;
+            padding: 4px 6px 4px 20px;
+            height: 48px;
+            border: 1px solid rgba(94, 139, 99, 0.18);
+        }
+
+        .nav-search-input {
+            border: none;
+            outline: none;
+            width: 100%;
+            min-width: 0;
+            font-size: 15px;
+            color: var(--tj-text);
+            background: transparent;
+        }
+
+        .nav-search-input::placeholder {
+            color: var(--tj-text-light);
+            font-size: 15px;
+        }
+
+        .nav-search-submit {
+            width: 38px;
+            height: 38px;
+            border: none;
+            border-radius: 50%;
+            background: transparent;
+            color: var(--tj-primary-dark);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        /* Nav Actions - Icon + Label Style */
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            margin-left: auto;
+            gap: 24px;
+        }
+
+        .nav-action-item {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            text-decoration: none;
+            color: var(--tj-text);
+            position: relative;
+            gap: 0;
+            transition: color 0.2s ease;
+        }
+
+        .nav-action-item:hover {
+            color: var(--tj-primary);
+        }
+
+        .nav-action-item i {
+            font-size: 1.3rem;
+            line-height: 1;
+        }
+
+        .nav-action-label {
+            display: none;
+            font-size: 12px;
+            font-weight: 500;
+            line-height: 1.2;
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: -6px;
+            right: -6px;
+            background: var(--tj-primary);
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 800;
+            min-width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid var(--tj-white);
         }
 
         .nav-link {
             color: var(--tj-text) !important;
             font-weight: 600;
-            padding: 10px 16px !important;
-            border-radius: 10px;
+            padding: 12px 10px !important;
+            border-radius: 8px;
             transition: all 0.2s ease;
             text-transform: uppercase;
             letter-spacing: 0.03em;
-            font-size: 0.84rem;
+            font-size: 14px;
         }
 
         .nav-link:hover,
@@ -243,223 +357,552 @@
             color: var(--tj-primary-dark) !important;
         }
 
-        .nav-actions {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .nav-search {
-            width: 0;
-            opacity: 0;
-            overflow: hidden;
-            transition: width 0.3s ease, opacity 0.2s ease;
-        }
-        
-        .nav-search.open {
-            width: min(300px, 62vw);
-            opacity: 1;
-        }
-        
-        .nav-search-form {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            background: white;
-            border: 1px solid var(--tj-border);
-            border-radius: 24px;
-            padding: 6px 8px 6px 14px;
-        }
-        
-        .nav-search-input {
-            border: none;
-            outline: none;
-            width: 100%;
-            min-width: 0;
-            font-size: 0.9rem;
-            color: var(--tj-text);
-            background: transparent;
-        }
-        
-        .nav-search-submit {
-            width: 34px;
-            height: 34px;
-            border: none;
-            border-radius: 50%;
-            background: var(--tj-primary);
-            color: white;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .nav-btn {
-            width: 46px;
-            height: 46px;
-            border-radius: 50%;
-            border: 1px solid var(--tj-border);
-            background: #ffffff;
-            color: var(--tj-primary-dark);
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            position: relative;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-        
-        .navbar-brand {
-            display: flex;
-            align-items: center;
-            height: 76px;
-            padding: 0;
-            margin: 0;
-            flex-shrink: 0;
-        }
-
-        .brand-logo-img {
-            height: 48px;
-            width: auto;
-            max-width: 180px;
-            object-fit: contain;
-            display: block;
-        }
-
-        .navbar-toggler {
-            border: 1px solid var(--tj-border) !important;
-            border-radius: 10px;
-            flex-shrink: 0;
-        }
-
         @media (max-width: 991px) {
             .navbar-main-row {
-                min-height: 68px;
-                position: relative;
-            }
-
-            .navbar-brand {
-                height: 60px;
+                min-height: 60px;
             }
 
             .brand-logo-img {
-                height: 40px;
+                height: 36px;
                 max-width: 130px;
             }
 
-            .offcanvas.offcanvas-end#navbarNav {
-                width: min(86vw, 360px);
-                background: var(--tj-off-white);
-                border-left: 1px solid var(--tj-border);
+            .nav-search-wrapper {
+                margin: 0 10px;
+                max-width: none;
             }
 
-            .offcanvas-header {
-                border-bottom: 1px solid var(--tj-border);
-            }
-
-            .offcanvas-body {
-                display: flex;
-                flex-direction: column;
-                gap: 12px;
-                padding: 16px;
-            }
-
-            .offcanvas-body .navbar-nav {
-                gap: 4px;
-                width: 100%;
-            }
-
-            .nav-link {
-                padding: 12px 10px !important;
-                text-align: left;
-            }
-
-            .offcanvas-body .nav-actions {
-                width: 100%;
-                margin-top: 12px;
-                padding-top: 12px;
-                border-top: 1px solid var(--tj-border);
-                justify-content: flex-start;
-                flex-wrap: wrap;
-                gap: 10px;
-            }
-
-            .offcanvas-body .nav-search,
-            .offcanvas-body .nav-search.open {
-                width: 100%;
-                opacity: 1;
-                order: -1;
-                flex-basis: 100%;
-            }
-
-            .nav-btn {
-                width: 42px;
+            .nav-search-form {
                 height: 42px;
+                padding: 4px 6px 4px 14px;
+            }
+
+            .nav-search-input,
+            .nav-search-input::placeholder {
+                font-size: 14px;
+            }
+
+            .nav-actions {
+                gap: 16px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .nav-search-wrapper {
+                display: none;
+            }
+
+            .nav-actions {
+                gap: 12px;
+            }
+
+            .nav-action-item i {
+                font-size: 1.2rem;
             }
         }
 
         @media (max-width: 375px) {
             .brand-logo-img {
-                height: 36px;
-                max-width: 112px;
+                height: 32px;
+                max-width: 110px;
             }
 
-            .nav-btn {
-                width: 40px;
-                height: 40px;
+            .nav-actions {
+                gap: 10px;
             }
         }
-        .nav-btn:hover {
-            background: var(--tj-primary-dark);
-            color: #ffffff;
+
+        /* The heart button base state */
+        .wishlist-btn {
+            background: white;
+            border: 1px solid #eee;
+            color: #666;
+            transition: all 0.3s ease;
+        }
+
+        /* The state after clicking (Active/Green) */
+        .wishlist-active {
+            background-color: #28a745 !important;
+            color: white !important;
+            border-color: #28a745 !important;
+        }
+
+        /* Small scale effect when clicked */
+        .wishlist-btn:active {
+            transform: scale(0.9);
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        /* Login Button */
+        .btn-login {
+            background: var(--tj-primary);
+            color: white !important;
+            padding: 12px 28px !important;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 2px solid var(--tj-primary);
+        }
+
+        .btn-login:hover {
+            background: transparent;
+            color: var(--tj-primary) !important;
             transform: translateY(-2px);
-            box-shadow: 0 8px 16px rgba(31, 79, 47, 0.24);
+            box-shadow: 0 8px 20px rgba(27, 77, 26, 0.2);
         }
 
-        @media (min-width: 992px) {
-            .navbar .offcanvas-lg {
-                position: static;
-                transform: none;
-                visibility: visible !important;
-                background: transparent;
-                border: 0;
-                width: auto;
-                flex-grow: 1;
-            }
-
-            .navbar .offcanvas-lg .offcanvas-body {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                flex-grow: 1;
-                padding: 0;
-                overflow: visible;
-            }
-
-            .navbar .offcanvas-lg .navbar-nav {
-                margin: 0 auto;
-            }
+        /* User Avatar */
+        .user-menu {
+            position: relative;
         }
-        
-        .cart-badge {
+
+        .user-avatar {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--tj-primary), var(--tj-accent));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.2rem;
+            cursor: pointer;
+            border: 2px solid white;
+            box-shadow: 0 4px 15px rgba(27, 77, 26, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .user-avatar:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(27, 77, 26, 0.3);
+        }
+
+        /* Dropdown Menu */
+        .dropdown-menu {
+            background: var(--tj-glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--tj-glass-border);
+            border-radius: 16px;
+            padding: 12px;
+            box-shadow: var(--tj-shadow);
+            margin-top: 15px;
+            min-width: 220px;
+        }
+
+        .dropdown-item {
+            border-radius: 12px;
+            padding: 12px 18px;
+            font-weight: 600;
+            color: var(--tj-text);
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .dropdown-item:hover {
+            background: rgba(27, 77, 26, 0.1);
+            color: var(--tj-primary);
+            padding-left: 22px;
+        }
+
+        .dropdown-item i {
+            font-size: 1.1rem;
+            color: var(--tj-primary);
+        }
+
+        .dropdown-divider {
+            border-color: var(--tj-border);
+            margin: 8px 0;
+        }
+
+        /* Main Content */
+        main {
+            min-height: calc(100vh - 400px);
+        }
+
+        /* Alerts */
+        .alert-tj {
+            border-radius: 16px;
+            border: none;
+            padding: 20px 25px;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+        .alert-success-tj {
+            background: rgba(27, 77, 26, 0.1);
+            color: var(--tj-primary);
+            border-left: 4px solid var(--tj-primary);
+        }
+
+        .alert-danger-tj {
+            background: rgba(198, 40, 40, 0.1);
+            color: #C62828;
+            border-left: 4px solid #C62828;
+        }
+
+        /* Footer - Clean & Simple */
+        footer {
+            background: var(--tj-primary-dark);
+            color: white;
+            padding: 80px 0 30px;
+            margin-top: 100px;
+        }
+
+        .footer-brand {
+            font-size: 2rem;
+            font-weight: 800;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .footer-brand .brand-icon {
+            background: white;
+            color: var(--tj-primary);
+        }
+
+        .footer-desc {
+            color: rgba(255,255,255,0.8);
+            line-height: 1.8;
+            margin-bottom: 30px;
+            font-size: 1rem;
+        }
+
+        .footer-heading {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 25px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid rgba(255,255,255,0.2);
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .footer-links a:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .footer-contact p {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 15px;
+        }
+
+        .footer-contact i {
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .footer-payment-box {
+            margin-top: 14px;
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.28);
+            border-radius: 14px;
+            padding: 14px 16px;
+        }
+
+        .footer-payment-box h6 {
+            margin: 0 0 10px;
+            font-weight: 700;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-payment-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: rgba(255, 255, 255, 0.92);
+            margin-bottom: 6px;
+            gap: 8px;
+        }
+
+        .footer-payment-row strong {
+            color: #fff;
+            letter-spacing: 0.02em;
+        }
+
+        .footer-payment-note {
+            margin: 8px 0 0;
+            color: rgba(255, 255, 255, 0.78);
+            font-size: 0.86rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+            margin-top: 25px;
+        }
+
+        .social-links a {
+            width: 45px;
+            height: 45px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .social-links a:hover {
+            background: white;
+            color: var(--tj-primary);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 60px;
+            padding-top: 25px;
+            text-align: center;
+            color: rgba(255,255,255,0.6);
+            font-size: 0.9rem;
+        }
+
+        /* Chatbot Widget */
+        #chatbot-widget {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1050;
+        }
+
+        #chatbot-toggle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--tj-primary), var(--tj-accent));
+            border: none;
+            box-shadow: 0 10px 30px rgba(27, 77, 26, 0.3);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        #chatbot-toggle:hover {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 15px 40px rgba(27, 77, 26, 0.4);
+        }
+
+        #chatbot-panel {
             position: absolute;
-            top: -8px;
-            right: -8px;
+            bottom: 75px;
+            right: 0;
+            width: min(380px, calc(100vw - 40px));
+            max-height: min(78vh, 640px);
+            background: var(--tj-glass);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            box-shadow: var(--tj-shadow);
+            overflow: hidden;
+            border: 1px solid var(--tj-glass-border);
+            animation: slideUp 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .chatbot-header {
             background: var(--tj-primary);
             color: white;
-            font-size: 0.75rem;
-            font-weight: 800;
-            min-width: 24px;
-            height: 24px;
+            padding: 20px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chatbot-header h6 {
+            margin: 0;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .chatbot-body {
+            height: 350px;
+            flex: 1 1 auto;
+            overflow-y: auto;
+            background: var(--tj-off-white);
+            padding: 20px;
+        }
+
+        .chat-message {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .chat-avatar {
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            border: 2px solid white;
-            box-shadow: 0 2px 8px rgba(27, 77, 26, 0.3);
-            animation: pulse 2s infinite;
+            margin-right: 10px;
+            flex-shrink: 0;
+            background: var(--tj-primary);
+            color: white;
+            font-size: 1rem;
         }
 
+        .chat-bubble {
+            background: white;
+            padding: 12px 16px;
+            border-radius: 16px 16px 16px 4px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            max-width: 80%;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .chat-bubble.user {
+            background: var(--tj-primary);
+            color: white;
+            border-radius: 16px 16px 4px 16px;
+            margin-left: auto;
+        }
+
+        .chatbot-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .chatbot-option-btn {
+            border: 1px solid var(--tj-border);
+            background: #fff;
+            color: var(--tj-primary-dark);
+            border-radius: 999px;
+            padding: 6px 12px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .chatbot-option-btn:hover {
+            background: var(--tj-cream);
+        }
+
+        .chatbot-footer {
+            background: white;
+            padding: 15px 20px;
+            border-top: 1px solid var(--tj-border);
+        }
+
+        .chat-input-group {
+            display: flex;
+            gap: 10px;
+            background: var(--tj-cream);
+            padding: 6px;
+            border-radius: 50px;
+        }
+
+        .chatbot-whatsapp-link {
+            margin-top: 10px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            text-decoration: none;
+            color: #fff;
+            background: #1f8f43;
+            border: 1px solid #1f8f43;
+            border-radius: 999px;
+            padding: 8px 12px;
+            font-size: 0.88rem;
+            font-weight: 700;
+        }
+
+        .chatbot-whatsapp-link:hover {
+            color: #fff;
+            background: #18783a;
+            border-color: #18783a;
+        }
+
+        .chat-input {
+            flex: 1;
+            border: none;
+            background: transparent;
+            padding: 10px 16px;
+            outline: none;
+            font-size: 0.95rem;
+        }
+
+        .chat-send {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--tj-primary);
+            color: white;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .chat-send:hover {
+            transform: scale(1.05);
+            background: var(--tj-primary-dark);
+        }
+
+        /* Mobile Bottom Nav */
         .mobile-bottom-nav {
             display: none;
         }
@@ -509,497 +952,7 @@
             padding: 0 4px;
             line-height: 1;
         }
-        
-        /* The heart button base state */
-        .wishlist-btn {
-            background: white;
-            border: 1px solid #eee;
-            color: #666;
-            transition: all 0.3s ease;
-        }
 
-        /* The state after clicking (Active/Green) */
-        .wishlist-active {
-            background-color: #28a745 !important;
-            color: white !important;
-            border-color: #28a745 !important;
-        }
-
-        /* Small scale effect when clicked */
-        .wishlist-btn:active {
-            transform: scale(0.9);
-        }
-        
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-        }
-        
-        /* Login Button */
-        .btn-login {
-            background: var(--tj-primary);
-            color: white !important;
-            padding: 12px 28px !important;
-            border-radius: 50px;
-            font-weight: 700;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            border: 2px solid var(--tj-primary);
-        }
-        
-        .btn-login:hover {
-            background: transparent;
-            color: var(--tj-primary) !important;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(27, 77, 26, 0.2);
-        }
-        
-        /* User Avatar */
-        .user-menu {
-            position: relative;
-        }
-        
-        .user-avatar {
-            width: 48px;
-            height: 48px;
-            background: linear-gradient(135deg, var(--tj-primary), var(--tj-accent));
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 700;
-            font-size: 1.2rem;
-            cursor: pointer;
-            border: 2px solid white;
-            box-shadow: 0 4px 15px rgba(27, 77, 26, 0.2);
-            transition: all 0.3s ease;
-        }
-        
-        .user-avatar:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 25px rgba(27, 77, 26, 0.3);
-        }
-        
-        /* Dropdown Menu */
-        .dropdown-menu {
-            background: var(--tj-glass);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--tj-glass-border);
-            border-radius: 16px;
-            padding: 12px;
-            box-shadow: var(--tj-shadow);
-            margin-top: 15px;
-            min-width: 220px;
-        }
-        
-        .dropdown-item {
-            border-radius: 12px;
-            padding: 12px 18px;
-            font-weight: 600;
-            color: var(--tj-text);
-            transition: all 0.2s ease;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        
-        .dropdown-item:hover {
-            background: rgba(27, 77, 26, 0.1);
-            color: var(--tj-primary);
-            padding-left: 22px;
-        }
-        
-        .dropdown-item i {
-            font-size: 1.1rem;
-            color: var(--tj-primary);
-        }
-        
-        .dropdown-divider {
-            border-color: var(--tj-border);
-            margin: 8px 0;
-        }
-        
-        /* Main Content */
-        main {
-            min-height: calc(100vh - 400px);
-        }
-        
-        /* Alerts */
-        .alert-tj {
-            border-radius: 16px;
-            border: none;
-            padding: 20px 25px;
-            margin-bottom: 25px;
-            font-weight: 600;
-        }
-        
-        .alert-success-tj {
-            background: rgba(27, 77, 26, 0.1);
-            color: var(--tj-primary);
-            border-left: 4px solid var(--tj-primary);
-        }
-        
-        .alert-danger-tj {
-            background: rgba(198, 40, 40, 0.1);
-            color: #C62828;
-            border-left: 4px solid #C62828;
-        }
-        
-        /* Footer - Clean & Simple */
-        footer {
-            background: var(--tj-primary-dark);
-            color: white;
-            padding: 80px 0 30px;
-            margin-top: 100px;
-        }
-        
-        .footer-brand {
-            font-size: 2rem;
-            font-weight: 800;
-            color: white;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 20px;
-        }
-        
-        .footer-brand .brand-icon {
-            background: white;
-            color: var(--tj-primary);
-        }
-        
-        .footer-desc {
-            color: rgba(255,255,255,0.8);
-            line-height: 1.8;
-            margin-bottom: 30px;
-            font-size: 1rem;
-        }
-        
-        .footer-heading {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: white;
-            margin-bottom: 25px;
-            padding-bottom: 12px;
-            border-bottom: 2px solid rgba(255,255,255,0.2);
-        }
-        
-        .footer-links {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        
-        .footer-links li {
-            margin-bottom: 12px;
-        }
-        
-        .footer-links a {
-            color: rgba(255,255,255,0.8);
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            display: inline-block;
-        }
-        
-        .footer-links a:hover {
-            color: white;
-            transform: translateX(5px);
-        }
-        
-        .footer-contact p {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            color: rgba(255,255,255,0.8);
-            margin-bottom: 15px;
-        }
-        
-        .footer-contact i {
-            color: white;
-            font-size: 1.2rem;
-        }
-
-        .footer-payment-box {
-            margin-top: 14px;
-            background: rgba(255, 255, 255, 0.12);
-            border: 1px solid rgba(255, 255, 255, 0.28);
-            border-radius: 14px;
-            padding: 14px 16px;
-        }
-
-        .footer-payment-box h6 {
-            margin: 0 0 10px;
-            font-weight: 700;
-            color: #fff;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .footer-payment-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            color: rgba(255, 255, 255, 0.92);
-            margin-bottom: 6px;
-            gap: 8px;
-        }
-
-        .footer-payment-row strong {
-            color: #fff;
-            letter-spacing: 0.02em;
-        }
-
-        .footer-payment-note {
-            margin: 8px 0 0;
-            color: rgba(255, 255, 255, 0.78);
-            font-size: 0.86rem;
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 12px;
-            margin-top: 25px;
-        }
-        
-        .social-links a {
-            width: 45px;
-            height: 45px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.2rem;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            border: 1px solid rgba(255,255,255,0.2);
-        }
-        
-        .social-links a:hover {
-            background: white;
-            color: var(--tj-primary);
-            transform: translateY(-3px);
-        }
-        
-        .footer-bottom {
-            border-top: 1px solid rgba(255,255,255,0.1);
-            margin-top: 60px;
-            padding-top: 25px;
-            text-align: center;
-            color: rgba(255,255,255,0.6);
-            font-size: 0.9rem;
-        }
-        
-        /* Chatbot Widget */
-        #chatbot-widget {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            z-index: 1050;
-        }
-        
-        #chatbot-toggle {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--tj-primary), var(--tj-accent));
-            border: none;
-            box-shadow: 0 10px 30px rgba(27, 77, 26, 0.3);
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            color: white;
-            font-size: 1.5rem;
-        }
-        
-        #chatbot-toggle:hover {
-            transform: scale(1.1) rotate(5deg);
-            box-shadow: 0 15px 40px rgba(27, 77, 26, 0.4);
-        }
-        
-        #chatbot-panel {
-            position: absolute;
-            bottom: 75px;
-            right: 0;
-            width: min(380px, calc(100vw - 40px));
-            max-height: min(78vh, 640px);
-            background: var(--tj-glass);
-            backdrop-filter: blur(20px);
-            border-radius: 24px;
-            box-shadow: var(--tj-shadow);
-            overflow: hidden;
-            border: 1px solid var(--tj-glass-border);
-            animation: slideUp 0.3s ease;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .chatbot-header {
-            background: var(--tj-primary);
-            color: white;
-            padding: 20px 25px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .chatbot-header h6 {
-            margin: 0;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .chatbot-body {
-            height: 350px;
-            flex: 1 1 auto;
-            overflow-y: auto;
-            background: var(--tj-off-white);
-            padding: 20px;
-        }
-        
-        .chat-message {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 15px;
-            animation: fadeIn 0.3s ease;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .chat-avatar {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 10px;
-            flex-shrink: 0;
-            background: var(--tj-primary);
-            color: white;
-            font-size: 1rem;
-        }
-        
-        .chat-bubble {
-            background: white;
-            padding: 12px 16px;
-            border-radius: 16px 16px 16px 4px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-            max-width: 80%;
-            font-size: 0.95rem;
-            line-height: 1.5;
-        }
-        
-        .chat-bubble.user {
-            background: var(--tj-primary);
-            color: white;
-            border-radius: 16px 16px 4px 16px;
-            margin-left: auto;
-        }
-
-        .chatbot-options {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 10px;
-        }
-
-        .chatbot-option-btn {
-            border: 1px solid var(--tj-border);
-            background: #fff;
-            color: var(--tj-primary-dark);
-            border-radius: 999px;
-            padding: 6px 12px;
-            font-size: 0.82rem;
-            font-weight: 700;
-            cursor: pointer;
-        }
-
-        .chatbot-option-btn:hover {
-            background: var(--tj-cream);
-        }
-        
-        .chatbot-footer {
-            background: white;
-            padding: 15px 20px;
-            border-top: 1px solid var(--tj-border);
-        }
-        
-        .chat-input-group {
-            display: flex;
-            gap: 10px;
-            background: var(--tj-cream);
-            padding: 6px;
-            border-radius: 50px;
-        }
-
-        .chatbot-whatsapp-link {
-            margin-top: 10px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            width: 100%;
-            text-decoration: none;
-            color: #fff;
-            background: #1f8f43;
-            border: 1px solid #1f8f43;
-            border-radius: 999px;
-            padding: 8px 12px;
-            font-size: 0.88rem;
-            font-weight: 700;
-        }
-
-        .chatbot-whatsapp-link:hover {
-            color: #fff;
-            background: #18783a;
-            border-color: #18783a;
-        }
-        
-        .chat-input {
-            flex: 1;
-            border: none;
-            background: transparent;
-            padding: 10px 16px;
-            outline: none;
-            font-size: 0.95rem;
-        }
-        
-        .chat-send {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: var(--tj-primary);
-            color: white;
-            border: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .chat-send:hover {
-            transform: scale(1.05);
-            background: var(--tj-primary-dark);
-        }
-        
         /* Mobile Responsive */
         @media (max-width: 991px) {
             #chatbot-widget {
@@ -1014,7 +967,7 @@
                 border-radius: 18px;
             }
         }
-        
+
         @media (max-width: 768px) {
             body {
                 padding-top: 74px;
@@ -1070,11 +1023,11 @@
             .chat-input {
                 padding: 9px 12px;
             }
-            
+
             footer {
                 padding: 60px 0 20px;
             }
-            
+
             .footer-heading {
                 margin-top: 30px;
             }
@@ -1082,94 +1035,70 @@
 
         {% block extra_css %}{% endblock %}
     </style>
+<base target="_blank">
 </head>
 <body>
-    <!-- Navigation - Clean & Simple -->
 <nav class="navbar navbar-expand-lg fixed-top">
     <div class="container navbar-main-row">
         <!-- Logo -->
         <a class="navbar-brand" href="{% url 'shop:home' %}">
-            <img src="{% static 'images/tjlogo(3).png' %}"
-                 alt="TJ Naturals Logo"
-                 class="brand-logo-img">
+            {% if site_settings and site_settings.logo %}
+                <img src="{{ site_settings.logo.url }}"
+                     alt="{{ site_settings.site_name }}"
+                     class="brand-logo-img">
+            {% else %}
+                <img src="{% static 'images/tjlogo(3).png' %}"
+                     alt="TJ Naturals Logo"
+                     class="brand-logo-img">
+            {% endif %}
         </a>
 
-        <!-- Mobile Toggle (Hidden as per request) -->
-        <button class="navbar-toggler border-0 p-2 d-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"
-                style="background: transparent; box-shadow: none;">
-            <i class="bi bi-list fs-2" style="color: var(--tj-primary-dark);"></i>
-        </button>
-
-        <!-- Offcanvas / Desktop Content -->
-        <div class="offcanvas offcanvas-end offcanvas-lg" tabindex="-1" id="navbarNav" aria-labelledby="navbarNavLabel">
-            <div class="offcanvas-header d-lg-none">
-                <h5 class="offcanvas-title" id="navbarNavLabel">Menu</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-            </div>
-            <div class="offcanvas-body">
-            <ul class="navbar-nav mx-auto">
-                <li class="nav-item">
-                    <a class="nav-link {% if request.resolver_match.url_name == 'home' %}active{% endif %}" 
-                       href="{% url 'shop:home' %}">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {% if request.resolver_match.url_name == 'product_list' %}active{% endif %}" 
-                       href="{% url 'shop:product_list' %}">Shop</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'shop:product_list' %}">Categories</a>
-                </li>
-            </ul>
-
-            <div class="nav-actions">
-                <button class="nav-btn" type="button" id="nav-search-toggle" title="Search products" aria-label="Open search">
-                    <i class="bi bi-search fs-5"></i>
-                </button>
-                
-                <div class="nav-search" id="nav-search-container">
-                    <form class="nav-search-form" action="{% url 'shop:product_list' %}" method="get" role="search">
-                        <input
-                            type="search"
-                            name="q"
-                            class="nav-search-input"
-                            id="nav-search-input"
-                            placeholder="Search products..."
-                            autocomplete="off"
-                        >
-                        <button class="nav-search-submit" type="submit" aria-label="Submit search">
-                            <i class="bi bi-arrow-right"></i>
-                        </button>
-                    </form>
-                </div>
-
-                <a
-                    class="nav-btn"
-                    href="{% if user.is_authenticated %}{% url 'accounts:profile' %}{% else %}{% url 'accounts:login' %}{% endif %}"
-                    title="{% if user.is_authenticated %}My profile{% else %}Login{% endif %}"
+        <!-- Search Bar (Center) -->
+        <div class="nav-search-wrapper d-none d-sm-block">
+            <form class="nav-search-form" action="{% url 'shop:product_list' %}" method="get" role="search">
+                <input
+                    type="search"
+                    name="q"
+                    class="nav-search-input"
+                    id="nav-search-input"
+                    placeholder="I'm shopping for ..."
+                    autocomplete="off"
                 >
-                    <i class="bi bi-person fs-5"></i>
-                </a>
+                <button class="nav-search-submit" type="submit" aria-label="Submit search">
+                    <i class="bi bi-search"></i>
+                </button>
+            </form>
+        </div>
 
-                <a class="nav-btn" id="nav-cart-link" href="{% url 'shop:cart' %}" title="Cart">
-                    <i class="bi bi-bag fs-5"></i>
-                    {% if cart_count > 0 %}
-                    <span class="cart-badge" id="cart-count">{{ cart_count }}</span>
-                    {% else %}
-                    <span class="cart-badge" id="cart-count" style="display: none;">0</span>
-                    {% endif %}
-                </a>
+        <div class="nav-actions">
+            <a
+                class="nav-action-item d-none d-md-flex"
+                href="{% if user.is_authenticated %}{% url 'accounts:profile' %}{% else %}{% url 'accounts:login' %}{% endif %}"
+                title="{% if user.is_authenticated %}My profile{% else %}Login{% endif %}"
+            >
+                <i class="bi bi-person"></i>
+                <span class="nav-action-label">Account</span>
+            </a>
 
-                <a class="nav-btn" id="nav-wishlist-link" href="{% url 'shop:wishlist' %}" title="Wishlist">
-                    <i class="bi bi-heart fs-5"></i>
-                    {% if wishlist_count > 0 %}
-                    <span class="cart-badge" id="wishlist-count">{{ wishlist_count }}</span>
-                    {% else %}
-                    <span class="cart-badge" id="wishlist-count" style="display: none;">0</span>
-                    {% endif %}
-                </a>
-            </div>
-            </div>
+            <a class="nav-action-item" id="nav-cart-link" href="{% url 'shop:cart' %}" title="Cart">
+                <i class="bi bi-bag"></i>
+                <span class="nav-action-label">Cart</span>
+                {% if cart_count > 0 %}
+                <span class="cart-badge" id="cart-count">{{ cart_count }}</span>
+                {% else %}
+                <span class="cart-badge" id="cart-count" style="display: none;">0</span>
+                {% endif %}
+            </a>
+
+            <a class="nav-action-item" id="nav-wishlist-link" href="{% url 'shop:wishlist' %}" title="Wishlist">
+                <i class="bi bi-heart"></i>
+                <span class="nav-action-label">Wishlist</span>
+                {% if wishlist_count > 0 %}
+                <span class="cart-badge" id="wishlist-count">{{ wishlist_count }}</span>
+                {% else %}
+                <span class="cart-badge" id="wishlist-count" style="display: none;">0</span>
+                {% endif %}
+            </a>
         </div>
     </div>
 </nav>
@@ -1185,7 +1114,7 @@
             {% endfor %}
         </div>
         {% endif %}
-        
+
         {% block content %}{% endblock %}
     </main>
 
@@ -1214,13 +1143,13 @@
             <span>Account</span>
         </a>
     </nav>
-    
+
     <!-- Chatbot Widget -->
     <div id="chatbot-widget">
         <button id="chatbot-toggle" title="Chat with us">
             <i class="bi bi-chat-dots-fill"></i>
         </button>
-        
+
         <div id="chatbot-panel" class="d-none">
             <div class="chatbot-header">
                 <h6><i class="bi bi-robot"></i> TJ</h6>
@@ -1259,18 +1188,25 @@
             </div>
         </div>
     </div>
-    
+
     <!-- Footer - Clean & Dark -->
     <footer>
         <div class="container">
             <div class="row g-4">
                 <div class="col-lg-4">
                     <div class="footer-brand">
-                        <img src="{% static 'images/tjlogo(3).png' %}" 
-                             alt="TJ Naturals" 
-                             class="brand-logo-img"
-                             style="height: 50px; width:auto; filter: brightness(0) invert(1); object-fit: contain;" >
-                        
+                        {% if site_settings and site_settings.logo %}
+                            <img src="{{ site_settings.logo.url }}" 
+                                 alt="{{ site_settings.site_name }}" 
+                                 class="brand-logo-img"
+                                 style="height: 50px; width:auto; object-fit: contain;" >
+                        {% else %}
+                            <img src="{% static 'images/tjlogo(3).png' %}" 
+                                 alt="TJ Naturals" 
+                                 class="brand-logo-img"
+                                 style="height: 50px; width:auto; filter: brightness(0) invert(1); object-fit: contain;" >
+                        {% endif %}
+
                         <div class="brand-icon" style="display: none;">
                             <i class="bi bi-leaf-fill"></i>
                         </div>
@@ -1294,7 +1230,7 @@
                         </a>
                     </div>
                 </div>
-                
+
                 <div class="col-lg-2 col-md-4 col-6">
                     <h5 class="footer-heading">Quick Links</h5>
                     <ul class="footer-links">
@@ -1305,7 +1241,7 @@
                         <li><a href="#">Contact</a></li>
                     </ul>
                 </div>
-                
+
                 <div class="col-lg-4 col-md-4">
                     <h5 class="footer-heading">Contact Us</h5>
                     <div class="footer-contact">
@@ -1338,13 +1274,13 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="footer-bottom">
                 <p>&copy; {% now "Y" %} TJ Naturals. All rights reserved.</p>
             </div>
         </div>
     </footer>
-    
+
     <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
@@ -1352,12 +1288,11 @@
 <script>
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
-           // navigator.serviceWorker.register('/service-worker.js')
-                .catch((error) => console.error('Service worker registration failed:', error));
+            navigator.serviceWorker.register('/service-worker.js').catch((error) => console.error('Service worker registration failed:', error));
         });
     }
 
-    
+
     window.addEventListener('scroll', function() {
         const navbar = document.querySelector('.navbar');
         if (window.scrollY > 50) {
@@ -1366,8 +1301,8 @@
             navbar.classList.remove('scrolled');
         }
     });
-    
-    
+
+
     (function() {
         const chatbotToggle = document.getElementById('chatbot-toggle');
         const chatbotPanel = document.getElementById('chatbot-panel');
@@ -1382,25 +1317,25 @@
             delivery: 'We offer delivery across Kenya! Free delivery on orders over KSh 3,000. Standard delivery within Thika is KSh 200, and nationwide delivery ranges from KSh 300-500 depending on location.',
             payment: "We accept M-Pesa payments. Use Paybill 247247, Account Number 0708877435. Once you complete the order, you'll receive payment instructions."
         };
-        
+
         if (!chatbotToggle) return;
-        
+
         chatbotToggle.addEventListener('click', () => {
             chatbotPanel.classList.toggle('d-none');
             if (!chatbotPanel.classList.contains('d-none')) {
                 chatbotInput.focus();
             }
         });
-        
+
         chatbotClose.addEventListener('click', () => {
             chatbotPanel.classList.add('d-none');
         });
-        
+
         function addMessage(text, isUser = false) {
             const messageDiv = document.createElement('div');
             messageDiv.className = 'chat-message';
             messageDiv.style.animation = 'fadeIn 0.3s ease';
-            
+
             if (isUser) {
                 messageDiv.innerHTML = `<div class="chat-bubble user">${text}</div>`;
             } else {
@@ -1409,7 +1344,7 @@
                     <div class="chat-bubble">${text}</div>
                 `;
             }
-            
+
             chatbotMessages.appendChild(messageDiv);
             chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
         }
@@ -1431,7 +1366,7 @@
             chatbotMessages.appendChild(optionWrap);
             chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
         }
-        
+
         function handleSend() {
             const text = chatbotInput.value.trim();
             if (text) {
@@ -1466,58 +1401,17 @@
                 }, 300);
             }
         });
-        
+
         chatbotSend.addEventListener('click', handleSend);
         chatbotInput.addEventListener('keypress', (e) => {
             if (e.key === 'Enter') handleSend();
         });
-        
+
         // Close chatbot when clicking outside
         document.addEventListener('click', (e) => {
             if (!chatbotWidget.contains(e.target) && !chatbotPanel.classList.contains('d-none')) {
                 chatbotPanel.classList.add('d-none');
             }
-        });
-    })();
-    
-    (function() {
-        const searchToggle = document.getElementById('nav-search-toggle');
-        const searchContainer = document.getElementById('nav-search-container');
-        const searchInput = document.getElementById('nav-search-input');
-
-        if (!searchToggle || !searchContainer || !searchInput) return;
-
-        searchToggle.addEventListener('click', () => {
-            const isOpen = searchContainer.classList.toggle('open');
-            if (isOpen) {
-                searchInput.focus();
-            } else {
-                searchInput.value = '';
-            }
-        });
-
-        document.addEventListener('click', (event) => {
-            const clickedInsideSearch = searchContainer.contains(event.target);
-            const clickedToggle = searchToggle.contains(event.target);
-
-            if (!clickedInsideSearch && !clickedToggle) {
-                searchContainer.classList.remove('open');
-            }
-        });
-    })();
-
-    (function() {
-        const navDrawer = document.getElementById('navbarNav');
-        if (!navDrawer || typeof bootstrap === 'undefined') return;
-
-        const closeTriggers = navDrawer.querySelectorAll('.nav-link, .nav-actions a');
-
-        closeTriggers.forEach((trigger) => {
-            trigger.addEventListener('click', () => {
-                if (window.innerWidth <= 991 && navDrawer.classList.contains('show')) {
-                    bootstrap.Offcanvas.getOrCreateInstance(navDrawer).hide();
-                }
-            });
         });
     })();
 
@@ -1538,8 +1432,8 @@
         });
     })();
 
-   
-    function showToast(message, type = 'success') {
+
+    window.showToast = function(message, type = 'success') {
         // Remove existing toasts
         const existingToasts = document.querySelectorAll('.tj-toast');
         existingToasts.forEach(t => t.remove());
@@ -1552,14 +1446,14 @@
         toast.style.borderRadius = '12px';
         toast.style.fontWeight = '500';
         toast.textContent = message;
-        
+
         document.body.appendChild(toast);
-        
+
         setTimeout(() => {
             toast.style.animation = 'slideOut 0.3s ease';
             setTimeout(() => toast.remove(), 300);
         }, 3000);
-    }
+    };
 
     // Add toast animations
     const toastStyle = document.createElement('style');
@@ -1574,31 +1468,30 @@
         }
     `;
     document.head.appendChild(toastStyle);
-   
+
 
     document.addEventListener('click', function(e) {
         // Handle Add to Cart buttons
         const cartBtn = e.target.closest('.add-to-cart');
         if (cartBtn && !cartBtn.disabled) {
             e.preventDefault();
-            e.stopPropagation();
-            
+
             const productId = cartBtn.getAttribute('data-product-id');
             const url = cartBtn.getAttribute('data-cart-url') || '{% url "shop:add_to_cart" %}';
             const quantityInputId = cartBtn.getAttribute('data-quantity-input');
             const quantityInput = quantityInputId ? document.getElementById(quantityInputId) : null;
             const quantity = quantityInput ? parseInt(quantityInput.value || '1', 10) : 1;
-            
+
             if (!productId) {
                 console.error('No product ID found on cart button');
                 return;
             }
-            
+
             // Disable button during request
             cartBtn.disabled = true;
             const originalContent = cartBtn.innerHTML;
             cartBtn.innerHTML = '<i class="bi bi-hourglass-split"></i>';
-            
+
             fetch(url, {
                 method: 'POST',
                 headers: {
@@ -1646,89 +1539,91 @@
                 cartBtn.disabled = false;
                 cartBtn.innerHTML = originalContent;
             });
+            return;
         }
-     const wishlistBtn = e.target.closest('.wishlist-btn');
-if (wishlistBtn) {
-    e.preventDefault();
-    e.stopPropagation();
-    
-    const productId = wishlistBtn.getAttribute('data-product-id');
-    const url = wishlistBtn.getAttribute('data-wishlist-url') || '{% url "shop:toggle_wishlist" %}';
-    const icon = wishlistBtn.querySelector('i');
-    
-    if (!productId) {
-        console.error('No product ID found on wishlist button');
-        return;
-    }
-    
-    // Disable button during request
-    wishlistBtn.disabled = true;
-    wishlistBtn.style.pointerEvents = 'none';
-    
-    fetch(url, {
-        method: 'POST',
-        headers: {
-            'X-CSRFToken': CSRF_TOKEN,
-            'Content-Type': 'application/json',
-            'X-Requested-With': 'XMLHttpRequest'
-        },
-        body: JSON.stringify({ 'product_id': parseInt(productId) })
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Server error: ' + response.status);
-        }
-        return response.json();
-    })
-    .then(data => {
-        if (data.status === 'added') {
-            wishlistBtn.classList.add('wishlist-active');
-            if (icon) {
-                icon.classList.remove('bi-heart');
-                icon.classList.add('bi-heart-fill');
+
+        // Handle Wishlist buttons
+        const wishlistBtn = e.target.closest('.wishlist-btn');
+        if (wishlistBtn) {
+            e.preventDefault();
+
+            const productId = wishlistBtn.getAttribute('data-product-id');
+            const url = wishlistBtn.getAttribute('data-wishlist-url') || '{% url "shop:toggle_wishlist" %}';
+            const icon = wishlistBtn.querySelector('i');
+
+            if (!productId) {
+                console.error('No product ID found on wishlist button');
+                return;
             }
-            showToast('Added to wishlist ❤️');
-        } else if (data.status === 'removed') {
-            wishlistBtn.classList.remove('wishlist-active');
-            if (icon) {
-                icon.classList.remove('bi-heart-fill');
-                icon.classList.add('bi-heart');
-            }
-            showToast('Removed from wishlist 💔');
-        } else if (data.status === 'error') {
-            console.error('Wishlist error:', data.message);
-            showToast('Error: ' + data.message, 'error');
-        }
-        
-        // Update wishlist count badges
-        const count = data.wishlist_count;
-        if (count !== undefined) {
-            // Desktop
-            const badge = document.getElementById('wishlist-count');
-            if (badge) {
-                badge.innerText = count;
-                badge.style.display = count > 0 ? 'flex' : 'none';
-            }
-            // Mobile
-            const mobileBadge = document.getElementById('mobile-wishlist-count');
-            if (mobileBadge) {
-                mobileBadge.innerText = count;
-                mobileBadge.style.display = count > 0 ? 'inline-flex' : 'none';
-            }
-        }
-    })
-    .catch(error => {
-        console.error('Wishlist Error:', error);
-        showToast('Failed to update wishlist. Please try again.', 'error');
-    })
-    .finally(() => {
-        wishlistBtn.disabled = false;
-        wishlistBtn.style.pointerEvents = 'auto';
+
+            // Disable button during request
+            wishlistBtn.disabled = true;
+            wishlistBtn.style.pointerEvents = 'none';
+
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'X-CSRFToken': CSRF_TOKEN,
+                    'Content-Type': 'application/json',
+                    'X-Requested-With': 'XMLHttpRequest'
+                },
+                body: JSON.stringify({ 'product_id': parseInt(productId) })
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Server error: ' + response.status);
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.status === 'added') {
+                    wishlistBtn.classList.add('wishlist-active');
+                    if (icon) {
+                        icon.classList.remove('bi-heart');
+                        icon.classList.add('bi-heart-fill');
+                    }
+                    showToast('Added to wishlist ❤️');
+                } else if (data.status === 'removed') {
+                    wishlistBtn.classList.remove('wishlist-active');
+                    if (icon) {
+                        icon.classList.remove('bi-heart-fill');
+                        icon.classList.add('bi-heart');
+                    }
+                    showToast('Removed from wishlist 💔');
+                } else if (data.status === 'error') {
+                    console.error('Wishlist error:', data.message);
+                    showToast('Error: ' + data.message, 'error');
+                }
+
+                // Update wishlist count badges
+                const count = data.wishlist_count;
+                if (count !== undefined) {
+                    // Desktop
+                    const badge = document.getElementById('wishlist-count');
+                    if (badge) {
+                        badge.innerText = count;
+                        badge.style.display = count > 0 ? 'flex' : 'none';
+                    }
+                    // Mobile
+                    const mobileBadge = document.getElementById('mobile-wishlist-count');
+                    if (mobileBadge) {
+                        mobileBadge.innerText = count;
+                        mobileBadge.style.display = count > 0 ? 'inline-flex' : 'none';
+                    }
+                }
+            })
+            .catch(error => {
+                console.error('Wishlist Error:', error);
+                showToast('Failed to update wishlist. Please try again.', 'error');
+            })
+            .finally(() => {
+                wishlistBtn.disabled = false;
+                wishlistBtn.style.pointerEvents = 'auto';
             });
         }
     });
 </script>
-    
+
     {% block extra_js %}{% endblock %}
 </body>
 </html>

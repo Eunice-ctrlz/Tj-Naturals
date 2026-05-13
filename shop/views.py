@@ -19,6 +19,7 @@ import json
 
 SESSION_CART_KEY = 'guest_cart'
 SESSION_WISHLIST_KEY = 'guest_wishlist'
+SESSION_PRODUCT_CLICK_KEY = 'product_click_counts'
 
 
 def _get_guest_cart(request):
@@ -62,6 +63,33 @@ def _get_guest_wishlist(request):
 
 def _save_guest_wishlist(request, wishlist_ids):
     request.session[SESSION_WISHLIST_KEY] = wishlist_ids
+    request.session.modified = True
+
+
+def _get_product_click_counts(request):
+    """Return normalized product click counts from session."""
+    click_counts = request.session.get(SESSION_PRODUCT_CLICK_KEY, {})
+    if not isinstance(click_counts, dict):
+        return {}
+
+    normalized = {}
+    for product_id, count in click_counts.items():
+        try:
+            pid = int(product_id)
+            clicks = int(count)
+        except (TypeError, ValueError):
+            continue
+
+        if clicks > 0:
+            normalized[pid] = clicks
+    return normalized
+
+
+def _record_product_click(request, product_id):
+    """Track product detail clicks so the homepage can personalize suggestions."""
+    click_counts = _get_product_click_counts(request)
+    click_counts[product_id] = click_counts.get(product_id, 0) + 1
+    request.session[SESSION_PRODUCT_CLICK_KEY] = click_counts
     request.session.modified = True
 
 
@@ -115,6 +143,33 @@ def _build_guest_cart_context(request):
 def home_view(request):
     active_products = Product.objects.filter(status='active').select_related('category').prefetch_related('images')
 
+    click_counts = _get_product_click_counts(request)
+    recommended_products = []
+
+    if click_counts:
+        ordered_product_ids = [
+            product_id
+            for product_id, _ in sorted(click_counts.items(), key=lambda item: (-item[1], item[0]))
+        ]
+        products_by_id = {
+            product.id: product
+            for product in active_products.filter(id__in=ordered_product_ids)
+        }
+
+        for product_id in ordered_product_ids:
+            product = products_by_id.get(product_id)
+            if product:
+                recommended_products.append(product)
+
+        if len(recommended_products) < 8:
+            recommended_ids = [product.id for product in recommended_products]
+            filler_products = list(
+                active_products.exclude(id__in=recommended_ids).order_by('?')[: 8 - len(recommended_products)]
+            )
+            recommended_products.extend(filler_products)
+    else:
+        recommended_products = list(active_products.order_by('?')[:8])
+
     # Hero products (featured/bestsellers)
     hero_products = active_products.filter(is_bestseller=True)[:4]
 
@@ -125,13 +180,13 @@ def home_view(request):
     )[:3]
 
     # Homepage sections controlled by admin flags.
-    bestsellers = active_products.filter(is_bestseller=True)[:8]
+    bestsellers = recommended_products[:8]
     special_offers = active_products.filter(is_special=True)[:8]
     new_arrivals = active_products.filter(is_new_arrival=True)[:8]
 
     # Keep sections populated if flags are not set yet.
     if not bestsellers:
-        bestsellers = active_products[:8]
+        bestsellers = list(active_products.order_by('?')[:8])
     if not special_offers:
         special_offers = active_products[:8]
     if not new_arrivals:
@@ -224,6 +279,8 @@ def product_detail_view(request, slug):
         slug=slug,
         status='active'
     )
+
+    _record_product_click(request, product.id)
     
     # Related products (same category)
     related_products = Product.objects.filter(
