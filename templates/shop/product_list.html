@@ -178,23 +178,6 @@
                     </div>
                 </div>
 
-                <div class="filter-section">
-                    <div class="filter-title">Promotions</div>
-                    <div class="filter-items">
-                        <div class="filter-item">
-                            <input type="checkbox" id="new_arrivals" name="new_arrivals">
-                            <label for="new_arrivals">New Arrivals</label>
-                        </div>
-                        <div class="filter-item">
-                            <input type="checkbox" id="best_sellers" name="best_sellers">
-                            <label for="best_sellers">Best Sellers</label>
-                        </div>
-                        <div class="filter-item">
-                            <input type="checkbox" id="on_sale" name="on_sale">
-                            <label for="on_sale">On Sale</label>
-                        </div>
-                    </div>
-                </div>
 
                 <div class="filter-section">
                     <div class="filter-title">Availability</div>
@@ -220,15 +203,6 @@
 
         <div class="products-area">
             <div class="products-header">
-                <div class="products-info">
-                    <span class="products-count">Showing {{ products|length }} of {{ products.paginator.count|default:products|length }} results</span>
-                    {% if current_category %}
-                    <span style="background: var(--tj-primary); color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.85rem;">
-                        {{ current_category.name }}
-                        <a href="{% url 'shop:product_list' %}" style="color: white; text-decoration: none; margin-left: 8px;">×</a>
-                    </span>
-                    {% endif %}
-                </div>
 
             </div>
 
@@ -441,6 +415,21 @@ document.addEventListener('DOMContentLoaded', function() {
             applyFilters();
         });
     }
+});
+// Make entire product card clickable
+document.querySelectorAll('[data-product-card]').forEach(card => {
+    card.style.cursor = 'pointer';
+    card.addEventListener('click', function(e) {
+        // Don't navigate if clicking action buttons (wishlist/cart)
+        if (e.target.closest('.product-actions') || e.target.closest('.action-btn')) {
+            return;
+        }
+        // Navigate to product detail
+        const link = this.querySelector('.product-name a');
+        if (link) {
+            window.location.href = link.href;
+        }
+    });
 });
 </script>
 

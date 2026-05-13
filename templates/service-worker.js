@@ -1,5 +1,5 @@
-const STATIC_CACHE = 'tj-naturals-static-v4';
-const DYNAMIC_CACHE = 'tj-naturals-dynamic-v4';
+const STATIC_CACHE = 'tj-naturals-static-v5';
+const DYNAMIC_CACHE = 'tj-naturals-dynamic-v5';
 
 const STATIC_ASSETS = [
     '/static/css/style.css',
@@ -16,7 +16,6 @@ self.addEventListener('install', (event) => {
             .then((cache) => cache.addAll(STATIC_ASSETS))
             .catch((err) => console.error('[SW] Static caching failed:', err))
     );
-
     self.skipWaiting();
 });
 
@@ -28,7 +27,6 @@ self.addEventListener('activate', (event) => {
                 .map((cacheName) => caches.delete(cacheName))
         ))
     );
-
     self.clients.claim();
 });
 
@@ -40,7 +38,6 @@ self.addEventListener('fetch', (event) => {
         return;
     }
 
-    // Let the browser handle cross-origin resources (CDNs, fonts, etc.).
     if (url.origin !== self.location.origin) {
         return;
     }
@@ -91,7 +88,11 @@ async function cacheFirst(request) {
         return response;
     } catch (error) {
         console.error('[SW] Cache-first failed:', error);
-        return new Response('Offline', { status: 503 });
+        return new Response('Offline', {
+            status: 503,
+            statusText: 'Service Unavailable',
+            headers: { 'Content-Type': 'text/plain' }
+        });
     }
 }
 
@@ -118,10 +119,26 @@ async function networkFirst(request) {
 
         const acceptHeader = request.headers.get('accept') || '';
         if (acceptHeader.includes('text/html')) {
-            return caches.match('/static/offline.html');
+            const offlinePage = await caches.match('/static/offline.html');
+            if (offlinePage) {
+                return offlinePage;
+            }
+            return new Response(
+                '<html><body style="font-family:sans-serif;text-align:center;padding:40px;">' +
+                '<h1>You are offline</h1><p>Please check your connection and try again.</p></body></html>',
+                {
+                    status: 503,
+                    statusText: 'Service Unavailable',
+                    headers: { 'Content-Type': 'text/html' }
+                }
+            );
         }
 
-        return new Response('Offline', { status: 503 });
+        return new Response('Offline', {
+            status: 503,
+            statusText: 'Service Unavailable',
+            headers: { 'Content-Type': 'text/plain' }
+        });
     }
 }
 

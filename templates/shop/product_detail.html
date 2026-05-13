@@ -19,7 +19,7 @@
                 <div class="card-body">
                     {% if primary_image %}
                     <img src="{{ primary_image.image.url }}" class="img-fluid rounded mb-3" id="main-image" 
-                         alt="{{ product.name }}" style="cursor: zoom-in;" onclick="zoomImage(this)">
+                         alt="{{ product.name }}" style="cursor: zoom-in; max-height: 450px; width: auto; object-fit: contain; display: block; margin: 0 auto;" onclick="zoomImage(this)">
                     {% endif %}
                     
                     {% if product.images.count > 1 %}
@@ -28,7 +28,7 @@
                         <div class="col-3">
                             <img src="{{ image.image.url }}" class="img-fluid rounded cursor-pointer thumbnail-image" 
                                  alt="{{ product.name }}" onclick="changeMainImage('{{ image.image.url }}')"
-                                 style="cursor: pointer; height: 80px; object-fit: cover;">
+                                 style="cursor: pointer; height: 80px; width: 100%; object-fit: cover;">
                         </div>
                         {% endfor %}
                     </div>
