@@ -37,4 +37,4 @@ docker-compose exec web python manage.py createsuperuser
 
 # Access your site
 http://localhost:8000
-http://localhost:8000/admin
+http://localhost:8000/admin.env* 
