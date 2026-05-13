@@ -70,7 +70,6 @@
             {{ form.phone_number.errors }}
         </div>
         {% endif %}
-        <div class="form-text">2541234567</div>
     </div>
 
     
@@ -97,20 +96,6 @@
         {% endif %}
     </div>
 
-    <!-- Profile Image -->
-    {% if form.profile_image %}
-    <div class="mb-4">
-        <label class="form-label fw-bold">
-            <i class="bi bi-camera me-2 text-success"></i>Profile Image
-        </label>
-        <input type="file" name="profile_image" class="form-control {% if form.profile_image.errors %}is-invalid{% endif %}">
-        {% if form.profile_image.errors %}
-        <div class="invalid-feedback d-block">
-            {{ form.profile_image.errors }}
-        </div>
-        {% endif %}
-    </div>
-    {% endif %}
 
     <div class="d-flex gap-3 mt-5">
         <button type="submit" class="btn btn-success btn-lg flex-grow-1">

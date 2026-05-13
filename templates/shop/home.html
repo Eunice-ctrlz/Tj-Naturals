@@ -11,6 +11,13 @@
         background: var(--tj-off-white);
     }
 
+    /* Remove padding on mobile - logo bar handles top spacing */
+    @media (max-width: 768px) {
+        body {
+            padding-top: 0 !important;
+        }
+    }
+
     /* HERO BANNER */
     .hero-banner {
         width: 100%;
@@ -127,6 +134,12 @@
     @media (max-width: 991px) {
         body {
             padding-top: 68px !important;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding-top: 0 !important;
+            }
         }
 
         .hero-content {
@@ -570,8 +583,16 @@
     <!-- HERO BANNER -->
     <section class="hero-banner">
         <div class="hero-bg-stack" id="hero-bg-stack">
-            {% if site_settings and site_settings.background %}
-            <img src="{{ site_settings.background.url }}" alt="TJ Naturals background" class="hero-bg-image active">
+            {% if site_settings %}
+            {% if site_settings.background %}
+            <img src="{{ site_settings.background.url }}" alt="TJ Naturals hero background 1" class="hero-bg-image active">
+            {% endif %}
+            {% if site_settings.background_secondary %}
+            <img src="{{ site_settings.background_secondary.url }}" alt="TJ Naturals hero background 2" class="hero-bg-image {% if not site_settings.background %}active{% endif %}">
+            {% endif %}
+            {% if not site_settings.background and not site_settings.background_secondary %}
+            <div class="hero-bg-image active" style="background: linear-gradient(135deg, rgba(47,107,63,0.9), rgba(31,79,47,0.88));"></div>
+            {% endif %}
             {% else %}
             <div class="hero-bg-image active" style="background: linear-gradient(135deg, rgba(47,107,63,0.9), rgba(31,79,47,0.88));"></div>
             {% endif %}

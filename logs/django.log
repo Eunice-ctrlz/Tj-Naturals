@@ -7351,3 +7351,5 @@ Watching for file changes with StatReloader
 "GET /service-worker.js HTTP/1.1" 200 3498
 "GET / HTTP/1.1" 200 121161
 "GET /service-worker.js HTTP/1.1" 200 3498
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader

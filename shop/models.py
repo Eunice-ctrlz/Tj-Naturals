@@ -345,6 +345,12 @@ class SiteSettings(models.Model):
         null=True,
         help_text='Background image'
     )
+    background_secondary = models.ImageField(
+        upload_to='site_settings/',
+        blank=True,
+        null=True,
+        help_text='Second hero background image'
+    )
     site_name = models.CharField(max_length=200, default='TJ Naturals')
     tagline = models.CharField(max_length=500, blank=True)
     updated_at = models.DateTimeField(auto_now=True)

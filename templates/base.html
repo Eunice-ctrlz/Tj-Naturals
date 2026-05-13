@@ -969,9 +969,86 @@
         }
 
         @media (max-width: 768px) {
-            body {
-                padding-top: 74px;
+            html, body {
+                padding-top: 0 !important;
+                margin-top: 0 !important;
                 padding-bottom: 86px;
+            }
+
+            .navbar-wrap {
+                display: none !important;
+                height: 0 !important;
+                min-height: 0 !important;
+                overflow: hidden !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+
+            /* Mobile Logo Bar - flush at top, no gap */
+            .mobile-logo-bar {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                background: #fff;
+                padding: 10px 16px;
+                border-bottom: 1px solid #eee;
+                margin: 0;
+            }
+
+            .mobile-logo-bar .logo-link {
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                flex: 1;
+            }
+
+            .mobile-logo-bar .logo-link img {
+                height: 34px;
+                width: 34px;
+                max-width: 140px;
+                object-fit: contain;
+                display: block;
+                border-radius: 50%;
+                border: 2px solid var(--tj-border);
+                background: #fff;
+            }
+
+            .mobile-logo-bar .top-nav-actions {
+                display: flex;
+                align-items: center;
+                gap: 20px;
+            }
+
+            .mobile-logo-bar .top-nav-actions a {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: var(--tj-text);
+                text-decoration: none;
+                position: relative;
+                font-size: 1.3rem;
+            }
+
+            .mobile-logo-bar .top-nav-actions a .cart-badge {
+                position: absolute;
+                top: -8px;
+                right: -8px;
+                background: var(--tj-primary);
+                color: white;
+                font-size: 0.65rem;
+                font-weight: 800;
+                min-width: 18px;
+                height: 18px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: 2px solid #fff;
+            }
+
+            main, main > *:first-child {
+                margin-top: 0 !important;
+                padding-top: 0 !important;
             }
 
             .mobile-bottom-nav {
@@ -1026,6 +1103,7 @@
 
             footer {
                 padding: 60px 0 20px;
+
             }
 
             .footer-heading {
@@ -1033,12 +1111,248 @@
             }
         }
 
+        /* Mobile Search Overlay - Glassmorphic */
+        .mobile-search-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 1080;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px) saturate(180%);
+            -webkit-backdrop-filter: blur(12px) saturate(180%);
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px 16px;
+            animation: fadeIn 0.25s ease;
+        }
+
+        .mobile-search-overlay.active {
+            display: flex;
+        }
+
+        .mobile-search-overlay-header {
+            width: 100%;
+            max-width: 600px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .mobile-search-overlay-input-wrap {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.92);
+            border-radius: 12px;
+            padding: 4px 6px 4px 16px;
+            height: 48px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+        }
+
+        .mobile-search-overlay-input {
+            border: none;
+            outline: none;
+            width: 100%;
+            font-size: 16px;
+            color: var(--tj-text);
+            background: transparent;
+        }
+
+        .mobile-search-overlay-input::placeholder {
+            color: #999;
+            font-size: 16px;
+        }
+
+        .mobile-search-overlay-submit {
+            width: 38px;
+            height: 38px;
+            border: none;
+            border-radius: 50%;
+            background: transparent;
+            color: var(--tj-primary-dark);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        .mobile-search-overlay-close {
+            width: 40px;
+            height: 40px;
+            border: none;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.85);
+            color: var(--tj-text);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            flex-shrink: 0;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Mobile Page Slide Transition */
+        .page-slide-container {
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        .page-slide-enter {
+            animation: slideInFromRight 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+
+        @keyframes slideInFromRight {
+            from {
+                transform: translateX(100%);
+                opacity: 0.8;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .page-slide-exit {
+            animation: slideOutToLeft 0.25s ease-in forwards;
+        }
+
+        @keyframes slideOutToLeft {
+            from {
+                transform: translateX(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateX(-30%);
+                opacity: 0.6;
+            }
+        }
+
+        /* Mobile Sidebar / Drawer for bottom nav items */
+        .mobile-nav-drawer {
+            position: fixed;
+            inset: 0;
+            z-index: 1090;
+            display: none;
+            flex-direction: column;
+        }
+
+        .mobile-nav-drawer.active {
+            display: flex;
+        }
+
+        .mobile-nav-drawer-backdrop {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.35);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            animation: fadeIn 0.2s ease;
+        }
+
+        .mobile-nav-drawer-panel {
+            position: absolute;
+            bottom: 74px;
+            left: 0;
+            right: 0;
+            background: var(--tj-off-white);
+            border-radius: 20px 20px 0 0;
+            padding: 20px 16px 24px;
+            box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.15);
+            animation: slideUpDrawer 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+
+        @keyframes slideUpDrawer {
+            from {
+                transform: translateY(100%);
+            }
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        .mobile-nav-drawer-close {
+            width: 40px;
+            height: 40px;
+            border: none;
+            border-radius: 50%;
+            background: var(--tj-cream);
+            color: var(--tj-text);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            margin-bottom: 12px;
+        }
+
+        .mobile-nav-drawer-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--tj-text);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .mobile-nav-drawer-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .mobile-nav-drawer-list li {
+            margin-bottom: 4px;
+        }
+
+        .mobile-nav-drawer-list a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 12px;
+            border-radius: 12px;
+            color: var(--tj-text);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+        }
+
+        .mobile-nav-drawer-list a:hover,
+        .mobile-nav-drawer-list a:active {
+            background: var(--tj-cream);
+            color: var(--tj-primary-dark);
+        }
+
+        .mobile-nav-drawer-list a i {
+            font-size: 1.2rem;
+            color: var(--tj-primary);
+        }
+
+        .mobile-nav-drawer-divider {
+            height: 1px;
+            background: var(--tj-border);
+            margin: 12px 0;
+        }
+
         {% block extra_css %}{% endblock %}
     </style>
 <base target="_blank">
+<base target="_blank">
 </head>
 <body>
-<nav class="navbar navbar-expand-lg fixed-top">
+<div class="navbar-wrap d-none d-md-block"><nav class="navbar navbar-expand-lg fixed-top">
     <div class="container navbar-main-row">
         <!-- Logo -->
         <a class="navbar-brand" href="{% url 'shop:home' %}">
@@ -1101,11 +1415,34 @@
             </a>
         </div>
     </div>
-</nav>
+</nav></div>
+
+    <!-- Mobile Logo Bar -->
+    <div class="mobile-logo-bar d-md-none">
+        <a href="{% url 'shop:home' %}" class="logo-link">
+            {% if site_settings and site_settings.logo %}
+                <img src="{{ site_settings.logo.url }}" alt="{{ site_settings.site_name }}">
+            {% else %}
+                <img src="{% static 'images/tjlogo(3).png' %}" alt="TJ Naturals Logo">
+            {% endif %}
+        </a>
+        <div class="top-nav-actions">
+            <a href="{% url 'shop:cart' %}" title="Cart">
+                <i class="bi bi-bag"></i>
+                {% if cart_count > 0 %}
+                <span class="cart-badge">{{ cart_count }}</span>
+                {% endif %}
+            </a>
+            <a href="{% if user.is_authenticated %}{% url 'accounts:profile' %}{% else %}{% url 'accounts:login' %}{% endif %}" title="Account">
+                <i class="bi bi-person"></i>
+            </a>
+        </div>
+    </div>
+
     <!-- Main Content -->
     <main>
         {% if messages %}
-        <div class="container mt-4">
+        <div class="container">
             {% for message in messages %}
             <div class="alert alert-tj alert-{% if message.tags == 'success' %}success-tj{% else %}danger-tj{% endif %} alert-dismissible fade show" role="alert">
                 {{ message }}
@@ -1118,31 +1455,96 @@
         {% block content %}{% endblock %}
     </main>
 
+    <!-- Mobile Search Overlay -->
+    <div class="mobile-search-overlay d-md-none" id="mobile-search-overlay">
+        <div class="mobile-search-overlay-header">
+            <div class="mobile-search-overlay-input-wrap">
+                <input
+                    type="search"
+                    name="q"
+                    class="mobile-search-overlay-input"
+                    id="mobile-search-overlay-input"
+                    placeholder="I'm shopping for ..."
+                    autocomplete="off"
+                    autofocus
+                >
+                <button class="mobile-search-overlay-submit" type="button" onclick="submitMobileSearch()" aria-label="Submit search">
+                    <i class="bi bi-search"></i>
+                </button>
+            </div>
+            <button class="mobile-search-overlay-close" onclick="toggleMobileSearchOverlay()" aria-label="Close search">
+                <i class="bi bi-chevron-up"></i>
+            </button>
+        </div>
+    </div>
+
     <nav class="mobile-bottom-nav d-md-none" aria-label="Mobile quick navigation">
-        <a href="{% url 'shop:home' %}" class="mobile-nav-item {% if request.resolver_match.url_name == 'home' %}active{% endif %}">
+        <a href="#" class="mobile-nav-item {% if request.resolver_match.url_name == 'home' %}active{% endif %}" onclick="event.preventDefault(); toggleMobileNavDrawer('home');">
             <i class="bi bi-house"></i>
             <span>Home</span>
         </a>
-        <a href="{% url 'shop:product_list' %}" class="mobile-nav-item {% if request.resolver_match.url_name == 'product_list' %}active{% endif %}">
+        <a href="#" class="mobile-nav-item {% if request.resolver_match.url_name == 'product_list' %}active{% endif %}" onclick="event.preventDefault(); toggleMobileNavDrawer('shop');">
             <i class="bi bi-grid"></i>
             <span>Shop</span>
         </a>
-        <a href="{% url 'shop:cart' %}" class="mobile-nav-item {% if request.resolver_match.url_name == 'cart' %}active{% endif %}">
-            <i class="bi bi-bag"></i>
-            <span>Cart</span>
-            <span class="mobile-nav-badge" id="mobile-cart-count" style="{% if cart_count == 0 %}display: none;{% endif %}">{{ cart_count }}</span>
-        </a>
-        <a href="{% url 'shop:wishlist' %}" class="mobile-nav-item {% if request.resolver_match.url_name == 'wishlist' %}active{% endif %}">
-            <i class="bi bi-heart"></i>
-            <span>Saved</span>
-            <span class="mobile-nav-badge" id="mobile-wishlist-count" style="{% if wishlist_count == 0 %}display: none;{% endif %}">{{ wishlist_count }}</span>
-        </a>
-        <a href="{% if user.is_authenticated %}{% url 'accounts:profile' %}{% else %}{% url 'accounts:login' %}{% endif %}"
-           class="mobile-nav-item {% if request.resolver_match.url_name == 'profile' %}active{% endif %}">
-            <i class="bi bi-person"></i>
-            <span>Account</span>
+        <a href="#" class="mobile-nav-item" onclick="event.preventDefault(); toggleMobileSearchOverlay();">
+            <i class="bi bi-search"></i>
+            <span>Search</span>
         </a>
     </nav>
+
+    <!-- Mobile Nav Drawers -->
+    <div class="mobile-nav-drawer d-md-none" id="mobile-nav-drawer-home">
+        <div class="mobile-nav-drawer-backdrop" onclick="toggleMobileNavDrawer('home')"></div>
+        <div class="mobile-nav-drawer-panel">
+            <div class="mobile-nav-drawer-title"><i class="bi bi-house"></i> Home</div>
+            <ul class="mobile-nav-drawer-list">
+                <li><a href="{% url 'shop:home' %}"><i class="bi bi-house"></i> Homepage</a></li>
+                <li><a href="{% url 'shop:product_list' %}"><i class="bi bi-grid"></i> Browse Products</a></li>
+                <li><a href="{% url 'shop:product_list' %}"><i class="bi bi-tags"></i> Categories</a></li>
+                <li><a href="{% url 'shop:product_list' %}?sort=newest"><i class="bi bi-stars"></i> New Arrivals</a></li>
+                <li><a href="{% url 'shop:product_list' %}?sort=bestsellers"><i class="bi bi-fire"></i> Bestsellers</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="mobile-nav-drawer d-md-none" id="mobile-nav-drawer-shop">
+        <div class="mobile-nav-drawer-backdrop" onclick="toggleMobileNavDrawer('shop')"></div>
+        <div class="mobile-nav-drawer-panel">
+            <div class="mobile-nav-drawer-title"><i class="bi bi-grid"></i> Shop</div>
+            <ul class="mobile-nav-drawer-list">
+                <li><a href="{% url 'shop:product_list' %}"><i class="bi bi-grid"></i> All Products</a></li>
+                <li><a href="{% url 'shop:product_list' %}?sort=price_low"><i class="bi bi-sort-down"></i> Low to High Price</a></li>
+                <li><a href="{% url 'shop:product_list' %}?sort=price_high"><i class="bi bi-sort-up"></i> High to Low Price</a></li>
+                <li><a href="{% url 'shop:product_list' %}?sort=newest"><i class="bi bi-stars"></i> New Arrivals</a></li>
+                <li><a href="{% url 'shop:product_list' %}?sort=bestsellers"><i class="bi bi-fire"></i> Bestsellers</a></li>
+                <li><a href="{% url 'shop:product_list' %}?special=true"><i class="bi bi-lightning"></i> Special Offers</a></li>
+            </ul>
+        </div>
+    </div>
+
+
+
+    <div class="mobile-nav-drawer d-md-none" id="mobile-nav-drawer-account">
+        <div class="mobile-nav-drawer-backdrop" onclick="toggleMobileNavDrawer('account')"></div>
+        <div class="mobile-nav-drawer-panel">
+            <div class="mobile-nav-drawer-title"><i class="bi bi-person"></i> Account</div>
+            <ul class="mobile-nav-drawer-list">
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'accounts:profile' %}"><i class="bi bi-person"></i> My Profile</a></li>
+                <li><a href="#"><i class="bi bi-bag"></i> My Orders</a></li>
+                <li><a href="{% url 'shop:wishlist' %}"><i class="bi bi-heart"></i> Wishlist</a></li>
+                <li><a href="#"><i class="bi bi-ticket"></i> Vouchers</a></li>
+                <li><a href="#"><i class="bi bi-gear"></i> Settings</a></li>
+                <div class="mobile-nav-drawer-divider"></div>
+                <li><a href="{% url 'accounts:logout' %}"><i class="bi bi-box-arrow-right"></i> Logout</a></li>
+                {% else %}
+                <li><a href="{% url 'accounts:login' %}"><i class="bi bi-box-arrow-in-right"></i> Login</a></li>
+                <li><a href="{% url 'accounts:register' %}"><i class="bi bi-person-plus"></i> Register</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
 
     <!-- Chatbot Widget -->
     <div id="chatbot-widget">
@@ -1441,7 +1843,6 @@
         const toast = document.createElement('div');
         toast.className = `tj-toast position-fixed top-0 end-0 m-3 p-3 rounded shadow-lg ${type === 'error' ? 'bg-danger' : 'bg-success'} text-white`;
         toast.style.zIndex = '9999';
-        toast.style.animation = 'slideIn 0.3s ease';
         toast.style.minWidth = '250px';
         toast.style.borderRadius = '12px';
         toast.style.fontWeight = '500';
@@ -1450,24 +1851,11 @@
         document.body.appendChild(toast);
 
         setTimeout(() => {
-            toast.style.animation = 'slideOut 0.3s ease';
             setTimeout(() => toast.remove(), 300);
         }, 3000);
     };
 
     // Add toast animations
-    const toastStyle = document.createElement('style');
-    toastStyle.textContent = `
-        @keyframes slideIn {
-            from { transform: translateX(100%); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        }
-        @keyframes slideOut {
-            from { transform: translateX(0); opacity: 1; }
-            to { transform: translateX(100%); opacity: 0; }
-        }
-    `;
-    document.head.appendChild(toastStyle);
 
 
     document.addEventListener('click', function(e) {
@@ -1526,7 +1914,7 @@
                             mobileBadge.style.display = count > 0 ? 'inline-flex' : 'none';
                         }
                     }
-                    showToast('Added to cart! 🌿');
+                    showToast('Added to cart');
                 } else {
                     showToast(data.message || 'Failed to add to cart', 'error');
                 }
@@ -1582,14 +1970,14 @@
                         icon.classList.remove('bi-heart');
                         icon.classList.add('bi-heart-fill');
                     }
-                    showToast('Added to wishlist ❤️');
+                    showToast('Added to wishlist');
                 } else if (data.status === 'removed') {
                     wishlistBtn.classList.remove('wishlist-active');
                     if (icon) {
                         icon.classList.remove('bi-heart-fill');
                         icon.classList.add('bi-heart');
                     }
-                    showToast('Removed from wishlist 💔');
+                    showToast('Removed from wishlist');
                 } else if (data.status === 'error') {
                     console.error('Wishlist error:', data.message);
                     showToast('Error: ' + data.message, 'error');
@@ -1620,6 +2008,97 @@
                 wishlistBtn.disabled = false;
                 wishlistBtn.style.pointerEvents = 'auto';
             });
+        }
+    });
+
+    // Mobile Nav Drawer Toggle
+    window.toggleMobileNavDrawer = function(drawerName) {
+        const drawerId = 'mobile-nav-drawer-' + drawerName;
+        const drawer = document.getElementById(drawerId);
+
+        if (!drawer) return;
+
+        // Close any other open drawers first
+        document.querySelectorAll('.mobile-nav-drawer.active').forEach(function(d) {
+            if (d.id !== drawerId) {
+                d.classList.remove('active');
+            }
+        });
+
+        const isActive = drawer.classList.contains('active');
+
+        if (isActive) {
+            drawer.classList.remove('active');
+            document.body.style.overflow = '';
+        } else {
+            drawer.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+    };
+
+    // Mobile Search Overlay Toggle
+    window.toggleMobileSearchOverlay = function() {
+        const overlay = document.getElementById('mobile-search-overlay');
+        const input = document.getElementById('mobile-search-overlay-input');
+
+        if (!overlay) return;
+
+        const isActive = overlay.classList.contains('active');
+
+        if (isActive) {
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        } else {
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            if (input) {
+                setTimeout(() => input.focus(), 100);
+            }
+        }
+    };
+
+    window.submitMobileSearch = function() {
+        const input = document.getElementById('mobile-search-overlay-input');
+        if (input && input.value.trim()) {
+            window.location.href = "{% url 'shop:product_list' %}?q=" + encodeURIComponent(input.value.trim());
+        }
+    };
+
+    // Close overlay on Escape key or clicking outside the search bar
+    document.addEventListener('keydown', function(e) {
+        if (e.key !== 'Escape') return;
+
+        const overlay = document.getElementById('mobile-search-overlay');
+        if (overlay && overlay.classList.contains('active')) {
+            toggleMobileSearchOverlay();
+        }
+
+        // Close any open drawers
+        document.querySelectorAll('.mobile-nav-drawer.active').forEach(function(d) {
+            d.classList.remove('active');
+        });
+        document.body.style.overflow = '';
+    });
+
+    // Close overlay when clicking anywhere on the glassmorphic background (outside the search bar)
+    document.addEventListener('click', function(e) {
+        const overlay = document.getElementById('mobile-search-overlay');
+        const header = document.querySelector('.mobile-search-overlay-header');
+
+        if (!overlay || !header) return;
+        if (!overlay.classList.contains('active')) return;
+
+        // If click is on the overlay itself but NOT inside the header (search bar area)
+        if (overlay.contains(e.target) && !header.contains(e.target)) {
+            toggleMobileSearchOverlay();
+        }
+    });
+
+    // Submit on Enter
+    document.addEventListener('keydown', function(e) {
+        const input = document.getElementById('mobile-search-overlay-input');
+        if (e.key === 'Enter' && input && document.activeElement === input) {
+            submitMobileSearch();
         }
     });
 </script>

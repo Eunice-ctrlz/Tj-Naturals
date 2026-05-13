@@ -124,7 +124,7 @@ class SiteSettingsAdmin(admin.ModelAdmin):
             'fields': ('site_name', 'tagline', 'logo')
         }),
         ('Design', {
-            'fields': ('background',)
+            'fields': ('background', 'background_secondary')
         }),
     )
     readonly_fields = ['updated_at']
