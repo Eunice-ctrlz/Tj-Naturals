@@ -19,4 +19,22 @@ staticfiles/
 # IDEs
 .vscode/
 .idea/
+
 test_smtp.py
+image_fix.py
+
+# Start everything
+docker-compose up -d
+
+# Stop everything
+docker-compose down
+
+# View logs
+docker-compose logs -f web
+
+# Create admin user
+docker-compose exec web python manage.py createsuperuser
+
+# Access your site
+http://localhost:8000
+http://localhost:8000/admin

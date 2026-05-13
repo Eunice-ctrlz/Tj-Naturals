@@ -188,6 +188,12 @@ def import_products(csv_file, images_dir):
 if __name__ == '__main__':
     # UPDATE THESE PATHS
     CSV_FILE = 'products.csv'
-    IMAGES_DIR = r'C:\Users\USER\Desktop\TJNATURALS\media\products'  # Your Downloads folder
+    
+    # Auto-detect environment (Docker vs local)
+    from pathlib import Path
+    if Path('/app/images').exists():
+        IMAGES_DIR = '/app/images'  # Docker environment
+    else:
+        IMAGES_DIR = r'C:\Users\USER\Desktop\Tj-Naturals\images'  # Local Windows
     
     import_products(CSV_FILE, IMAGES_DIR)
